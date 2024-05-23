@@ -1,0 +1,19 @@
+@import '../common.scss';
+
+header{
+  background: #eee;
+  > .con-box{border: 1px solid #000;}
+  .hd-top{
+    @include flexbox(row, flex-end, center);
+    border: 1px solid red;
+    padding: 2rem 0;
+    .logo{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    .side-menu{
+      @include flexbox(row, flex-start, center);
+    }
+  }
+}

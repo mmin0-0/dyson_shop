@@ -45,3 +45,11 @@ body{
     color: $black;
   }
 }
+
+.con-box{
+  width: calc(100% - 4rem);
+  max-width: 1360px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
