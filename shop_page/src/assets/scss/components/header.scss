@@ -74,6 +74,16 @@ header{
           }
         }
       }
+      .btn-closed{
+        margin-top: 3rem;
+        text-align: center;
+        button{
+          font-size: 1.6rem;
+          background: $white;
+          padding-right: 2.4rem;
+          @include background(icon, arrow_type01, svg, no-repeat, 1.6rem, right, bottom);
+        }
+      }
     }
   }
   .gnb-wrap{
