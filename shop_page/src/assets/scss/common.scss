@@ -4,6 +4,7 @@
 $black : #000000;
 $white: #ffffff;
 
+
 @mixin border($width, $color) {border: $width solid $color;}
 @mixin flexbox($direction, $justify, $align){
 	display:flex;

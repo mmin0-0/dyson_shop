@@ -1,19 +1,34 @@
 @import '../common.scss';
 
 header{
-  background: #eee;
-  > .con-box{border: 1px solid #000;}
-  .hd-top{
-    @include flexbox(row, flex-end, center);
-    border: 1px solid red;
-    padding: 2rem 0;
+  &.header-fixed{
+    .utility-wrap{margin-top: 0;}
+  }
+  .hd-inner-wrap{
+    position: relative;
+    height: 16rem;
+    background: #ccc;
+    border: 1px solid #000;
     .logo{
       position: absolute;
       left: 50%;
+      top: 2rem;
       transform: translateX(-50%);
     }
-    .side-menu{
+    .utility-wrap{
+      position: absolute;
+      top: 0;
+      right: 2rem;
+      margin-top: 3.2rem;
       @include flexbox(row, flex-start, center);
     }
+  }
+  .search-wrap{
+    background: $white;
+    border: 1px solid #000;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
   }
 }
