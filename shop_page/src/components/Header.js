@@ -1,7 +1,15 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import '../assets/scss/components/header.scss'
+import { useEffect, useState } from 'react';
 
 function Header(){
+  let [search, setSearch] = useState(false);
+  let toggleSearch = () => {
+    setSearch(!search);
+    console.log(search)
+  };
+
+  useEffect(()=>{})
   return (
     <>
       <header>
@@ -16,10 +24,10 @@ function Header(){
                 유저
                 <i class="fa-sharp fa-solid fa-basket-shopping-simple"></i>
               </div>
-              <div className="search-controls">검색</div>
+              <div className="search-controls" onClick={toggleSearch}>검색</div>
           </div>
         </div>
-        <div className="search-wrap">
+        <div className={`search-wrap ${search ? 'active' : 'closed'}`}>
           <div className="search-inner">
             <div className="search-inp">
               <form action="submit">
@@ -41,7 +49,7 @@ function Header(){
               </ul>
             </div>
             <div className="btn-closed">
-              <button type="button">CLOSED</button>
+              <button type="button" onClick={toggleSearch}>CLOSED</button>
             </div>
           </div>
         </div>
