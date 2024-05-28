@@ -102,12 +102,12 @@ header{
       z-index: 100;
       @include flexbox(row, center, center);
       li{
-        // position: relative;
         .depth1{
           font-weight: 500;
           padding: 1.8rem 2.6rem;
           transition: all .25s;
           &.on{
+            background: $white;
             + .gnb-draw{display: block;}
           }
         }
@@ -140,7 +140,16 @@ header{
             }
             .banner{
               width: 45%;
-              border: 1px solid red;
+              ul{
+                display: flex;
+                gap: 2rem;
+                li{
+                  flex: 1;
+                  .img-wrap{
+                    img{max-width: 100%;}
+                  }
+                }
+              }
             }
           }
         }

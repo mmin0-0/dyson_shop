@@ -14,26 +14,42 @@ function Header(){
     {
       title: '감탄상회 소개',
       subMenu: ['브랜드', '감탄 스토리', '비전', '활동가 소개'],
+      banner: [
+        {
+          img: ['https://cdn.imweb.me/thumbnail/20230118/0aa5f31252d84.jpg'],
+          tit: ['감탄상회 오프라인 매장']
+        }
+      ]
     },
     {
       title: '감탄스토어',
       subMenu: ['세트상품', '욕실용품', '생활용품'],
+      banner: [
+        {
+          img: ['"https://cdn.imweb.me/thumbnail/20231220/7d4e1584d1288.jpg"'],
+          tit: ['그물면주머니 프로듀스백 3종']
+        }
+      ]
     },
     {
       title: '비건 케이터링',
       subMenu: ['비건이란?'],
+      banner : []
     },
     {
       title: '감탄클래스',
       subMenu: ['원데이 클래스', '환경생태 프로그램', '찾아가는 환경교육', '골목 반상회', '대관/커뮤니티 신청'],
+      banner : []
     },
     {
       title: '캠페인',
       subMenu: [],
+      banner : []
     },
     {
       title: '커뮤니티',
       subMenu: ['공지사항', '자주 묻는 질문', 'Q&A', '고객후기'],
+      banner : []
     },
   ];
 
@@ -90,7 +106,6 @@ function Header(){
                     href="#none"
                     className={`depth1 ${hovered === index ? 'on' : ''}`}
                     onMouseEnter={() => {handleMouseEnter(index)}}
-                    
                   >
                     {item.title}
                   </a>
@@ -108,7 +123,26 @@ function Header(){
                             }
                           </ul>
                         </div>
-                        <div className="banner">배너</div>
+                        <div className="banner">
+                          <ul>
+                            {
+                              menuItems.map((item, index)=>{
+                                if(item.bannerTit.length > 0 && item.bannerImg.length > 0){
+                                  return (
+                                    <li key={index}>
+                                      <a href="#none">
+                                        <div className="img-wrap">
+                                          <img src={item.bannerImg[index]} alt="banner img" />
+                                        </div>
+                                        <p>{item.bannerTit[index]}</p>
+                                      </a>
+                                    </li>
+                                  )
+                                }
+                              })
+                            }
+                          </ul>
+                        </div>
                       </div>
                     </div>
                   )}
