@@ -36,10 +36,9 @@ header{
     position: absolute;
     top: 100%;
     left: 0;
-    transition: height .35s ease-out;
     overflow: hidden;
+    transition: height .35s ease-out;
     &.active{height: 25rem;}
-    // &.closed{height: 0;}
     .search-inner{
       width: calc(100% - 4rem);
       max-width: 90rem;
@@ -103,7 +102,9 @@ header{
           font-weight: 500;
           padding: 1.8rem 2.6rem;
           transition: all .25s;
-          &:hover, &.on{background: $white;}
+          &:hover, &.on{
+            + .gnb-draw{display: block;}
+          }
         }
         .gnb-draw{
           display: none;

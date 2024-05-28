@@ -4,10 +4,7 @@ import { useEffect, useState } from 'react';
 
 function Header(){
   let [search, setSearch] = useState(false);
-  let toggleSearch = () => {
-    setSearch(!search);
-    console.log(search)
-  };
+  let toggleSearch = ()=>{setSearch(!search);};
 
   useEffect(()=>{})
   return (
@@ -67,17 +64,66 @@ function Header(){
                       <li><a href="#none">활동가 소개</a></li>
                     </ul>
                   </div>
-                  <div className="banner">
-                    배너
+                  <div className="banner">배너</div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a href="#none" className="depth1">감탄스토어</a>
+              <div className="gnb-draw">
+                <div className="draw-inner">
+                  <div className="menu-list">
+                    <ul>
+                      <li><a href="#none">세트상품</a></li>
+                      <li><a href="#none">욕실용품</a></li>
+                      <li><a href="#none">생활용품</a></li>
+                    </ul>
                   </div>
                 </div>
               </div>
             </li>
-            <li><a href="#none" className="depth1">감탄스토어</a></li>
-            <li><a href="#none" className="depth1">비건 케이터링</a></li>
-            <li><a href="#none" className="depth1">감탄클래스</a></li>
+            <li>
+              <a href="#none" className="depth1">비건 케이터링</a>
+              <div className="gnb-draw">
+                <div className="draw-inner">
+                  <div className="menu-list">
+                    <ul><li><a href="#none">비건이란?</a></li></ul>
+                  </div>
+                </div>
+              </div>
+            </li>
+            <li>
+              <a href="#none" className="depth1">감탄클래스</a>
+              <div className="gnb-draw">
+                <div className="draw-inner">
+                  <div className="menu-list">
+                    <ul>
+                      <li><a href="#none">원데이 클래스</a></li>
+                      <li><a href="#none">환경생태 프로그램</a></li>
+                      <li><a href="#none">찾아가는 환경교육</a></li>
+                      <li><a href="#none">골목 반상회</a></li>
+                      <li><a href="#none">대관/커뮤니티 신청</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
             <li><a href="#none" className="depth1">캠페인</a></li>
-            <li><a href="#none" className="depth1">커뮤니티</a></li>
+            <li>
+              <a href="#none" className="depth1">커뮤니티</a>
+              <div className="gnb-draw">
+                <div className="draw-inner">
+                  <div className="menu-list">
+                    <ul>
+                      <li><a href="#none">공지사항</a></li>
+                      <li><a href="#none">자주 묻는 질문</a></li>
+                      <li><a href="#none">Q&A</a></li>
+                      <li><a href="#none">고객후기</a></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </li>
           </ul>
         </nav>
       </header>
