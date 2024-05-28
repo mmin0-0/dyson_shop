@@ -36,6 +36,7 @@ header{
     position: absolute;
     top: 100%;
     left: 0;
+    z-index: 10;
     overflow: hidden;
     transition: height .35s ease-out;
     &.active{height: 25rem;}
@@ -67,6 +68,7 @@ header{
           li{
             a{
               padding: .6rem .4rem;
+              border-radius: .4rem;
               background: $gray01;
               &::before{
                 content: '#';
@@ -94,7 +96,10 @@ header{
     position: absolute;
     left: 0;
     bottom: 0;
+    z-index: 9;
     .gnb-inner{
+      position: relative;
+      z-index: 100;
       @include flexbox(row, center, center);
       li{
         // position: relative;
@@ -102,7 +107,7 @@ header{
           font-weight: 500;
           padding: 1.8rem 2.6rem;
           transition: all .25s;
-          &:hover, &.on{
+          &.on{
             + .gnb-draw{display: block;}
           }
         }
