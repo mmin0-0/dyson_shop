@@ -3,6 +3,23 @@ import '../assets/scss/components/header.scss'
 import { useEffect, useState } from 'react';
 
 function Header(){
+  let [headerClass, setHeaderClass] = useState('');
+  useEffect(()=>{
+    const handleScroll = ()=>{
+      let scrollTop = window.scrollY;
+      if(scrollTop > 0){
+        setHeaderClass('header-fixed')
+      }else{
+        setHeaderClass('')
+      }
+    }
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
+
   let [search, setSearch] = useState(false);
   let toggleSearch = ()=>{setSearch(!search);};
   let keyword = ['제로웨이스트', 'ECO', '감탄클래스', '친환경 라이프', '비건 케이터링'];
@@ -55,7 +72,7 @@ function Header(){
 
   return (
     <>
-      <header>
+      <header className={headerClass}>
         <div className="hd-inner-wrap">
           <div className="logo">
               <a href="#none">
@@ -67,7 +84,7 @@ function Header(){
                 유저
                 <i class="fa-sharp fa-solid fa-basket-shopping-simple"></i>
               </div>
-              <div className="search-controls" onClick={toggleSearch}>검색</div>
+              <button className="search-controls" onClick={toggleSearch}>검색</button>
           </div>
         </div>
         <div className={`search-wrap ${search ? 'active' : 'closed'}`}>
@@ -126,19 +143,20 @@ function Header(){
                         <div className="banner">
                           <ul>
                             {
-                              menuItems.map((item, index)=>{
-                                if(item.bannerTit.length > 0 && item.bannerImg.length > 0){
-                                  return (
-                                    <li key={index}>
+                              menuItems.map((item, index) => {
+                                if (item.banner.length > 0) {
+                                  return item.banner.map((bannerItem, bannerIndex) => (
+                                    <li key={`${index}-${bannerIndex}`}>
                                       <a href="#none">
                                         <div className="img-wrap">
-                                          <img src={item.bannerImg[index]} alt="banner img" />
+                                          <img src={bannerItem.img[bannerIndex]} alt="banner img" />
                                         </div>
-                                        <p>{item.bannerTit[index]}</p>
+                                        <p>{bannerItem.tit[bannerIndex]}</p>
                                       </a>
                                     </li>
-                                  )
+                                  ));
                                 }
+                                return null;
                               })
                             }
                           </ul>

@@ -12,6 +12,7 @@ function App() {
         <Route path="/basket" element={<div>장바구니</div>} />
       </Routes>
       <div className="title">안녕하세요</div>
+      <div style={{height: '2000px'}}>test</div>
     </div>
   );
 }

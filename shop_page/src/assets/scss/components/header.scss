@@ -8,24 +8,36 @@ header{
   height: 16rem;
   background: #ccc;
   &.header-fixed{
-    .utility-wrap{margin-top: 0;}
+    height: 6rem;
+    .hd-inner-wrap{
+      width: calc(100% - 4rem);
+      margin: 0 auto;
+      justify-content: flex-start;
+      .utility-wrap{right: 0;}
+    }
   }
   .hd-inner-wrap{
     position: relative;
-    background: #ccc;
+    height: 6rem;
+    transition: all .25s;
+    background: yellowgreen;
     border: 1px solid #000;
+    @include flexbox(row, center, center);
     .logo{
-      position: absolute;
-      left: 50%;
-      top: 2rem;
-      transform: translateX(-50%);
+      position: relative;
+      z-index: 100;
+      transition: all .25s;
     }
     .utility-wrap{
       position: absolute;
-      top: 0;
+      top: 50%;
       right: 2rem;
-      margin-top: 3.2rem;
+      z-index: 100;
+      transform: translateY(-50%);
       @include flexbox(row, flex-start, center);
+      .search-controls{
+        text-indent: ;
+      }
     }
   }
   .search-wrap{
@@ -67,7 +79,7 @@ header{
           @include flexbox(row, flex-start, center);
           li{
             a{
-              padding: .6rem .4rem;
+              padding: .6rem;
               border-radius: .4rem;
               background: $gray01;
               &::before{
@@ -104,7 +116,7 @@ header{
       li{
         .depth1{
           font-weight: 500;
-          padding: 1.8rem 2.6rem;
+          padding: 2.2rem 2.6rem;
           transition: all .25s;
           &.on{
             background: $white;
