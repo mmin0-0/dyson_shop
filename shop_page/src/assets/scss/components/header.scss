@@ -115,11 +115,22 @@ header{
     left: 0;
     bottom: 0;
     z-index: 9;
+    @include notebook_junc{
+      height: 100vh;
+      top: 0;
+      bottom: auto;
+      z-index: 100;
+      background: $white;
+    }
     .gnb-inner{
       position: relative;
       z-index: 100;
       @include flexbox(row, center, center);
+      @include notebook_junc{
+        @include flexbox(column, flex-start, flex-start);
+      }
       li{
+        @include notebook_junc{width: 100%;}
         .depth1{
           font-weight: 500;
           padding: 2.2rem 2.6rem;
@@ -137,6 +148,10 @@ header{
           left: 0;
           padding: 6rem 0;
           border: 1px solid #000;
+          @include notebook_junc{
+            // display: block;
+            position: static;
+          }
           .draw-inner{
             width: calc(100% - 4rem);
             max-width: 66rem;
@@ -149,15 +164,13 @@ header{
               ul{
                 li{
                   &:not(:last-child){margin-bottom: .8rem;}
-                  a{
-                    font-family: $aritaM;
-                    &:hover{}
-                  }
+                  a{font-family: $aritaM;}
                 }
               }
             }
             .banner{
               width: 45%;
+              @include notebook_junc{display: none;}
               ul{
                 display: flex;
                 gap: 2rem;

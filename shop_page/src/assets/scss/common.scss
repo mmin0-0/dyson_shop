@@ -8,6 +8,23 @@ $subColor: #2BAAB7;
 $gray01: #EBEAE3;
 $aritaM: 'aritaM';
 
+/* 노트북 분기점 */
+@mixin notebook_junc{
+  @media (max-width: 1000px){@content;}
+}
+/* 노트북 */
+@mixin notebook{
+  @media (max-width: 1200px){@content;}
+}
+/* 테블릿 */
+@mixin tablet{
+  @media (max-width: 768px){@content;}
+}
+/* 모바일 */
+@mixin mobile{
+  @media (max-width: 420px){@content;}
+}
+
 @mixin border($width, $color) {border: $width solid $color;}
 @mixin flexbox($direction, $justify, $align){
 	display:flex;
