@@ -6,11 +6,14 @@ header{
   top: 0;
   left: 0;
   height: 16rem;
-  background: #ccc;
+  background: linear-gradient($mainColor, $white);
+  transition: height .25s;
   &.header-fixed{
     height: 6rem;
+    background: $mainColor;
     .hd-inner-wrap{
       width: calc(100% - 4rem);
+      height: 6rem;
       margin: 0 auto;
       justify-content: flex-start;
       .utility-wrap{right: 0;}
@@ -18,10 +21,8 @@ header{
   }
   .hd-inner-wrap{
     position: relative;
-    height: 6rem;
+    padding: 2rem 0;
     transition: all .25s;
-    background: yellowgreen;
-    border: 1px solid #000;
     @include flexbox(row, center, center);
     .logo{
       position: relative;
@@ -35,9 +36,14 @@ header{
       z-index: 100;
       transform: translateY(-50%);
       @include flexbox(row, flex-start, center);
-      .search-controls{
-        text-indent: ;
+      > button{
+        width: 6rem;
+        height: 6rem;
+        text-indent: -9999em;
+        overflow: hidden;
       }
+      .user{@include background(icon, user_icon, svg, no-repeat, 60%, center, center);}
+      .search-controls{@include background(icon, search_icon, svg, no-repeat, 80%, center, center);}
     }
   }
   .search-wrap{

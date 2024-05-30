@@ -80,10 +80,7 @@ function Header(){
               </a>
           </div>
           <div className="utility-wrap">
-              <div className="user">
-                유저
-                <i class="fa-sharp fa-solid fa-basket-shopping-simple"></i>
-              </div>
+              <button className="user">user</button>
               <button className="search-controls" onClick={toggleSearch}>검색</button>
           </div>
         </div>
