@@ -31,6 +31,7 @@ $aritaM: 'aritaM';
   flex-direction: $direction;
   justify-content: $justify;
   align-items: $align;
+
 }
 @mixin ellipsis($num: 1) {
   @if ($num == 1) {

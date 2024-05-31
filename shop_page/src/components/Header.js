@@ -35,7 +35,8 @@ function Header(){
         {
           img: ['https://cdn.imweb.me/thumbnail/20230118/0aa5f31252d84.jpg'],
           tit: ['감탄상회 오프라인 매장']
-        }
+        },
+        
       ]
     },
     {
@@ -69,7 +70,6 @@ function Header(){
       banner : []
     },
   ];
-
   return (
     <>
       <header className={headerClass}>
@@ -140,21 +140,18 @@ function Header(){
                         <div className="banner">
                           <ul>
                             {
-                              menuItems.map((item, index) => {
-                                if (item.banner.length > 0) {
-                                  return item.banner.map((bannerItem, bannerIndex) => (
-                                    <li key={`${index}-${bannerIndex}`}>
-                                      <a href="#none">
-                                        <div className="img-wrap">
-                                          <img src={bannerItem.img[bannerIndex]} alt="banner img" />
-                                        </div>
-                                        <p>{bannerItem.tit[bannerIndex]}</p>
-                                      </a>
-                                    </li>
-                                  ));
-                                }
-                                return null;
-                              })
+                              item.banner.map((banner, index) => (
+                               banner.length>0 &&  <li key={`${index}`}>
+                                  <a href="#none">
+                                    <div className="img-wrap">
+                                      <img src={banner.img[index]} alt="banner img" />
+                                    </div>
+                                    <p>{banner.tit[index]}</p>
+                                  </a>
+                                </li>
+                              ))
+                           
+                               
                             }
                           </ul>
                         </div>
