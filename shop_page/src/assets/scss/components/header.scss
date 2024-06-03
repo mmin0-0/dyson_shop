@@ -8,6 +8,7 @@ header{
   height: 16rem;
   background: linear-gradient($mainColor, $white);
   transition: height .25s;
+  @include notebook_junc{height: 6rem;}
   &.header-fixed{
     height: 6rem;
     background: $mainColor;
@@ -15,18 +16,40 @@ header{
       width: calc(100% - 4rem);
       height: 6rem;
       margin: 0 auto;
-      justify-content: flex-start;
+      .logo{
+        left: 0;
+        transform: translateY(-50%);
+      }
       .utility-wrap{right: 0;}
     }
   }
+  @include notebook_junc{
+    height: 6rem;
+    background: $mainColor;
+  }
   .hd-inner-wrap{
     position: relative;
-    padding: 2rem 0;
+    min-height: 6rem;
+    // padding: 1rem 0;
     transition: all .25s;
-    @include flexbox(row, center, center);
+    button{
+      border: 1px solid #000;
+      width: 6rem;
+      height: 6rem;
+      text-indent: -9999em;
+      overflow: hidden;
+    }
+    .ham-btn{
+      @include background(icon, menu_icon, svg, no-repeat, contain, center, center);
+      display: none;
+      @include notebook_junc{display: block;}
+    }
     .logo{
-      position: relative;
+      position: absolute;
+      top: 50%;
+      left: 50%;
       z-index: 100;
+      transform: translate(-50%, -50%);
       transition: all .25s;
     }
     .utility-wrap{
@@ -36,12 +59,7 @@ header{
       z-index: 100;
       transform: translateY(-50%);
       @include flexbox(row, flex-start, center);
-      > button{
-        width: 6rem;
-        height: 6rem;
-        text-indent: -9999em;
-        overflow: hidden;
-      }
+      @include notebook_junc{right: 0;}
       .user{@include background(icon, user_icon, svg, no-repeat, 60%, center, center);}
       .search-controls{@include background(icon, search_icon, svg, no-repeat, 80%, center, center);}
     }
@@ -118,9 +136,22 @@ header{
     @include notebook_junc{
       height: 100vh;
       top: 0;
+      left: -100%;
       bottom: auto;
       z-index: 100;
       background: $white;
+      transition: left .25s;
+      &.active{left: 0;}
+    }
+    &-top{
+      display: none;
+      height: 6rem;
+      @include notebook_junc{display: block;}
+      button{
+        width: 6rem;
+        height: 6rem;
+        
+      }
     }
     .gnb-inner{
       position: relative;
@@ -132,9 +163,11 @@ header{
       li{
         @include notebook_junc{width: 100%;}
         .depth1{
+          width: 100%;
           font-weight: 500;
           padding: 2.2rem 2.6rem;
           transition: all .25s;
+          @include notebook_junc{padding: 2rem;}
           &.on{
             background: $white;
             + .gnb-draw{display: block;}
@@ -149,7 +182,7 @@ header{
           padding: 6rem 0;
           border: 1px solid #000;
           @include notebook_junc{
-            // display: block;
+            padding: 2rem 0;
             position: static;
           }
           .draw-inner{
@@ -158,12 +191,18 @@ header{
             margin: 0 auto;
             display: flex;
             gap: 6rem;
+            @include notebook_junc{
+              max-width: 100%;
+            }
             .menu-list{
               width: 55%;
               border: 1px solid red;
               ul{
                 li{
-                  &:not(:last-child){margin-bottom: .8rem;}
+                  &:not(:last-child){
+                    margin-bottom: .8rem;
+                    @include notebook_junc{margin-bottom: 1.4rem;}
+                  }
                   a{font-family: $aritaM;}
                 }
               }

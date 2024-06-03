@@ -3,24 +3,28 @@ import '../assets/scss/components/header.scss'
 import { useEffect, useState } from 'react';
 
 function Header(){
-  let [headerClass, setHeaderClass] = useState('');
-  let [hovered, setHovered] = useState(null);
+  const [headerClass, setHeaderClass] = useState('');
+  const [hovered, setHovered] = useState(null);
   const [isTabletOrSmaller, setIsTabletOrSmaller] = useState(window.innerWidth <= 1000);
 
   useEffect(()=>{
-    const handleScroll = ()=>{
+    const handleScroll = () => {
       let scrollTop = window.scrollY;
-      if(scrollTop > 0){
+      if (scrollTop > 0) {
         setHeaderClass('header-fixed')
-      }else{
+      } else {
         setHeaderClass('')
       }
+    };
+  
+    if (!isTabletOrSmaller) {
+      window.addEventListener('scroll', handleScroll);
     }
-    window.addEventListener('scroll', handleScroll);
+  
     return () => {
       window.removeEventListener('scroll', handleScroll);
-    }
-  }, []);
+    };
+  }, [isTabletOrSmaller]);
 
   useEffect(()=>{
     const handleResize = ()=>{
@@ -37,10 +41,13 @@ function Header(){
   const handleMouseLeave = () => {setHovered(null)};
   const handleClick = (index) => {setHovered(index)};
 
-  let [search, setSearch] = useState(false);
-  let toggleSearch = ()=>{setSearch(!search);};
-  let keyword = ['제로웨이스트', 'ECO', '감탄클래스', '친환경 라이프', '비건 케이터링'];
-  let menuItems = [
+  const [search, setSearch] = useState(false);
+  const toggleSearch = ()=>{setSearch(!search);};
+
+  const [menu, setMenu] = useState(false);
+  const toggleMenu = ()=>{setMenu(!menu);};
+  const keyword = ['제로웨이스트', 'ECO', '감탄클래스', '친환경 라이프', '비건 케이터링'];
+  const menuItems = [
     {
       title: '감탄상회 소개',
       subMenu: ['브랜드', '감탄 스토리', '비전', '활동가 소개'],
@@ -87,6 +94,7 @@ function Header(){
     <>
       <header className={headerClass}>
         <div className="hd-inner-wrap">
+          <button className="ham-btn" onClick={toggleMenu}>메뉴열기</button>
           <div className="logo">
               <a href="#none">
                 <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`}   alt="감탄상회" />
@@ -123,7 +131,10 @@ function Header(){
             </div>
           </div>
         </div>
-        <nav className="gnb-wrap">
+        <nav className={`gnb-wrap ${menu ? 'active' : ''}`}>
+          <div className="gnb-wrap-top">
+            <button className="closed-btn">닫기</button>
+          </div>
           <ul className="gnb-inner">
             {
               menuItems.map((item, index)=>{
