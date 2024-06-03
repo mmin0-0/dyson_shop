@@ -203,7 +203,10 @@ header{
                     margin-bottom: .8rem;
                     @include notebook_junc{margin-bottom: 1.4rem;}
                   }
-                  a{font-family: $aritaM;}
+                  a{
+                    font-family: $aritaM;
+                    @include notebook_junc{font-size: 1.4rem;}
+                  }
                 }
               }
             }

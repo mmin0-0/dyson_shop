@@ -133,7 +133,7 @@ function Header(){
         </div>
         <nav className={`gnb-wrap ${menu ? 'active' : ''}`}>
           <div className="gnb-wrap-top">
-            <button className="closed-btn">닫기</button>
+            <button className="closed-btn" onClick={toggleMenu}>닫기</button>
           </div>
           <ul className="gnb-inner">
             {
