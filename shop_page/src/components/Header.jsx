@@ -4,6 +4,9 @@ import { useEffect, useState } from 'react';
 
 function Header(){
   let [headerClass, setHeaderClass] = useState('');
+  let [hovered, setHovered] = useState(null);
+  const [isTabletOrSmaller, setIsTabletOrSmaller] = useState(window.innerWidth <= 1000);
+
   useEffect(()=>{
     const handleScroll = ()=>{
       let scrollTop = window.scrollY;
@@ -19,14 +22,24 @@ function Header(){
     }
   }, []);
 
+  useEffect(()=>{
+    const handleResize = ()=>{
+      setIsTabletOrSmaller(window.innerWidth <= 1000);
+      console.log('resize')
+    };
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const handleMouseEnter = (index) => {setHovered(index)};
+  const handleMouseLeave = () => {setHovered(null)};
+  const handleClick = (index) => {setHovered(index)};
 
   let [search, setSearch] = useState(false);
   let toggleSearch = ()=>{setSearch(!search);};
   let keyword = ['제로웨이스트', 'ECO', '감탄클래스', '친환경 라이프', '비건 케이터링'];
-
-  let [hovered, setHovered] = useState(null);
-  let handleMouseEnter = (index) => {setHovered(index)};
-  let handleMouseLeave = () => {setHovered(null)};
   let menuItems = [
     {
       title: '감탄상회 소개',
@@ -115,11 +128,12 @@ function Header(){
             {
               menuItems.map((item, index)=>{
                 return (
-                <li key={index} onMouseLeave={handleMouseLeave}>
+                <li key={index} onMouseLeave={!isTabletOrSmaller ? handleMouseLeave : undefined}>
                   <a
                     href="#none"
                     className={`depth1 ${hovered === index ? 'on' : ''}`}
-                    onMouseEnter={() => {handleMouseEnter(index)}}
+                    onMouseEnter={!isTabletOrSmaller ? () => handleMouseEnter(index) : undefined}
+                    onClick={isTabletOrSmaller ? () => handleClick(index) : undefined}
                   >
                     {item.title}
                   </a>
@@ -141,7 +155,7 @@ function Header(){
                           <ul>
                             {
                               item.banner.map((banner, index) => (
-                               banner.length>0 &&  <li key={`${index}`}>
+                                banner.length>0 &&  <li key={`${index}`}>
                                   <a href="#none">
                                     <div className="img-wrap">
                                       <img src={banner.img[index]} alt="banner img" />
@@ -150,8 +164,6 @@ function Header(){
                                   </a>
                                 </li>
                               ))
-                           
-                               
                             }
                           </ul>
                         </div>
