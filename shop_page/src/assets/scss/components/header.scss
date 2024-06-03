@@ -60,7 +60,10 @@ header{
       transform: translateY(-50%);
       @include flexbox(row, flex-start, center);
       @include notebook_junc{right: 0;}
-      .user{@include background(icon, user_icon, svg, no-repeat, 60%, center, center);}
+      .user{
+        @include background(icon, user_icon, svg, no-repeat, 60%, center, center);
+        @include tablet{display: none;}
+      }
       .search-controls{@include background(icon, search_icon, svg, no-repeat, 80%, center, center);}
     }
   }
@@ -145,12 +148,26 @@ header{
     }
     &-top{
       display: none;
+      margin-right: 2rem;
       height: 6rem;
-      @include notebook_junc{display: block;}
+      @include flexbox(row, space-between, center);
+      @include notebook_junc{display: flex;}
       button{
         width: 6rem;
         height: 6rem;
-        
+        text-indent: -9999em;
+        overflow: hidden;
+      }
+      .btn-closed{
+        background: $darkBlack;
+        @include background(icon, closed_icon, png, no-repeat, 40%, center, center);
+      }
+      .utility-wrap{
+        a{
+          font-size: 1.4rem;
+          font-weight: bold;
+          &:not(:last-child){margin-right: 1.6rem;}
+        }
       }
     }
     .gnb-inner{
@@ -167,9 +184,31 @@ header{
           font-weight: 500;
           padding: 2.2rem 2.6rem;
           transition: all .25s;
-          @include notebook_junc{padding: 2rem;}
+          position: relative;
+          @include notebook_junc{
+            padding: 2rem;
+            font-weight: bold;
+            &::after{
+              content: '';
+              width: 2rem;
+              height: 2rem;
+              position: absolute;
+              right: 2rem;
+              top: 50%;
+              // border: 1px solid #000;
+              filter: invert(95%) sepia(3%) saturate(731%) hue-rotate(341deg) brightness(106%) contrast(84%);
+              transform: translateY(-50%) rotate(180deg);
+              transition: transform .25s;
+              @include background(icon, arrow_type01, svg, no-repeat, contain, center, center);
+            }
+          }
           &.on{
             background: $white;
+            @include tablet{
+              background: inherit;
+              color: $mainColor;
+            }
+            &::after{transform: translateY(-50%) rotate(0deg);}
             + .gnb-draw{display: block;}
           }
         }
@@ -180,7 +219,7 @@ header{
           top: 100%;
           left: 0;
           padding: 6rem 0;
-          border: 1px solid #000;
+          border-top: 2px solid $darkBlack;
           @include notebook_junc{
             padding: 2rem 0;
             position: static;
@@ -192,11 +231,12 @@ header{
             display: flex;
             gap: 6rem;
             @include notebook_junc{
+              width: calc(100% - 6rem);
               max-width: 100%;
             }
             .menu-list{
               width: 55%;
-              border: 1px solid red;
+              @include notebook_junc{width: 100%;}
               ul{
                 li{
                   &:not(:last-child){

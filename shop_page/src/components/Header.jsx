@@ -37,6 +37,10 @@ function Header(){
     };
   }, []);
 
+  useEffect(()=>{
+    let depth1 = document.querySelector('.depth1');
+  });
+
   const handleMouseEnter = (index) => {setHovered(index)};
   const handleMouseLeave = () => {setHovered(null)};
   const handleClick = (index) => {setHovered(index)};
@@ -133,7 +137,11 @@ function Header(){
         </div>
         <nav className={`gnb-wrap ${menu ? 'active' : ''}`}>
           <div className="gnb-wrap-top">
-            <button className="closed-btn" onClick={toggleMenu}>닫기</button>
+            <button className="btn-closed" onClick={toggleMenu}>닫기</button>
+            <div className="utility-wrap">
+              <a href="#none" className="user">로그인</a>
+              <a href="#none" className="user">장바구니</a>
+            </div>
           </div>
           <ul className="gnb-inner">
             {
