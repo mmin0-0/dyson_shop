@@ -65,6 +65,8 @@ header{
       z-index: 100;
       transform: translate(-50%, -50%);
       transition: all .25s;
+      img{max-width: 100%;}
+      @include tablet{width: 8rem;}
     }
     .utility-wrap{
       position: absolute;
@@ -99,7 +101,10 @@ header{
     z-index: 10;
     overflow: hidden;
     transition: height .35s ease-out;
-    &.active{height: 25rem;}
+    &.active{
+      height: 25rem;
+      @include tablet{height: 20.4rem;}
+    }
     .search-inner{
       width: calc(100% - 4rem);
       max-width: 90rem;
