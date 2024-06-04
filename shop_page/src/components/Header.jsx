@@ -121,7 +121,9 @@ function Header(){
               </a>
           </div>
           <div className="utility-wrap">
-              <button className="user">user</button>
+              <button className="user">
+                <Link to="./Cart.jsx">user</Link>
+              </button>
               <button className="search-controls" onClick={toggleSearch}>검색</button>
           </div>
         </div>
@@ -217,4 +219,4 @@ function Header(){
   );
 }
 
-export default Header;
+export default Header
