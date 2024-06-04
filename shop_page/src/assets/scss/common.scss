@@ -95,17 +95,6 @@ button{
   transition: all .25s;
   // gap: .6rem;
   // @include flexbox(row, center, center);
-  &.btn{
-    &-search{
-      width: 12rem;
-      max-height: 5.6rem;
-      padding: 2rem 0;
-      font-size: 1.6rem;
-      color: $white;
-      background: $mainColor;
-      &:hover{background: $subColor;}
-    }
-  }
 }
 
 .input-wrap{

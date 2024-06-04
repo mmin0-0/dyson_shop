@@ -102,7 +102,43 @@ header{
       padding: 6rem 0 3rem;
       .search-inp{
         width: 100%;
-        .input-wrap{gap: 2rem;}
+        .input-wrap{
+          gap: 2rem;
+          position: relative;
+          .btn-search{
+            width: 12rem;
+            max-height: 5.6rem;
+            padding: 2rem 0;
+            font-size: 1.6rem;
+            color: $white;
+            background: $mainColor;
+            overflow: hidden;
+            &:hover{background: $subColor;}
+            @include tablet{
+              width: 4rem;
+              height: 4rem;
+              padding: 0;
+              text-indent: -9999em;
+              background: inherit;
+              position: absolute;
+              top: 50%;
+              right: 1rem;
+              transform: translateY(-50%);
+              &:hover{background: inherit;}
+              &::after{
+                content: '';
+                display: block;
+                width: inherit;
+                height: inherit;
+                position: absolute;
+                top: 0;
+                left: 0;
+                filter: invert(15%) sepia(11%) saturate(20%) hue-rotate(51deg) brightness(88%) contrast(91%);
+                @include background(icon, search_icon, svg, no-repeat, contain, center, center);
+              }
+            }
+          }
+        }
         input[type="search"]{
           width: 100%;
           max-height: 5.6rem;
@@ -116,15 +152,22 @@ header{
         margin-top: 1.8rem;
         gap: 2rem;
         @include flexbox(row, flex-start, center);
+        @include tablet{
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 1rem;
+        }
         strong{font-weight: 600;}
         ul{
           gap: .8rem;
+          flex-wrap: wrap;
           @include flexbox(row, flex-start, center);
           li{
             a{
               padding: .6rem;
               border-radius: .4rem;
               background: $gray01;
+              white-space: nowrap;
               &::before{
                 content: '#';
                 display: inline-block;
@@ -137,6 +180,7 @@ header{
       .btn-closed{
         margin-top: 3rem;
         text-align: center;
+        @include tablet{display: none;}
         button{
           font-size: 1.6rem;
           background: $white;
