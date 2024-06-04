@@ -55,7 +55,14 @@ function Header(){
   const handleClick = (index) => {setHovered(index)};
 
   const [search, setSearch] = useState(false);
-  const toggleSearch = ()=>{setSearch(!search);};
+  const toggleSearch = (e)=>{
+    setSearch(!search);
+    if(!search){
+      e.target.classList.add('on');
+    }else{
+      e.target.classList.remove('on');
+    }
+  };
 
   const [menu, setMenu] = useState(false);
   const toggleMenu = ()=>{setMenu(!menu);};

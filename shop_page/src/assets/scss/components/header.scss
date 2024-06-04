@@ -80,6 +80,11 @@ header{
       }
       .search-controls{
         &::after{@include background(icon, search_icon, svg, no-repeat, 80%, center, center);}
+        @include tablet{
+          &.on{
+            &::after{@include background(icon, closed_icon, png, no-repeat, 60%, center, center);}
+          }
+        }
       }
     }
   }
@@ -100,6 +105,7 @@ header{
       max-width: 90rem;
       margin: 0 auto;
       padding: 6rem 0 3rem;
+      @include tablet{padding: 2rem 0;}
       .search-inp{
         width: 100%;
         .input-wrap{
@@ -224,13 +230,13 @@ header{
         &::after{
           content: '';
           display: block;
-          width: 4rem;
-          height: 4rem;
+          width: inherit;
+          height: inherit;
           position: absolute;
           left: 50%;
           top: 50%;
           transform: translate(-50%, -50%);
-          @include background(icon, closed_icon, png, no-repeat, 40%, center, center);
+          @include background(icon, closed_icon, png, no-repeat, 60%, center, center);
         }
       }
       .utility-wrap{
