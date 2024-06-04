@@ -33,16 +33,30 @@ header{
     // padding: 1rem 0;
     transition: all .25s;
     button{
-      border: 1px solid #000;
       width: 6rem;
       height: 6rem;
       text-indent: -9999em;
       overflow: hidden;
+      position: relative;
+      background-color: inherit;
+      &::after{
+        content: '';
+        display: block;
+        width: inherit;
+        height: inherit;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        // filter: invert(11%) sepia(9%) saturate(7%) hue-rotate(343deg) brightness(90%) contrast(83%);
+      }
     }
     .ham-btn{
-      @include background(icon, menu_icon, svg, no-repeat, contain, center, center);
+      position: relative;
+      background-color: inherit;
       display: none;
       @include notebook_junc{display: block;}
+      &::after{@include background(icon, menu_icon, svg, no-repeat, contain, center, center);}
     }
     .logo{
       position: absolute;
@@ -61,10 +75,12 @@ header{
       @include flexbox(row, flex-start, center);
       @include notebook_junc{right: 0;}
       .user{
-        @include background(icon, user_icon, svg, no-repeat, 60%, center, center);
+        &::after{@include background(icon, user_icon, svg, no-repeat, 60%, center, center);}
         @include tablet{display: none;}
       }
-      .search-controls{@include background(icon, search_icon, svg, no-repeat, 80%, center, center);}
+      .search-controls{
+        &::after{@include background(icon, search_icon, svg, no-repeat, 80%, center, center);}
+      }
     }
   }
   .search-wrap{
@@ -147,10 +163,10 @@ header{
       &.active{left: 0;}
     }
     &-top{
-      display: none;
+      @include flexbox(row, space-between, center);
       margin-right: 2rem;
       height: 6rem;
-      @include flexbox(row, space-between, center);
+      display: none;
       @include notebook_junc{display: flex;}
       button{
         width: 6rem;
@@ -159,8 +175,19 @@ header{
         overflow: hidden;
       }
       .btn-closed{
+        position: relative;
         background: $darkBlack;
-        @include background(icon, closed_icon, png, no-repeat, 40%, center, center);
+        &::after{
+          content: '';
+          display: block;
+          width: 4rem;
+          height: 4rem;
+          position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+          @include background(icon, closed_icon, png, no-repeat, 40%, center, center);
+        }
       }
       .utility-wrap{
         a{
@@ -188,18 +215,19 @@ header{
           @include notebook_junc{
             padding: 2rem;
             font-weight: bold;
-            &::after{
-              content: '';
-              width: 2rem;
-              height: 2rem;
-              position: absolute;
-              right: 2rem;
-              top: 50%;
-              // border: 1px solid #000;
-              filter: invert(95%) sepia(3%) saturate(731%) hue-rotate(341deg) brightness(106%) contrast(84%);
-              transform: translateY(-50%) rotate(180deg);
-              transition: transform .25s;
-              @include background(icon, arrow_type01, svg, no-repeat, contain, center, center);
+            &.has{
+              &::after{
+                content: '';
+                width: 2rem;
+                height: 2rem;
+                position: absolute;
+                right: 2rem;
+                top: 50%;
+                transform: translateY(-50%) rotate(180deg);
+                transition: transform .25s;
+                filter: invert(95%) sepia(3%) saturate(731%) hue-rotate(341deg) brightness(106%) contrast(84%);
+                @include background(icon, arrow_type01, svg, no-repeat, contain, center, center);
+              }
             }
           }
           &.on{
@@ -221,31 +249,37 @@ header{
           padding: 6rem 0;
           border-top: 2px solid $darkBlack;
           @include notebook_junc{
-            padding: 2rem 0;
+            padding: 0;
             position: static;
           }
           .draw-inner{
-            width: calc(100% - 4rem);
+            width: 100%;
             max-width: 66rem;
             margin: 0 auto;
             display: flex;
             gap: 6rem;
-            @include notebook_junc{
-              width: calc(100% - 6rem);
-              max-width: 100%;
-            }
+            @include notebook_junc{max-width: 100%;}
             .menu-list{
               width: 55%;
               @include notebook_junc{width: 100%;}
               ul{
                 li{
+                  transition: all .25s;
+                  @include notebook_junc{
+                    padding: 1.4rem 4rem;
+                    &:hover{background: $gray02;}
+                  }
                   &:not(:last-child){
                     margin-bottom: .8rem;
-                    @include notebook_junc{margin-bottom: 1.4rem;}
+                    @include notebook_junc{margin-bottom: 0;}
                   }
                   a{
+                    width: 100%;
                     font-family: $aritaM;
-                    @include notebook_junc{font-size: 1.4rem;}
+                    @include notebook_junc{
+                      font-size: 1.4rem;
+                      font-weight: 600;
+                    }
                   }
                 }
               }

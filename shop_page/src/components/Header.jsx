@@ -1,10 +1,11 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import '../assets/scss/components/header.scss'
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 function Header(){
   const [headerClass, setHeaderClass] = useState('');
   const [hovered, setHovered] = useState(null);
+  const parentRef = useRef(null);
   const [isTabletOrSmaller, setIsTabletOrSmaller] = useState(window.innerWidth <= 1000);
 
   useEffect(()=>{
@@ -37,9 +38,17 @@ function Header(){
     };
   }, []);
 
-  useEffect(()=>{
-    let depth1 = document.querySelector('.depth1');
-  });
+  // const parentRef = useRef(null);
+  // useEffect(()=>{
+  //   const gnbMenu = parentRef.current;
+
+  //   if(gnbMenu && gnbMenu.querySelector('.gnb-draw')){
+  //     const depth1 = gnbMenu.querySelectorAll('.depth1')
+  //     depth1.forEach((e)=>{
+  //       e.classList.add('new')
+  //     });
+  //   }
+  // });
 
   const handleMouseEnter = (index) => {setHovered(index)};
   const handleMouseLeave = () => {setHovered(null)};
@@ -146,17 +155,18 @@ function Header(){
           <ul className="gnb-inner">
             {
               menuItems.map((item, index)=>{
+                const hasSubMenu = item.subMenu.length > 0;
                 return (
-                <li key={index} onMouseLeave={!isTabletOrSmaller ? handleMouseLeave : undefined}>
+                <li key={index} ref={parentRef} onMouseLeave={!isTabletOrSmaller ? handleMouseLeave : undefined}>
                   <a
                     href="#none"
-                    className={`depth1 ${hovered === index ? 'on' : ''}`}
+                    className={`depth1 ${hasSubMenu ? 'has' : ''} ${hovered === index ? 'on' : ''}`}
                     onMouseEnter={!isTabletOrSmaller ? () => handleMouseEnter(index) : undefined}
                     onClick={isTabletOrSmaller ? () => handleClick(index) : undefined}
                   >
                     {item.title}
                   </a>
-                  {item.subMenu.length > 0 && (
+                  {hasSubMenu && (
                     <div className="gnb-draw">
                       <div className="draw-inner">
                         <div className="menu-list">
