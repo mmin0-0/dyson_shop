@@ -47,9 +47,20 @@ function Cart(){
                   </div>
                 </td>
                 <td>
-                  <button type="button" className="increase">+</button>
-                  <input />
-                  <button type="button" className="decrease">-</button>
+                  <div className="count-wrap">
+                    <button type="button" className="increase">+</button>
+                    <p className="count-num">0</p>
+                    <button type="button" className="decrease">-</button>
+                  </div>
+                </td>
+                <td>
+                  <div className="price">
+                    <p className="txt-bold">6000</p>원
+                  </div>
+                </td>
+                <td>
+                  <p className="txt-bold">3,000 원</p>
+                  <span>택배</span>
                 </td>
               </tr>
             </tbody>
