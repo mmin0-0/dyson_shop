@@ -101,6 +101,7 @@ button{
   #wrap{
     &:not(.home){
       margin-top: 20rem;
+      @include notebook_junc{margin-top: 10rem;}
       .wrap-inner{
         max-width: 1240px;
         width: calc(100% - 4rem);
@@ -135,6 +136,7 @@ button{
         margin-right: 1.6rem;
       }
     }
+    .txt-bold{font-weight: bold;}
     thead{
       border-top: 1px solid $gray01;
       border-bottom: 1px solid $gray01;

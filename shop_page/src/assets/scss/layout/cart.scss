@@ -18,22 +18,34 @@
       tbody{
         td{
           text-align: center;
-          p{
-            line-height: 1.4;
-            &.txt-bold{font-weight: bold;}
-          }
+          position: relative;
+          p{line-height: 1.4;}
           .pd-wrap{
             .pd-info{
-              gap: 1rem;
-              @include flexbox(row, flex-start, flex-start);
-              .img-wrap{
-                min-width: 8rem;
-                min-height: 8rem;
-                overflow: hidden;
-                background: #ccc;
+              a{
+                gap: 1rem;
+                @include flexbox(row, flex-start, flex-start);
+                .img-wrap{
+                  min-width: 8rem;
+                  min-height: 8rem;
+                  overflow: hidden;
+                  background: #ccc;
+                }
+                p{@include ellipsis(2);}
               }
-              p{@include ellipsis(2);}
             }
+          }
+          .btn-remove{
+            width: 2rem;
+            height: 2rem;
+            overflow: hidden;
+            text-indent: -9999em;
+            position: absolute;
+            right: .8rem;
+            top: 2rem;
+            background-color: inherit;
+            border: 1px solid #000;
+            @include background(icon, closed_icon, png, no-repeat, contain, center, center);
           }
           .count-wrap{
             @include flexbox(row, center, center);

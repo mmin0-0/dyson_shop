@@ -46,11 +46,14 @@ function Cart(){
                     </div>
                     <div className="pd-wrap">
                       <div className="pd-info">
-                        <div className="img-wrap">상품</div>
-                        <p>[감탄] 어여쁜 어성초 비누 감탄-천연 수제 CP비누</p>
+                        <a href="#none">
+                          <div className="img-wrap">상품</div>
+                          <p>[감탄] 어여쁜 어성초 비누 감탄-천연 수제 CP비누</p>
+                        </a>
                       </div>
                     </div>
                   </div>
+                  <button type="button" className="btn-remove">제거</button>
                 </td>
                 <td>
                   <div className="count-wrap">
@@ -61,7 +64,7 @@ function Cart(){
                 </td>
                 <td>
                   <div className="price">
-                    <p className="txt-bold">6000</p>원
+                    <p><span className="txt-bold">6,000</span> 원</p>
                   </div>
                 </td>
                 <td>
