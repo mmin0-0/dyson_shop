@@ -21,6 +21,7 @@
           position: relative;
           p{line-height: 1.4;}
           .pd-wrap{
+            padding-right: 3.2rem;
             .pd-info{
               a{
                 gap: 1rem;
@@ -31,7 +32,10 @@
                   overflow: hidden;
                   background: #ccc;
                 }
-                p{@include ellipsis(2);}
+                p{
+                  @include ellipsis(2);
+                  text-align: left;
+                }
               }
             }
           }

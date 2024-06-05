@@ -31,31 +31,51 @@ function Cart(){
                     <span className="txt">상품정보</span>
                   </div>
                 </th>
-                <th><span className="txt">수량</span></th>
-                <th><span className="txt">주문금액</span></th>
-                <th><span className="txt">배송정보</span></th>
+                <th><span className="txt hidden-sm">수량</span></th>
+                <th><span className="txt hidden-sm">주문금액</span></th>
+                <th><span className="txt hidden-sm">배송정보</span></th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>
-                  <div className="flex-wrap">
+                  <div className="flex-wrap pd-wrap">
                     <div class="input-wrap check">
                       <input id="check_01" type="checkbox" name="basket" />
                       <label for="check_01"></label>
                     </div>
-                    <div className="pd-wrap">
-                      <div className="pd-info">
-                        <a href="#none">
-                          <div className="img-wrap">상품</div>
-                          <p>[감탄] 어여쁜 어성초 비누 감탄-천연 수제 CP비누</p>
-                        </a>
-                      </div>
+                    <div className="pd-info">
+                      <a href="#none">
+                        <div className="img-wrap">상품</div>
+                        <p>[감탄] 어여쁜 어성초 비누 감탄-천연 수제 CP비누</p>
+                      </a>
                     </div>
                   </div>
                   <button type="button" className="btn-remove">제거</button>
                 </td>
-                <td>
+                <td className="hidden-lg">
+                  <div className="info-list">
+                    <div className="price-result">
+                      <div className="tit">주문금액</div>
+                      <div className="cont txt-bold">6,000원</div>
+                    </div>
+                    <div className="result-list">
+                      <div className="flex-wrap">
+                        <div className="tit">상품금액(총<span>1</span>개)</div>
+                        <div className="cont"><span>6,000</span>원</div>
+                      </div>
+                      <div className="flex-wrap">
+                        <div className="tit">배송비</div>
+                        <div className="cont"><span>3,000</span>원</div>
+                      </div>
+                      <div className="flex-wrap">
+                        <div className="tit">배송수단</div>
+                        <div className="cont">택배</div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+                <td className="hidden-sm">
                   <div className="count-wrap">
                     <button type="button" className="increase">+</button>
                     <p className="count-num">0</p>

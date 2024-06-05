@@ -129,6 +129,10 @@ button{
 .table-wrap{
   table{
     width: 100%;
+    .txt-bold{font-weight: bold;}
+    .hidden-sm{
+      @include tablet{display: none;}
+    }
     .input-wrap{
       &.check{
         width: 2rem;
@@ -136,7 +140,6 @@ button{
         margin-right: 1.6rem;
       }
     }
-    .txt-bold{font-weight: bold;}
     thead{
       border-top: 1px solid $gray01;
       border-bottom: 1px solid $gray01;
