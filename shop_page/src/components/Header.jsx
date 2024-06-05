@@ -1,8 +1,11 @@
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import '../assets/scss/components/header.scss'
 import { useEffect, useRef, useState } from 'react';
 
 function Header(){
+  const navigate = useNavigate();
+  const goCartPage = () =>{navigate('/cart')}
+
   const [headerClass, setHeaderClass] = useState('');
   const [hovered, setHovered] = useState(null);
   const parentRef = useRef(null);
@@ -110,6 +113,7 @@ function Header(){
       banner : []
     },
   ];
+
   return (
     <>
       <header className={headerClass}>
@@ -121,9 +125,7 @@ function Header(){
               </a>
           </div>
           <div className="utility-wrap">
-              <button className="user">
-                <Link to="./Cart.jsx">user</Link>
-              </button>
+              <button className="user" onClick={goCartPage}>user</button>
               <button className="search-controls" onClick={toggleSearch}>검색</button>
           </div>
         </div>

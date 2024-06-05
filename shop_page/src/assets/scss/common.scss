@@ -97,7 +97,88 @@ button{
   // @include flexbox(row, center, center);
 }
 
+#wrapper{
+  #wrap{
+    &:not(.home){
+      margin-top: 16rem;
+      .wrap-inner{
+        max-width: 1240px;
+        width: calc(100% - 4rem);
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+.table-wrap{
+  table{
+
+  }
+}
+
 .input-wrap{
   gap: 1rem;
   @include flexbox(row, flex-start, center);
+  &.check{
+    min-height: 2rem;
+    input[type="checkbox"]{
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      -webkit-clip-path: polygon(0 0, 0 0, 0 0);
+      clip-path: polygon(0 0, 0 0, 0 0);
+      + label{
+        position: relative;
+        min-height: 1.8rem;
+        line-height: 2rem;
+        padding-left: 2.4rem;
+        font-size: 1.4rem;
+        line-height: 1;
+        white-space: nowrap;
+        cursor: pointer;
+        &::before, &::after{
+          content: '';
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+        &::after{
+          width: 1.8rem;
+          height: 1.8rem;
+          opacity: 0;
+          filter: invert(43%) sepia(72%) saturate(4676%) hue-rotate(214deg) brightness(92%) contrast(87%);
+          // @include background(icon, check_icon, svg, no-repeat, contain, center, center);
+          background: url(../images/icon/check_icon.svg) no-repeat center center / contain;
+        }
+        &::before{
+          width: 1.8rem;
+          height: 1.8rem;
+          border-radius: .5rem;
+          transform: translateY(-50%);
+          background: $white;
+          // border: 1px solid $gray01;
+          border: 1px solid #000;
+        }
+      }
+      &:disabled{
+        pointer-events: none;
+        + label{
+          &::before{
+            border-color: #eee;
+            background: #EFEFEF;
+          }
+          &::after{filter: invert(72%) sepia(0%) saturate(280%) hue-rotate(210deg) brightness(86%) contrast(77%);}
+        }
+      }
+      &:checked{
+        + label{
+          &::before{border-color: $mainColor;}
+          &::after{opacity: 1;}
+        }
+      }
+    }
+  }
 }
