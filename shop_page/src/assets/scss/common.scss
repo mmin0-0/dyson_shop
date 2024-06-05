@@ -100,19 +100,61 @@ button{
 #wrapper{
   #wrap{
     &:not(.home){
-      margin-top: 16rem;
+      margin-top: 20rem;
       .wrap-inner{
         max-width: 1240px;
         width: calc(100% - 4rem);
         margin: 0 auto;
       }
     }
+    .tit-wrap{
+      > div{
+        gap: .8rem;
+        @include flexbox(row, flex-start, center);
+      }
+      .main-tit{
+        font-size: 2.4rem;
+        font-weight: bold;
+      }
+    }
   }
+}
+
+.flex-wrap{
+  @include flexbox(row, flex-start, flex-start);
+  &.center{align-items: center;}
 }
 
 .table-wrap{
   table{
-
+    width: 100%;
+    .input-wrap{
+      &.check{
+        width: 2rem;
+        height: 2rem;
+        margin-right: 1.6rem;
+      }
+    }
+    thead{
+      border-top: 1px solid $gray01;
+      border-bottom: 1px solid $gray01;
+      th{
+        padding: 1.2rem .8rem;
+        span{
+          font-size: 1.4rem;
+          font-weight: 500;
+        }
+      }
+    }
+    tbody{
+      tr{border-bottom: 1px solid $gray01;}
+      td{
+        padding: 2rem .8rem;
+        &:not(:last-child){
+          border-right: 1px solid $gray01;
+        }
+      }
+    }
   }
 }
 

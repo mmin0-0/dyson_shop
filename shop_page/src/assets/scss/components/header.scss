@@ -300,10 +300,11 @@ header{
           top: 100%;
           left: 0;
           padding: 6rem 0;
-          border-top: 2px solid $darkBlack;
+          background: $white;
           @include notebook_junc{
             padding: 0;
             position: static;
+            border-top: 2px solid $darkBlack;
           }
           .draw-inner{
             width: 100%;

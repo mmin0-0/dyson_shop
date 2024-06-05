@@ -1,0 +1,60 @@
+@import '../common.scss';
+
+#wrap{
+  .tit-wrap{
+    .state{
+      width: 2rem;
+      height: 2rem;
+      font-weight: 500;
+      background: $darkBlack;
+      border-radius: 50%;
+      color: $white;
+      @include flexbox(row, center, center);
+    }
+    + .table-wrap{margin-top: 2rem;}
+  }
+  .table-wrap{
+    table{
+      tbody{
+        td{
+          text-align: center;
+          p{
+            line-height: 1.4;
+            &.txt-bold{font-weight: bold;}
+          }
+          .pd-wrap{
+            .pd-info{
+              gap: 1rem;
+              @include flexbox(row, flex-start, flex-start);
+              .img-wrap{
+                min-width: 8rem;
+                min-height: 8rem;
+                overflow: hidden;
+                background: #ccc;
+              }
+              p{@include ellipsis(2);}
+            }
+          }
+          .count-wrap{
+            @include flexbox(row, center, center);
+            button{
+              width: 3rem;
+              height: 3rem;
+              font-size: 2rem;
+              font-weight: 500;
+              border-radius: .4rem;
+              background: $mainColor;
+              color: $white;
+              transition: all .25s;
+              &:hover{background: $subColor;}
+            }
+            .count-num{
+              min-width: 10rem;
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}

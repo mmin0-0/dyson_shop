@@ -13,11 +13,17 @@ function Cart(){
         </div>
         <div className="table-wrap">
           <table>
-            <colgroup>장바구니 테이블</colgroup>
+            <caption>장바구니 테이블</caption>
+            <colgroup>
+              <col width="*"></col>
+              <col width="180px"></col>
+              <col width="180px"></col>
+              <col width="180px"></col>
+            </colgroup>
             <thead>
               <tr>
                 <th>
-                  <div className="flex-wrap">
+                  <div className="flex-wrap center">
                     <div class="input-wrap check">
                       <input id="allCheck" type="checkbox" name="basket" />
                       <label for="allCheck"></label>
@@ -66,6 +72,7 @@ function Cart(){
             </tbody>
           </table>
         </div>
+        <section></section>
       </div>
     </div>
   )
