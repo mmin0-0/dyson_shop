@@ -89,6 +89,17 @@ body{
   clip-path: polygon(0 0, 0 0, 0 0);
 }
 
+.d{
+  &-pc{
+    display: block;
+    @include tablet{display: none;}
+  }
+  &-mb{
+    display: none;
+    @include tablet{display: block;}
+  }
+}
+
 button{
   font-size: 1.4rem;
   font-weight: 500;
@@ -108,6 +119,7 @@ button{
         margin: 0 auto;
       }
     }
+    // 공통타이틀
     .tit-wrap{
       > div{
         gap: .8rem;
@@ -127,12 +139,19 @@ button{
 }
 
 .table-wrap{
+  .hidden{
+    &-lg{
+      display: table-cell;
+      @include tablet{display: none !important;}
+    }
+    &-sm{
+      display: none;
+      @include tablet{display: block !important;}
+    }
+  }
   table{
     width: 100%;
     .txt-bold{font-weight: bold;}
-    .hidden-sm{
-      @include tablet{display: none;}
-    }
     .input-wrap{
       &.check{
         width: 2rem;
@@ -145,6 +164,7 @@ button{
       border-bottom: 1px solid $gray01;
       th{
         padding: 1.2rem .8rem;
+        text-align: center;
         span{
           font-size: 1.4rem;
           font-weight: 500;
@@ -157,6 +177,24 @@ button{
         padding: 2rem .8rem;
         &:not(:last-child){
           border-right: 1px solid $gray01;
+        }
+      }
+    }
+    &.shop-table{
+      @include tablet{
+        display: block;
+        thead{display: block;}
+        tbody{
+          display: block;
+          tr{
+            display: block;
+            td{
+              display: block;
+              width: 100% !important;
+              padding: 1rem;
+              border-right: none;
+            }
+          }
         }
       }
     }

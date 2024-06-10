@@ -16,57 +16,77 @@
   .table-wrap{
     table{
       tbody{
-        td{
-          text-align: center;
-          position: relative;
-          p{line-height: 1.4;}
-          .pd-wrap{
-            padding-right: 3.2rem;
-            .pd-info{
-              a{
-                gap: 1rem;
-                @include flexbox(row, flex-start, flex-start);
-                .img-wrap{
-                  min-width: 8rem;
-                  min-height: 8rem;
-                  overflow: hidden;
-                  background: #ccc;
-                }
-                p{
-                  @include ellipsis(2);
-                  text-align: left;
+        tr{
+          padding: 1.4rem 0;
+          td{
+            text-align: center;
+            position: relative;
+            @include tablet{
+              &:not(.img){padding: 1rem 1rem 1rem 4.6rem;}
+            }
+            p{line-height: 1.4;}
+            .pd-wrap{
+              padding-right: 3.2rem;
+              .pd-info{
+                a{
+                  gap: 1rem;
+                  @include flexbox(row, flex-start, flex-start);
+                  .img-wrap{
+                    min-width: 8rem;
+                    min-height: 8rem;
+                    overflow: hidden;
+                    background: #ccc;
+                  }
+                  p{
+                    @include ellipsis(2);
+                    text-align: left;
+                  }
                 }
               }
             }
-          }
-          .btn-remove{
-            width: 2rem;
-            height: 2rem;
-            overflow: hidden;
-            text-indent: -9999em;
-            position: absolute;
-            right: .8rem;
-            top: 2rem;
-            background-color: inherit;
-            border: 1px solid #000;
-            @include background(icon, closed_icon, png, no-repeat, contain, center, center);
-          }
-          .count-wrap{
-            @include flexbox(row, center, center);
-            button{
-              width: 3rem;
-              height: 3rem;
-              font-size: 2rem;
-              font-weight: 500;
-              border-radius: .4rem;
-              background: $mainColor;
-              color: $white;
-              transition: all .25s;
-              &:hover{background: $subColor;}
+            .btn-remove{
+              width: 2rem;
+              height: 2rem;
+              overflow: hidden;
+              text-indent: -9999em;
+              position: absolute;
+              right: .8rem;
+              top: 2rem;
+              background-color: inherit;
+              border: 1px solid #000;
+              @include background(icon, closed_icon, png, no-repeat, contain, center, center);
+              @include tablet{top: 1rem;right: 1rem;}
             }
-            .count-num{
-              min-width: 10rem;
-              text-align: center;
+            .count-wrap{
+              @include flexbox(row, center, center);
+              button{
+                width: 3rem;
+                height: 3rem;
+                font-size: 2rem;
+                font-weight: 500;
+                border-radius: .4rem;
+                background: $mainColor;
+                color: $white;
+                transition: all .25s;
+                &:hover{background: $subColor;}
+              }
+              .count-num{
+                min-width: 10rem;
+                text-align: center;
+              }
+            }
+            .info-list{
+              .flex-wrap{justify-content: space-between;}
+              .price{
+                border-bottom: 1px solid $gray01;
+                padding-bottom: 1.2rem;
+                margin-bottom: 1.2rem;
+              }
+              .result-list{
+                > div{
+                  &:not(:last-child){margin-bottom: .8rem;}
+                }
+              }
             }
           }
         }
