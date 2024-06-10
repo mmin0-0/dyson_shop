@@ -51,7 +51,7 @@ function Cart(){
                       </a>
                     </div>
                   </div>
-                  <button type="button" className="btn-remove">제거</button>
+                  <a href="#none" className="btn-remove">제거</a>
                 </td>
                 <td className="hidden-sm">
                   <div className="info-list">
@@ -76,15 +76,25 @@ function Cart(){
                   </div>
                 </td>
                 <td className="hidden-lg">
-                  <div className="count-wrap">
-                    <button type="button" className="increase">+</button>
-                    <p className="count-num">0</p>
-                    <button type="button" className="decrease">-</button>
+                  <div className="amount">
+                    <div className="tit txt-bold">1</div>
+                    <div className="btn-wrap">
+                      <button type="cart-option">옵션/수량 변경</button>
+                    </div>
                   </div>
                 </td>
                 <td className="hidden-lg">
                   <div className="price">
-                    <p><span className="txt-bold">6,000</span> 원</p>
+                    <p className="tit"><span className="txt-bold">6,000</span> 원</p>
+                    <div className="btn-wrap">
+                      <button type="button" className="order-option">바로구매</button>
+                    </div>
+                  </div>
+                </td>
+                <td className="hidden-sm">
+                  <div className="btn-wrap">
+                    <button type="button" className="cart-option">옵션/수량 변경</button>
+                    <button type="button" className="order-option">바로구매</button>
                   </div>
                 </td>
                 <td className="hidden-lg">
