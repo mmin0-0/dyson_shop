@@ -185,5 +185,23 @@
         }
       }
     }
+    .bottom-btn{
+      margin-top: 4rem;
+      text-align: center;
+      button{
+        width: 100%;
+        max-width: 28rem;
+        padding: 1.2rem .8rem;
+        display: block;
+        margin: 0 auto 1.2rem;
+        background: $gray03;
+        color: $white;
+        border-radius: 3rem;
+      }
+      a{
+        font-weight: 500;
+        text-decoration: underline;
+      }
+    }
   }
 }
