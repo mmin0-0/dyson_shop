@@ -1,3 +1,4 @@
+import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import '../assets/scss/layout/cart.scss';
 
@@ -14,6 +15,10 @@ function Cart(){
         <div className="cont-wrap">
           <CartTable />
           <ResultTable />
+          <div className="bottom-btn">
+            <button type="button" className="btn-order">주문하기</button>
+            <Link to="/Home">계속 쇼핑하기</Link>
+          </div>
         </div>
       </div>
     </div>
