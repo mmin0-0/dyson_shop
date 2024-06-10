@@ -122,7 +122,37 @@ function CartTable(){
 function ResultTable(){
   return (
     <div className="table-wrap">
-      하이
+      <table className="shop-result-table">
+        <caption>장바구니 합계 테이블</caption>
+        <colgroup>
+          <col width="*"></col>
+        </colgroup>
+        <thead>
+          <tr>
+            <th className="hidden-lg"><p className="txt">총 주문 상품 <span>1</span>개</p></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div className="price-wrap">
+                <div className="price-item">
+                  <p><span>28,000</span>원</p>
+                  <span>상품금액</span>
+                </div>
+                <div className="price-item">
+                  <p>3,000원</p>
+                  <span>배송비</span>
+                </div>
+                <div className="price-item">
+                  <p><span>31,000</span>원</p>
+                  <span>총 주문금액</span>
+                </div>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   )
 }
