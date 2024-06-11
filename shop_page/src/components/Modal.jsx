@@ -1,5 +1,3 @@
-import '../assets/scss/components/modal.scss';
-
 function CartOption(){
   return (
     <div className="modal-cont">
@@ -15,19 +13,23 @@ function CartOption(){
           </div>
           <div className="pd-payment">
             <div className="opt-num">
-              <strong>수량</strong>
-              <div className="opt-tools">
+              <strong className="tit">수량</strong>
+              <div className="tools">
                 <a href="javascript:void(0)" className="decrease">-</a>
                 <input type="text" value="1" className="num-form" />
                 <a href="javascript:void(0)" className="increase">+</a>
               </div>
             </div>
             <div className="opt-total">
-              <div className="tit">총수량 <span>1</span>개</div>
+              <div className="tit">총수량 <span>1</span> 개</div>
               <div className="total-price"><span>18,000</span>원</div>
             </div>
           </div>
         </div>
+      </div>
+      <div className="bottom-btn">
+        <button type="button" className="cancel">취소</button>
+        <button type="button" className="order type01">변경</button>
       </div>
     </div>
   )

@@ -109,9 +109,27 @@ body{
   button{flex: 1;}
 }
 button{
+  min-width: 6rem;
+  padding: .8rem 1.2rem;
   font-size: 1.4rem;
   font-weight: 500;
   transition: all .25s;
+  border: 1px solid $table-bd;
+  background: $white;
+  border-radius: 2rem;
+  &:hover{
+    background: $subColor01;
+    color: $white;
+  }
+  &.type01{
+    background: $gray03;
+    color: $white;
+    &:hover{
+      background: $gray03;
+      color: $white;
+
+    }
+  }
   // gap: .6rem;
   // @include flexbox(row, center, center);
 }
@@ -287,17 +305,17 @@ button{
     width: calc(100% - 4rem);
     max-width: 66rem;
     max-height: calc(100% - 8rem);
-    padding: 0 1.4rem;
+    padding: 0 2rem;
     overflow-y: auto;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     background: $white;
+    > div{padding: 1.4rem 0;}
     .modal-tit{
       position: sticky;
       top: 0;
-      padding: 1.4rem 0;
       text-align: center;
       background: $white;
       border-bottom: 1px solid $table-bd;
@@ -312,8 +330,80 @@ button{
         top: 50%;
         border: 1px solid #000;
         transform: translateY(-50%);
-        // border: 1px solid #000;
-        // @include background(icon, cart_remove_icon, svg, no-repeat, 80%, center, center);
+        @include background(icon, closed_icon, png, no-repeat, 80%, center, center);
+      }
+    }
+    .modal-info{
+      .pd{
+        &-item{
+          gap: 1rem;
+          @include flexbox(row, flex-start, flex-start);
+          .img-wrap{
+            width: 8rem;
+            min-width: 8rem;
+            height: 8rem;
+            overflow: hidden;
+            background: #ccc;
+          }
+          p{@include ellipsis(2);}
+        }
+        &-payment{
+          margin-top: 2rem;
+          .opt{
+            &-num{
+              padding: 1.4rem;
+              background: $gray02;
+              .tit{font-weight: 600;}
+              .tools{
+                margin-top: 1.4rem;
+                width: 12rem;
+                height: 3.2rem;
+                border: 1px solid $table-bd;
+                display: table;
+                > a{
+                  width: 3.2rem;
+                  vertical-align: middle;
+                  display: table-cell;
+                  background: $white;
+                  text-align: center;
+                  font-weight: 600;
+                  &:first-child{border-right: 1px solid $table-bd;}
+                  &:last-child{border-left: 1px solid $table-bd;}
+                }
+                input{
+                  width: 5.6rem;
+                  height: 100%;
+                  text-align: center;
+                  border: 0;
+                }
+              }
+            }
+            &-total{
+              margin-top: 2rem;
+              @include flexbox(row, space-between, flex-start);
+              .tit{
+                font-size: 1.4rem;
+                font-weight: 600;
+                color: rgba($gray03, .7);
+                span{
+                  color: $gray03;
+                  font-weight: bold;
+                }
+              }
+              .total-price, .total-price span{
+                font-size: 1.8rem;
+                font-weight: bold;
+              }
+            }
+          }
+        }
+      }
+    }
+    .bottom-btn{
+      gap: 1rem;
+      @include flexbox(row, center, center);
+      button{
+
       }
     }
   }

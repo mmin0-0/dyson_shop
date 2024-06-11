@@ -52,8 +52,9 @@
                       gap: 1rem;
                       @include flexbox(row, flex-start, flex-start);
                       .img-wrap{
+                        width: 8rem;
                         min-width: 8rem;
-                        min-height: 8rem;
+                        height: 8rem;
                         overflow: hidden;
                         background: #ccc;
                       }
