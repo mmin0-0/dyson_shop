@@ -1,4 +1,4 @@
-@import '../common.scss';
+@import '../base/common.scss';
 
 #wrap{
   .tit-wrap{
@@ -73,8 +73,8 @@
                   right: .8rem;
                   top: 2rem;
                   background-color: inherit;
-                  border: 1px solid #000;
-                  @include background(icon, closed_icon, png, no-repeat, contain, center, center);
+                  // border: 1px solid #000;
+                  @include background(icon, cart_remove_icon, svg, no-repeat, 80%, center, center);
                   @include tablet{top: 1rem;right: 1rem;}
                 }
                 .info-list{

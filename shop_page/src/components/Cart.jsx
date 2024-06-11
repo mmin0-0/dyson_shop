@@ -1,6 +1,7 @@
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import '../assets/scss/layout/cart.scss';
+import { CartOption, Popup } from './Modal';
 
 function Cart(){
   return (
@@ -20,6 +21,9 @@ function Cart(){
             <Link to="/Home">계속 쇼핑하기</Link>
           </div>
         </div>
+      </div>
+      <div className="modal">
+        <CartOption />
       </div>
     </div>
   )
