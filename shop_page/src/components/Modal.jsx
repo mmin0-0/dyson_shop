@@ -1,5 +1,8 @@
-function CartOption(){
-  return (
+import { useEffect, useState } from "react";
+
+function CartOption({ isOpen, onClose, children }){
+  return isOpen ? (
+    <div className="modal">
     <div className="modal-cont">
       <div className="modal-tit">
         <strong>옵션변경</strong>
@@ -21,7 +24,7 @@ function CartOption(){
               </div>
             </div>
             <div className="opt-total">
-              <div className="tit">총수량 <span>1</span> 개</div>
+              <div className="tit">총 수량 <span>1</span> 개</div>
               <div className="total-price"><span>18,000</span>원</div>
             </div>
           </div>
@@ -32,7 +35,8 @@ function CartOption(){
         <button type="button" className="order type01">변경</button>
       </div>
     </div>
-  )
+    </div>
+  ) : null;
 }
 
 function Popup(){

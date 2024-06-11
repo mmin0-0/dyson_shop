@@ -124,12 +124,8 @@ button{
   &.type01{
     background: $gray03;
     color: $white;
-    &:hover{
-      background: $gray03;
-      color: $white;
-
-    }
   }
+  &.type02{border-color: $subColor02;}
   // gap: .6rem;
   // @include flexbox(row, center, center);
 }
@@ -299,8 +295,13 @@ button{
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 101;
   background: rgba($black, .35);
+  display: none;
+  z-index: -1;
+  &.active{
+    display: block;
+    z-index: 101;
+  }
   &-cont{
     width: calc(100% - 4rem);
     max-width: 66rem;
@@ -328,9 +329,9 @@ button{
         position: absolute;
         right: 0;
         top: 50%;
-        border: 1px solid #000;
         transform: translateY(-50%);
-        @include background(icon, closed_icon, png, no-repeat, 80%, center, center);
+        filter: invert(100%) sepia(94%) saturate(7465%) hue-rotate(156deg) brightness(87%) contrast(96%);
+        @include background(icon, closed_icon, svg, no-repeat, 80%, center, center);
       }
     }
     .modal-info{
@@ -345,7 +346,10 @@ button{
             overflow: hidden;
             background: #ccc;
           }
-          p{@include ellipsis(2);}
+          p{
+            line-height: 1.4;
+            @include ellipsis(2);
+          }
         }
         &-payment{
           margin-top: 2rem;

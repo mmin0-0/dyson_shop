@@ -4,6 +4,14 @@ import '../assets/scss/layout/cart.scss';
 import { CartOption, Popup } from './Modal';
 
 function Cart(){
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   return (
     <div id="wrap">   
       <div className="wrap-inner">
@@ -22,14 +30,16 @@ function Cart(){
           </div>
         </div>
       </div>
-      <div className="modal">
+      {/* <div className="modal">
         <CartOption />
-      </div>
+      </div> */}
+      <div onClick={openModal}>열기</div>
+      <CartOption isOpen={isModalOpen} onClose={closeModal} />
     </div>
   )
 }
 
-function CartTable(){
+function CartTable({toggleModal}){
   return (
     <div className="table-wrap">
       <table className="shop-table">
@@ -99,7 +109,7 @@ function CartTable(){
               <div className="amount">
                 <div className="tit txt-bold">1</div>
                 <div className="btn-wrap">
-                  <button type="cart-option">옵션/수량 변경</button>
+                  <button type="cart-option" onClick={toggleModal}>옵션/수량 변경</button>
                 </div>
               </div>
             </td>
@@ -107,7 +117,7 @@ function CartTable(){
               <div className="price">
                 <p className="tit"><span className="txt-bold">000</ span> 원</p>
                 <div className="btn-wrap">
-                  <button type="button"className="order-option">바로구매</button>
+                  <button type="button"className="order-option type02">바로구매</button>
                 </div>
               </div>
             </td>
