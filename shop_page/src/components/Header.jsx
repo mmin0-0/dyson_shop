@@ -1,10 +1,11 @@
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
-import '../assets/scss/components/header.scss'
 import { useEffect, useRef, useState } from 'react';
+import '../assets/scss/components/header.scss';
 
 function Header(){
   const navigate = useNavigate();
-  const goCartPage = () =>{navigate('/cart')}
+  const goHome = () =>{navigate('/')};
+  const goCartPage = () =>{navigate('/cart')};
 
   const [headerClass, setHeaderClass] = useState('');
   const [hovered, setHovered] = useState(null);
@@ -41,18 +42,6 @@ function Header(){
     };
   }, []);
 
-  // const parentRef = useRef(null);
-  // useEffect(()=>{
-  //   const gnbMenu = parentRef.current;
-
-  //   if(gnbMenu && gnbMenu.querySelector('.gnb-draw')){
-  //     const depth1 = gnbMenu.querySelectorAll('.depth1')
-  //     depth1.forEach((e)=>{
-  //       e.classList.add('new')
-  //     });
-  //   }
-  // });
-
   const handleMouseEnter = (index) => {setHovered(index)};
   const handleMouseLeave = () => {setHovered(null)};
   const handleClick = (index) => {setHovered(index)};
@@ -78,8 +67,7 @@ function Header(){
         {
           img: ['https://cdn.imweb.me/thumbnail/20230118/0aa5f31252d84.jpg'],
           tit: ['감탄상회 오프라인 매장']
-        },
-        
+        }
       ]
     },
     {
@@ -118,15 +106,15 @@ function Header(){
     <>
       <header className={headerClass}>
         <div className="hd-inner-wrap">
-          <button className="ham-btn" onClick={toggleMenu}>메뉴열기</button>
+          <a href="javascript:void(0)" className="ham-btn" onClick={toggleMenu}>메뉴열기</a>
           <div className="logo">
-              <a href="#none">
+              <a href="javascript:void(0)" onClick={goHome}>
                 <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`}   alt="감탄상회" />
               </a>
           </div>
           <div className="utility-wrap">
-              <button className="user" onClick={goCartPage}>user</button>
-              <button className="search-controls" onClick={toggleSearch}>검색</button>
+              <a href="javascript:void(0)" className="user" onClick={goCartPage}>user</a>
+              <a href="javascript:void(0)" className="search-controls" onClick={toggleSearch}>검색</a>
           </div>
         </div>
         <div className={`search-wrap ${search ? 'active' : 'closed'}`}>
@@ -151,13 +139,13 @@ function Header(){
               </ul>
             </div>
             <div className="btn-closed">
-              <button type="button" onClick={toggleSearch}>CLOSED</button>
+              <a href="javascript:void(0)" onClick={toggleSearch}>CLOSED</a>
             </div>
           </div>
         </div>
         <nav className={`gnb-wrap ${menu ? 'active' : ''}`}>
           <div className="gnb-wrap-top">
-            <button className="btn-closed" onClick={toggleMenu}>닫기</button>
+            <a href="javascript:void(0)" className="btn-closed" onClick={toggleMenu}>닫기</a>
             <div className="utility-wrap">
               <a href="#none" className="user">로그인</a>
               <a href="#none" className="basket">장바구니</a>

@@ -33,7 +33,7 @@ header{
     min-height: 6rem;
     // padding: 1rem 0;
     transition: all .25s;
-    button{
+    .ham-btn, .user, .search-controls{
       width: 6rem;
       height: 6rem;
       text-indent: -9999em;
@@ -52,21 +52,9 @@ header{
       }
     }
     .ham-btn{
-      position: relative;
-      background-color: inherit;
       display: none;
       @include notebook_junc{display: block;}
       &::after{@include background(icon, menu_icon, svg, no-repeat, contain, center, center);}
-    }
-    .logo{
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      z-index: 100;
-      transform: translate(-50%, -50%);
-      transition: all .25s;
-      img{max-width: 100%;}
-      @include tablet{width: 8rem;}
     }
     .utility-wrap{
       position: absolute;
@@ -78,7 +66,7 @@ header{
       @include notebook_junc{right: 0;}
       .user{
         &::after{@include background(icon, user_icon, svg, no-repeat, 60%, center, center);}
-        @include tablet{display: none;}
+        @include notebook_junc{display: none;}
       }
       .search-controls{
         &::after{@include background(icon, search_icon, svg, no-repeat, 80%, center, center);}
@@ -88,6 +76,16 @@ header{
           }
         }
       }
+    }
+    .logo{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 100;
+      transform: translate(-50%, -50%);
+      transition: all .25s;
+      img{max-width: 100%;}
+      @include tablet{width: 8rem;}
     }
   }
   .search-wrap{
@@ -122,6 +120,7 @@ header{
             font-size: 1.6rem;
             color: $white;
             background: $mainColor;
+            border-radius: .4rem;
             overflow: hidden;
             &:hover{background: $subColor01;}
             @include tablet{
@@ -191,11 +190,13 @@ header{
         margin-top: 3rem;
         text-align: center;
         @include tablet{display: none;}
-        button{
+        a{
+          border: 1px solid $gray01;
           font-size: 1.6rem;
           background: $white;
-          padding-right: 2.4rem;
-          @include background(icon, arrow_type01, svg, no-repeat, 1.6rem, right, bottom);
+          padding: .8rem  3.4rem .8rem 1.2rem;
+          border-radius: 2rem;
+          @include background(icon, arrow_type01, svg, no-repeat, 1.6rem, right 1rem, center);
         }
       }
     }
@@ -222,15 +223,13 @@ header{
       height: 6rem;
       display: none;
       @include notebook_junc{display: flex;}
-      button{
+      .btn-closed{
+        position: relative;
+        background: $darkBlack;
         width: 6rem;
         height: 6rem;
         text-indent: -9999em;
         overflow: hidden;
-      }
-      .btn-closed{
-        position: relative;
-        background: $darkBlack;
         &::after{
           content: '';
           display: block;
