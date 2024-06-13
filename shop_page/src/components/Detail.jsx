@@ -6,7 +6,7 @@ function Detail(){
   ]
   return(
     <>
-
+<div>냥</div>
     </>
   )
 }
