@@ -52,8 +52,17 @@
             &-discount{color: $red;}
           }
         }
-        .buy-wrap{
+        .option-wrap{
           margin-top: 2rem;
+          > div{
+            gap: 1rem;
+            @include flexbox(row, flex-start, center);
+            &:not(:first-child){margin-top: 1rem;}
+            .tit{font-weight: bold;}
+          }
+        }
+        .buy-wrap{
+          margin-top: 4rem;
           gap: 1.6rem;
           button{
             border-radius: 0;

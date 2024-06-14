@@ -26,10 +26,6 @@ function Detail(props){
                   <p className="pr-existing"><span>28,000</span>원</p>
                   <p className="pr-discount">54%</p>
                 </div>
-                <div className="buy-wrap btn-wrap">
-                  <button type="button" className="btn-zzim">찜하기</button>
-                  <button type="button" className="btn-cart type01">장바구니</button>
-                </div>
                 <div className="option-wrap">
                   <div>
                     <div className="tit">원산지</div>
@@ -43,6 +39,10 @@ function Detail(props){
                     <div className="tit">배송비</div>
                     <div className="data">3,000원 (50,000원 이상 무료배송)</div>
                   </div>
+                </div>
+                <div className="buy-wrap btn-wrap">
+                  <button type="button" className="btn-zzim">찜하기</button>
+                  <button type="button" className="btn-cart type01">장바구니</button>
                 </div>
               </div>
             </div>
