@@ -30,6 +30,20 @@ function Detail(props){
                   <button type="button" className="btn-zzim">찜하기</button>
                   <button type="button" className="btn-cart type01">장바구니</button>
                 </div>
+                <div className="option-wrap">
+                  <div>
+                    <div className="tit">원산지</div>
+                    <div className="data">중국</div>
+                  </div>
+                  <div>
+                    <div className="tit">구매혜택</div>
+                    <div className="data">20 포인트 적립예정</div>
+                  </div>
+                  <div>
+                    <div className="tit">배송비</div>
+                    <div className="data">3,000원 (50,000원 이상 무료배송)</div>
+                  </div>
+                </div>
               </div>
             </div>
             <div className="pd-wrap-bottom">
