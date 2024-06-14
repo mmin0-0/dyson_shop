@@ -15,9 +15,6 @@
         width: 55%;
         .tit-wrap{
           .main-tit{
-            padding-bottom: 2rem;
-            margin-bottom: 2rem;
-            border-bottom: 1px solid $gray01;
             span{
               font-size: 1.4rem;
               font-weight: 600;
@@ -31,7 +28,36 @@
             }
           }
           .sub-tit{
+            padding: 2rem 0;
+            margin: 2rem 0;
+            border-top: 1px solid $gray01;
+            border-bottom: 1px solid $gray01;
             p{line-height: 1.4;}
+          }
+        }
+        .price-wrap{
+          margin-top: 2rem;
+          gap: .8rem;
+          @include flexbox(row, flex-start, center);
+          *{
+            font-weight: bold;
+            font-size: 1.8rem;
+          }
+          .pr{
+            &-existing{
+              color: rgba($gray03, .8);
+              text-decoration: line-through;
+              span{color: rgba($gray03, .8);}
+            }
+            &-discount{color: $red;}
+          }
+        }
+        .buy-wrap{
+          margin-top: 2rem;
+          gap: 1.6rem;
+          button{
+            border-radius: 0;
+            padding: 1.8rem 1.2rem;
           }
         }
       }

@@ -21,6 +21,15 @@ function Detail(props){
                     <p>과일, 야채, 소품 등을 담을 수 있는 도톰하고 부드러운100% 순면소재 그물 면주머니입니다. 과일, 야채, 소품 등을 담을 수 있는 도톰하고 부드러운100% 순면소재 그물 면주머니입니다.</p>
                   </div>
                 </div>
+                <div className="price-wrap">
+                  <p className="pr-final"><span>12,900</span>원</p>
+                  <p className="pr-existing"><span>28,000</span>원</p>
+                  <p className="pr-discount">54%</p>
+                </div>
+                <div className="buy-wrap btn-wrap">
+                  <button type="button" className="btn-zzim">찜하기</button>
+                  <button type="button" className="btn-cart type01">장바구니</button>
+                </div>
               </div>
             </div>
             <div className="pd-wrap-bottom">
