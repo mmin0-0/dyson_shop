@@ -136,8 +136,8 @@ button{
 
 #wrapper{
   #wrap{
-    margin-top: 16rem;
-    @include notebook_junc{margin-top: 6rem;}
+    margin-top: 20rem;
+    @include notebook_junc{margin-top: 10rem;}
     &:not(.home){
       .wrap-inner{
         max-width: 1240px;
@@ -145,17 +145,6 @@ button{
         margin: 0 auto;
       }
     }
-    // 공통타이틀
-    // .tit-wrap{
-    //   > div{
-    //     gap: .8rem;
-    //     @include flexbox(row, flex-start, center);
-    //   }
-    //   .main-tit{
-    //     font-size: 2.4rem;
-    //     font-weight: bold;
-    //   }
-    // }
   }
 }
 

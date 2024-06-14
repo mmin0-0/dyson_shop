@@ -15,10 +15,12 @@ function Cart(){
   return (
     <div id="wrap">   
       <div className="wrap-inner">
-        <div className="tit-wrap">
-          <div>
-            <strong className="main-tit">장바구니</strong>
-            <span className="state">0</span>
+        <div className="board-tit">
+          <div className="tit-wrap">
+            <div>
+              <strong className="main-tit">장바구니</strong>
+              <span className="state">0</span>
+            </div>
           </div>
         </div>
         <div className="cont-wrap">

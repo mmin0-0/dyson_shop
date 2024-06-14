@@ -1,0 +1,41 @@
+@import '../base/common.scss';
+
+.detail-wrap{
+  border: 1px solid #000;
+  .pd-wrap{
+    &-top{
+      display: flex;
+      gap: 4rem;
+      .pd-img{
+        width: 45%;
+        min-height: 50rem;
+        background: #333;
+      }
+      .pd-info{
+        width: 55%;
+        .tit-wrap{
+          .main-tit{
+            padding-bottom: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid $gray01;
+            span{
+              font-size: 1.4rem;
+              font-weight: 600;
+              color: $gray03;
+              + strong{margin-top: 1rem;}
+            }
+            strong{
+              font-size: 3.2rem;
+              font-weight: bold;
+              display: block;
+            }
+          }
+          .sub-tit{
+            p{line-height: 1.4;}
+          }
+        }
+      }
+    }
+    &-bottom{}
+  }
+}

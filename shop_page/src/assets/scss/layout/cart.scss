@@ -1,17 +1,27 @@
 @import '../base/common.scss';
 
 #wrap{
-  .tit-wrap{
-    .state{
-      width: 2rem;
-      height: 2rem;
-      font-weight: 500;
-      background: $darkBlack;
-      border-radius: 50%;
-      color: $white;
-      @include flexbox(row, center, center);
+  .board-tit{
+    .tit-wrap{
+      > div{
+        gap: .8rem;
+        @include flexbox(row, flex-start, center);
+      }
+      .main-tit{
+        font-size: 2.4rem;
+        font-weight: bold;
+      }
+      .state{
+        width: 2rem;
+        height: 2rem;
+        font-weight: 500;
+        background: $darkBlack;
+        border-radius: 50%;
+        color: $white;
+        @include flexbox(row, center, center);
+      }
+      + .cont-wrap{margin-top: 2rem;}
     }
-    + .cont-wrap{margin-top: 2rem;}
   }
   .cont-wrap{
     .table-wrap{
