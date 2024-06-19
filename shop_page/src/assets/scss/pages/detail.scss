@@ -28,13 +28,29 @@
       > a{width: 100%;}
       .img-wrap{
         height: 300px;
-        background-color: $gray01;
+        position: relative;
         overflow: hidden;
+        &:hover{
+          img{
+            &.org-img{opacity: 0;}
+            &.hover-img{opacity: 1;}
+          }
+        }
         img{
-          max-width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
           transition: opacity .25s;
-          &.org-img{opacity: 1;}
-          &.hover-img{opacity: 0;}
+          &.org-img{
+            opacity: 1;
+            background: $gray01;
+          }
+          &.hover-img{
+            opacity: 0;
+            background: $gray02;
+          }
         }
       }
       .item-info{
