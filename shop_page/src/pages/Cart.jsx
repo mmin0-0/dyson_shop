@@ -1,7 +1,7 @@
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
-import { CartOption, Popup } from './Modal';
-import '../assets/scss/layout/cart.scss';
+import { CartOption, Popup } from '../components/Modal';
+// import '../assets/scss/layout/cart.scss';
 
 function Cart(){
   const [isModalOpen, setIsModalOpen] = useState(false);

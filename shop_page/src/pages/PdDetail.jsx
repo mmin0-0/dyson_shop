@@ -1,7 +1,13 @@
 import { useEffect, useState } from "react";
-import '../assets/scss/layout/detail.scss';
+import { useParams } from "react-router-dom";
+// import '../assets/scss/layout/detail.scss';
 
-function Detail(props){
+function PdDetail(props){
+  const {id} = useParams();
+  const 현재상품 = props.shoes.find(function(e){
+    return e.id == id
+  });
+
   return(
     <div id="wrap">
       <div className="wrap-inner">
@@ -15,14 +21,17 @@ function Detail(props){
                 <div className="tit-wrap">
                   <div className="main-tit">
                     <span>100% 순면소재 그물망 주머니</span>
-                    <strong>[감탄] 그물면주머니 프로듀스백 3종</strong>
+                    <strong>{현재상품.title}</strong>
                   </div>
                   <div className="sub-tit">
-                    <p>과일, 야채, 소품 등을 담을 수 있는 도톰하고 부드러운100% 순면소재 그물 면주머니입니다. 과일, 야채, 소품 등을 담을 수 있는 도톰하고 부드러운100% 순면소재 그물 면주머니입니다.</p>
+                    <p>
+                      과일, 야채, 소품 등을 담을 수 있는 도톰하고 부드러운100% 순면소재 그물 면주머니입니다. 과일, 야채, 소품 등을 담을 수 있는 도톰하고 부드러운100% 순면소재 그물 면주머니입니다.
+                      {현재상품.content}
+                      </p>
                   </div>
                 </div>
                 <div className="price-wrap">
-                  <p className="pr-final"><span>12,900</span>원</p>
+                  <p className="pr-final"><span>{현재상품.price}</span>원</p>
                   <p className="pr-existing"><span>28,000</span>원</p>
                   <p className="pr-discount">54%</p>
                 </div>
@@ -56,4 +65,4 @@ function Detail(props){
   )
 }
 
-export default Detail;
+export default PdDetail;

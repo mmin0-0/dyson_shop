@@ -5,7 +5,7 @@ import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import '../assets/scss/layout/home.scss';
+// import '../assets/scss/layout/home.scss';
 
 function Home(){
   const [shoes] = useState(pdList);

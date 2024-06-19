@@ -1,0 +1,11 @@
+@import "./base/reset.scss";
+@import "./base/font.scss";
+@import "./base/color.scss";
+@import "./base/responsive.scss";
+@import "./base/layout.scss";
+
+@import "./components/header.scss";
+
+@import "./pages/home.scss";
+@import "./pages/detail.scss";
+@import "./pages/cart.scss";
