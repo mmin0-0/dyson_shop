@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-// import '../assets/scss/layout/detail.scss';
 
 function PdDetail(props){
   const {id} = useParams();

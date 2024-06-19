@@ -106,13 +106,18 @@ button{
   #wrap{
     margin-top: 20rem;
     @include notebook_junc{margin-top: 10rem;}
-    &:not(.home){
-      .wrap-inner{
-        max-width: 1240px;
-        width: calc(100% - 4rem);
-        margin: 0 auto;
-      }
+    .sub-visual{
+      width: 100%;
+      height: 30rem;
+      background: $gray03;
     }
+    // &:not(.home){
+    //   .wrap-inner{
+    //     max-width: 1240px;
+    //     width: calc(100% - 4rem);
+    //     margin: 0 auto;
+    //   }
+    // }
   }
 }
 

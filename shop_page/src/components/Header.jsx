@@ -1,6 +1,5 @@
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
-// import '../assets/scss/components/header.scss';
 
 function Header(){
   const navigate = useNavigate();
