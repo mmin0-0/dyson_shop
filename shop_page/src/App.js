@@ -10,13 +10,13 @@ import data from './data.js';
 import './assets/scss/main.scss';
 
 function App() {
-  let [shoes] = useState(data);
+  const [shoes] = useState(data);
 
   return (
     <div className="App" id="wrapper">
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home shoes={shoes} />} />
         <Route path="*" element={<div>없는페이지</div>} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/detail" element={<Detail shoes={shoes} />} />

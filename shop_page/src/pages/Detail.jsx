@@ -18,22 +18,32 @@ function Detail(props){
             <li><a href="javascript:void(0)">생활상품</a></li>
           </ul>
           <div className="item-container">
-            <div className="shop-item">
-              <a href="javascript:void(0)">
-                <div className="img-wrap">
-                  <img src="" alt="product_org" className="org-img" />
-                  <img src="" alt="product_hover" className="hover-img" />
-                </div>
-                <div className="item-info">
-                  <span>생활용품</span>
-                  <strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, soluta.</strong>
-                  <p><span>12000</span>원</p>
-                </div>
-              </a>
-            </div>
+            {
+              props.shoes.map((a,i)=>{
+                return <PdItem key={i} shoes={props.shoes[i]}/>
+              })
+            }
           </div>
         </div>
       </div>
+    </div>
+  )
+}
+
+function PdItem(props){
+  return (
+    <div className="shop-item">
+      <a href="javascript:void(0)">
+        <div className="img-wrap">
+          <img src="" alt="product_org" className="org-img" />
+          <img src="" alt="product_hover" className="hover-img" />
+        </div>
+        <div className="item-info">
+          <span>{props.shoes.content}</span>
+          <strong>{props.shoes.title}</strong>
+          <p><span>{props.shoes.price}</span>원</p>
+        </div>
+      </a>
     </div>
   )
 }
