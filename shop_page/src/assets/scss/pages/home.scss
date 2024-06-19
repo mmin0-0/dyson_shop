@@ -1,10 +1,5 @@
 #wrap{
   &.home{
-    .con-wrap{
-      width: calc(100% - 4rem);
-      max-width: 1240px;
-      margin: 0 auto;
-    }
     .wrap-inner{
       > div{
         &:not(.visual){margin-top: 8rem;}

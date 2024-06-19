@@ -26,7 +26,7 @@ function Home(){
             <SwiperSlide>Slide 4</SwiperSlide>
           </Swiper>
         </div>
-        <div className="pd-wrap con-wrap">
+        <div className="pd-wrap con-box">
           <div className="tit-wrap">
             <div className="tit-info">
               <span>best product</span>
