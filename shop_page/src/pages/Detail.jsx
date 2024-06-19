@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Outlet, useParams } from "react-router-dom";
+import { Outlet, useParams, Link } from "react-router-dom";
 
 function Detail(props){
   const {id} = useParams();
@@ -33,7 +33,7 @@ function Detail(props){
 function PdItem(props){
   return (
     <div className="shop-item">
-      <a href="javascript:void(0)">
+      <Link to={`/detail/${props.shoes.id}`}>
         <div className="img-wrap">
           <img src="" alt="product_org" className="org-img" />
           <img src="" alt="product_hover" className="hover-img" />
@@ -43,7 +43,7 @@ function PdItem(props){
           <strong>{props.shoes.title}</strong>
           <p><span>{props.shoes.price}</span>원</p>
         </div>
-      </a>
+      </Link>
     </div>
   )
 }
