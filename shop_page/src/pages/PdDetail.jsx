@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { increase, addItem } from '../store.js';
 
 function PdDetail(props){
+  let state = useSelector((state)=>state);
+  let dispatch = useDispatch();
   const {id} = useParams();
   const 현재상품 = props.shoes.find(function(e){
     return e.id == id
@@ -50,7 +54,9 @@ function PdDetail(props){
                 </div>
                 <div className="buy-wrap btn-wrap">
                   <button type="button" className="btn-zzim">찜하기</button>
-                  <button type="button" className="btn-cart type01">장바구니</button>
+                  <button type="button" className="btn-cart type01" onClick={()=>{
+                    dispatch(addItem({id: 현재상품.id, name: 현재상품.title, count: 1}))
+                  }}>장바구니</button>
                 </div>
               </div>
             </div>

@@ -1,6 +1,8 @@
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 import { CartOption, Popup } from '../components/Modal';
+import { increase, addItem } from '../store.js';
 
 function Cart(){
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -11,9 +13,12 @@ function Cart(){
     setIsModalOpen(false);
   };
 
+  let state = useSelector((state) => state );
+  let dispatch = useDispatch();
+
   return (
     <div id="wrap">   
-      <div className="wrap-inner">
+      <div className="wrap-inner con-box">
         <div className="board-tit">
           <div className="tit-wrap">
             <div>
@@ -41,6 +46,9 @@ function Cart(){
 }
 
 function CartTable({toggleModal}){
+  let state = useSelector((state)=>state);
+  let dispatch = useDispatch();
+
   return (
     <div className="table-wrap">
       <table className="shop-table">
@@ -68,71 +76,78 @@ function CartTable({toggleModal}){
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td className="img">
-              <div className="flex-wrap pd-wrap">
-                <div className="input-wrap check">
-                  <input id="check_01" type="checkbox" name="basket" />
-                  <label htmlFor="check_01"></label>
-                </div>
-                <div className="pd-info">
-                  <a href="#none">
-                    <div className="img-wrap">상품</div>
-                    <p>[감탄] 어여쁜 어성초 비누 감탄-천연 수제 CP비</p>
-                  </a>
-                </div>
-              </div>
-              <a href="#none" className="btn-remove">제거</a>
-            </td>
-            <td className="hidden-sm">
-              <div className="info-list">
-                <div className="flex-wrap price">
-                  <div className="tit txt-bold">주문금액</div>
-                  <div className="cont txt-bold">6,000원</div>
-                </div>
-                <div className="result-list">
-                  <div className="flex-wrap">
-                    <div className="tit">상품금액(총<span>1</span>)</ div>
-                    <div className="cont"><span>6,000</span>원</div>
+          {
+            state.cart.map((a,i)=>
+              <tr id={state.cart[i].id} key={i}>
+                <td className="img">
+                  <div className="flex-wrap pd-wrap">
+                    <div className="input-wrap check">
+                      <input id="check_01" type="checkbox" name="basket" />
+                      <label htmlFor="check_01"></label>
+                    </div>
+                    <div className="pd-info">
+                      <a href="#none">
+                        <div className="img-wrap">상품</div>
+                        <p>{state.cart[i].name}</p>
+                      </a>
+                    </div>
                   </div>
-                  <div className="flex-wrap">
-                    <div className="tit">배송비</div>
-                    <div className="cont"><span>3,000</span>원</div>
+                  <a href="#none" className="btn-remove">제거</a>
+                </td>
+                <td className="hidden-sm">
+                  <div className="info-list">
+                    <div className="amount">
+                      <button type="button" className="decrease">-</button>
+                      <div className="tit txt-bold">{state.cart[i].count}</div>
+                      <button type="button" className="increase" onClick={()=>{dispatch(increase(state.cart[i].id))}}>+</button>
+                    </div>
+                    <div className="flex-wrap price">
+                      <div className="tit txt-bold">주문금액</div>
+                      <div className="cont txt-bold">6,000원</div>
+                    </div>
+                    <div className="result-list">
+                      <div className="flex-wrap">
+                        <div className="tit">상품금액(총 <span>{state.cart[i].count}</span>개)</ div>
+                        <div className="cont"><span>6,000</span>원</div>
+                      </div>
+                      <div className="flex-wrap">
+                        <div className="tit">배송비</div>
+                        <div className="cont"><span>3,000</span>원</div>
+                      </div>
+                      <div className="flex-wrap">
+                        <div className="tit">배송수단</div>
+                        <div className="cont">택배</div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="flex-wrap">
-                    <div className="tit">배송수단</div>
-                    <div className="cont">택배</div>
+                </td>
+                <td className="hidden-lg">
+                  <div className="amount">
+                    <button type="button" className="decrease">-</button>
+                    <div className="tit txt-bold">{state.cart[i].count}</div>
+                    <button type="button" className="increase" onClick={()=>{dispatch(increase(state.cart[i].id))}}>+</button>
                   </div>
-                </div>
-              </div>
-            </td>
-            <td className="hidden-lg">
-              <div className="amount">
-                <div className="tit txt-bold">1</div>
-                <div className="btn-wrap">
-                  <button type="cart-option" onClick={toggleModal}>옵션/수량 변경</button>
-                </div>
-              </div>
-            </td>
-            <td className="hidden-lg">
-              <div className="price">
-                <p className="tit"><span className="txt-bold">000</ span> 원</p>
-                <div className="btn-wrap">
-                  <button type="button"className="order-option type02">바로구매</button>
-                </div>
-              </div>
-            </td>
-            <td className="hidden-sm">
-              <div className="btn-wrap">
-                <button type="button" className="cart-option">옵수량 변경</button>
-                <button type="button" className="order-option">바로구매</button>
-              </div>
-            </td>
-            <td className="hidden-lg">
-              <p className="txt-bold">3,000 원</p>
-              <span>택배</span>
-            </td>
-          </tr>
+                </td>
+                <td className="hidden-lg">
+                  <div className="price">
+                    <p className="tit"><span className="txt-bold">000</span> 원</p>
+                    <div className="btn-wrap">
+                      <button type="button"className="order-option type02">바로구매</button>
+                    </div>
+                  </div>
+                </td>
+                <td className="hidden-sm">
+                  <div className="btn-wrap">
+                    <button type="button" className="order-option">바로구매</button>
+                  </div>
+                </td>
+                <td className="hidden-lg">
+                  <p className="txt-bold">3,000 원</p>
+                  <span>택배</span>
+                </td>
+              </tr>
+            )
+          }
         </tbody>
       </table>
     </div>

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import pdList from '../data.js';
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import pdList from '../data.js';
 
 function Home(){
   const [shoes] = useState(pdList);
@@ -32,7 +33,7 @@ function Home(){
               <span>best product</span>
               <strong>베스트 제품</strong>
             </div>
-            <a href="javascript:void(0)" className="more">전체보기</a>
+            <Link to="/detail" className="more">전체보기</ Link>
           </div>
           <div className="pd-wrap">
             <div className="pd-list">
