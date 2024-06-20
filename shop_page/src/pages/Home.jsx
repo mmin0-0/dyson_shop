@@ -33,8 +33,8 @@ function Home(){
               <span>best product</span>
               <strong>베스트 제품</strong>
             </div>
-            <Link to="/detail" className="more">전체보기</ Link>
-            <div className="btn-wrap">
+            <Link to="/detail" className="more">더보기</ Link>
+            <div className="swiper-controls">
               <button className="btn-prev">이전</button>
               <button className="btn-next">다음</button>
             </div>

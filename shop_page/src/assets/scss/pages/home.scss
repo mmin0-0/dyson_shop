@@ -6,6 +6,7 @@
         margin-bottom: 2.4rem;
         // @include flexbox(row, space-between, flex-end);
         .tit-info{
+          margin-bottom: 1.2rem;
           span{
             font-weight: bold;
             color: $mainColor;
@@ -20,6 +21,32 @@
         }
         .more{
           font-weight: 500;
+          &::after{
+            content: '';
+            width: 8rem;
+            height: 2rem;
+            margin-left: .6rem;
+            display: inline-block;
+            vertical-align: middle;
+            @include background(icon, arrow02_icon, png, no-repeat, contain, center, center);
+          }
+        }
+        .swiper-controls{
+          gap: 0;
+          button{
+            width: 4.8rem;
+            height: 2.8rem;
+            border: 0;
+            border-radius: 0;
+            border: 1px solid #000;
+            text-indent: -9999em;
+            overflow: hidden;
+            @include background(icon, arrow01_icon, svg, no-repeat, contain, center, center);
+            &.btn{
+              &-prev{transform: rotate(-90deg);}
+              &-next{transform: rotate(90deg);}
+            }
+          }
         }
       }
     }
@@ -40,11 +67,6 @@
       .tit-wrap{
         width: 25%;
         margin-bottom: 0;
-        position: relative;
-        .btn-wrap{
-          position: absolute;
-          bottom: 0;
-        }
       }
       .pd-list{
         width: 75%;
