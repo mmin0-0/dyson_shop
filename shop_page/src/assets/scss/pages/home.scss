@@ -1,27 +1,25 @@
 #wrap{
   &.home{
     .wrap-inner{
-      > div{
-        &:not(.visual){margin-top: 8rem;}
-        .tit-wrap{
-          margin-bottom: 2.4rem;
-          @include flexbox(row, space-between, flex-end);
-          .tit-info{
-            span{
-              font-weight: bold;
-              color: $mainColor;
-              text-transform: uppercase;
-            }
-            strong{
-              font-size: 3.6rem;
-              font-weight: bold;
-              margin-top: 1rem;
-              display: block;
-            }
+      > div{&:not(.visual){margin-top: 8rem;}}
+      .tit-wrap{
+        margin-bottom: 2.4rem;
+        // @include flexbox(row, space-between, flex-end);
+        .tit-info{
+          span{
+            font-weight: bold;
+            color: $mainColor;
+            text-transform: uppercase;
           }
-          .more{
-            font-weight: 500;
+          strong{
+            font-size: 3.6rem;
+            font-weight: bold;
+            margin-top: 1rem;
+            display: block;
           }
+        }
+        .more{
+          font-weight: 500;
         }
       }
     }
@@ -38,9 +36,13 @@
       }
     }
     .pd-wrap{
+      display: flex;
+      .tit-wrap{
+        width: 25%;
+      }
       .pd-list{
-        gap: 2rem;
-        @include flexbox(row, center, center);
+        width: 75%;
+        .swiper-slide{border: 1px solid #000;}
       }
     }
   }

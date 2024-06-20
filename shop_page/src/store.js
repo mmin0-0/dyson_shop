@@ -33,6 +33,7 @@ let cart = createSlice({
 export let { increase, decrease, addItem } = cart.actions;
 export default configureStore({
   reducer: {
+    user: user.reducer,
     cart: cart.reducer
   }
 }) 

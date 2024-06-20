@@ -34,15 +34,32 @@ function Home(){
               <strong>베스트 제품</strong>
             </div>
             <Link to="/detail" className="more">전체보기</ Link>
+            <div className="btn-wrap">
+              <button className="btn-prev">이전</button>
+              <button className="btn-next">다음</button>
+            </div>
           </div>
-          <div className="pd-wrap">
-            <div className="pd-list">
+          <div className="pd-list">
+            <Swiper 
+              cssMode={true}
+              navigation={{
+                nextEl: '.pd-wrap .btn-next',
+                prevEl: '.pd-wrap .btn-prev'
+              }}
+              slidesPerView={2.5}
+              spaceBetween={30}
+              modules={[Navigation]}
+            >  
               {
                 shoes.map((a, i) => {
-                  return <Product shoes={shoes[i]} i={i} />
+                  return (
+                  <SwiperSlide>
+                    <Product shoes={shoes[i]} i={i} />
+                  </SwiperSlide>
+                  )
                 })
               }
-            </div>
+            </Swiper>
           </div>
         </div>
       </div>
@@ -52,17 +69,18 @@ function Home(){
 
 function Product(props){
   return (
-    <div className="pd-item" id={props.shoes.id}>
-      <a href={'/detail/' + props.i}>
-        <div className="img-wrap">
-          <img src={'https://codingapple1.github.io/shop/shoes' + (props.i + 1) + '.jpg'} alt="상품이미지" />
-        </div>
-        <div className="pd-info">
-          <strong>{props.shoes.title}</strong>
-          <p>{props.shoes.price}</p>
-        </div>
-      </a>
-    </div>
+    
+      <div className="pd-item" id={props.shoes.id}>
+        <a href={'/detail/' + props.i}>
+          <div className="img-wrap">
+            <img src={'https://codingapple1.github.io/shop/shoes' +   (props.i + 1) + '.jpg'} alt="상품이미지" />
+          </div>
+          <div className="pd-info">
+            <strong>{props.shoes.title}</strong>
+            <p>{props.shoes.price}</p>
+          </div>
+        </a>
+      </div>
   )
 }
 
