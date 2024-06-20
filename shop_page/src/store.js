@@ -12,6 +12,13 @@ let cart = createSlice({
       let a = state.findIndex((state)=> state.id == action.payload);
       state[a].count += 1
     },
+    decrease(state, action){
+      let a = state.findIndex((state)=> state.id == action.payload);
+      if(state[a].count > 1){
+        state[a].count -= 1
+        // state.splice(a, 1)
+      }
+    },
     addItem(state, action){
       let num = state.findIndex((state)=>{return state.id === action.payload.id})
       if(num > -1){
@@ -23,7 +30,7 @@ let cart = createSlice({
     }
   }
 })
-export let { increase, addItem } = cart.actions;
+export let { increase, decrease, addItem } = cart.actions;
 export default configureStore({
   reducer: {
     cart: cart.reducer

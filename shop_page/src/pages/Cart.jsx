@@ -2,7 +2,7 @@ import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { CartOption, Popup } from '../components/Modal';
-import { increase, addItem } from '../store.js';
+import { increase, decrease, addItem } from '../store.js';
 
 function Cart(){
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -97,7 +97,7 @@ function CartTable({toggleModal}){
                 <td className="hidden-sm">
                   <div className="info-list">
                     <div className="amount">
-                      <button type="button" className="decrease">-</button>
+                      <button type="button" className="decrease" onClick={()=>{dispatch(decrease(state.cart[i].id))}}>-</button>
                       <div className="tit txt-bold">{state.cart[i].count}</div>
                       <button type="button" className="increase" onClick={()=>{dispatch(increase(state.cart[i].id))}}>+</button>
                     </div>
