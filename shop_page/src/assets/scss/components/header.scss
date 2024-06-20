@@ -199,7 +199,7 @@ header{
           background: $white;
           padding: .8rem  3.4rem .8rem 1.2rem;
           border-radius: 2rem;
-          @include background(icon, arrow_type01, svg, no-repeat, 1.6rem, right 1rem, center);
+          @include background(icon, arrow01_icon, svg, no-repeat, 1.6rem, right 1rem, center);
         }
       }
     }
@@ -282,7 +282,7 @@ header{
                 transform: translateY(-50%) rotate(180deg);
                 transition: transform .25s;
                 filter: invert(95%) sepia(3%) saturate(731%) hue-rotate(341deg) brightness(106%) contrast(84%);
-                @include background(icon, arrow_type01, svg, no-repeat, contain, center, center);
+                @include background(icon, arrow01_icon, svg, no-repeat, contain, center, center);
               }
             }
           }

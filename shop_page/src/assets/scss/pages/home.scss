@@ -39,6 +39,12 @@
       display: flex;
       .tit-wrap{
         width: 25%;
+        margin-bottom: 0;
+        position: relative;
+        .btn-wrap{
+          position: absolute;
+          bottom: 0;
+        }
       }
       .pd-list{
         width: 75%;
