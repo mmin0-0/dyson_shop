@@ -1,5 +1,6 @@
 #wrap{
   &.home{
+    section{height: 1000px;}
     .wrap-inner{
       > div{&:not(.visual){margin-top: 8rem;}}
       .tit-wrap{
@@ -31,23 +32,6 @@
             @include background(icon, arrow02_icon, png, no-repeat, contain, center, center);
           }
         }
-        .swiper-controls{
-          gap: 0;
-          button{
-            width: 4.8rem;
-            height: 2.8rem;
-            border: 0;
-            border-radius: 0;
-            border: 1px solid #000;
-            text-indent: -9999em;
-            overflow: hidden;
-            @include background(icon, arrow01_icon, svg, no-repeat, contain, center, center);
-            &.btn{
-              &-prev{transform: rotate(-90deg);}
-              &-next{transform: rotate(90deg);}
-            }
-          }
-        }
       }
     }
     .visual{
@@ -65,12 +49,123 @@
     .pd-wrap{
       display: flex;
       .tit-wrap{
-        width: 25%;
+        width: 30%;
         margin-bottom: 0;
+        position: relative;
+        .swiper-controls{
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          button{
+            width: 4rem;
+            height: 4rem;
+            border: 0;
+            padding: 0;
+            border-radius: 0;
+            text-indent: -9999em;
+            overflow: hidden;
+            position: relative;
+            &:hover{
+              background: inherit;
+              &::after{opacity: 1;}
+            }
+            &::after{
+              content: '';
+              width: inherit;
+              height: inherit;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              opacity: .45;
+              transition: opacity .25s;
+              @include background(icon, arrow03_icon, svg, no-repeat, contain, center, bottom);
+            }
+            &.btn{
+              &-prev{&::after{transform: translate(-50%,-50%)}}
+              &-next{&::after{transform: translate(-50%,-50%) rotate(180deg);}}
+            }
+          }
+        }
       }
       .pd-list{
-        width: 75%;
-        .swiper-slide{border: 1px solid #000;}
+        width: 70%;
+        .pd-item{
+          &:hover{
+            &::after{height: 100%;}
+            .circle-ani{opacity: 1;}
+          }
+          &::after{
+            content: '';
+            width: 100%;
+            height: 0;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            background: rgba($black, .35);
+            transition: height .25s;
+          }
+          .circle-ani{
+            width: 5rem;
+            height: 5rem;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            z-index: 1;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity .25s;
+            &::before, &::after{
+              content: '';
+              display: block;
+              border-radius: 50%;
+              background: $white;
+            }
+            &:before {
+              width: 200%;
+              height: 200%;
+              margin-left: -50%;
+              margin-top: -50%;
+              background: radial-gradient($white, $mainColor);
+              animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+            }
+            &:after {
+              content: 'Go';
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              left: 0; 
+              top: 0;
+              box-shadow: 0 0 8px rgba($black, .3);
+              font-weight: 500;
+              animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -.4s infinite;
+              @include flexbox(row, center, center);
+            }
+          }
+          .pd-info{
+            margin-top: 1.6rem;
+            padding: .4rem;
+            strong{
+              font-size: 1.8rem;
+              font-weight: 600;
+              padding-top: 1rem;
+              margin-bottom: 1rem;
+              display: block;
+              position: relative;
+              &::before{
+                content: '';
+                width: 4rem;
+                height: .2rem;
+                background: $mainColor;
+                position: absolute;
+                top: 0;
+                left: 0;
+              }
+            }
+            p{
+              font-weight: 500;
+            }
+          }
+        }
       }
     }
   }

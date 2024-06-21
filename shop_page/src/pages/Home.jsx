@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
@@ -33,7 +33,7 @@ function Home(){
               <span>best product</span>
               <strong>베스트 제품</strong>
             </div>
-            <Link to="/detail" className="more">더보기</ Link>
+            <Link to="/detail" className="more">More</ Link>
             <div className="swiper-controls">
               <button className="btn-prev">이전</button>
               <button className="btn-next">다음</button>
@@ -47,8 +47,9 @@ function Home(){
                 prevEl: '.pd-wrap .btn-prev'
               }}
               slidesPerView={2.5}
-              spaceBetween={30}
-              modules={[Navigation]}
+              spaceBetween={16}
+              // autoplay={{delay: 4000}}
+              modules={[Navigation, Autoplay]}
             >  
               {
                 shoes.map((a, i) => {
@@ -62,6 +63,7 @@ function Home(){
             </Swiper>
           </div>
         </div>
+        <section></section>
       </div>
     </div>
   )
@@ -69,18 +71,18 @@ function Home(){
 
 function Product(props){
   return (
-    
-      <div className="pd-item" id={props.shoes.id}>
-        <a href={'/detail/' + props.i}>
-          <div className="img-wrap">
-            <img src={'https://codingapple1.github.io/shop/shoes' +   (props.i + 1) + '.jpg'} alt="상품이미지" />
-          </div>
-          <div className="pd-info">
-            <strong>{props.shoes.title}</strong>
-            <p>{props.shoes.price}</p>
-          </div>
-        </a>
-      </div>
+    <div className="pd-item" id={props.shoes.id}>
+      <a href={'/detail/' + props.i}>
+        <div className="circle-ani"></div>
+        <div className="img-wrap">
+          <img src={'https://codingapple1.github.io/shop/shoes' +  (props.i + 1) + '.jpg'} alt="상품이미지" />
+        </div>
+        <div className="pd-info">
+          <strong>{props.shoes.title}</strong>
+          <p>{props.shoes.price}</p>
+        </div>
+      </a>
+    </div>
   )
 }
 
