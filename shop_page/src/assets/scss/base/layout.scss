@@ -126,6 +126,7 @@ button{
 #wrapper{
   #wrap{
     margin-top: 20rem;
+    &.home{margin-top: 0;}
     @include notebook_junc{margin-top: 10rem;}
     .sub-visual{
       width: 100%;

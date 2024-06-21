@@ -60,8 +60,8 @@ function Header(){
   const keyword = ['제로웨이스트', 'ECO', '감탄클래스', '친환경 라이프', '비건 케이터링'];
   const menuItems = [
     {
-      title: '감탄상회 소개',
-      subMenu: ['브랜드', '감탄 스토리', '비전', '활동가 소개'],
+      title: '청소기',
+      subMenu: ['물청소기', '진공 + 물청소기', '진공청소기', '로봇청소기', '나에게 맞는 제품 선택하기', '무선 청소기 툴', '무선 청소기 배터리'],
       banner: [
         {
           img: ['https://cdn.imweb.me/thumbnail/20230118/0aa5f31252d84.jpg'],
@@ -70,8 +70,8 @@ function Header(){
       ]
     },
     {
-      title: '감탄스토어',
-      subMenu: ['세트상품', '욕실용품', '생활용품'],
+      title: '헤어케어',
+      subMenu: ['웻앤드라이 스트레이트너', '스타일러', '스타일러 커스텀', '드라이어', '스트레이트너'],
       banner: [
         {
           img: ['"https://cdn.imweb.me/thumbnail/20231220/7d4e1584d1288.jpg"'],
@@ -80,25 +80,30 @@ function Header(){
       ]
     },
     {
-      title: '비건 케이터링',
-      subMenu: ['비건이란?'],
+      title: '공기청정기 및 선풍기',
+      subMenu: ['공기청정기', '가습 공기청정기', '공기청정기 필터', '나에게 맞는 제품 선택하기'],
       banner : []
     },
     {
-      title: '감탄클래스',
-      subMenu: ['원데이 클래스', '환경생태 프로그램', '찾아가는 환경교육', '골목 반상회', '대관/커뮤니티 신청'],
+      title: '헤드폰',
+      subMenu: ['헤드폰 모두보기', '다이슨 존 노이즈 캔슬링 헤드폰'],
       banner : []
     },
     {
-      title: '캠페인',
-      subMenu: [],
+      title: '액세서리 및 부품',
+      subMenu: ['무선청소기 툴', '무선청소기 배터리', '헤어케어 케이스, 브러시, 거치대 및 툴', '공기청정기 필터'],
       banner : []
     },
     {
-      title: '커뮤니티',
-      subMenu: ['공지사항', '자주 묻는 질문', 'Q&A', '고객후기'],
+      title: '비즈니스 재품',
+      subMenu: ['헤어케어', '핸드 드라이어', '무선 청소기', '공기청정기', '조명'],
       banner : []
     },
+    {
+      title: '매장안내',
+      subMenu: ['다이슨 데모 스토어', '다이슨 뷰티 스토어', '다이슨 서비스 센터', '다이슨 백화점 매장'],
+      banner : []
+    }
   ];
 
   return (
@@ -178,11 +183,11 @@ function Header(){
                             }
                           </ul>
                         </div>
-                        <div className="banner">
+                        {/* <div className="banner">
                           <ul>
                             {
                               item.banner.map((banner, index) => (
-                                banner.length>0 &&  <li key={`${index}`}>
+                                banner.length >0 &&  <li key={`${index}`}>
                                   <a href="#none">
                                     <div className="img-wrap">
                                       <img src={banner.img[index]} alt="banner img" />
@@ -193,7 +198,7 @@ function Header(){
                               ))
                             }
                           </ul>
-                        </div>
+                        </div> */}
                       </div>
                     </div>
                   )}

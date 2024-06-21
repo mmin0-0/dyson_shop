@@ -38,7 +38,7 @@
       width: 100%;
       height: calc(100vh - 16rem);
       position: relative;
-      background: #333;
+      background: #eee;
       @include flexbox(row, center, center);
       @include notebook_junc{height: calc(100vh - 6rem);}
       .visual-swiper{

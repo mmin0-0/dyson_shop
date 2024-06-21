@@ -5,12 +5,13 @@ header{
   top: 0;
   left: 0;
   z-index: 100;
-  background: linear-gradient($mainColor, $white);
+  background: linear-gradient(to bottom, rgba($black, 1) 0%,rgba($black, .5) 100%);
   transition: height .25s;
   @include notebook_junc{height: 6rem;}
+  &:hover{background: $gray03;}
   &.header-fixed{
     height: 6rem;
-    background: $mainColor;
+    background: $gray03;
     + #wrap{margin-top: 6rem !important;}
     .hd-inner-wrap{
       width: calc(100% - 4rem);
@@ -81,6 +82,7 @@ header{
       }
     }
     .logo{
+      max-width: 10rem;
       position: absolute;
       top: 50%;
       left: 50%;
@@ -265,6 +267,7 @@ header{
         .depth1{
           width: 100%;
           font-weight: 500;
+          color: $white;
           padding: 2.2rem 2.6rem;
           transition: all .25s;
           position: relative;
@@ -288,6 +291,7 @@ header{
           }
           &.on{
             background: $white;
+            color: $black;
             @include tablet{
               background: inherit;
               color: $mainColor;
@@ -317,19 +321,22 @@ header{
             gap: 6rem;
             @include notebook_junc{max-width: 100%;}
             .menu-list{
-              width: 55%;
+              width: 100%;
               @include notebook_junc{width: 100%;}
               ul{
+                display: grid;
+                row-gap: 1rem;
+                grid-template-columns: repeat(2, 1fr);
                 li{
                   transition: all .25s;
                   @include notebook_junc{
                     padding: 1.4rem 4rem;
                     &:hover{background: $gray02;}
                   }
-                  &:not(:last-child){
-                    margin-bottom: .8rem;
-                    @include notebook_junc{margin-bottom: 0;}
-                  }
+                  // &:not(:last-child){
+                  //   margin-bottom: .8rem;
+                  //   @include notebook_junc{margin-bottom: 0;}
+                  // }
                   a{
                     width: 100%;
                     font-family: $aritaM;
@@ -341,20 +348,20 @@ header{
                 }
               }
             }
-            .banner{
-              width: 45%;
-              @include notebook_junc{display: none;}
-              ul{
-                display: flex;
-                gap: 2rem;
-                li{
-                  flex: 1;
-                  .img-wrap{
-                    img{max-width: 100%;}
-                  }
-                }
-              }
-            }
+            // .banner{
+            //   width: 45%;
+            //   @include notebook_junc{display: none;}
+            //   ul{
+            //     display: flex;
+            //     gap: 2rem;
+            //     li{
+            //       flex: 1;
+            //       .img-wrap{
+            //         img{max-width: 100%;}
+            //       }
+            //     }
+            //   }
+            // }
           }
         }
       }
