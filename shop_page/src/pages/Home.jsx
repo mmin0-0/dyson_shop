@@ -43,7 +43,14 @@ function Home(){
                 nextEl: '.pd-wrap .btn-next',
                 prevEl: '.pd-wrap .btn-prev'
               }}
-              slidesPerView={2.5}
+              breakpoints={{
+                768: {
+                  slidesPerView: 2.5,
+                  // centeredSlides: false
+                }
+              }}
+              slidesPerView={1.5}
+              // centeredSlides={true}
               spaceBetween={16}
               // autoplay={{delay: 4000}}
               modules={[Navigation]}
