@@ -27,6 +27,11 @@
   background-position: #{$x} #{$y};
 } 
 
+@keyframes arrow {
+  0%{transform: translateX(10px);}
+  100%{transform: translateX(0);}
+}
+
 @keyframes pulse-ring {
   0% {
     transform: scale(.33);

@@ -35,10 +35,6 @@ function Home(){
               <strong>베스트 제품</strong>
             </div>
             <Link to="/detail" className="more">More</ Link>
-            <div className="swiper-controls">
-              <button className="btn-prev">이전</button>
-              <button className="btn-next">다음</button>
-            </div>
           </div>
           <div className="pd-list">
             <Swiper 
@@ -62,6 +58,10 @@ function Home(){
                 })
               }
             </Swiper>
+          </div>
+          <div className="swiper-controls">
+            <button className="btn-prev">이전</button>
+            <button className="btn-next">다음</button>
           </div>
         </div>
         <section></section>

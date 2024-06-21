@@ -8,6 +8,7 @@
         // @include flexbox(row, space-between, flex-end);
         .tit-info{
           margin-bottom: 1.2rem;
+          @include tablet{margin-bottom: 0;}
           span{
             font-weight: bold;
             color: $subColor;
@@ -30,6 +31,7 @@
             display: inline-block;
             vertical-align: middle;
             @include background(icon, arrow02_icon, png, no-repeat, contain, center, center);
+            animation: arrow .8s alternate infinite both;
           }
         }
       }
@@ -48,47 +50,58 @@
     }
     .pd-wrap{
       display: flex;
+      position: relative;
+      @include tablet{
+        flex-direction: column;
+        gap: 2rem;
+      }
+      .swiper-controls{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        @include tablet{display: none;}
+        button{
+          width: 4rem;
+          height: 4rem;
+          border: 0;
+          padding: 0;
+          border-radius: 0;
+          text-indent: -9999em;
+          overflow: hidden;
+          position: relative;
+          background: transparent;
+          &:hover{
+            background: transparent;
+            &::after{opacity: 1;}
+          }
+          &::after{
+            content: '';
+            width: inherit;
+            height: inherit;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            opacity: .45;
+            transition: opacity .25s;
+            @include background(icon, arrow03_icon, svg, no-repeat, contain, center, bottom);
+          }
+          &.btn{
+            &-prev{&::after{transform: translate(-50%,-50%)}}
+            &-next{&::after{transform: translate(-50%,-50%) rotate(180deg);}}
+          }
+        }
+      }
       .tit-wrap{
         width: 30%;
         margin-bottom: 0;
-        position: relative;
-        .swiper-controls{
-          position: absolute;
-          left: 0;
-          bottom: 0;
-          button{
-            width: 4rem;
-            height: 4rem;
-            border: 0;
-            padding: 0;
-            border-radius: 0;
-            text-indent: -9999em;
-            overflow: hidden;
-            position: relative;
-            &:hover{
-              background: inherit;
-              &::after{opacity: 1;}
-            }
-            &::after{
-              content: '';
-              width: inherit;
-              height: inherit;
-              position: absolute;
-              left: 50%;
-              top: 50%;
-              opacity: .45;
-              transition: opacity .25s;
-              @include background(icon, arrow03_icon, svg, no-repeat, contain, center, bottom);
-            }
-            &.btn{
-              &-prev{&::after{transform: translate(-50%,-50%)}}
-              &-next{&::after{transform: translate(-50%,-50%) rotate(180deg);}}
-            }
-          }
+        @include tablet{
+          width: 100%;
+          @include flexbox(row, space-between, flex-end);
         }
       }
       .pd-list{
         width: 70%;
+        @include tablet{width: 100%;}
         .pd-item{
           &:hover{
             .img-wrap{
