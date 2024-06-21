@@ -74,13 +74,13 @@ function Product(props){
   return (
     <div className="pd-item" id={props.shoes.id}>
       <a href={'/detail/' + props.i}>
-        <div className="circle-ani"></div>
         <div className="img-wrap">
-          <img src={'https://codingapple1.github.io/shop/shoes' +  (props.i + 1) + '.jpg'} alt="상품이미지" />
+          <img src={props.shoes.mainImg} alt="상품이미지" />
+          <div className="circle-ani"></div>
         </div>
         <div className="pd-info">
           <strong>{props.shoes.title}</strong>
-          <p>{props.shoes.price}</p>
+          {/* <p>{props.shoes.price}</p> */}
         </div>
       </a>
     </div>

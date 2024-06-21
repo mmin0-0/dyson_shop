@@ -127,7 +127,7 @@ header{
             background: $mainColor;
             border-radius: .4rem;
             overflow: hidden;
-            &:hover{background: $subColor01;}
+            &:hover{background: $subColor;}
             @include tablet{
               width: 4rem;
               height: 4rem;

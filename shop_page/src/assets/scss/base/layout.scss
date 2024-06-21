@@ -107,14 +107,14 @@ button{
   background: $white;
   border-radius: 2rem;
   &:hover{
-    background: $subColor01;
+    background: $subColor;
     color: $white;
   }
   &.type01{
     background: $gray03;
     color: $white;
   }
-  &.type02{border-color: $subColor02;}
+  &.type02{border-color: $subColor;}
   // gap: .6rem;
   // @include flexbox(row, center, center);
 }

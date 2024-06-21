@@ -10,7 +10,7 @@
           margin-bottom: 1.2rem;
           span{
             font-weight: bold;
-            color: $mainColor;
+            color: $subColor;
             text-transform: uppercase;
           }
           strong{
@@ -91,54 +91,62 @@
         width: 70%;
         .pd-item{
           &:hover{
-            &::after{height: 100%;}
-            .circle-ani{opacity: 1;}
+            .img-wrap{
+              &::after{height: 100%;}
+              .circle-ani{opacity: 1;}
+            }
           }
-          &::after{
-            content: '';
-            width: 100%;
-            height: 0;
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            background: rgba($black, .35);
-            transition: height .25s;
-          }
-          .circle-ani{
-            width: 5rem;
-            height: 5rem;
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            z-index: 1;
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            transition: opacity .25s;
-            &::before, &::after{
+          .img-wrap{
+            position: relative;
+            border-radius: 2rem;
+            overflow: hidden;
+            img{display: block;}
+            &::after{
               content: '';
-              display: block;
-              border-radius: 50%;
-              background: $white;
-            }
-            &:before {
-              width: 200%;
-              height: 200%;
-              margin-left: -50%;
-              margin-top: -50%;
-              background: radial-gradient($white, $mainColor);
-              animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
-            }
-            &:after {
-              content: 'Go';
               width: 100%;
-              height: 100%;
+              height: 0;
               position: absolute;
-              left: 0; 
-              top: 0;
-              box-shadow: 0 0 8px rgba($black, .3);
-              font-weight: 500;
-              animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -.4s infinite;
-              @include flexbox(row, center, center);
+              bottom: 0;
+              left: 0;
+              background: rgba($black, .35);
+              transition: height .25s;
+            }
+            .circle-ani{
+              width: 5rem;
+              height: 5rem;
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              z-index: 1;
+              transform: translate(-50%, -50%);
+              opacity: 0;
+              transition: opacity .25s;
+              &::before, &::after{
+                content: '';
+                display: block;
+                border-radius: 50%;
+                background: $white;
+              }
+              &:before {
+                width: 200%;
+                height: 200%;
+                margin-left: -50%;
+                margin-top: -50%;
+                background: radial-gradient($white, $black);
+                animation: pulse-ring 1.25s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+              }
+              &:after {
+                content: 'Go';
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                left: 0; 
+                top: 0;
+                box-shadow: 0 0 8px rgba($black, .3);
+                font-weight: 500;
+                animation: pulse-dot 1.25s cubic-bezier(0.455, 0.03, 0.515, 0.955) -.4s infinite;
+                @include flexbox(row, center, center);
+              }
             }
           }
           .pd-info{
@@ -155,7 +163,7 @@
                 content: '';
                 width: 4rem;
                 height: .2rem;
-                background: $mainColor;
+                background: $subColor;
                 position: absolute;
                 top: 0;
                 left: 0;
