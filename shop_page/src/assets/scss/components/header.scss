@@ -7,7 +7,7 @@ header{
   z-index: 100;
   background: linear-gradient(to bottom, rgba($black, 1) 0%,rgba($black, .5) 100%);
   transition: height .25s;
-  @include notebook_junc{height: 6rem;}
+  @include notebook{height: 6rem;}
   &:hover{background: $gray03;}
   &.header-fixed{
     height: 6rem;
@@ -20,7 +20,7 @@ header{
       .logo{
         left: 0;
         transform: translateY(-50%);
-        @include notebook_junc{
+        @include notebook{
           left: 50%;
           transform: translate(-50%, -50%);
         }
@@ -28,9 +28,9 @@ header{
       .utility-wrap{right: 0;}
     }
   }
-  @include notebook_junc{
+  @include notebook{
     height: 6rem;
-    background: $mainColor;
+    background: $gray03;
   }
   .hd-inner-wrap{
     position: relative;
@@ -57,7 +57,7 @@ header{
     }
     .ham-btn{
       display: none;
-      @include notebook_junc{display: block;}
+      @include notebook{display: block;}
       &::after{@include background(icon, menu_icon, svg, no-repeat, contain, center, center);}
     }
     .utility-wrap{
@@ -67,10 +67,10 @@ header{
       z-index: 100;
       transform: translateY(-50%);
       @include flexbox(row, flex-start, center);
-      @include notebook_junc{right: 0;}
+      @include notebook{right: 0;}
       .user{
         &::after{@include background(icon, user_icon, svg, no-repeat, 60%, center, center);}
-        @include notebook_junc{display: none;}
+        @include notebook{display: none;}
       }
       .search-controls{
         &::after{@include background(icon, search_icon, svg, no-repeat, 80%, center, center);}
@@ -124,10 +124,13 @@ header{
             padding: 2rem 0;
             font-size: 1.6rem;
             color: $white;
-            background: $mainColor;
+            background: $black;
             border-radius: .4rem;
             overflow: hidden;
-            &:hover{background: $subColor;}
+            &:hover{
+              background: $subColor;
+              &::after{filter: none;}
+            }
             @include tablet{
               width: 4rem;
               height: 4rem;
@@ -138,7 +141,6 @@ header{
               top: 50%;
               right: 1rem;
               transform: translateY(-50%);
-              &:hover{background: inherit;}
               &::after{
                 content: '';
                 display: block;
@@ -158,8 +160,9 @@ header{
           max-height: 5.6rem;
           padding: 2rem 1rem;
           border: 0;
-          border-bottom: 2px solid $mainColor;
+          border-bottom: 2px solid $black;
           &::placeholder{font-size: 1.6rem;}
+          &:focus{border-color: $subColor;}
         }
       }
       .search-keyword{
@@ -212,7 +215,7 @@ header{
     left: 0;
     bottom: 0;
     z-index: 9;
-    @include notebook_junc{
+    @include notebook{
       height: 100vh;
       top: 0;
       left: -100%;
@@ -227,7 +230,7 @@ header{
       margin-right: 2rem;
       height: 6rem;
       display: none;
-      @include notebook_junc{display: flex;}
+      @include notebook{display: flex;}
       .btn-closed{
         position: relative;
         background: $darkBlack;
@@ -259,11 +262,11 @@ header{
       position: relative;
       z-index: 100;
       @include flexbox(row, center, center);
-      @include notebook_junc{
+      @include notebook{
         @include flexbox(column, flex-start, flex-start);
       }
       li{
-        @include notebook_junc{width: 100%;}
+        @include notebook{width: 100%;}
         .depth1{
           width: 100%;
           font-weight: 500;
@@ -271,9 +274,10 @@ header{
           padding: 2.2rem 2.6rem;
           transition: all .25s;
           position: relative;
-          @include notebook_junc{
+          @include notebook{
             padding: 2rem;
             font-weight: bold;
+            color: $black;
             &.has{
               &::after{
                 content: '';
@@ -308,7 +312,7 @@ header{
           left: 0;
           padding: 6rem 0;
           background: $white;
-          @include notebook_junc{
+          @include notebook{
             padding: 0;
             position: static;
             border-top: 2px solid $darkBlack;
@@ -319,28 +323,25 @@ header{
             margin: 0 auto;
             display: flex;
             gap: 6rem;
-            @include notebook_junc{max-width: 100%;}
+            @include notebook{max-width: 100%;}
             .menu-list{
               width: 100%;
-              @include notebook_junc{width: 100%;}
+              @include notebook{width: 100%;}
               ul{
                 display: grid;
                 row-gap: 1rem;
                 grid-template-columns: repeat(2, 1fr);
+                @include notebook{display: block;}
                 li{
                   transition: all .25s;
-                  @include notebook_junc{
+                  @include notebook{
                     padding: 1.4rem 4rem;
                     &:hover{background: $gray02;}
                   }
-                  // &:not(:last-child){
-                  //   margin-bottom: .8rem;
-                  //   @include notebook_junc{margin-bottom: 0;}
-                  // }
                   a{
                     width: 100%;
                     font-family: $aritaM;
-                    @include notebook_junc{
+                    @include notebook{
                       font-size: 1.4rem;
                       font-weight: 600;
                     }
@@ -350,7 +351,7 @@ header{
             }
             // .banner{
             //   width: 45%;
-            //   @include notebook_junc{display: none;}
+            //   @include notebook{display: none;}
             //   ul{
             //     display: flex;
             //     gap: 2rem;

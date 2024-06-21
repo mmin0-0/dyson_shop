@@ -1,7 +1,7 @@
 /* 노트북 분기점 */
-@mixin notebook_junc{
-  @media (max-width: 1000px){@content;}
-}
+// @mixin notebook_junc{
+//   @media (max-width: 1000px){@content;}
+// }
 /* 노트북 */
 @mixin notebook{
   @media (max-width: 1200px){@content;}

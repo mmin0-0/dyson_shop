@@ -9,7 +9,7 @@ function Header(){
   const [headerClass, setHeaderClass] = useState('');
   const [hovered, setHovered] = useState(null);
   const parentRef = useRef(null);
-  const [isTabletOrSmaller, setIsTabletOrSmaller] = useState(window.innerWidth <= 1000);
+  const [isTabletOrSmaller, setIsTabletOrSmaller] = useState(window.innerWidth <= 1200);
 
   useEffect(()=>{
     const handleScroll = () => {
@@ -32,7 +32,7 @@ function Header(){
 
   useEffect(()=>{
     const handleResize = ()=>{
-      setIsTabletOrSmaller(window.innerWidth <= 1000);
+      setIsTabletOrSmaller(window.innerWidth <= 1200);
       console.log('resize')
     };
     window.addEventListener('resize', handleResize);
@@ -62,47 +62,30 @@ function Header(){
     {
       title: '청소기',
       subMenu: ['물청소기', '진공 + 물청소기', '진공청소기', '로봇청소기', '나에게 맞는 제품 선택하기', '무선 청소기 툴', '무선 청소기 배터리'],
-      banner: [
-        {
-          img: ['https://cdn.imweb.me/thumbnail/20230118/0aa5f31252d84.jpg'],
-          tit: ['감탄상회 오프라인 매장']
-        }
-      ]
     },
     {
       title: '헤어케어',
       subMenu: ['웻앤드라이 스트레이트너', '스타일러', '스타일러 커스텀', '드라이어', '스트레이트너'],
-      banner: [
-        {
-          img: ['"https://cdn.imweb.me/thumbnail/20231220/7d4e1584d1288.jpg"'],
-          tit: ['그물면주머니 프로듀스백 3종']
-        }
-      ]
     },
     {
       title: '공기청정기 및 선풍기',
       subMenu: ['공기청정기', '가습 공기청정기', '공기청정기 필터', '나에게 맞는 제품 선택하기'],
-      banner : []
     },
     {
       title: '헤드폰',
       subMenu: ['헤드폰 모두보기', '다이슨 존 노이즈 캔슬링 헤드폰'],
-      banner : []
     },
     {
       title: '액세서리 및 부품',
       subMenu: ['무선청소기 툴', '무선청소기 배터리', '헤어케어 케이스, 브러시, 거치대 및 툴', '공기청정기 필터'],
-      banner : []
     },
     {
       title: '비즈니스 재품',
       subMenu: ['헤어케어', '핸드 드라이어', '무선 청소기', '공기청정기', '조명'],
-      banner : []
     },
     {
       title: '매장안내',
       subMenu: ['다이슨 데모 스토어', '다이슨 뷰티 스토어', '다이슨 서비스 센터', '다이슨 백화점 매장'],
-      banner : []
     }
   ];
 
