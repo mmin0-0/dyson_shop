@@ -5,6 +5,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
 import pdList from '../data.js';
 
 function Home(){
@@ -49,7 +50,7 @@ function Home(){
               slidesPerView={2.5}
               spaceBetween={16}
               // autoplay={{delay: 4000}}
-              modules={[Navigation, Autoplay]}
+              modules={[Navigation]}
             >  
               {
                 shoes.map((a, i) => {
