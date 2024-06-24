@@ -7,10 +7,9 @@
       background: $gray02;
     }
     .wrap-inner{
-      > div{&:not(.visual){margin-top: 8rem;}}
+      > div{&:not(.visual){margin-top: 10rem;}}
       .tit-wrap{
-        margin-bottom: 2.4rem;
-        // @include flexbox(row, space-between, flex-end);
+        // margin-bottom: 2.4rem;
         .tit-info{
           margin-bottom: 1.2rem;
           @include tablet{margin-bottom: 0;}
@@ -98,7 +97,6 @@
       }
       .tit-wrap{
         width: 30%;
-        margin-bottom: 0;
         @include tablet{
           width: 100%;
           @include flexbox(row, space-between, flex-end);
@@ -188,12 +186,14 @@
                 left: 0;
               }
             }
-            p{
-              font-weight: 500;
-            }
+            p{font-weight: 500;}
           }
         }
       }
+    }
+    .fix-sec{
+      min-height: 41.5rem;
+      background: #eee;
     }
   }
 }
