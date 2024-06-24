@@ -7,7 +7,7 @@
       background: $gray02;
     }
     .wrap-inner{
-      > div{&:not(.visual){margin-top: 10rem;}}
+      > div{&:not(.visual){margin-top: 12rem;}}
       .tit-wrap{
         // margin-bottom: 2.4rem;
         &.type01{
@@ -34,6 +34,7 @@
             display: block;
           }
           + .info-txt{margin-top: 2rem;}
+          + .more{margin-top: 1.2rem;}
         }
         .info-txt{
           p{line-height: 1.4;}
@@ -70,8 +71,10 @@
       @include flexbox(row, flex-start, flex-start);
       .tit-wrap{
         width: 40%;
+        opacity: 0;
+        transform: translateX(-8rem);
       }
-
+      .img-wrap{opacity: 0;}
     }
     .pd-wrap{
       display: flex;

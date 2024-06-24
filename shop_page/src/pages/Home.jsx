@@ -16,13 +16,23 @@ function Home(){
   const boxRef = useRef(null);
   useEffect(()=>{
     let ctx = gsap.context(()=>{
-      gsap.to('.box1', {
-        x: 100,
+      gsap.to('.about .tit-wrap', {
+        x: 0,
+        opacity: 1,
         scrollTrigger: {
-          trigger: '.box1',
-          start: 'top 30%',
+          trigger: '.about',
+          start: 'top center 40px',
           end: 'bottom',
           markers: true
+        }
+      });
+      gsap.to('.about .img-wrap', {
+        opacity: 1,
+        delay: 1,
+        scrollTrigger: {
+          trigger: '.about',
+          start: 'top center 40px',
+          end: 'bottom',
         }
       });
 
@@ -32,7 +42,7 @@ function Home(){
           trigger: '.box2',
           start: 'top 30%',
           end: 'bottom',
-          markers: true
+          // markers: true
         }
       });
     }, boxRef);
@@ -61,7 +71,7 @@ function Home(){
           <div className="tit-wrap type01">
             <div className="tit-info">
               <span>About us</span>
-              <strong>More, With less</strong>
+              <strong>More, <br className="d-pc" />With less</strong>
             </div>
             <div className="info-txt">
               <p>
