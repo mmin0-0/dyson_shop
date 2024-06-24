@@ -58,14 +58,16 @@ function Home(){
           </Swiper>
         </div>
         <div className="about con-box">
-          <div className="tit-wrap type02">
+          <div className="tit-wrap type01">
             <div className="tit-info">
-              <span>about us</span>
-              <strong>more, with less</strong>
+              <span>About us</span>
+              <strong>More, With less</strong>
             </div>
-            <p className="info-txt">
-              Dyson machines have structural integrity. They are strong and they are logth. A knowledge of geometry and pioneering materials means that Dyson engineers can do more with less. Less materials, less weight, less waste.
-            </p>
+            <div className="info-txt">
+              <p>
+                Dyson machines have structural integrity. They are strong and they are logth. A knowledge of geometry and pioneering materials means that Dyson engineers can do more with less. Less materials, less weight, less waste.
+              </p>
+            </div>
           </div>
           <div className="img-wrap">
             <img src={`${process.env.PUBLIC_URL}/images/main/about_bg.jpg`} alt="brand about" />
