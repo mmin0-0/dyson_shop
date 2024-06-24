@@ -8,6 +8,9 @@
     }
     .wrap-inner{
       > div{&:not(.visual){margin-top: 12rem;}}
+      .info-txt{
+        p{line-height: 1.4;}
+      }
       .tit-wrap{
         // margin-bottom: 2.4rem;
         &.type01{
@@ -35,9 +38,6 @@
           }
           + .info-txt{margin-top: 2rem;}
           + .more{margin-top: 1.2rem;}
-        }
-        .info-txt{
-          p{line-height: 1.4;}
         }
         .more{
           font-weight: 500;
@@ -69,12 +69,25 @@
     .about{
       gap: 4rem;
       @include flexbox(row, flex-start, flex-start);
+      @include notebook{
+        flex-direction: column;
+      }
+      .info-txt{
+        &.d-pc{@include notebook{display: none;}}
+        &.d-mb{@include notebook{display: block;}}
+      }
       .tit-wrap{
         width: 40%;
         opacity: 0;
         transform: translateX(-8rem);
+        @include notebook{width: 100%;}
       }
-      .img-wrap{opacity: 0;}
+      .cont-wrap{
+        opacity: 0;
+        .img-wrap{
+          + .info-txt{margin-top: 2rem;}
+        }
+      }
     }
     .pd-wrap{
       display: flex;

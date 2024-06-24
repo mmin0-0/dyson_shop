@@ -26,7 +26,7 @@ function Home(){
           markers: true
         }
       });
-      gsap.to('.about .img-wrap', {
+      gsap.to('.about .cont-wrap', {
         opacity: 1,
         delay: 1,
         scrollTrigger: {
@@ -36,15 +36,15 @@ function Home(){
         }
       });
 
-      gsap.to('.box2', {
-        y: 100,
-        scrollTrigger: {
-          trigger: '.box2',
-          start: 'top 30%',
-          end: 'bottom',
-          // markers: true
-        }
-      });
+      // gsap.to('.box2', {
+      //   y: 100,
+      //   scrollTrigger: {
+      //     trigger: '.box2',
+      //     start: 'top 30%',
+      //     end: 'bottom',
+      //     // markers: true
+      //   }
+      // });
     }, boxRef);
 
     return ()=> ctx.revert();
@@ -73,14 +73,19 @@ function Home(){
               <span>About us</span>
               <strong>More, <br className="d-pc" />With less</strong>
             </div>
-            <div className="info-txt">
+            <div className="info-txt d-pc">
               <p>
                 Dyson machines have structural integrity. They are strong and they are logth. A knowledge of geometry and pioneering materials means that Dyson engineers can do more with less. Less materials, less weight, less waste.
               </p>
             </div>
           </div>
-          <div className="img-wrap">
-            <img src={`${process.env.PUBLIC_URL}/images/main/about_bg.jpg`} alt="brand about" />
+          <div className="cont-wrap">
+            <div className="img-wrap">
+              <img src={`${process.env.PUBLIC_URL}/images/main/about_bg.jpg`} alt="brand about" />
+            </div>
+            <div className="info-txt d-mb">
+              <p>Dyson machines have structural integrity. They are strong and they are logth. A knowledge of geometry and pioneering materials means that Dyson engineers can do more with less. Less materials, less weight, less waste.</p>
+            </div>
           </div>
         </div>
         <div className="pd-wrap con-box">
