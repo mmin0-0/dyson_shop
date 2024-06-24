@@ -1,18 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+// utils
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
+import gsap from 'gsap';
+// local file
 import pdList from '../data.js';
 
 function Home(){
   const [shoes] = useState(pdList);
+  const boxRef = useRef(null);
+  useEffect(()=>{
+    let ctx = gsap.context(()=>{
+      gsap.to('.box1', {
+        x: 100,
+        scrollTrigger: {
+          trigger: '.box1',
+          start: 'top 30%',
+          end: 'bottom',
+          markers: true
+        }
+      });
+
+      gsap.to('.box2', {
+        y: 100,
+        scrollTrigger: {
+          trigger: '.box2',
+          start: 'top 30%',
+          end: 'bottom',
+          markers: true
+        }
+      });
+    }, boxRef);
+
+    return ()=> ctx.revert();
+  }, []);
 
   return (
-    <div id="wrap" className="home">
+    <div id="wrap" className="home" ref={boxRef}>
       <div className="wrap-inner">
         <div className="visual">
           <Swiper 
@@ -71,6 +100,8 @@ function Home(){
             <button className="btn-next">다음</button>
           </div>
         </div>
+        <div className="box box1">test</div>
+        <div className="box box2">test</div>
         <section></section>
       </div>
     </div>

@@ -59,11 +59,12 @@ body{
   font-size: 1.6rem;
   line-height: 1;
   letter-spacing: -0.02em;
-  color: $black;
+  color: $white;
+  background: $black;
   *{
     font-family: 'Pretendard', 'Noto Sans KR';
     font-weight: 400;
-    color: $black;
+    color: $white;
   }
 }
 

@@ -1,6 +1,11 @@
 #wrap{
   &.home{
     section{height: 1000px;}
+    .box{
+      width: 300px;
+      height: 300px;
+      background: $gray02;
+    }
     .wrap-inner{
       > div{&:not(.visual){margin-top: 8rem;}}
       .tit-wrap{
@@ -30,7 +35,7 @@
             margin-left: .6rem;
             display: inline-block;
             vertical-align: middle;
-            @include background(icon, arrow02_icon, png, no-repeat, contain, center, center);
+            @include background(icon, arrow02_icon, svg, no-repeat, contain, center, center);
             animation: arrow .8s alternate infinite both;
           }
         }
@@ -40,7 +45,7 @@
       width: 100%;
       height: calc(100vh - 16rem);
       position: relative;
-      background: #eee;
+      background: #333;
       @include flexbox(row, center, center);
       @include notebook{height: calc(100vh - 6rem);}
       .visual-swiper{
@@ -150,6 +155,7 @@
               }
               &:after {
                 content: 'Go';
+                color: $black;
                 width: 100%;
                 height: 100%;
                 position: absolute;
