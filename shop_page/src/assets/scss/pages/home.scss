@@ -247,7 +247,10 @@
         .swiper-slide{
           position: relative;
           &-active{
-            .img-wrap{animation: fade 1.5s both alternate;}
+            .img-wrap{
+              animation: fade 1.5s both alternate;
+              @include tablet{animation: fade_mb 1.5s both alternate;}
+            }
             .info-wrap{
               .num{animation: titAni 1s .8s both alternate;}
               .info-txt{
@@ -272,6 +275,7 @@
             .info-wrap{
               right: auto;
               left: 4rem;
+              @include tablet{left: 2rem;}
             }
           }
           .img-wrap{
@@ -291,6 +295,12 @@
             transform: translateY(-50%);
             gap: 2rem;
             @include flexbox(row, flex-start, flex-start);
+            @include tablet{
+              max-width: calc(100% - 4rem);
+              right: auto;
+              left: 2rem;
+              flex-direction: column;
+            }
             *{font-family: $mont;}
             .num{
               font-weight: bold;
@@ -308,8 +318,12 @@
                   &:nth-child(2){
                     font-weight: 500;
                     margin-left: 4rem;
+                    @include tablet{margin-left: 0;}
                   }
-                  &:last-child{margin-left: 8rem;}
+                  &:last-child{
+                    margin-left: 8rem;
+                    @include tablet{margin-left: 0;}
+                  }
                 }
               }
               p{
