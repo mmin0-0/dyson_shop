@@ -160,6 +160,10 @@ function Home(){
             </div>
           </Swiper>
         </div>
+        {/* 최근본상품 */}
+        <div className="latest-pd">
+
+        </div>
         <section></section>
       </div>
     </div>
