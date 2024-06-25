@@ -136,9 +136,13 @@ function Home(){
         </div>
         <div className="pd-vacuum">
           <Swiper 
-            cssMode={true}
-            navigation={true}
+            navigation={{
+              nextEl: '.pd-vacuum .btn-next',
+              prevEl: '.pd-vacuum .btn-prev'
+            }}
+            direction={'vertical'}
             modules={[Navigation]}
+            // loop={true}
             className="vacuum-swiper"
           >
             {
@@ -150,6 +154,10 @@ function Home(){
                 )
               })
             }
+            <div className="swiper-controls">
+              <button className="btn-prev">이전</button>
+              <button className="btn-next">다음</button>
+            </div>
           </Swiper>
         </div>
         <section></section>
