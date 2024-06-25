@@ -33,23 +33,25 @@
 }
 
 @keyframes pulse-ring {
-  0% {
-    transform: scale(.33);
-  }
-  80%, 100% {
-    opacity: 0;
-  }
+  0% {transform: scale(.33);}
+  80%, 100% {opacity: 0;}
 }
 
 @keyframes pulse-dot {
-  0% {
-    transform: scale(.8);
+  0% {transform: scale(.8);}
+  50% {transform: scale(1);}
+  100% {transform: scale(.8);}
+}
+
+@keyframes titAni {
+  0%{
+    transform: translateY(1.6rem);
+    opacity: 0;
   }
-  50% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(.8);
+  100%{
+    transform: translateY(0);
+    opacity: 1;
+    animation-timing-function: cubic-bezier(1,0,0.8,1);
   }
 }
 
@@ -126,7 +128,11 @@ button{
 }
 
 .img-wrap{
-  img{max-width: 100%;}
+  img{
+    max-width: 100%;
+    // display: block;
+    // margin: 0 auto;
+  }
 }
 
 #wrapper{

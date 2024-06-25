@@ -10,9 +10,12 @@ import 'swiper/css/autoplay';
 import gsap from 'gsap';
 // local file
 import pdList from '../data.js';
+import vacuumInfo from '../mainData.js'
 
 function Home(){
   const [shoes] = useState(pdList);
+  const [vacuum] = useState(vacuumInfo);
+
   const boxRef = useRef(null);
   useEffect(()=>{
     let ctx = gsap.context(()=>{
@@ -71,7 +74,7 @@ function Home(){
           <div className="tit-wrap type01">
             <div className="tit-info">
               <span>About us</span>
-              <strong>More, <br className="d-pc" />With less</strong>
+              <strong>More, <br className="d-pc" /><span>With less</span></strong>
             </div>
             <div className="info-txt d-pc">
               <p>
@@ -131,6 +134,24 @@ function Home(){
             <button className="btn-next">다음</button>
           </div>
         </div>
+        <div className="pd-vacuum">
+          <Swiper 
+            cssMode={true}
+            navigation={true}
+            modules={[Navigation]}
+            className="vacuum-swiper"
+          >
+            {
+              vacuum.map((a, i)=>{
+                return (
+                  <SwiperSlide>
+                    <Vacuum vacuum={vacuum[i]} i={i}/>
+                  </SwiperSlide>
+                )
+              })
+            }
+          </Swiper>
+        </div>
         <section></section>
       </div>
     </div>
@@ -151,6 +172,30 @@ function Product(props){
         </div>
       </a>
     </div>
+  )
+}
+
+function Vacuum(props){
+  return (
+    <>
+      <div className="img-wrap">
+        <img src={`${process.env.PUBLIC_URL}/images/main/pd_item0${props.i + 1}_img.png`} alt="vacuum product" />
+      </div>
+      <div className="info-wrap">
+        <div className="num">0{props.i + 1}</div>
+        <div className="info-txt">
+          <div className="tit-wrap">
+            <strong>{props.vacuum.title[0]}</strong>
+            <strong>{props.vacuum.title[1]}</strong>
+            <strong>{props.vacuum.title[2]}</strong>
+          </div>
+          <p>
+            {props.vacuum.content}
+            <span>{props.vacuum.note}</span>
+          </p>
+        </div>
+    </div>
+    </>
   )
 }
 
