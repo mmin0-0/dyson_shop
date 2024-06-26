@@ -14,7 +14,7 @@ function App() {
 
   return (
     <div className="App" id="wrapper">
-      <Header />
+      {/* <Header /> */}
       <Routes>
         <Route path="/" element={<Home shoes={shoes} />} />
         <Route path="*" element={<div>없는페이지</div>} />

@@ -367,9 +367,24 @@
         }
       }
     }
-    .fix-sec{
-      min-height: 41.5rem;
-      background: #eee;
+    .history{
+      background: $white;
+      *{color: $black;}
+      .fix-cont{
+        .tit-wrap{
+          font-size: 6rem;
+        }
+      }
+      .prd-wrap{
+        .prd-list{
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          li{
+            height: 300px;
+            border: 1px solid #000;
+          }
+        }
+      }
     }
   }
 }

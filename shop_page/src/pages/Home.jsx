@@ -15,6 +15,19 @@ import vacuumInfo from '../mainData.js'
 function Home(){
   const [shoes] = useState(pdList);
   const [vacuum] = useState(vacuumInfo);
+  const [watchItem, setWatch] = useState([]);
+  useEffect(()=>{
+    let watchArr = JSON.parse(localStorage.getItem('watched'));
+    if(watchArr){setWatch(watchArr);}
+  }, []);
+  useEffect(()=>{
+    if(watchItem.length > 3){
+      let copy = [...watchItem];
+      copy.shift();
+      setWatch(copy);
+      localStorage.setItem('watched', JSON.stringify(copy));
+    }
+  }, []);
 
   const boxRef = useRef(null);
   useEffect(()=>{
@@ -26,7 +39,7 @@ function Home(){
           trigger: '.about',
           start: 'top center 40px',
           end: 'bottom',
-          markers: true
+          // markers: true
         }
       });
       gsap.to('.about .cont-wrap', {
@@ -38,27 +51,20 @@ function Home(){
           end: 'bottom',
         }
       });
+
+      gsap.to('.history', {
+        scrollTrigger: {
+          trigger: '.history .fix-cont',
+          start: 'top top',
+          end: '+=500',
+          pin: true,
+          pinSpacing: false,
+          markers: true
+        }
+      });
     }, boxRef);
 
     return ()=> ctx.revert();
-  }, []);
-
-  let [watchItem, setWatch] = useState([]);
-  useEffect(()=>{
-    let watchArr = JSON.parse(localStorage.getItem('watched'));
-
-    if(watchArr){
-      setWatch(watchArr);
-    }
-
-  }, []);
-  useEffect(()=>{
-    if(watchItem.length > 3){
-      let copy = [...watchItem];
-      copy.shift();
-      setWatch(copy);
-      localStorage.setItem('watched', JSON.stringify(copy));
-    }
   }, []);
 
   return (
@@ -168,7 +174,23 @@ function Home(){
             </div>
           </Swiper>
         </div>
-        {/* 최근본상품 */}
+        <div className="history">
+          <div className="fix-cont">
+            <div className="tit-wrap">
+              <strong>history title</strong>
+            </div>
+          </div>
+          <div className="con-wrap">
+            <div className="prd-wrap">
+              <ul className="prd-list">
+                <li>콘텐츠</li>
+                <li>콘텐츠</li>
+                <li>콘텐츠</li>
+                <li>콘텐츠</li>
+              </ul>
+            </div>
+          </div>
+        </div>
         <div className="latest-pd">
           <strong>최근본상품</strong>
           <div>
