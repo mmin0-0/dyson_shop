@@ -177,13 +177,21 @@ function Home(){
         <div className="history">
           <div className="fix-cont">
             <div className="tit-wrap">
-              <strong>history title</strong>
+              <span className="tit-txt">MUST</span>
+              <span className="icon-box">
+                <img src={`${process.env.PUBLIC_URL}/images/icon/more_icon.png`} alt="dyson" />
+              </span>
+              <span className="tit-txt">HAVE</span>
             </div>
           </div>
           <div className="con-wrap">
-            <div className="prd-wrap">
+            <div className="prd-wrap con-box">
               <ul className="prd-list">
-                <li>콘텐츠</li>
+                <li>
+                  <div className="img-wrap">
+                    <img src="" alt="" />
+                  </div>
+                </li>
                 <li>콘텐츠</li>
                 <li>콘텐츠</li>
                 <li>콘텐츠</li>

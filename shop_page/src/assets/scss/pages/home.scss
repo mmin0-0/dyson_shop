@@ -369,19 +369,51 @@
     }
     .history{
       background: $white;
+      // margin-top: 20rem !important;
       *{color: $black;}
       .fix-cont{
         .tit-wrap{
           font-size: 6rem;
+          @include flexbox(row, center, flex-end);
+          @include tablet{
+            flex-wrap: wrap;
+            max-width: 55rem;
+            margin: 0 auto;
+          }
+          span{
+            &.tit-txt{
+              font-size: clamp(20rem,17vw,32rem);
+              font-weight: 500;
+              letter-spacing: -0.04em;
+              @include tablet{
+                display: contents;
+                line-height: 1;
+                font-size: 8.5rem;
+                letter-spacing: -0.03em;
+              }
+            }
+            &.icon-box{
+              margin-left: -3rem;
+              margin-right: 5rem;
+              width: 4vw;
+              @include tablet{
+                display: inline-block;
+                width: 5.75rem;
+                margin-left: 1rem;
+              }
+            }
+          }
         }
       }
       .prd-wrap{
+        // padding: 40% 0 33.4rem;
         .prd-list{
           display: grid;
           grid-template-columns: 1fr 1fr;
           li{
             height: 300px;
             border: 1px solid #000;
+            &:nth-child(odd){margin-top: 16rem;}
           }
         }
       }
