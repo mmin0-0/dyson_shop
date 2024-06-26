@@ -148,8 +148,11 @@ button{
 #wrapper{
   #wrap{
     margin-top: 20rem;
-    &.home{margin-top: 0;}
     @include notebook{margin-top: 10rem;}
+    &.home{
+      margin-top: 0;
+      @include notebook{margin-top: 6rem;}
+    }
     .sub-visual{
       width: 100%;
       height: 30rem;

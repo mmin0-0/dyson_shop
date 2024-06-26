@@ -5,13 +5,14 @@ header{
   top: 0;
   left: 0;
   z-index: 100;
-  background: linear-gradient(rgba($black, 1) 80%,rgba($black, 0) 100%);
+  // background: linear-gradient(rgba($black, 1) 80%,rgba($black, 0) 100%);
+  background: $black;
   transition: height .25s;
   @include notebook{height: 6rem;}
   &:hover{background: $gray03;}
   &.header-fixed{
     height: 6rem;
-    background: $black;
+    // background: $black;
     border-bottom: 1px solid $white;
     + #wrap{margin-top: 6rem !important;}
     .hd-inner-wrap{
@@ -29,10 +30,7 @@ header{
       .utility-wrap{right: 0;}
     }
   }
-  @include notebook{
-    height: 6rem;
-    background: $gray03;
-  }
+  @include notebook{height: 6rem;}
   .hd-inner-wrap{
     position: relative;
     min-height: 6rem;
