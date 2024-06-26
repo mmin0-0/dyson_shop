@@ -10,6 +10,36 @@ function PdDetail(props){
   const 현재상품 = props.shoes.find(function(e){
     return e.id == id
   });
+  // 1. 사용자가 접속하는 상품 디테일 페이지정보 가져오기(id, title, price 등)
+  // 2. 로컬스트리지에 저장(중복제거, 3개이하)
+  // 3. 홈에서 watched내용으로 최근본 상품
+
+  let [watchItem, setWatch] = useState([]);
+  useEffect(()=>{
+    if(!현재상품) return;
+
+    let watchArr = localStorage.getItem('watched');
+    if(watchArr == null){
+      watchArr = [];
+    }else{
+      watchArr = JSON.parse(watchArr);
+    }
+    watchArr.push({
+      id: 현재상품.id,
+      title: 현재상품.title,
+      content: 현재상품.content,
+      price: 현재상품.price,
+    });
+
+    watchArr = Array.from(new Set(watchArr.map(item => item.id)))
+    .map(id => watchArr.find(item => item.id === id));
+    if(watchArr.length > 3){
+      watchArr = watchArr.slice(watchArr.length - 3);
+    }
+
+    localStorage.setItem('watched', JSON.stringify(watchArr));
+    setWatch(watchItem);
+  }, []);
 
   return(
     <div id="wrap">

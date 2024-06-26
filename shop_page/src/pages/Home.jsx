@@ -38,19 +38,27 @@ function Home(){
           end: 'bottom',
         }
       });
-
-      // gsap.to('.box2', {
-      //   y: 100,
-      //   scrollTrigger: {
-      //     trigger: '.box2',
-      //     start: 'top 30%',
-      //     end: 'bottom',
-      //     // markers: true
-      //   }
-      // });
     }, boxRef);
 
     return ()=> ctx.revert();
+  }, []);
+
+  let [watchItem, setWatch] = useState([]);
+  useEffect(()=>{
+    let watchArr = JSON.parse(localStorage.getItem('watched'));
+
+    if(watchArr){
+      setWatch(watchArr);
+    }
+
+  }, []);
+  useEffect(()=>{
+    if(watchItem.length > 3){
+      let copy = [...watchItem];
+      copy.shift();
+      setWatch(copy);
+      localStorage.setItem('watched', JSON.stringify(copy));
+    }
   }, []);
 
   return (
@@ -162,7 +170,20 @@ function Home(){
         </div>
         {/* 최근본상품 */}
         <div className="latest-pd">
-
+          <strong>최근본상품</strong>
+          <div>
+          {
+            watchItem && watchItem.map((a, i) => {
+              return (
+                <div key={i} className="pd-item">
+                  <p>{a.title}</p>
+                  <p>{a.price}</p>
+                  <p>{a.content}</p>
+                </div>
+              )
+            })
+          }
+          </div>
         </div>
         <section></section>
       </div>
