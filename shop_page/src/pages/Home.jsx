@@ -195,7 +195,8 @@ function Home(){
                         <div className="prd-item">
                           <a href="javascript:void(0)">
                             <div className="img-wrap">
-                              <img src={`${process.env.PUBLIC_URL}/images/main/must0${i+1}_img.jpg`} alt="product img" />
+                              <img src={`${process.env.PUBLIC_URL}/images/main/must0${i+1}_img.jpg`} alt="product img" className="default" />
+                              <img src={`${process.env.PUBLIC_URL}/images/main/must0${i+1}_on_img.jpg`} alt="product img" className="hover" />
                             </div>
                             <div className="txt-wrap">
                               <p>{a.title}</p>

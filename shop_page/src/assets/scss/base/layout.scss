@@ -137,12 +137,10 @@ button{
     width: 11rem;
     height: 3.4rem;
     padding: 0;
-    margin: 8rem auto;
-    display: block;
     border-radius: .4rem;
     @include flexbox(row, center, center);
     &:hover{
-      background: inherit;
+      background: $white;
       .btn-txt{
         &.default{
           position: absolute;
