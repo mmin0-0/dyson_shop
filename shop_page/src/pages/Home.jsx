@@ -57,10 +57,10 @@ function Home(){
         scrollTrigger: {
           trigger: '.pr-have .fix-cont',
           start: 'top top',
-          end: '+=500',
+          end: '+=100%',
           pin: true,
           pinSpacing: false,
-          // markers: true
+          markers: true
         }
       });
     }, boxRef);
@@ -209,6 +209,30 @@ function Home(){
                 }
               </ul>
             </div>
+            <button type="button" className="btn-more">
+              <div className="btn-txt default">
+                <span>V</span>
+                <span>I</span>
+                <span>E</span>
+                <span>W</span>
+                <span className="empty"></span>
+                <span>M</span>
+                <span>O</span>
+                <span>R</span>
+                <span>E</span>
+              </div>
+              <div className="btn-txt hover">
+                <span>V</span>
+                <span>I</span>
+                <span>E</span>
+                <span>W</span>
+                <span className="empty"></span>
+                <span>M</span>
+                <span>O</span>
+                <span>R</span>
+                <span>E</span>
+              </div>
+            </button>
           </div>
         </div>
         <div className="latest-pd">
