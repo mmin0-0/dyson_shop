@@ -57,7 +57,7 @@ function Home(){
         scrollTrigger: {
           trigger: '.pr-have .fix-cont',
           start: 'top top',
-          end: '+=100%',
+          end: '+=1000',
           pin: true,
           pinSpacing: false,
           markers: true

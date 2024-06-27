@@ -369,12 +369,11 @@
       }
     }
     .pr-have{
-      // background: $white;
-      // margin-top: 20rem !important;
-      // *{color: $black;}
+      overflow-y: hidden;
       .fix-cont{
         .tit-wrap{
           font-size: 6rem;
+          padding-top: 8rem;
           @include flexbox(row, center, flex-end);
           @include tablet{
             flex-wrap: wrap;
@@ -431,6 +430,8 @@
               @include tablet{margin: 0;}
             }
             .prd-item{
+              width: 90%;
+              margin: 0 auto;
               border: 1px solid $table-bd;
               > a{
                 width: 100%;
