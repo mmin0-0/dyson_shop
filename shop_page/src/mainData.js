@@ -18,4 +18,21 @@ const vacuumInfo = [
   }
 ];
 
+const haveCont = [
+  {
+    title: 'Headphones',
+    content: '액티브 노이즈 캔슬링과 패시브 노이즈 캔슬링의 차이점'
+  },{
+    title: 'Dryer',
+    content: '노즐과 고속의 정교한 바람으로 원하는 스타일링.'
+  },{
+    title: 'Cleaner',
+    content: '청소가 편리한 가벼운 무게와 다양한 기능'
+  },{
+    title: 'Air purifier',
+    content: '감지하고, 제거하고, 분사합니다.'
+  }
+]
+
+
 export default vacuumInfo

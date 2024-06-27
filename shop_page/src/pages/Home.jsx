@@ -188,8 +188,16 @@ function Home(){
             <div className="prd-wrap con-box">
               <ul className="prd-list">
                 <li>
-                  <div className="img-wrap">
-                    <img src="" alt="" />
+                  <div className="prd-item">
+                    <a href="javascript:void(0)">
+                      <div className="img-wrap">
+                        <img src="" alt="product img" />
+                      </div>
+                      <div className="txt-wrap">
+                        <p>Lorem ipsum</p>
+                        <strong>Lorem ipsum dolor sit amet.</strong>
+                      </div>
+                    </a>
                   </div>
                 </li>
                 <li>콘텐츠</li>
