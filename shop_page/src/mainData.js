@@ -35,4 +35,4 @@ const haveCont = [
 ]
 
 
-export default vacuumInfo
+export { vacuumInfo, haveCont }

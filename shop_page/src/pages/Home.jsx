@@ -10,7 +10,7 @@ import 'swiper/css/autoplay';
 import gsap from 'gsap';
 // local file
 import pdList from '../data.js';
-import vacuumInfo from '../mainData.js'
+import { vacuumInfo, haveCont } from '../mainData.js'
 
 function Home(){
   const [shoes] = useState(pdList);
@@ -187,22 +187,25 @@ function Home(){
           <div className="con-wrap">
             <div className="prd-wrap con-box">
               <ul className="prd-list">
-                <li>
-                  <div className="prd-item">
-                    <a href="javascript:void(0)">
-                      <div className="img-wrap">
-                        <img src="" alt="product img" />
-                      </div>
-                      <div className="txt-wrap">
-                        <p>Lorem ipsum</p>
-                        <strong>Lorem ipsum dolor sit amet.</strong>
-                      </div>
-                    </a>
-                  </div>
-                </li>
-                <li>콘텐츠</li>
-                <li>콘텐츠</li>
-                <li>콘텐츠</li>
+                {
+                  haveCont.map((a, i)=>{
+                    return (
+                      <li>
+                        <div className="prd-item">
+                          <a href="javascript:void(0)">
+                            <div className="img-wrap">
+                              <img src={`${process.env.PUBLIC_URL}/images/main/must0${i+1}_img.jpg`} alt="product img" />
+                            </div>
+                            <div className="txt-wrap">
+                              <p>{a.title}</p>
+                              <strong>{a.content}</strong>
+                            </div>
+                          </a>
+                        </div>
+                      </li>
+                    )
+                  })
+                }
               </ul>
             </div>
           </div>
