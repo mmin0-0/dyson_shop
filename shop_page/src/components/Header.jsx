@@ -96,7 +96,7 @@ function Header(){
           <a href="javascript:void(0)" className="ham-btn" onClick={toggleMenu}>메뉴열기</a>
           <div className="logo">
               <a href="javascript:void(0)" onClick={goHome}>
-                <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`}   alt="감탄상회" />
+                <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" />
               </a>
           </div>
           <div className="utility-wrap">

@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import Header from './components/Header.jsx';
+import Footer from './components/Footer.jsx';
 import Home from './pages/Home.jsx';
 import Cart from './pages/Cart.jsx';
 import Detail from './pages/Detail.jsx';
@@ -22,6 +23,7 @@ function App() {
         <Route path="/detail" element={<Detail shoes={shoes} />} />
         <Route path="/detail/:id" element={<PdDetail shoes={shoes} />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
