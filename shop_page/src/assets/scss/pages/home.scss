@@ -367,7 +367,7 @@
         }
       }
     }
-    .history{
+    .pr-have{
       background: $white;
       // margin-top: 20rem !important;
       *{color: $black;}
@@ -425,14 +425,21 @@
               > a{width: 100%}
               .img-wrap{
                 height: 32rem;
-                background: #eee;
+                img{
+                  width: 100%;
+                  height: 100%;
+                  object-position: center;
+                  object-fit: cover;
+                }
               }
               .txt-wrap{
                 background: $white;
                 padding: 4rem 2.4rem 2.4rem;
                 p{font-weight: 500;}
                 strong{
-                  font-weight: 600;
+                  font-weight: bold;
+                  word-break: keep-all;
+                  line-height: 1.4;
                   display: block;
                   margin-top: 1.6rem;
                 }

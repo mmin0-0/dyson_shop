@@ -32,6 +32,7 @@ function Home(){
   const boxRef = useRef(null);
   useEffect(()=>{
     let ctx = gsap.context(()=>{
+      // about
       gsap.to('.about .tit-wrap', {
         x: 0,
         opacity: 1,
@@ -51,10 +52,10 @@ function Home(){
           end: 'bottom',
         }
       });
-
-      gsap.to('.history', {
+      // fix-cont
+      gsap.to('.pr-have', {
         scrollTrigger: {
-          trigger: '.history .fix-cont',
+          trigger: '.pr-have .fix-cont',
           start: 'top top',
           end: '+=500',
           pin: true,
@@ -174,7 +175,7 @@ function Home(){
             </div>
           </Swiper>
         </div>
-        <div className="history">
+        <div className="pr-have">
           <div className="fix-cont">
             <div className="tit-wrap">
               <span className="tit-txt">MUST</span>
