@@ -60,11 +60,11 @@ function Home(){
           end: '+=500',
           pin: true,
           pinSpacing: false,
-          markers: true
+          // markers: true
         }
       });
     }, boxRef);
-
+    
     return ()=> ctx.revert();
   }, []);
 
@@ -191,7 +191,7 @@ function Home(){
                 {
                   haveCont.map((a, i)=>{
                     return (
-                      <li>
+                      <li key={i}>
                         <div className="prd-item">
                           <a href="javascript:void(0)">
                             <div className="img-wrap">
