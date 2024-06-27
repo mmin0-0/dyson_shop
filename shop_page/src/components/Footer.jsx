@@ -28,12 +28,11 @@ function Footer(){
               <a href="javascript:void(0)"><img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" /></a>
             </div>
             <div className="info-wrap">
-
-            다이슨코리아 유한회사 대표이사: ROBERT JOHN JULIAN WEBSTER(로버트존줄리안웹스터)
-서울특별시 강남구 테헤란로 142, 아크플레이스 17층 .06236
-사업자등록번호 811-81-00675 통신판매번호 2017-서울강남-04029 사업자정보확인
-고객센터: 080-300-4253(수신자 부담) /1588-4253 (운영시간: 월-금 오전 9시-오후 6시) 이메일: help@kr.dyson.com
-호스팅 제공자 아마존웹서비스
+              <p>다이슨코리아 유한회사 대표이사: ROBERT JOHN JULIAN WEBSTER(로버트존줄리안웹스터)</p>
+              <p>서울특별시 강남구 테헤란로 142, 아크플레이스 17층 .06236</p>
+              <p>사업자등록번호 811-81-00675 통신판매번호 2017-서울강남-04029 사업자정보확인</p>
+              <p>고객센터: <a href="tel: 080-300-4253">080-300-4253</a> (수신자 부담) / <a href="tel: 1588-4253">1588-4253</a> (운영시간: 월-금 오전 9시-오후 6시) </p>
+              <p>이메일: <a href="mailto: help@kr.dyson.com">help@kr.dyson.com</a></p>
             </div>
           </div>
         </div>
