@@ -89,6 +89,7 @@ function Home(){
     <div id="wrap" className="home" ref={boxRef}>
       <div className="wrap-inner">
         <div className="visual">
+          {/* 스와이퍼 제거하고 이미지넣기(+ 모션(줌아웃효과)) */}
           <Swiper 
             cssMode={true}
             navigation={true}
