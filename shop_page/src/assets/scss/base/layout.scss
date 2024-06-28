@@ -281,6 +281,7 @@ button{
   @include flexbox(row, flex-start, center);
   input[type="text"]{
     padding: 1rem 1.4rem;
+    &:focus{border-color: $subColor;}
   }
   &.check{
     min-height: 2rem;

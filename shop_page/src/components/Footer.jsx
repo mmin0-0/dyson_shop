@@ -26,6 +26,13 @@ function Footer(){
               <a href="javascript:void(0)"><img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" /></a>
             </div>
             <div className="info-wrap">
+              <div div className="legal-link">
+                <a href="javascript:void(0)">웹사이트 이용약관</a>
+                <a href="javascript:void(0)">웹사이트 판매약관</a>
+                <a href="javascript:void(0)">개인정보처리방침</a>
+                <a href="javascript:void(0)">다이슨 글로벌 개인정보처리방침</a>
+                <a href="javascript:void(0)">쿠키 취급 방침</a>
+              </div>
               <p>다이슨코리아 유한회사 대표이사: ROBERT JOHN JULIAN WEBSTER(로버트존줄리안웹스터)</p>
               <p>서울특별시 강남구 테헤란로 142, 아크플레이스 17층 .06236</p>
               <p>사업자등록번호 811-81-00675 통신판매번호 2017-서울강남-04029 사업자정보확인</p>
@@ -33,6 +40,7 @@ function Footer(){
               <p>이메일: <a href="mailto: help@kr.dyson.com">help@kr.dyson.com</a></p>
             </div>
           </div>
+          <div className="copyright">COPYRIGHT © 2024. DYSON LTD. ALL RIGHTS RESERVED.</div>
         </div>
       </footer>
     </>

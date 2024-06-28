@@ -7,9 +7,12 @@ footer{
       max-width: 50rem;
       margin: 0 auto;
       text-align: center;
-      border: 1px solid red;
       .tit-wrap{
-        strong{font-weight: 600;}
+        strong{
+          font-weight: 600;
+          line-height: 1.4;
+          word-break: keep-all;
+        }
       }
       .cont-wrap{
         margin-top: 2rem;
@@ -49,31 +52,62 @@ footer{
     }
     .menu-wrap{
       margin-top: 3.2rem;
+      padding: 2rem 0;
       gap: 4rem;
+      border-top: 1px solid rgba($white, .3);
+      border-bottom: 1px solid rgba($white, .3);
+      flex-wrap: wrap;
       @include flexbox(row, center, center);
+      @include tablet{
+        column-gap: 0;
+        row-gap: 2rem;
+      }
+      *{
+        color: rgba($white, .5);
+        font-size: 1.4rem;
+      }
       > a{
         text-transform: uppercase;
-        color: rgba($white, .5);
+        line-height: 1.4;
+        &:hover{color: $white;}
+        @include tablet{width: 50%;}
       }
     }
     .ft-info{
-      margin-top: 6rem;
+      margin-top: 4.2rem;
+      *{
+        color: rgba($white, .3);
+        font-size: 1.4rem;
+      }
       .logo{
         width: 10rem;
         a,img{width: 100%;}
       }
       .info-wrap{
         margin-top: 1rem;
-        p{
-          font-size: 1.4rem;
-          line-height: 1.4;
-          color: rgba($white, .5);
-          a{
-            color: rgba($white, .5);
-            font-weight: 600;
+        .legal-link{
+          margin-bottom: 1.4rem;
+          flex-wrap: wrap;
+          row-gap: 1rem;
+          @include flexbox(row, flex-start, center);
+          > a{
+            padding: 0 1.2rem;
+            &:first-child{padding-left: 0;}
+            &:not(:first-child){border-left: 1px solid rgba($white, .3);}
+            &:hover{
+              color: $white;
+              text-decoration: underline;
+            }
           }
         }
+        p{line-height: 1.4;}
       }
+    }
+    .copyright{
+      margin-top: 4rem;
+      text-align: center;
+      font-size: 1.4rem;
+      color: rgba($white, .3);
     }
   }
 }
