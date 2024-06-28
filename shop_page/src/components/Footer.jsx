@@ -2,7 +2,7 @@ function Footer(){
   return (
     <>
       <footer>
-        <div className="ft-inner-wrap con-box">
+        <div className="ft-inner-wrap">
           <div className="news-letter">
             <div className="tit-wrap">
               <strong>최신 소식과 다양한 혜택을 받아보고 싶으신가요?</strong>
@@ -21,7 +21,7 @@ function Footer(){
             <a href="javascript:void(0)">customer support</a>
             <a href="javascript:void(0)">company information</a>
           </div>
-          <div className="ft-info">
+          <div className="ft-info con-box">
             <div className="logo">
               <a href="javascript:void(0)"><img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" /></a>
             </div>

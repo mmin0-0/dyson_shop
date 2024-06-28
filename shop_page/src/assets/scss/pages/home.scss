@@ -482,5 +482,17 @@
         border-color: $white;
       }
     }
+    .pr-txt{
+      margin-top: 0 !important;
+      padding-top: 18rem;
+      overflow-x: hidden;
+      .txt-info{
+        &.txt01{transform: translateX(80%);}
+        &.txt02{
+          transform: translateX(-80%);
+          margin-top: 4rem;
+        }
+      }
+    }
   }
 }

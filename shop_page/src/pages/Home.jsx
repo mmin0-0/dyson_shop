@@ -60,7 +60,27 @@ function Home(){
           end: '+=1000',
           pin: true,
           pinSpacing: false,
+          // markers: true
+        }
+      });
+      // pr-txt
+      gsap.to('.pr-txt .txt01', {
+        x: 0,
+        scrollTrigger: {
+          trigger: '.pr-txt',
+          start: 'top 100%',
+          end: 'bottom top',
+          scrub: 1,
           markers: true
+        }
+      });
+      gsap.to('.pr-txt .txt02', {
+        x: '50%',
+        scrollTrigger: {
+          trigger: '.pr-txt',
+          start: 'top 100%%',
+          end: 'bottom top',
+          scrub: 1
         }
       });
     }, boxRef);
@@ -234,6 +254,14 @@ function Home(){
                 <span>E</span>
               </div>
             </button>
+          </div>
+        </div>
+        <div className="pr-txt">
+          <div className="txt-info txt01">
+            <img src={`${process.env.PUBLIC_URL}/images/main/tit01_img.png`} alt="dyson's" />
+          </div>
+          <div className="txt-info txt02">
+            <img src={`${process.env.PUBLIC_URL}/images/main/tit02_img.png`} alt="sustainability" />
           </div>
         </div>
         <div className="latest-pd">

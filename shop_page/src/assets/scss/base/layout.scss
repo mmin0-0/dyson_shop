@@ -117,22 +117,41 @@ body{
 }
 button{
   // min-width: 6rem;
+  position: relative;
+  overflow: hidden;
   padding: .8rem 1.2rem;
   font-size: 1.4rem;
   font-weight: 500;
   transition: all .25s;
   border: 1px solid $table-bd;
+  color: $black;
   background: $white;
   border-radius: 2rem;
   &:hover{
     background: $subColor;
     color: $white;
   }
+  // &::before{
+  //   content: '';
+  //   position: absolute;
+  //   background: rgba($black, .15);
+  //   width: 10%;
+  //   height: 25%;
+  //   border-radius: 50%;
+  //   z-index: 1;
+  //   top: 35%;
+  //   left: 45%;
+  //   transform: scale(0);
+  //   transition: transform .25s;
+  // }
   &.type01{
     background: $gray03;
     color: $white;
   }
-  &.type02{border-color: $subColor;}
+  &.type02{
+    border-color: $subColor;
+    color: $white;
+  }
   &.btn-more{
     width: 11rem;
     height: 3.4rem;
