@@ -39,8 +39,7 @@ function Home(){
         scrollTrigger: {
           trigger: '.about',
           start: 'top center 40px',
-          end: 'bottom',
-          // markers: true
+          end: 'bottom'
         }
       });
       gsap.to('.about .cont-wrap', {
@@ -59,8 +58,7 @@ function Home(){
           start: 'top top',
           end: '+=1000',
           pin: true,
-          pinSpacing: false,
-          // markers: true
+          pinSpacing: false
         }
       });
       // pr-txt
@@ -70,8 +68,7 @@ function Home(){
           trigger: '.pr-txt',
           start: 'top 100%',
           end: 'bottom top',
-          scrub: 1,
-          markers: true
+          scrub: 1
         }
       });
       gsap.to('.pr-txt .txt02', {
