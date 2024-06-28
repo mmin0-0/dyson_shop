@@ -2,7 +2,7 @@ function Footer(){
   return (
     <>
       <footer>
-        <div className="ft-inner-wrap">
+        <div className="ft-inner-wrap con-box">
           <div className="news-letter">
             <div className="tit-wrap">
               <strong>최신 소식과 다양한 혜택을 받아보고 싶으신가요?</strong>
@@ -12,16 +12,14 @@ function Footer(){
                 <input type="text" id="newsletter" placeholder="NEWSLETTER Email" />
                 <label htmlFor="newsletter" className="hide">newsletter</label>
               </div>
-              <button type="button">검색</button>
+              <button type="button" className="btn-news">검색</button>
             </div>
           </div>
           <div className="menu-wrap">
-            <ul>
-              <li><a href="javascript:void(0)">product</a></li>
-              <li><a href="javascript:void(0)">business product</a></li>
-              <li><a href="javascript:void(0)">customer support</a></li>
-              <li><a href="javascript:void(0)">company information</a></li>
-            </ul>
+            <a href="javascript:void(0)">product</a>
+            <a href="javascript:void(0)">business product</a>
+            <a href="javascript:void(0)">customer support</a>
+            <a href="javascript:void(0)">company information</a>
           </div>
           <div className="ft-info">
             <div className="logo">

@@ -138,9 +138,10 @@ button{
     height: 3.4rem;
     padding: 0;
     border-radius: .4rem;
+    background: transparent;
     @include flexbox(row, center, center);
     &:hover{
-      background: $white;
+      // background: $white;
       .btn-txt{
         &.default{
           position: absolute;
@@ -278,6 +279,9 @@ button{
 .input-wrap{
   gap: 1rem;
   @include flexbox(row, flex-start, center);
+  input[type="text"]{
+    padding: 1rem 1.4rem;
+  }
   &.check{
     min-height: 2rem;
     input[type="checkbox"]{
