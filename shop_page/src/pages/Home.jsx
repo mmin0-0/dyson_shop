@@ -89,13 +89,27 @@ function Home(){
   const swiperRef = useRef(null);
   useEffect(() => {
     if (swiperRef.current) {
-      swiperRef.current.swiper.on('autoplayTimeLeft', (s, time, progress) => {
+      const swiperInstance = swiperRef.current.swiper;
+      const updateProgress = (s, time, progress) => {
         if (progressLineRef.current) {
           progressLineRef.current.style.setProperty('--progress', 1 - progress);
         }
-        // console.log('남은 시간:', time);
-        // console.log('진행률:', progress);
-      });
+      };
+      swiperInstance.on('autoplayTimeLeft', updateProgress);
+
+      // 슬라이드 변경 시 autoplay 재설정
+      // const handleSlideChange = () => {
+      //   swiperInstance.autoplay.start();
+      //   const timeLeft = swiperInstance.params.autoplay.delay;
+      //   const progress = 1 - (swiperInstance.autoplay.timeLeft / swiperInstance.params.autoplay.delay);
+      //   updateProgress(swiperInstance, timeLeft, progress);
+      // };
+      // swiperInstance.on('slideChange', handleSlideChange);
+
+      return () => {
+        swiperInstance.off('autoplayTimeLeft', updateProgress);
+        // swiperInstance.off('slideChange', handleSlideChange);
+      };
     }
   }, []);
 
@@ -106,11 +120,11 @@ function Home(){
           <Swiper 
             cssMode={true}
             ref={swiperRef}
-            // loop={true}
-            // autoplay={{
-            //   delay: 5500,
-            //   disableOnInteraction: false,
-            // }}
+            loop={true}
+            autoplay={{
+              delay: 5500,
+              disableOnInteraction: false,
+            }}
             pagination={{
               el: ".visual-controls .swiper-pagination",
               clickable: false,
@@ -123,8 +137,8 @@ function Home(){
               }
             }}
             navigation={{
-              nextEl: ".visual-controls .swiper-button-next",
-              prevEl: ".visual-controls .swiper-button-prev",
+              nextEl: ".arrow-box .swiper-button-next",
+              prevEl: ".arrow-box .swiper-button-prev",
             }}
             modules={[Autoplay, Pagination, Navigation]}
             className="visual-swiper"
@@ -148,14 +162,18 @@ function Home(){
               </div>
             </SwiperSlide>
             <div className="visual-controls">
-              <div className="autoplay-progress" slot="container-end">
-                <svg viewBox="0 0 100 10" ref={progressLineRef}>
-                  <line x1="0" y1="0" x2="100" y2="0" />
-                </svg>
+              <div className="progress-box">
+                <div className="swiper-pagination"></div>
+                <div className="autoplay-progress" slot="container-end">
+                  <svg viewBox="0 0 100 10" ref={progressLineRef}>
+                    <line x1="0" y1="0" x2="100" y2="0" />
+                  </svg>
+                </div>
               </div>
-              <div className="swiper-pagination"></div>
-              <div className="swiper-button-next"></div>
-              <div className="swiper-button-prev"></div>
+              <div className="arrow-box">
+                <div className="swiper-button-prev"></div>
+                <div className="swiper-button-next"></div>
+              </div>
             </div>
           </Swiper>
         </div>

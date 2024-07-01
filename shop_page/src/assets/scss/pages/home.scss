@@ -111,12 +111,10 @@
             }
           }
           &-active{
-            border: 1px solid red;
             .img-wrap{
               img{transform: scale(1);}
             }
             .txt-box{
-              border-color: red;
               strong, p{
                 transform: translateY(0);
                 opacity: 1;
@@ -124,30 +122,74 @@
             }
           }
         }
-        .controls{
+        .visual-controls{
           position: absolute;
-          top: 50%;
+          width: 90%;
+          bottom: 4rem;
           left: 50%;
-          transform: translate(-50%, -50%);
-          .autoplay-progress{
-            // border: 1px solid #fff;
-            background: red;
-            width: 100px;
-            height: 3px;
+          z-index: 10;
+          transform: translateX(-50%);
+          gap: 1rem;
+          @include flexbox(row, flex-start, center);
+          .progress-box{
+            width: 18rem;
+            height: 5rem;
             position: relative;
-            svg{
-              --progress: 0;
+            border: 1px solid blue;
+            .swiper-pagination{
+              height: 100%;
               position: absolute;
-              left: 0;
-              top: 0;
-              z-index: 10;
-              width: 100%;
-            /*	height: 100%;*/
-              stroke-width: 4px;
-              stroke: #fff;
-              fill: none;
-              stroke-dashoffset: calc(100 * (1 - var(--progress)));
-              stroke-dasharray: 100;
+              top: 50%;
+              transform: translateY(-50%);
+              @include flexbox(row, space-between, center);
+            }
+            .autoplay-progress{
+              // border: 1px solid #fff;
+              background: red;
+              width: 100px;
+              height: 3px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%, -50%);
+              svg{
+                --progress: 0;
+                position: absolute;
+                left: 0;
+                top: 0;
+                z-index: 10;
+                width: 100%;
+                stroke-width: 4px;
+                stroke: #fff;
+                fill: none;
+                stroke-dashoffset: calc(100 * (1 - var(--progress)));
+                stroke-dasharray: 100;
+              }
+            }
+          }
+          .arrow-box{
+            gap: 1.2rem;
+            @include flexbox(row, flex-start, center);
+            > div{
+              position: static;
+              width: 3rem;
+              height: 3rem;
+              margin-top: 0;
+              border: 1px solid red;
+              &::after{
+                content: '';
+                width: inherit;
+                height: inherit
+              }
+            }
+            .swiper-button{
+              &-prev{&::after{@include background(icon, arrow03_icon, svg, no-repeat, contain, center, center);}}
+              &-next{
+                &::after{
+                  @include background(icon, arrow03_icon, svg, no-repeat, contain, center, center);
+                  transform: rotate(180deg);
+                }
+              }
             }
           }
         }
