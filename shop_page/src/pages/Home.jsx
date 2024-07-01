@@ -2,11 +2,11 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 // utils
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import gsap from 'gsap';
 // local file
 import pdList from '../data.js';
@@ -85,22 +85,64 @@ function Home(){
     return ()=> ctx.revert();
   }, []);
 
+  const progressLineRef = useRef(null);
+  const swiperRef = useRef(null);
+  useEffect(() => {
+    if (swiperRef.current) {
+      swiperRef.current.swiper.on('autoplayTimeLeft', (s, time, progress) => {
+        if (progressLineRef.current) {
+          progressLineRef.current.style.setProperty('--progress', 1 - progress);
+        }
+        // console.log('남은 시간:', time);
+        // console.log('진행률:', progress);
+      });
+    }
+  }, []);
+
   return (
     <div id="wrap" className="home" ref={boxRef}>
       <div className="wrap-inner">
         <div className="visual">
-          {/* 스와이퍼 제거하고 이미지넣기(+ 모션(줌아웃효과)) */}
           <Swiper 
             cssMode={true}
-            navigation={true}
-            pagination={{ clickable: true }}
-            modules={[Navigation, Pagination]}
+            ref={swiperRef}
+            loop={true}
+            autoplay={{
+              delay: 5500,
+              disableOnInteraction: false,
+            }}
+            pagination={{
+              el: ".visual-swiper .swiper-pagination",
+              clickable: false,
+              type: "custom",
+              renderCustom: (swiper, current, total) => {
+                return (
+                  '<span class="current">' + 0 + (current) + '</span>' + 
+                  '<span class="total">' + 0 + (total) + '</span>'
+                );
+              }
+            }}
+            navigation={{
+              nextEl: ".visual-swiper .swiper-button-next",
+              prevEl: ".visual-swiper .swiper-button-prev",
+            }}
+            modules={[Autoplay, Pagination, Navigation]}
             className="visual-swiper"
           >
             <SwiperSlide>Slide 1</SwiperSlide>
             <SwiperSlide>Slide 2</SwiperSlide>
             <SwiperSlide>Slide 3</SwiperSlide>
             <SwiperSlide>Slide 4</SwiperSlide>
+            <div className="controls">
+              <div className="autoplay-progress" slot="container-end">
+                <svg viewBox="0 0 100 10" ref={progressLineRef}>
+                  <line x1="0" y1="0" x2="100" y2="0" />
+                </svg>
+              </div>
+              <div className="swiper-pagination"></div>
+              <div className="swiper-button-next"></div>
+              <div className="swiper-button-prev"></div>
+            </div>
           </Swiper>
         </div>
         <div className="about con-box">
