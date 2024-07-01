@@ -112,7 +112,7 @@ function Home(){
               disableOnInteraction: false,
             }}
             pagination={{
-              el: ".visual-swiper .swiper-pagination",
+              el: ".visual .swiper-pagination",
               clickable: false,
               type: "custom",
               renderCustom: (swiper, current, total) => {
@@ -129,10 +129,12 @@ function Home(){
             modules={[Autoplay, Pagination, Navigation]}
             className="visual-swiper"
           >
-            <SwiperSlide>Slide 1</SwiperSlide>
+            <SwiperSlide>
+              <div className="img-wrap">
+                <img src={`${process.env.PUBLIC_URL}/images/main/main_visual01.jpg`} alt="main visual" />
+              </div>
+            </SwiperSlide>
             <SwiperSlide>Slide 2</SwiperSlide>
-            <SwiperSlide>Slide 3</SwiperSlide>
-            <SwiperSlide>Slide 4</SwiperSlide>
             <div className="controls">
               <div className="autoplay-progress" slot="container-end">
                 <svg viewBox="0 0 100 10" ref={progressLineRef}>
