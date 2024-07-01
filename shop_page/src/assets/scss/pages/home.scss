@@ -69,17 +69,6 @@
       .visual-swiper{
         height: 100%;
         .swiper-slide{
-          &-active{
-            .img-wrap{
-              img{transform: scale(1);}
-            }
-            .txt-box{
-              strong{
-                transform: translateY(0);
-                opacity: 1;
-              }
-            }
-          }
           .img-wrap{
             width: 100%;
             height: 100%;
@@ -107,6 +96,7 @@
               font-weight: 500;
               line-height: 1.4;
               word-break: keep-all;
+              display: block;
               transform: translateY(2rem);
               opacity: 0;
               transition: 1s .2s;
@@ -118,6 +108,19 @@
               transform: translateY(2rem);
               opacity: 0;
               transition: 1s .4s;
+            }
+          }
+          &-active{
+            border: 1px solid red;
+            .img-wrap{
+              img{transform: scale(1);}
+            }
+            .txt-box{
+              border-color: red;
+              strong, p{
+                transform: translateY(0);
+                opacity: 1;
+              }
             }
           }
         }
