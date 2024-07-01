@@ -106,13 +106,13 @@ function Home(){
           <Swiper 
             cssMode={true}
             ref={swiperRef}
-            loop={true}
-            autoplay={{
-              delay: 5500,
-              disableOnInteraction: false,
-            }}
+            // loop={true}
+            // autoplay={{
+            //   delay: 5500,
+            //   disableOnInteraction: false,
+            // }}
             pagination={{
-              el: ".visual .swiper-pagination",
+              el: ".visual-controls .swiper-pagination",
               clickable: false,
               type: "custom",
               renderCustom: (swiper, current, total) => {
@@ -123,8 +123,8 @@ function Home(){
               }
             }}
             navigation={{
-              nextEl: ".visual-swiper .swiper-button-next",
-              prevEl: ".visual-swiper .swiper-button-prev",
+              nextEl: ".visual-controls .swiper-button-next",
+              prevEl: ".visual-controls .swiper-button-prev",
             }}
             modules={[Autoplay, Pagination, Navigation]}
             className="visual-swiper"
@@ -133,9 +133,21 @@ function Home(){
               <div className="img-wrap">
                 <img src={`${process.env.PUBLIC_URL}/images/main/main_visual01.jpg`} alt="main visual" />
               </div>
+              <div className="txt-box">
+                <strong>01대자연과 조화를 이루는<br />최적의 명품 코스</strong>
+                <p>신비로운 자연경관을 바라보며 바람을 가르다.</p>
+              </div>
             </SwiperSlide>
-            <SwiperSlide>Slide 2</SwiperSlide>
-            <div className="controls">
+            <SwiperSlide>
+              <div className="img-wrap">
+                <img src={`${process.env.PUBLIC_URL}/images/main/main_visual01.jpg`} alt="main visual" />
+              </div>
+              <div className="txt-box">
+                <strong>02대자연과 조화를 이루는<br />최적의 명품 코스</strong>
+                <p>신비로운 자연경관을 바라보며 바람을 가르다.</p>
+              </div>
+            </SwiperSlide>
+            <div className="visual-controls">
               <div className="autoplay-progress" slot="container-end">
                 <svg viewBox="0 0 100 10" ref={progressLineRef}>
                   <line x1="0" y1="0" x2="100" y2="0" />
