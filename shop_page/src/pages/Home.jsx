@@ -10,7 +10,7 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import gsap from 'gsap';
 // local file
 import pdList from '../data.js';
-import { vacuumInfo, haveCont } from '../mainData.js'
+import { mainVisual, vacuumInfo, haveCont } from '../mainData.js'
 
 function Home(){
   const [shoes] = useState(pdList);
@@ -85,162 +85,13 @@ function Home(){
     return ()=> ctx.revert();
   }, []);
 
-  const progressLineRef = useRef(null);
-  const swiperRef = useRef(null);
-  useEffect(() => {
-    if (swiperRef.current) {
-      const swiperInstance = swiperRef.current.swiper;
-      const updateProgress = (s, time, progress) => {
-        if (progressLineRef.current) {
-          progressLineRef.current.style.setProperty('--progress', 1 - progress);
-        }
-      };
-      swiperInstance.on('autoplayTimeLeft', updateProgress);
-
-      // 슬라이드 변경 시 autoplay 재설정
-      // const handleSlideChange = () => {
-      //   swiperInstance.autoplay.start();
-      //   const timeLeft = swiperInstance.params.autoplay.delay;
-      //   const progress = 1 - (swiperInstance.autoplay.timeLeft / swiperInstance.params.autoplay.delay);
-      //   updateProgress(swiperInstance, timeLeft, progress);
-      // };
-      // swiperInstance.on('slideChange', handleSlideChange);
-
-      return () => {
-        swiperInstance.off('autoplayTimeLeft', updateProgress);
-        // swiperInstance.off('slideChange', handleSlideChange);
-      };
-    }
-  }, []);
-
   return (
     <div id="wrap" className="home" ref={boxRef}>
       <div className="wrap-inner">
-        <div className="visual">
-          <Swiper 
-            cssMode={true}
-            ref={swiperRef}
-            loop={true}
-            autoplay={{
-              delay: 5500,
-              disableOnInteraction: false,
-            }}
-            pagination={{
-              el: ".visual-controls .swiper-pagination",
-              clickable: false,
-              type: "custom",
-              renderCustom: (swiper, current, total) => {
-                return (
-                  '<span class="current">' + 0 + (current) + '</span>' + 
-                  '<span class="total">' + 0 + (total) + '</span>'
-                );
-              }
-            }}
-            navigation={{
-              nextEl: ".arrow-box .swiper-button-next",
-              prevEl: ".arrow-box .swiper-button-prev",
-            }}
-            modules={[Autoplay, Pagination, Navigation]}
-            className="visual-swiper"
-          >
-            <SwiperSlide>
-              <div className="img-wrap">
-                <img src={`${process.env.PUBLIC_URL}/images/main/main_visual01.jpg`} alt="main visual" />
-              </div>
-              <div className="txt-box">
-                <strong>01대자연과 조화를 이루는<br />최적의 명품 코스</strong>
-                <p>신비로운 자연경관을 바라보며 바람을 가르다.</p>
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className="img-wrap">
-                <img src={`${process.env.PUBLIC_URL}/images/main/main_visual01.jpg`} alt="main visual" />
-              </div>
-              <div className="txt-box">
-                <strong>02대자연과 조화를 이루는<br />최적의 명품 코스</strong>
-                <p>신비로운 자연경관을 바라보며 바람을 가르다.</p>
-              </div>
-            </SwiperSlide>
-            <div className="visual-controls">
-              <div className="progress-box">
-                <div className="swiper-pagination"></div>
-                <div className="autoplay-progress" slot="container-end">
-                  <svg viewBox="0 0 100 10" ref={progressLineRef}>
-                    <line x1="0" y1="0" x2="100" y2="0" />
-                  </svg>
-                </div>
-              </div>
-              <div className="arrow-box">
-                <div className="swiper-button-prev"></div>
-                <div className="swiper-button-next"></div>
-              </div>
-            </div>
-          </Swiper>
-        </div>
-        <div className="about con-box">
-          <div className="tit-wrap type01">
-            <div className="tit-info">
-              <span>About us</span>
-              <strong>More, <br className="d-pc" /><span>With less</span></strong>
-            </div>
-            <div className="info-txt d-pc">
-              <p>
-                Dyson machines have structural integrity. They are strong and they are logth. A knowledge of geometry and pioneering materials means that Dyson engineers can do more with less. Less materials, less weight, less waste.
-              </p>
-            </div>
-          </div>
-          <div className="cont-wrap">
-            <div className="img-wrap">
-              <img src={`${process.env.PUBLIC_URL}/images/main/about_bg.jpg`} alt="brand about" />
-            </div>
-            <div className="info-txt d-mb">
-              <p>Dyson machines have structural integrity. They are strong and they are logth. A knowledge of geometry and pioneering materials means that Dyson engineers can do more with less. Less materials, less weight, less waste.</p>
-            </div>
-          </div>
-        </div>
-        <div className="pd-wrap con-box">
-          <div className="tit-wrap">
-            <div className="tit-info">
-              <span>best product</span>
-              <strong>베스트 제품</strong>
-            </div>
-            <Link to="/detail" className="more">More</ Link>
-          </div>
-          <div className="pd-list">
-            <Swiper 
-              cssMode={true}
-              navigation={{
-                nextEl: '.pd-wrap .btn-next',
-                prevEl: '.pd-wrap .btn-prev'
-              }}
-              breakpoints={{
-                768: {
-                  slidesPerView: 2.5,
-                  // centeredSlides: false
-                }
-              }}
-              slidesPerView={1.5}
-              // centeredSlides={true}
-              spaceBetween={16}
-              // autoplay={{delay: 4000}}
-              modules={[Navigation]}
-            >  
-              {
-                shoes.map((a, i) => {
-                  return (
-                  <SwiperSlide>
-                    <Product shoes={shoes[i]} i={i} />
-                  </SwiperSlide>
-                  )
-                })
-              }
-            </Swiper>
-          </div>
-          <div className="swiper-controls">
-            <button className="btn-prev">이전</button>
-            <button className="btn-next">다음</button>
-          </div>
-        </div>
+        <Visual />
+        <About />
+        <Product shoes={shoes} />
+        
         <div className="pd-vacuum">
           <Swiper 
             navigation={{
@@ -357,19 +208,180 @@ function Home(){
   )
 }
 
+function Visual(){
+  const [visual] = useState(mainVisual);
+  const progressLineRef = useRef(null);
+  const swiperRef = useRef(null);
+
+  useEffect(() => {
+    if (swiperRef.current) {
+      const swiperInstance = swiperRef.current.swiper;
+      const updateProgress = (s, time, progress) => {
+        if (progressLineRef.current) {
+          progressLineRef.current.style.setProperty('--progress', 1 - progress);
+        }
+      };
+      swiperInstance.on('autoplayTimeLeft', updateProgress);
+
+      // 슬라이드 변경 시 autoplay 재설정
+      // const handleSlideChange = () => {
+      //   swiperInstance.autoplay.start();
+      //   const timeLeft = swiperInstance.params.autoplay.delay;
+      //   const progress = 1 - (swiperInstance.autoplay.timeLeft / swiperInstance.params.autoplay.delay);
+      //   updateProgress(swiperInstance, timeLeft, progress);
+      // };
+      // swiperInstance.on('slideChange', handleSlideChange);
+
+      return () => {
+        swiperInstance.off('autoplayTimeLeft', updateProgress);
+        // swiperInstance.off('slideChange', handleSlideChange);
+      };
+    }
+  }, []);
+
+  return (
+    <div className="visual">
+      <Swiper 
+        cssMode={true}
+        ref={swiperRef}
+        loop={true}
+        autoplay={{
+          delay: 5500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          el: ".visual-controls .swiper-pagination",
+          clickable: false,
+          type: "custom",
+          renderCustom: (swiper, current, total) => {
+            return (
+              '<span class="current">' + 0 + (current) + '</span>' + 
+              '<span class="total">' + 0 + (total) + '</span>'
+            );
+          }
+        }}
+        navigation={{
+          nextEl: ".arrow-box .swiper-button-next",
+          prevEl: ".arrow-box .swiper-button-prev",
+        }}
+        modules={[Autoplay, Pagination, Navigation]}
+        className="visual-swiper"
+      >
+        {
+          visual.map((a,i)=>{
+            return (
+              <SwiperSlide>
+                <div className="img-wrap">
+                  <img src={`${process.env.PUBLIC_URL}/images/main/main_visual0${i + 1}.jpg`} alt="main visual" />
+                </div>
+                <div className="txt-box">
+                  <strong>{a.title}</strong>
+                  <p>{a.subTit}</p>
+                </div>
+              </SwiperSlide>
+            )
+          })
+        }
+        <div className="visual-controls">
+          <div className="progress-box">
+            <div className="swiper-pagination"></div>
+            <div className="autoplay-progress" slot="container-end">
+              <svg viewBox="0 0 100 10" ref={progressLineRef}>
+                <line x1="0" y1="0" x2="100" y2="0" />
+              </svg>
+            </div>
+          </div>
+          <div className="arrow-box">
+            <div className="swiper-button-prev"></div>
+            <div className="swiper-button-next"></div>
+          </div>
+        </div>
+      </Swiper>
+    </div>
+  )
+}
+
+function About(){
+  return (
+    <div className="about con-box">
+      <div className="tit-wrap type01">
+        <div className="tit-info">
+          <span>About us</span>
+          <strong>More, <br className="d-pc" /><span>With less</span></strong>
+        </div>
+        <div className="info-txt d-pc">
+          <p>
+            Dyson machines have structural integrity. They are strong and they are logth. A knowledge of geometry and pioneering materials means that Dyson engineers can do more with less. Less materials, less weight, less waste.
+          </p>
+        </div>
+      </div>
+      <div className="cont-wrap">
+        <div className="img-wrap">
+          <img src={`${process.env.PUBLIC_URL}/images/main/about_bg.jpg`} alt="brand about" />
+        </div>
+        <div className="info-txt d-mb">
+          <p>Dyson machines have structural integrity. They are strong and they are logth. A knowledge of geometry and pioneering materials means that Dyson engineers can do more with less. Less materials, less weight, less waste.</p>
+        </div>
+      </div>
+    </div>
+  )
+}
+
 function Product(props){
   return (
-    <div className="pd-item" id={props.shoes.id}>
-      <a href={'/detail/' + props.i}>
-        <div className="img-wrap">
-          <img src={props.shoes.mainImg} alt="상품이미지" />
-          <div className="circle-ani"></div>
+    <div className="pd-wrap con-box">
+      <div className="tit-wrap">
+        <div className="tit-info">
+          <span>best product</span>
+          <strong>베스트 제품</strong>
         </div>
-        <div className="pd-info">
-          <strong>{props.shoes.title}</strong>
-          {/* <p>{props.shoes.price}</p> */}
-        </div>
-      </a>
+        <Link to="/detail" className="more">More</ Link>
+      </div>
+      <div className="pd-list">
+        <Swiper 
+          cssMode={true}
+          navigation={{
+            nextEl: '.pd-wrap .btn-next',
+            prevEl: '.pd-wrap .btn-prev'
+          }}
+          breakpoints={{
+            768: {
+              slidesPerView: 2.5,
+              // centeredSlides: false
+            }
+          }}
+          slidesPerView={1.5}
+          // centeredSlides={true}
+          spaceBetween={16}
+          // autoplay={{delay: 4000}}
+          modules={[Navigation]}
+        >  
+          {
+            props.shoes.map((a,i)=>{
+              return (
+                <SwiperSlide>
+                  <div className="pd-item" id={a.id}>
+                    <a href={'/detail/' + a.id}>
+                      <div className="img-wrap">
+                        <img src={a.mainImg} alt="상품이미지" />
+                        <div className="circle-ani"></div>
+                      </div>
+                      <div className="pd-info">
+                        <strong>{a.title}</strong>
+                        <p>{a.price}</p>
+                      </div>
+                    </a>
+                  </div>
+                </SwiperSlide>
+              )
+            })
+          }
+        </Swiper>
+      </div>
+      <div className="swiper-controls">
+        <button className="btn-prev">이전</button>
+        <button className="btn-next">다음</button>
+      </div>
     </div>
   )
 }

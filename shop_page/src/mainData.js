@@ -1,3 +1,13 @@
+const mainVisual = [
+  {
+    title: '01대자연과 조화를 이루는 최적의 명품 코스',
+    subTit: '신비로운 자연경관을 바라보며 바람을 가르다.'
+  },{
+    title: '02대자연과 조화를 이루는 최적의 명품 코스',
+    subTit: '신비로운 자연경관을 바라보며 바람을 가르다.'
+  }
+];
+
 const vacuumInfo = [
   {
     title : ['Dyson', 'Hyperdymium', 'motor'],
@@ -35,4 +45,4 @@ const haveCont = [
 ]
 
 
-export { vacuumInfo, haveCont }
+export { mainVisual, vacuumInfo, haveCont }
