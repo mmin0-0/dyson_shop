@@ -91,33 +91,7 @@ function Home(){
         <Visual />
         <About />
         <Product shoes={shoes} />
-        
-        <div className="pd-vacuum">
-          <Swiper 
-            navigation={{
-              nextEl: '.pd-vacuum .btn-next',
-              prevEl: '.pd-vacuum .btn-prev'
-            }}
-            direction={'vertical'}
-            modules={[Navigation]}
-            // loop={true}
-            className="vacuum-swiper"
-          >
-            {
-              vacuum.map((a, i)=>{
-                return (
-                  <SwiperSlide>
-                    <Vacuum vacuum={vacuum[i]} i={i}/>
-                  </SwiperSlide>
-                )
-              })
-            }
-            <div className="swiper-controls">
-              <button className="btn-prev">이전</button>
-              <button className="btn-next">다음</button>
-            </div>
-          </Swiper>
-        </div>
+        <Vacuum vacuum={vacuum} />
         <div className="pr-have">
           <div className="fix-cont">
             <div className="tit-wrap">
@@ -388,25 +362,48 @@ function Product(props){
 
 function Vacuum(props){
   return (
-    <>
-      <div className="img-wrap">
-        <img src={`${process.env.PUBLIC_URL}/images/main/pd_item0${props.i + 1}_img.png`} alt="vacuum product" />
-      </div>
-      <div className="info-wrap">
-        <div className="num">0{props.i + 1}</div>
-        <div className="info-txt">
-          <div className="tit-wrap">
-            <strong>{props.vacuum.title[0]}</strong>
-            <strong>{props.vacuum.title[1]}</strong>
-            <strong>{props.vacuum.title[2]}</strong>
-          </div>
-          <p>
-            {props.vacuum.content}
-            <span>{props.vacuum.note}</span>
-          </p>
+    <div className="pd-vacuum">
+      <Swiper 
+        navigation={{
+          nextEl: '.pd-vacuum .btn-next',
+          prevEl: '.pd-vacuum .btn-prev'
+        }}
+        direction={'vertical'}
+        modules={[Navigation]}
+        // loop={true}
+        className="vacuum-swiper"
+      >
+        {
+          props.vacuum.map((a, i)=>{
+            return (
+              <SwiperSlide>
+                <div className="img-wrap">
+                  <img src={`${process.env.PUBLIC_URL}/images/main/pd_item0${i + 1}_img.png`} alt="vacuum product" />
+                </div>
+                <div className="info-wrap">
+                  <div className="num">0{i + 1}</div>
+                  <div className="info-txt">
+                    <div className="tit-wrap">
+                      <strong>{a.title[0]}</strong>
+                      <strong>{a.title[1]}</strong>
+                      <strong>{a.title[2]}</strong>
+                    </div>
+                    <p>
+                      {a.content}
+                      <span>{a.note}</span>
+                    </p>
+                  </div>
+                </div>
+              </SwiperSlide>
+            )
+          })
+        }
+        <div className="swiper-controls">
+          <button className="btn-prev">이전</button>
+          <button className="btn-next">다음</button>
         </div>
+      </Swiper>
     </div>
-    </>
   )
 }
 
