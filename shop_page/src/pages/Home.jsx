@@ -63,7 +63,7 @@ function Home(){
       });
       // pr-txt
       gsap.to('.pr-txt .txt01', {
-        x: 0,
+        x: '-15%',
         scrollTrigger: {
           trigger: '.pr-txt',
           start: 'top 100%',
@@ -72,7 +72,7 @@ function Home(){
         }
       });
       gsap.to('.pr-txt .txt02', {
-        x: '50%',
+        x: '100%',
         scrollTrigger: {
           trigger: '.pr-txt',
           start: 'top 100%%',
@@ -91,76 +91,9 @@ function Home(){
         <Visual />
         <About />
         <Product shoes={shoes} />
+        <PrTxt />
         <Vacuum vacuum={vacuum} />
-        <div className="pr-have">
-          <div className="fix-cont">
-            <div className="tit-wrap">
-              <span className="tit-txt">MUST</span>
-              <span className="icon-box">
-                <img src={`${process.env.PUBLIC_URL}/images/icon/more_icon.png`} alt="dyson" />
-              </span>
-              <span className="tit-txt">HAVE</span>
-            </div>
-          </div>
-          <div className="con-wrap">
-            <div className="prd-wrap con-box">
-              <ul className="prd-list">
-                {
-                  haveCont.map((a, i)=>{
-                    return (
-                      <li key={i}>
-                        <div className="prd-item">
-                          <a href="javascript:void(0)">
-                            <div className="img-wrap">
-                              <img src={`${process.env.PUBLIC_URL}/images/main/must0${i+1}_img.jpg`} alt="product img" className="default" />
-                              <img src={`${process.env.PUBLIC_URL}/images/main/must0${i+1}_on_img.jpg`} alt="product img" className="hover" />
-                            </div>
-                            <div className="txt-wrap">
-                              <p>{a.title}</p>
-                              <strong>{a.content}</strong>
-                            </div>
-                          </a>
-                        </div>
-                      </li>
-                    )
-                  })
-                }
-              </ul>
-            </div>
-            <button type="button" className="btn-more">
-              <div className="btn-txt default">
-                <span>V</span>
-                <span>I</span>
-                <span>E</span>
-                <span>W</span>
-                <span className="empty"></span>
-                <span>M</span>
-                <span>O</span>
-                <span>R</span>
-                <span>E</span>
-              </div>
-              <div className="btn-txt hover">
-                <span>V</span>
-                <span>I</span>
-                <span>E</span>
-                <span>W</span>
-                <span className="empty"></span>
-                <span>M</span>
-                <span>O</span>
-                <span>R</span>
-                <span>E</span>
-              </div>
-            </button>
-          </div>
-        </div>
-        <div className="pr-txt">
-          <div className="txt-info txt01">
-            <img src={`${process.env.PUBLIC_URL}/images/main/tit01_img.png`} alt="dyson's" />
-          </div>
-          <div className="txt-info txt02">
-            <img src={`${process.env.PUBLIC_URL}/images/main/tit02_img.png`} alt="sustainability" />
-          </div>
-        </div>
+        <FixCont />
         <div className="latest-pd">
           <strong>최근본상품</strong>
           <div>
@@ -198,17 +131,17 @@ function Visual(){
       swiperInstance.on('autoplayTimeLeft', updateProgress);
 
       // 슬라이드 변경 시 autoplay 재설정
-      // const handleSlideChange = () => {
-      //   swiperInstance.autoplay.start();
-      //   const timeLeft = swiperInstance.params.autoplay.delay;
-      //   const progress = 1 - (swiperInstance.autoplay.timeLeft / swiperInstance.params.autoplay.delay);
-      //   updateProgress(swiperInstance, timeLeft, progress);
-      // };
-      // swiperInstance.on('slideChange', handleSlideChange);
+      const handleSlideChange = () => {
+        swiperInstance.autoplay.start();
+        const timeLeft = swiperInstance.params.autoplay.delay;
+        const progress = 1 - (swiperInstance.autoplay.timeLeft / swiperInstance.params.autoplay.delay);
+        updateProgress(swiperInstance, timeLeft, progress);
+      };
+      swiperInstance.on('slideChange', handleSlideChange);
 
       return () => {
         swiperInstance.off('autoplayTimeLeft', updateProgress);
-        // swiperInstance.off('slideChange', handleSlideChange);
+        swiperInstance.off('slideChange', handleSlideChange);
       };
     }
   }, []);
@@ -360,6 +293,19 @@ function Product(props){
   )
 }
 
+function PrTxt(){
+  return (
+    <div className="pr-txt">
+      <div className="txt-info txt01">
+        <img src={`${process.env.PUBLIC_URL}/images/main/tit01_img.png`} alt="dyson's" />
+      </div>
+      <div className="txt-info txt02">
+        <img src={`${process.env.PUBLIC_URL}/images/main/tit02_img.png`} alt="sustainability" />
+      </div>
+    </div>
+  )
+}
+
 function Vacuum(props){
   return (
     <div className="pd-vacuum">
@@ -407,4 +353,69 @@ function Vacuum(props){
   )
 }
 
+function FixCont(){
+  return (
+    <div className="pr-have">
+      <div className="fix-cont">
+        <div className="tit-wrap">
+          <span className="tit-txt">MUST</span>
+          <span className="icon-box">
+            <img src={`${process.env.PUBLIC_URL}/images/icon/more_icon.png`} alt="dyson" />
+          </span>
+          <span className="tit-txt">HAVE</span>
+        </div>
+      </div>
+      <div className="con-wrap">
+        <div className="prd-wrap con-box">
+          <ul className="prd-list">
+            {
+              haveCont.map((a, i)=>{
+                return (
+                  <li key={i}>
+                    <div className="prd-item">
+                      <a href="javascript:void(0)">
+                        <div className="img-wrap">
+                          <img src={`${process.env.PUBLIC_URL}/images/main/must0${i+1}_img.jpg`} alt="product img" className="default" />
+                          <img src={`${process.env.PUBLIC_URL}/images/main/must0${i+1}_on_img.jpg`} alt="product img" className="hover" />
+                        </div>
+                        <div className="txt-wrap">
+                          <p>{a.title}</p>
+                          <strong>{a.content}</strong>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                )
+              })
+            }
+          </ul>
+        </div>
+        <button type="button" className="btn-more">
+          <div className="btn-txt default">
+            <span>V</span>
+            <span>I</span>
+            <span>E</span>
+            <span>W</span>
+            <span className="empty"></span>
+            <span>M</span>
+            <span>O</span>
+            <span>R</span>
+            <span>E</span>
+          </div>
+          <div className="btn-txt hover">
+            <span>V</span>
+            <span>I</span>
+            <span>E</span>
+            <span>W</span>
+            <span className="empty"></span>
+            <span>M</span>
+            <span>O</span>
+            <span>R</span>
+            <span>E</span>
+          </div>
+        </button>
+      </div>
+    </div>
+  )
+}
 export default Home;

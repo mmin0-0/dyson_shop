@@ -494,9 +494,9 @@
     .pr-have{
       overflow-x: hidden;
       .fix-cont{
+        padding-top: 8rem !important;
         .tit-wrap{
           font-size: 6rem;
-          padding-top: 8rem;
           @include flexbox(row, center, flex-end);
           @include tablet{
             flex-wrap: wrap;
@@ -611,9 +611,9 @@
       padding-top: 18rem;
       overflow-x: hidden;
       .txt-info{
-        &.txt01{transform: translateX(80%);}
+        &.txt01{transform: translateX(100%);}
         &.txt02{
-          transform: translateX(-80%);
+          transform: translateX(-100%);
           margin-top: 4rem;
         }
       }
