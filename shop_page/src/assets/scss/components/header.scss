@@ -12,7 +12,7 @@ header{
   &.header-fixed{
     height: 6rem;
     // background: $black;
-    border-bottom: 1px solid $white;
+    border-bottom: 1px solid rgba($white, .3);
     + #wrap{margin-top: 6rem !important;}
     .hd-inner-wrap{
       width: calc(100% - 4rem);

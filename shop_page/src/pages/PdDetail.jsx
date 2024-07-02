@@ -6,9 +6,12 @@ import { increase, addItem } from '../store.js';
 function PdDetail(props){
   let state = useSelector((state)=>state);
   let dispatch = useDispatch();
-  const {id} = useParams();
+  const { id, dataId } = useParams();
   const 현재상품 = props.product.find(function(e){
     return e.id == id
+  });
+  const 현재데이터 = 현재상품.data.find(function(e){
+    return e.id.toString() == dataId
   });
   // 1. 사용자가 접속하는 상품 디테일 페이지정보 가져오기(id, title, price 등)
   // 2. 로컬스트리지에 저장(중복제거, 3개이하)
@@ -28,7 +31,8 @@ function PdDetail(props){
       id: 현재상품.id,
       title: 현재상품.title,
       content: 현재상품.content,
-      price: 현재상품.price,
+      // price: 현재상품.data.price,
+      // data: 현재상품.data
     });
 
     watchArr = Array.from(new Set(watchArr.map(item => item.id)))
@@ -54,17 +58,17 @@ function PdDetail(props){
                 <div className="tit-wrap">
                   <div className="main-tit">
                     <span>100% 순면소재 그물망 주머니</span>
-                    <strong>{현재상품.title}</strong>
+                    <strong>{현재데이터.title}</strong>
                   </div>
                   <div className="sub-tit">
                     <p>
                       과일, 야채, 소품 등을 담을 수 있는 도톰하고 부드러운100% 순면소재 그물 면주머니입니다. 과일, 야채, 소품 등을 담을 수 있는 도톰하고 부드러운100% 순면소재 그물 면주머니입니다.
-                      {현재상품.content}
+                      {현재데이터.content}
                       </p>
                   </div>
                 </div>
                 <div className="price-wrap">
-                  <p className="pr-final"><span>{현재상품.price}</span>원</p>
+                  <p className="pr-final"><span>{현재데이터.price}</span>원</p>
                   <p className="pr-existing"><span>28,000</span>원</p>
                   <p className="pr-discount">54%</p>
                 </div>
@@ -85,7 +89,7 @@ function PdDetail(props){
                 <div className="buy-wrap btn-wrap">
                   <button type="button" className="btn-zzim">찜하기</button>
                   <button type="button" className="btn-cart type01" onClick={()=>{
-                    dispatch(addItem({id: 현재상품.id, name: 현재상품.title, count: 1}))
+                    // dispatch(addItem({id: 현재상품.id, name: 현재상품.title, count: 1}))
                   }}>장바구니</button>
                 </div>
               </div>

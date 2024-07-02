@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
-import { Outlet, useParams, Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import pdList from '../data.js';
 
-function Detail(props){
-  const {id} = useParams();
+function Detail(){
+  const { id, dataId } = useParams();
   const [product] = useState(pdList);
-  const 현재상품 = props.product.find(function(e){
+  const 현재상품 = product.find(function(e){
     return e.id == id
+  });
+  const 현재데이터 = 현재상품.data.find(function(e){
+    return e.id.toString() == dataId
   });
 
   return(
@@ -35,10 +38,10 @@ function Detail(props){
           </ul>
           <div className="item-container">
               {
-                product.map((a, i)=>{
+                현재상품.data.map((a, i)=>{
                   return (
                     <div className="shop-item" key={i}>
-                      <Link to={`/detail/${a.id}`}>
+                      <Link to={`/detail/${현재상품.id}/${a.id}`}>
                         <div className="img-wrap">
                           <img src="" alt="product_org" className="org-img" />
                           <img src="" alt="product_hover" className="hover-img" />
@@ -60,11 +63,5 @@ function Detail(props){
     </div>
   )
 }
-
-// function PdItem(props){
-//   return (
-   
-//   )
-// }
 
 export default Detail;

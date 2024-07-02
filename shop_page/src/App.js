@@ -7,11 +7,11 @@ import Home from './pages/Home.jsx';
 import Cart from './pages/Cart.jsx';
 import Detail from './pages/Detail.jsx';
 import PdDetail from './pages/PdDetail.jsx';
-import data from './data.js';
+import PdList from './data.js';
 import './assets/scss/main.scss';
 
 function App() {
-  const [product] = useState(data);
+  const [product] = useState(PdList);
 
   return (
     <div className="App" id="wrapper">
@@ -21,7 +21,8 @@ function App() {
         <Route path="*" element={<div>없는페이지</div>} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/detail" element={<Detail product={product} />} />
-        <Route path="/detail/:id" element={<PdDetail product={product} />} />
+        {/* <Route path="/detail/:id" element={<PdDetail product={product} />} /> */}
+        <Route path="/detail/:id/:dataId" element={<PdDetail product={product} />} />
       </Routes>
       <Footer />
     </div>
