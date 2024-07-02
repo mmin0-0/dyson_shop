@@ -2,9 +2,40 @@
 .sub-visual{
   // background-attachment: fixed;
   width: 100%;
-  height: 50rem;
+  height: 36rem;
+  overflow: hidden;
+  position: relative;
+  &::before{
+    content: '';
+    width: inherit;
+    height: inherit;
+    background: rgba($black, .35);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  &:hover{
+    .img-wrap{
+      img{transform: scale(1.1);}
+    }
+  }
   .img-wrap{
-    img{}
+    width: 100%;
+    height: 100%;
+    img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .45s;
+    }
+  }
+  .tit-wrap{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 10;
+    transform: translate(-50%, -50%);
   }
   + .shop-cont{margin-top: 8rem;}
 }

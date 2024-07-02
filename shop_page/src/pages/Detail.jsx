@@ -14,7 +14,10 @@ function Detail(props){
       <div className="wrap-inner">
         <div className="sub-visual">
           <div className="img-wrap">
-          <img src={`${process.env.PUBLIC_URL}/images/main/sub_visual01.png`} alt="sub visual" />
+            <img src={`${process.env.PUBLIC_URL}/images/main/sub_visual01.png`} alt="sub visual" />
+          </div>
+          <div className="tit-wrap">
+            <strong>Dyson's product</strong>
           </div>
         </div>
         <div className="shop-cont con-box">
