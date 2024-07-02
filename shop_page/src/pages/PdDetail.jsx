@@ -7,7 +7,7 @@ function PdDetail(props){
   let state = useSelector((state)=>state);
   let dispatch = useDispatch();
   const {id} = useParams();
-  const 현재상품 = props.shoes.find(function(e){
+  const 현재상품 = props.product.find(function(e){
     return e.id == id
   });
   // 1. 사용자가 접속하는 상품 디테일 페이지정보 가져오기(id, title, price 등)

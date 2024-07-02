@@ -14,11 +14,10 @@
     @include flexbox(row, center, center);
     li{
       &:hover, &.on{
-        a{color: $mainColor;}
+        a{color: $subColor;}
       }
       a{
         font-weight: bold;
-        color: rgba($gray03, .8);
         transition: color .25s;
       }
     }

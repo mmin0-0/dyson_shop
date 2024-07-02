@@ -13,7 +13,7 @@ import pdList from '../data.js';
 import { mainVisual, vacuumInfo, haveCont } from '../mainData.js'
 
 function Home(){
-  const [shoes] = useState(pdList);
+  const [product] = useState(pdList);
   const [vacuum] = useState(vacuumInfo);
   const [watchItem, setWatch] = useState([]);
   useEffect(()=>{
@@ -90,7 +90,7 @@ function Home(){
       <div className="wrap-inner">
         <Visual />
         <About />
-        <Product shoes={shoes} />
+        <Product product={product} />
         <PrTxt />
         <Vacuum vacuum={vacuum} />
         <FixCont />
@@ -266,10 +266,10 @@ function Product(props){
           modules={[Navigation]}
         >  
           {
-            props.shoes.map((a,i)=>{
+            props.product.map((a,i)=>{
               return (
                 <SwiperSlide>
-                  <div className="pd-item" id={a.id}>
+                  <div className="pd-item" id={a.id} key={i}>
                     <a href={'/detail/' + a.id}>
                       <div className="img-wrap">
                         <img src={a.mainImg} alt="상품이미지" />

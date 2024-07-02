@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { Outlet, useParams, Link } from "react-router-dom";
+import pdList from '../data.js';
 
 function Detail(props){
   const {id} = useParams();
-  const 현재상품 = props.shoes.find(function(e){
+  const [product] = useState(pdList);
+  const 현재상품 = props.product.find(function(e){
     return e.id == id
   });
 
@@ -17,16 +19,36 @@ function Detail(props){
         </div>
         <div className="shop-cont con-box">
           <ul className="tab-cont">
-            <li><a href="javascript:void(0)">세트상품</a></li>
-            <li><a href="javascript:void(0)">욕실상품</a></li>
-            <li><a href="javascript:void(0)">생활상품</a></li>
-          </ul>
-          <div className="item-container">
             {
-              props.shoes.map((a,i)=>{
-                return <PdItem key={i} shoes={props.shoes[i]}/>
+              product.map((a, i)=>{
+                return (
+                  <li key={i}>
+                    <a href="javascript:void(0)">{a.title}</a>
+                  </li>
+                )
               })
             }
+          </ul>
+          <div className="item-container">
+              {
+                product.map((a, i)=>{
+                  return (
+                    <div className="shop-item" key={i}>
+                      <Link to={`/detail/${a.id}`}>
+                        <div className="img-wrap">
+                          <img src="" alt="product_org" className="org-img" />
+                          <img src="" alt="product_hover" className="hover-img" />
+                        </div>
+                        <div className="item-info">
+                          <span>{a.content}</span>
+                          <strong>{a.title}</strong>
+                          <p><span>{a.price}</span>원</p>
+                        </div>
+                      </Link>
+                    </div>
+                  )
+                })
+              }
           </div>
           <section></section>
         </div>
@@ -35,22 +57,10 @@ function Detail(props){
   )
 }
 
-function PdItem(props){
-  return (
-    <div className="shop-item">
-      <Link to={`/detail/${props.shoes.id}`}>
-        <div className="img-wrap">
-          <img src="" alt="product_org" className="org-img" />
-          <img src="" alt="product_hover" className="hover-img" />
-        </div>
-        <div className="item-info">
-          <span>{props.shoes.content}</span>
-          <strong>{props.shoes.title}</strong>
-          <p><span>{props.shoes.price}</span>원</p>
-        </div>
-      </Link>
-    </div>
-  )
-}
+// function PdItem(props){
+//   return (
+   
+//   )
+// }
 
 export default Detail;
