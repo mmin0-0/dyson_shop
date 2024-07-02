@@ -17,7 +17,8 @@ function Detail(props){
             <img src={`${process.env.PUBLIC_URL}/images/main/sub_visual01.png`} alt="sub visual" />
           </div>
           <div className="tit-wrap">
-            <strong>Dyson's product</strong>
+            <strong>Dyson's Product</strong>
+            <p>다이슨 스토어에서 다이슨 제품을 경험해 보세요.</p>
           </div>
         </div>
         <div className="shop-cont con-box">
@@ -43,8 +44,8 @@ function Detail(props){
                           <img src="" alt="product_hover" className="hover-img" />
                         </div>
                         <div className="item-info">
-                          <span>{a.content}</span>
                           <strong>{a.title}</strong>
+                          <span>{a.content}</span>
                           <p><span>{a.price}</span>원</p>
                         </div>
                       </Link>

@@ -36,14 +36,23 @@
     left: 50%;
     z-index: 10;
     transform: translate(-50%, -50%);
+    text-align: center;
+    strong{
+      font-size: 3.2rem;
+      font-weight: bold;
+      display: block;
+      margin-bottom: 2rem;
+    }
+    p{line-height: 1.4;}
   }
   + .shop-cont{margin-top: 8rem;}
 }
 .shop-cont{
   .tab-cont{
-    gap: 2rem;
     @include flexbox(row, center, center);
     li{
+      padding: 0 2rem;
+      &:not(:first-child){border-left: 1px solid rgba($white, .45);}
       &:hover, &.on{
         a{color: $subColor;}
       }

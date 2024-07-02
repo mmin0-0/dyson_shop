@@ -192,12 +192,11 @@ button{
 
 #wrapper{
   #wrap{
-    margin-top: 20rem;
-    @include notebook{margin-top: 10rem;}
-    &.home{
-      margin-top: 16rem;
-      @include notebook{margin-top: 6rem;}
-    }
+    // margin-top: 20rem;
+    // @include notebook{margin-top: 10rem;}
+    margin-top: 16rem;
+    @include notebook{margin-top: 6rem;}
+    // &.home{}
   }
 }
 
