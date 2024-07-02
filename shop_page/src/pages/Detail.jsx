@@ -10,7 +10,11 @@ function Detail(props){
   return(
     <div id="wrap">
       <div className="wrap-inner">
-        <div className="sub-visual">서브페이지 비쥬얼</div>
+        <div className="sub-visual">
+          <div className="img-wrap">
+          <img src={`${process.env.PUBLIC_URL}/images/main/sub_visual01.png`} alt="sub visual" />
+          </div>
+        </div>
         <div className="shop-cont con-box">
           <ul className="tab-cont">
             <li><a href="javascript:void(0)">세트상품</a></li>
