@@ -181,9 +181,11 @@ function Visual(){
                 <div className="img-wrap">
                   <img src={`${process.env.PUBLIC_URL}/images/main/main_visual0${i + 1}.jpg`} alt="main visual" />
                 </div>
-                <div className="txt-box">
-                  <strong>{a.title}</strong>
-                  <p>{a.subTit}</p>
+                <div className="txt-wrap">
+                  <div className="txt-box">
+                    <strong>{a.title}</strong>
+                    <p>{a.subTit}</p>
+                  </div>
                 </div>
               </SwiperSlide>
             )

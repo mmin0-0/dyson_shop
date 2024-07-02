@@ -63,7 +63,6 @@
       width: 100%;
       height: calc(100vh - 16rem);
       position: relative;
-      background: #333;
       @include flexbox(row, center, center);
       @include notebook{height: calc(100vh - 6rem);}
       .visual-swiper{
@@ -82,42 +81,49 @@
               transition: 1.5s .1s;
             }
           }
-          .txt-box{
+          .txt-wrap{
             width: 90%;
-            padding: 0 2rem;
             position: absolute;
             left: 50%;
             top: 50%;
             z-index: 10;
             transform: translate(-50%, -60%);
-            border: 1px solid $white;
-            strong{
-              font-size: 3rem;
-              font-weight: 500;
-              line-height: 1.4;
-              word-break: keep-all;
-              display: block;
-              transform: translateY(2rem);
-              opacity: 0;
-              transition: 1s .2s;
-            }
-            p{
-              margin-top: 1.6rem;
-              font-size: 1.6rem;
-              word-break: keep-all;
-              transform: translateY(2rem);
-              opacity: 0;
-              transition: 1s .4s;
+            .txt-box{
+              width:45%;
+              @include tablet{width: 100%;}
+              strong{
+                font-size: 3.4rem;
+                font-weight: 600;
+                line-height: 1.4;
+                word-break: keep-all;
+                display: block;
+                transform: translateY(2rem);
+                opacity: 0;
+                transition: 1s .2s;
+                @include tablet{font-size: 2.8rem;}
+              }
+              p{
+                margin-top: 2rem;
+                font-size: 1.8rem;
+                line-height: 1.6;
+                word-break: keep-all;
+                transform: translateY(2rem);
+                opacity: 0;
+                transition: 1s .4s;
+                @include tablet{font-size: 1.4rem;}
+              }
             }
           }
           &-active{
             .img-wrap{
               img{transform: scale(1);}
             }
-            .txt-box{
-              strong, p{
-                transform: translateY(0);
-                opacity: 1;
+            .txt-wrap{
+              .txt-box{
+                strong, p{
+                  transform: translateY(0);
+                  opacity: 1;
+                }
               }
             }
           }
@@ -135,7 +141,6 @@
             width: 18rem;
             height: 5rem;
             position: relative;
-            border: 1px solid blue;
             .swiper-pagination{
               height: 100%;
               position: absolute;
@@ -144,8 +149,7 @@
               @include flexbox(row, space-between, center);
             }
             .autoplay-progress{
-              // border: 1px solid #fff;
-              background: red;
+              background: rgba($black, .5);
               width: 100px;
               height: 3px;
               position: absolute;
@@ -160,7 +164,7 @@
                 z-index: 10;
                 width: 100%;
                 stroke-width: 4px;
-                stroke: #fff;
+                stroke: $white;
                 fill: none;
                 stroke-dashoffset: calc(100 * (1 - var(--progress)));
                 stroke-dasharray: 100;
@@ -175,7 +179,6 @@
               width: 3rem;
               height: 3rem;
               margin-top: 0;
-              border: 1px solid red;
               &::after{
                 content: '';
                 width: inherit;

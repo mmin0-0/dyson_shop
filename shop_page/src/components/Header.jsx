@@ -95,9 +95,9 @@ function Header(){
         <div className="hd-inner-wrap">
           <a href="javascript:void(0)" className="ham-btn" onClick={toggleMenu}>메뉴열기</a>
           <div className="logo">
-              <a href="javascript:void(0)" onClick={goHome}>
-                <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" />
-              </a>
+            <a href="javascript:void(0)" onClick={goHome}>
+              <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" />
+            </a>
           </div>
           <div className="utility-wrap">
               <a href="javascript:void(0)" className="user" onClick={goCartPage}>user</a>
@@ -131,6 +131,11 @@ function Header(){
           </div>
         </div>
         <nav className={`gnb-wrap ${menu ? 'active' : ''}`}>
+          <div className="fix-logo">
+            <a href="javascript:void(0)" onClick={goHome}>
+              <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" />
+            </a>
+          </div>
           <div className="gnb-wrap-top">
             <a href="javascript:void(0)" className="btn-closed" onClick={toggleMenu}>닫기</a>
             <div className="utility-wrap">

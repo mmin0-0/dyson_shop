@@ -9,7 +9,6 @@ header{
   background: $black;
   transition: height .25s;
   @include notebook{height: 6rem;}
-  &:hover{background: $gray03;}
   &.header-fixed{
     height: 6rem;
     // background: $black;
@@ -20,14 +19,16 @@ header{
       height: 6rem;
       margin: 0 auto;
       .logo{
-        left: 0;
-        transform: translateY(-50%);
-        @include notebook{
-          left: 50%;
-          transform: translate(-50%, -50%);
-        }
+        opacity: 0;
+        visibility: hidden;
       }
       .utility-wrap{right: 0;}
+    }
+    .gnb-wrap{
+      .fix-logo{
+        opacity: 1;
+        visibility: visible;
+      }
     }
   }
   @include notebook{height: 6rem;}
@@ -87,7 +88,7 @@ header{
       left: 50%;
       z-index: 100;
       transform: translate(-50%, -50%);
-      transition: all .25s;
+      transition: all .1s;
       img{max-width: 100%;}
       @include tablet{width: 8rem;}
     }
@@ -223,6 +224,19 @@ header{
       background: $white;
       transition: left .25s;
       &.active{left: 0;}
+    }
+    .fix-logo{
+      max-width: 10rem;
+      position: absolute;
+      top: 50%;
+      left: 2rem;
+      z-index: 101;
+      transform: translateY(-50%);
+      transition: all .15s;
+      opacity: 0;
+      visibility: hidden;
+      img{max-width: 100%;}
+      @include notebook{display: none;}
     }
     &-top{
       @include flexbox(row, space-between, center);
