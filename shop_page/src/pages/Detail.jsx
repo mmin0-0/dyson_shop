@@ -21,6 +21,7 @@ function Detail(){
         </div>
         <div className="shop-cont con-box">
           <ul className="tab-cont">
+            <li className="on"><a href="javascript:void(0)">All</a></li>
             {
               pdList.map((a, i)=>{
                 return (

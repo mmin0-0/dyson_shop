@@ -41,7 +41,7 @@ const pdList = [
     ]
   },{
     id : 'airPurifier',
-    title : '공기청정기',
+    title : '공기청정기 및 선풍기',
     content : '가습 공기청정기, 공기청정기, 공기청정 온풍기 및 선풍기로 주변 환경을 쾌적하게 관리하세요.',
     mainImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/home-page/homepage-category-tiles-air-treatment-2.jpg',
     data: [

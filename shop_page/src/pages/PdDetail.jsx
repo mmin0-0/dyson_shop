@@ -57,18 +57,15 @@ function PdDetail(props){
               <div className="pd-info">
                 <div className="tit-wrap">
                   <div className="main-tit">
-                    <span>100% 순면소재 그물망 주머니</span>
-                    <strong>{현재상품.title}</strong>
+                    <span>{현재상품.title}</span>
+                    <strong>{현재데이터.title}</strong>
                   </div>
                   <div className="sub-tit">
-                    <p>
-                      과일, 야채, 소품 등을 담을 수 있는 도톰하고 부드러운100% 순면소재 그물 면주머니입니다. 과일, 야채, 소품 등을 담을 수 있는 도톰하고 부드러운100% 순면소재 그물 면주머니입니다.
-                      {현재상품.content}
-                      </p>
+                    <p>{현재데이터.content}</p>
                   </div>
                 </div>
                 <div className="price-wrap">
-                  {/* <p className="pr-final"><span>{현재데이터.price}</span>원</p> */}
+                  <p className="pr-final"><span>{현재데이터.price}</span>원</p>
                   <p className="pr-existing"><span>28,000</span>원</p>
                   <p className="pr-discount">54%</p>
                 </div>
