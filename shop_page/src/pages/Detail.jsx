@@ -11,8 +11,6 @@ function Detail(){
     console.log('tab click')
   };
 
-  // const filterPd = selectCategory === 'all' ? pdList.flatMap(category => category.data) : pdList.find(category => category.id === selectCategory)?.data || [];
-
   return(
     <div id="wrap">
       <div className="wrap-inner">

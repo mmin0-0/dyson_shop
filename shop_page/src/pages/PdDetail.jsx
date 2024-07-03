@@ -28,17 +28,17 @@ function PdDetail(props){
       watchArr = JSON.parse(watchArr);
     }
     watchArr.push({
-      id: 현재상품.id,
-      title: 현재상품.title,
-      content: 현재상품.content,
+      id: 현재데이터.id,
+      title: 현재데이터.title,
+      content: 현재데이터.content,
       // price: 현재상품.data.price,
       // data: 현재상품.data
     });
 
     watchArr = Array.from(new Set(watchArr.map(item => item.id)))
     .map(id => watchArr.find(item => item.id === id));
-    if(watchArr.length > 3){
-      watchArr = watchArr.slice(watchArr.length - 3);
+    if(watchArr.length > 4){
+      watchArr = watchArr.slice(watchArr.length - 4);
     }
 
     localStorage.setItem('watched', JSON.stringify(watchArr));
