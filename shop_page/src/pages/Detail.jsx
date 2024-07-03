@@ -4,8 +4,14 @@ import pdList from '../data.js';
 
 function Detail(){
   const { id, dataId } = useParams();
-  const [product, setProduct] = useState();
-  const [currentData, SetCurrentData] = useState();
+  const [selectCategory, setSelectCategory] = useState('all');
+
+  const categoryClick = (categoryId)=>{
+    setSelectCategory(categoryId);
+    console.log('tab click')
+  };
+
+  // const filterPd = selectCategory === 'all' ? pdList.flatMap(category => category.data) : pdList.find(category => category.id === selectCategory)?.data || [];
 
   return(
     <div id="wrap">
@@ -21,12 +27,20 @@ function Detail(){
         </div>
         <div className="shop-cont con-box">
           <ul className="tab-cont">
-            <li className="on"><a href="javascript:void(0)">All</a></li>
+            <li 
+              className={selectCategory === 'all' ? 'on': ''}
+              onClick={()=>categoryClick('all')}
+            >
+              <a href="javascript:void(0)">All</a>
+            </li>
             {
-              pdList.map((a, i)=>{
+              pdList.map((category)=>{
                 return (
-                  <li key={i}>
-                    <a href="javascript:void(0)">{a.title}</a>
+                  <li key={category.id}
+                    className={selectCategory === category.id ? 'on' :''}
+                    onClick={()=>categoryClick(category.id)}
+                  >
+                    <a href="javascript:void(0)">{category.title}</a>
                   </li>
                 )
               })
@@ -34,10 +48,11 @@ function Detail(){
           </ul>
           <div className="item-container">
             {
-              pdList.map((product) => (
-                product.data.map((item) => (
-                  <div className="shop-item" key={`${product.id}-${item.id}`}>
-                    <Link to={`/detail/${product.id}/${item.id}`}>
+              pdList.map((category)=>(
+                category.id === selectCategory || selectCategory === 'all' ?
+                category.data.map((item) => (
+                  <div className="shop-item" key={`${item.id}`}>
+                    <Link to={`/detail/${category.id}/${item.id}`}>
                       <div className="img-wrap">
                         <img src={item.pdImg} alt="product_org" className="org-img" />
                         <img src="" alt="product_hover" className="hover-img" />
@@ -50,10 +65,10 @@ function Detail(){
                     </Link>
                   </div>
                 ))
+                : null
               ))
             }
-    </div>
-          <section></section>
+          </div>
         </div>
       </div>
     </div>
