@@ -38,10 +38,10 @@ function Detail(){
           </ul>
           <div className="item-container">
               {
-                현재상품.data.map((a, i)=>{
+                product.map((a, i)=>{
                   return (
                     <div className="shop-item" key={i}>
-                      <Link to={`/detail/${현재상품.id}/${a.id}`}>
+                      <Link to={`/detail/${a.id}`}>
                         <div className="img-wrap">
                           <img src="" alt="product_org" className="org-img" />
                           <img src="" alt="product_hover" className="hover-img" />
