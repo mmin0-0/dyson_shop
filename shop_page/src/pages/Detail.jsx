@@ -4,13 +4,8 @@ import pdList from '../data.js';
 
 function Detail(){
   const { id, dataId } = useParams();
-  const [product] = useState(pdList);
-  const 현재상품 = product.find(function(e){
-    return e.id == id
-  });
-  const 현재데이터 = 현재상품.data.find(function(e){
-    return e.id.toString() == dataId
-  });
+  const [product, setProduct] = useState();
+  const [currentData, SetCurrentData] = useState();
 
   return(
     <div id="wrap">
@@ -27,7 +22,7 @@ function Detail(){
         <div className="shop-cont con-box">
           <ul className="tab-cont">
             {
-              product.map((a, i)=>{
+              pdList.map((a, i)=>{
                 return (
                   <li key={i}>
                     <a href="javascript:void(0)">{a.title}</a>
@@ -37,26 +32,26 @@ function Detail(){
             }
           </ul>
           <div className="item-container">
-              {
-                product.map((a, i)=>{
-                  return (
-                    <div className="shop-item" key={i}>
-                      <Link to={`/detail/${a.id}`}>
-                        <div className="img-wrap">
-                          <img src="" alt="product_org" className="org-img" />
-                          <img src="" alt="product_hover" className="hover-img" />
-                        </div>
-                        <div className="item-info">
-                          <strong>{a.title}</strong>
-                          <span>{a.content}</span>
-                          <p><span>{a.price}</span>원</p>
-                        </div>
-                      </Link>
-                    </div>
-                  )
-                })
-              }
-          </div>
+            {
+              pdList.map((product) => (
+                product.data.map((item) => (
+                  <div className="shop-item" key={`${product.id}-${item.id}`}>
+                    <Link to={`/detail/${product.id}/${item.id}`}>
+                      <div className="img-wrap">
+                        <img src="" alt="product_org" className="org-img" />
+                        <img src="" alt="product_hover" className="hover-img" />
+                      </div>
+                      <div className="item-info">
+                        <strong>{item.title}</strong>
+                        <span>{item.content}</span>
+                        <p><span>{item.price}</span>원</p>
+                      </div>
+                    </Link>
+                  </div>
+                ))
+              ))
+            }
+    </div>
           <section></section>
         </div>
       </div>

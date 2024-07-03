@@ -270,7 +270,7 @@ function Product(props){
               return (
                 <SwiperSlide>
                   <div className="pd-item" id={a.id} key={i}>
-                    <a href={'/detail/' + a.id}>
+                    <Link to="/detail">
                       <div className="img-wrap">
                         <img src={a.mainImg} alt="상품이미지" />
                         <div className="circle-ani"></div>
@@ -279,7 +279,7 @@ function Product(props){
                         <strong>{a.title}</strong>
                         <p>{a.price}</p>
                       </div>
-                    </a>
+                    </ Link>
                   </div>
                 </SwiperSlide>
               )

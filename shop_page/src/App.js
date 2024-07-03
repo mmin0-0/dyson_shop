@@ -20,7 +20,7 @@ function App() {
         <Route path="/" element={<Home product={product} />} />
         <Route path="*" element={<div>없는페이지</div>} />
         <Route path="/cart" element={<Cart />} />
-        <Route path="/detail" element={<Detail />} />
+        <Route path="/detail" element={<Detail product={product} />} />
         {/* <Route path="/detail/:id" element={<PdDetail product={product} />} /> */}
         <Route path="/detail/:id/:dataId" element={<PdDetail product={product} />} />
       </Routes>
