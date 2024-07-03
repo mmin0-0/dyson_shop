@@ -50,11 +50,13 @@ const pdList = [
         title: '다이슨 쿨 공기청정기 (화이트/실버)',
         content: '공기 정화와 냉풍 기능을 하나로 0.1마이크론 크기의 작은 미세먼지를 99.95% 제거합니다.',
         price : 599000,
+        pdImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/ec/438e/primary-images/438E_WHSIL_Primary_%20800x1200_template.png?fmt=png-alpha&scl=1&fmt=png-alpha'
       },{
         id: 1,
         title: '다이슨 쿨 선풍기 타워형 (화이트/ 실버)',
         content: '다이슨 쿨 선풍기 타워형 날개 없는 선풍기의 강력한 바람',
         price : 398000,
+        pdImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/products/ec/am07/AM07-PPP-hero-1.png?fmt=png-alpha&scl=1&fmt=png-alpha'
       }
     ]
   },{

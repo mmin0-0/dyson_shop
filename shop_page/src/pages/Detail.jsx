@@ -39,7 +39,7 @@ function Detail(){
                   <div className="shop-item" key={`${product.id}-${item.id}`}>
                     <Link to={`/detail/${product.id}/${item.id}`}>
                       <div className="img-wrap">
-                        <img src="" alt="product_org" className="org-img" />
+                        <img src={item.pdImg} alt="product_org" className="org-img" />
                         <img src="" alt="product_hover" className="hover-img" />
                       </div>
                       <div className="item-info">
