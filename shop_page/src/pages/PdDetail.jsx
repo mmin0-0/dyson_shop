@@ -47,8 +47,8 @@ function PdDetail(props){
 
     watchArr = Array.from(new Set(watchArr.map(item => item.id)))
     .map(id => watchArr.find(item => item.id === id));
-    if(watchArr.length > 4){
-      watchArr = watchArr.slice(watchArr.length - 4);
+    if(watchArr.length > 3){
+      watchArr = watchArr.slice(watchArr.length - 3);
     }
 
     localStorage.setItem('watched', JSON.stringify(watchArr));
