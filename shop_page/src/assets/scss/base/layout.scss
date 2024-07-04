@@ -196,6 +196,10 @@ button{
     // @include notebook{margin-top: 10rem;}
     margin-top: 16rem;
     @include notebook{margin-top: 6rem;}
+    &.detail{
+      margin-top: 22rem;
+      @include notebook{margin-top: 12rem;}
+    }
     *{
       /* 스크롤바의 폭 너비 */
       &::-webkit-scrollbar {width: 4px;height: 4px;}

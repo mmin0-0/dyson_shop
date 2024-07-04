@@ -8,12 +8,18 @@ header{
   // background: linear-gradient(rgba($black, 1) 80%,rgba($black, 0) 100%);
   background: $black;
   transition: height .25s;
-  @include notebook{height: 6rem;}
+  @include notebook{
+    height: 6rem;
+    border-bottom: 1px solid rgba($white, .3);
+  }
   &.header-fixed{
     height: 6rem;
     // background: $black;
     border-bottom: 1px solid rgba($white, .3);
-    + #wrap{margin-top: 6rem !important;}
+    + #wrap{
+      margin-top: 6rem !important;
+      &.detail{margin-top: 12rem !important;}
+    }
     .hd-inner-wrap{
       width: calc(100% - 4rem);
       height: 6rem;

@@ -147,7 +147,7 @@
             span{
               font-size: 1.4rem;
               font-weight: 600;
-              color: $gray03;
+              color: rgba($white, .65);
               + strong{margin-top: 1rem;}
             }
             strong{
@@ -174,9 +174,9 @@
           }
           .pr{
             &-existing{
-              color: rgba($gray03, .8);
+              color: rgba($white, .65);
               text-decoration: line-through;
-              span{color: rgba($gray03, .8);}
+              span{color: rgba($white, .65);}
             }
             &-discount{color: $red;}
           }

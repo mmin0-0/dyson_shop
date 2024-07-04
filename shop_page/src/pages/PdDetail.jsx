@@ -46,9 +46,9 @@ function PdDetail(props){
   }, []);
 
   return(
-    <div id="wrap">
+    <div id="wrap" className="detail">
       <div className="wrap-inner">
-        <div className="detail-wrap con-wrap">
+        <div className="detail-wrap con-box">
           <div className="pd-wrap">
             <div className="pd-wrap-top">
               <div className="pd-img">
