@@ -137,8 +137,15 @@
       gap: 4rem;
       .pd-img{
         width: 45%;
-        min-height: 50rem;
+        height: 50rem;
         background: #333;
+        .swiper{
+          height: 100%;
+          .img-wrap{
+            height: 100%;
+            img{height: 100%;}
+          }
+        }
       }
       .pd-info{
         width: 55%;

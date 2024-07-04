@@ -77,10 +77,11 @@ function PdDetail(props){
                   pagination={{clickable: true}}
                 >  
                   {
-                    currentData.map((item, i) => (
+                    현재상품.data.map((item, i) => (
                       <SwiperSlide key={i}>
-                        <p>{item.title}</p>
-                        <img src={item.pdImg} alt="" />
+                        <div className="img-wrap">
+                          <img src={item.pdImg} alt="product img" />
+                        </div>
                       </SwiperSlide>
                     ))
                   }
