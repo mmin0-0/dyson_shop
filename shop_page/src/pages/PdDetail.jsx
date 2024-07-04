@@ -29,7 +29,7 @@ function PdDetail(props){
 
   const [watchItem, setWatch] = useState([]);
   useEffect(()=>{
-    if(!현재상품) return;
+    if(!현재데이터) return;
 
     let watchArr = localStorage.getItem('watched');
     if(watchArr == null){
@@ -132,7 +132,7 @@ function PdDetail(props){
                 <div className="buy-wrap btn-wrap">
                   <button type="button" className="btn-zzim">찜하기</button>
                   <button type="button" className="btn-cart type01" onClick={()=>{
-                    // dispatch(addItem({id: 현재상품.id, name: 현재상품.title, count: 1}))
+                    dispatch(addItem({id: 현재데이터.id, name: 현재데이터.title, count: 1}))
                   }}>장바구니</button>
                 </div>
               </div>
