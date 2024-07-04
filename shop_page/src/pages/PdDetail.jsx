@@ -2,6 +2,16 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { increase, addItem } from '../store.js';
+import pdList from '../data.js';
+// utils
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import { current } from "@reduxjs/toolkit";
+
 
 function PdDetail(props){
   let state = useSelector((state)=>state);
@@ -17,7 +27,7 @@ function PdDetail(props){
   // 2. 로컬스트리지에 저장(중복제거, 3개이하)
   // 3. 홈에서 watched내용으로 최근본 상품
 
-  let [watchItem, setWatch] = useState([]);
+  const [watchItem, setWatch] = useState([]);
   useEffect(()=>{
     if(!현재상품) return;
 
@@ -45,6 +55,13 @@ function PdDetail(props){
     setWatch(watchItem);
   }, []);
 
+  const itemsPerPage = 1;
+  const [currentPage, setCurrentPage] = useState(0);
+  const currentData = 현재상품.data.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
+  const handlePageChange = (index) => {
+    setCurrentPage(index);
+  };
+
   return(
     <div id="wrap" className="detail">
       <div className="wrap-inner">
@@ -52,7 +69,35 @@ function PdDetail(props){
           <div className="pd-wrap">
             <div className="pd-wrap-top">
               <div className="pd-img">
-                {/* 슬라이드 */}
+                <Swiper
+                  className="pd-swiper"
+                  cssMode={true}
+                  slidesPerView={1}
+                  modules={[Pagination]}
+                  pagination={{clickable: true}}
+                >  
+                  {
+                    currentData.map((item, i) => (
+                      <SwiperSlide key={i}>
+                        <p>{item.title}</p>
+                        <img src={item.pdImg} alt="" />
+                      </SwiperSlide>
+                    ))
+                  }
+                </Swiper>
+                {/* <div className="pagination">
+                  {현재상품.data.length > itemsPerPage && (
+                    Array.from({ length: Math.ceil(현재상품.data.length / itemsPerPage) }, (_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => handlePageChange(index)}
+                        className={index === currentPage ? 'active': ''}
+                      >
+                        <img src={현재상품.thumbs} alt="pagination" />
+                      </button>
+                    ))
+                  )}
+                </div> */}
               </div>
               <div className="pd-info">
                 <div className="tit-wrap">

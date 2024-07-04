@@ -11,7 +11,8 @@ const pdList = [
         content: '젖은 모발에 바람으로 드라이와 스트레이트를 동시에 과도한 열 손상 없이',
         price : 599000,
         pdImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/personal-care/553/primary/553-Primary-DKBLBCO_800x1200.png?scl=1&fmt=png-alpha',
-        hoImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/products/personal-care/q4-gifting/pdp/corrale-pdp/Personalcare-556-VariantPDP-Specs-DKBLCO.png?$responsive$&fmt=png-alpha&cropPathE=desktop&fit=stretch,1&wid=960'
+        hoImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/products/personal-care/q4-gifting/pdp/corrale-pdp/Personalcare-556-VariantPDP-Specs-DKBLCO.png?$responsive$&fmt=png-alpha&cropPathE=desktop&fit=stretch,1&wid=960',
+        thumbs: ['https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/personal-care/553/primary/553-Primary-DKBLBCO_800x1200.png?scl=1&fmt=png-alpha','https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/products/personal-care/q4-gifting/pdp/corrale-pdp/Personalcare-556-VariantPDP-Specs-DKBLCO.png?$responsive$&fmt=png-alpha&cropPathE=desktop&fit=stretch,1&wid=960']
       },{
         id: 1,
         title: '다이슨 슈퍼소닉 뉴럴 헤어드라이어(빈카블루/토파즈)',
