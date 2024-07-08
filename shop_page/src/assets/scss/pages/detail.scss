@@ -61,9 +61,6 @@
       padding: 0 2rem;
       &:not(:first-child){border-left: 1px solid rgba($white, .45);}
       &:hover, &.on{a{color: $subColor;}}
-      @include tablet{
-        &:first-child{padding-left: 0;}
-      }
       a{
         font-weight: bold;
         white-space: nowrap;

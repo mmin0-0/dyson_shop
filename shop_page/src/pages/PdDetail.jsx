@@ -13,11 +13,11 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { current } from "@reduxjs/toolkit";
 
 
-function PdDetail(props){
+function PdDetail({price}){
   let state = useSelector((state)=>state);
   let dispatch = useDispatch();
   const { id, dataId } = useParams();
-  const 현재상품 = props.product.find(function(e){
+  const 현재상품 = pdList.find(function(e){
     return e.id == id
   });
   const 현재데이터 = 현재상품.data.find(function(e){
@@ -41,7 +41,7 @@ function PdDetail(props){
       id: 현재데이터.id,
       title: 현재데이터.title,
       content: 현재데이터.content,
-      // price: 현재상품.data.price,
+      price: 현재데이터.price,
       // data: 현재상품.data
     });
 
@@ -111,7 +111,7 @@ function PdDetail(props){
                   </div>
                 </div>
                 <div className="price-wrap">
-                  <p className="pr-final"><span>{현재데이터.price}</span>원</p>
+                  <p className="pr-final"><span>{price(현재데이터.price)}</span>원</p>
                   <p className="pr-existing"><span>28,000</span>원</p>
                   <p className="pr-discount">54%</p>
                 </div>

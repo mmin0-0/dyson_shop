@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import pdList from '../data.js';
 
-function Detail(){
+function Detail({price}){
   const { id, dataId } = useParams();
   const [selectCategory, setSelectCategory] = useState('all');
 
   const categoryClick = (categoryId)=>{
     setSelectCategory(categoryId);
-    console.log('tab click')
   };
 
   return(
@@ -58,7 +57,7 @@ function Detail(){
                       <div className="item-info">
                         <strong>{item.title}</strong>
                         <span>{item.content}</span>
-                        <p><span>{item.price}</span>원</p>
+                        <p><span>{price(item.price)}</span>원</p>
                       </div>
                     </Link>
                   </div>

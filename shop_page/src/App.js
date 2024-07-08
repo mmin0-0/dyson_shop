@@ -12,17 +12,18 @@ import './assets/scss/main.scss';
 
 function App() {
   const [product] = useState(PdList);
-
+  const price = (num) => {
+    return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  };
   return (
     <div className="App" id="wrapper">
       <Header />
       <Routes>
         <Route path="/" element={<Home product={product} />} />
         <Route path="*" element={<div>없는페이지</div>} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/detail" element={<Detail product={product} />} />
-        {/* <Route path="/detail/:id" element={<PdDetail product={product} />} /> */}
-        <Route path="/detail/:id/:dataId" element={<PdDetail product={product} />} />
+        <Route path="/cart" element={<Cart />} price={price} />
+        <Route path="/detail" element={<Detail product={product} price={price} />} />
+        <Route path="/detail/:id/:dataId" element={<PdDetail product={product} price={price} />} />
       </Routes>
       <Footer />
     </div>
