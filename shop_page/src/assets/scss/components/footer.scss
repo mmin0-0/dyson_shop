@@ -36,6 +36,9 @@ footer{
           text-indent: -9999em;
           overflow: hidden;
           position: relative;
+          &:hover{
+            &::after{filter: none;}
+          }
           &::after{
             content: '';
             width: 100%;
@@ -45,6 +48,7 @@ footer{
             position: absolute;
             top: 0;
             left: 0;
+            transition: all .25s;
             filter: invert(0%) sepia(0%) saturate(10%) hue-rotate(284deg) brightness(0%) contrast(100%);
             @include background(icon, arrow03_icon, svg, no-repeat, 80%, center, center);
           }

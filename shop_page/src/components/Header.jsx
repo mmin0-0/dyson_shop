@@ -139,8 +139,8 @@ function Header(){
           <div className="gnb-wrap-top">
             <a href="javascript:void(0)" className="btn-closed" onClick={toggleMenu}>닫기</a>
             <div className="utility-wrap">
-              <a href="#none" className="user">로그인</a>
-              <a href="#none" className="basket">장바구니</a>
+              <a href="javascirpt:void(0)" className="user">로그인</a>
+              <a href="javascirpt:void(0)" className="basket" onClick={goCartPage}>장바구니</a>
             </div>
           </div>
           <ul className="gnb-inner">

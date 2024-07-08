@@ -196,7 +196,7 @@ button{
     // @include notebook{margin-top: 10rem;}
     margin-top: 16rem;
     @include notebook{margin-top: 6rem;}
-    &.detail{
+    &.detail, &.cart{
       margin-top: 22rem;
       @include notebook{margin-top: 12rem;}
     }
@@ -239,24 +239,26 @@ button{
       }
     }
     thead{
-      border-top: 1px solid $table-bd;
-      border-bottom: 1px solid $table-bd;
-      th{
-        padding: 1.2rem .8rem;
-        text-align: center;
-        @include tablet{padding: 1rem;}
-        .txt{
-          font-size: 1.4rem;
-          font-weight: 500;
+      // border-top: 1px solid $white;
+      border-bottom: 1px solid $white;
+      tr{
+        th{
+          padding: 1.2rem .8rem;
+          text-align: center;
+          @include tablet{padding: 1rem;}
+          .txt{
+            font-size: 1.4rem;
+            font-weight: 500;
+          }
         }
       }
     }
     tbody{
-      tr{border-bottom: 1px solid $table-bd;}
+      tr{border-bottom: 1px solid $white;}
       td{
         padding: 2rem .8rem;
         &:not(:last-child){
-          border-right: 1px solid $table-bd;
+          border-right: 1px solid $white;
         }
       }
     }

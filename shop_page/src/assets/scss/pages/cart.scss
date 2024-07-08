@@ -85,7 +85,6 @@
                   @include tablet{top: 1rem;right: 1rem;}
                 }
                 .amount{
-                  background: $white;
                   @include flexbox(row, center, center);
                   @include tablet{
                     border: 1px solid $table-bd;
@@ -129,19 +128,17 @@
             &::before{
               content: '';
               width: 100%;
-              height: 1.2rem;
-              background: $gray01;
+              height: 1rem;
+              background: $gray03;
               display: block;
             }
           }
           thead{
-            border-top-color: $gray03;
             @include tablet{border: 0;}
             th{text-align: left;}
           }
           tbody{
             tr{
-              border-bottom-color: $gray03;
               @include tablet{border-bottom: 0;}
               td{
                 border-right: 0;

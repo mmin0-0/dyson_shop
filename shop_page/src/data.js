@@ -28,21 +28,21 @@ const pdList = [
     mainImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/home-page/homepage-category-tiles-floorcare.jpg',
     data: [
       {
-        id: 0,
+        id: 2,
         title: '다이슨 V15 디텍트 (옐로/니켈)',
         content: '일루미네이션 기술이 적용되어 미세한 크기의 먼지를 보여줍니다.',
         price : 1090000,
         pdImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/products/floorcare/sticks/v15-detect/pdp/dynamic-media/primary/SV22-CORE-LB.png?fmt=png-alpha&scl=1&fmt=png-alpha',
         hoImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/products/vacuum-cleaners-category/offering-refresh/pdp/Specification-range-SV22_IRSYEIRNK_SB.png?$responsive$&fmt=png-alpha&cropPathE=desktop&fit=stretch,1&wid=960'
       },{
-        id: 1,
+        id: 3,
         title: '다이슨 디지털 슬림',
         content: '청소 성능은 그대로 어디서나 강력한 청소 / 1.9kg 가벼운 무게 / 지능적인 실시간 LCD 디스플레이 / 3가지 툴 제공',
         price : 599000,
         pdImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/products/floorcare/sticks/dyson-digital-slim/variants/nickel/hero.png?fmt=png-alpha&scl=1&fmt=png-alpha',
         hoImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/products/floorcare/sticks/dyson-digital-slim/variants/nickel/sv18-variant-nickel-iron-specs.jpg?$responsive$&fmt=png-alpha&cropPathE=desktop&fit=stretch,1&wid=960'
       },{
-        id: 2,
+        id: 4,
         title: '다이슨 360 vis nav™ 로봇 청소기',
         content: '지능형 청소를 지원하는 360° 비주얼 내비게이션',
         price :  1699000,
@@ -57,14 +57,14 @@ const pdList = [
     mainImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/home-page/homepage-category-tiles-air-treatment-2.jpg',
     data: [
       {
-        id: 0,
+        id: 5,
         title: '다이슨 쿨 공기청정기 (화이트/실버)',
         content: '공기 정화와 냉풍 기능을 하나로 0.1마이크론 크기의 작은 미세먼지를 99.95% 제거합니다.',
         price : 599000,
         pdImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/ec/438e/primary-images/438E_WHSIL_Primary_%20800x1200_template.png?fmt=png-alpha&scl=1&fmt=png-alpha',
         hoImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/products/ec/438e/variants/non-sco/TP07_variant-spec-WHSIL.jpg?$responsive$&fmt=png-alpha&cropPathE=desktop&fit=stretch,1&wid=960'
       },{
-        id: 1,
+        id: 6,
         title: '다이슨 쿨 선풍기 타워형 (화이트/ 실버)',
         content: '다이슨 쿨 선풍기 타워형 날개 없는 선풍기의 강력한 바람',
         price : 398000,
@@ -79,7 +79,7 @@ const pdList = [
     mainImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/home-page/homepage-category-tiles-headphones.jpg',
     data: [
       {
-        id: 0,
+        id: 7,
         title: '다이슨 존 앱솔루트 플러스 노이즈 캔슬링 헤드폰 (블루/코퍼)',
         content: '깨끗한 다이슨 오디오 음질과 우수한 노이즈 캔슬링. 사운드 왜곡을 최소화 하기위한 설계.',
         price : 990000,
@@ -94,14 +94,14 @@ const pdList = [
     mainImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/home-page/homepage-category-tiles-lighting.jpg',
     data: [
       {
-        id: 0,
+        id: 8,
         title: '다이슨 솔라사이클 모프 조명 플로어스탠드형(화이트/실버)',
         content: '다이슨 솔라사이클 모프로 나에게 딱 맞는 분위기를 연출해 보세요.',
         price : 960000,
         pdImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/lighting/lightcycle-morph/primary/white-silver-floor-primary.png?fmt=png-alpha&scl=1&fmt=png-alpha',
         hoImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/products/lighting/lightcycle-morph/variants/floor-white-silver/white-silver-floor-specs.jpg?$responsive$&fmt=png-alpha&cropPathE=desktop&fit=stretch,1&wid=960'
       },{
-        id: 1,
+        id: 9,
         title: '다이슨 솔라사이클 모프 조명 데스크형(화이트/실버)',
         content: '지능적으로 사용자 위치의 자연광 추적 / 사용자와 주변 환경에 따라 맞춤 변환, 조절 / 4가지 조명을 하나로',
         price : 720000,

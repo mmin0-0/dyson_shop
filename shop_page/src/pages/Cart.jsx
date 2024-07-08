@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CartOption, Popup } from '../components/Modal';
 import { increase, decrease, addItem } from '../store.js';
 
-function Cart(){
+function Cart({price}){
   const [isModalOpen, setIsModalOpen] = useState(false);
   const openModal = () => {
     setIsModalOpen(true);
@@ -17,7 +17,7 @@ function Cart(){
   let dispatch = useDispatch();
 
   return (
-    <div id="wrap">   
+    <div id="wrap" className="cart">   
       <div className="wrap-inner con-box">
         <div className="board-tit">
           <div className="tit-wrap">
@@ -123,14 +123,14 @@ function CartTable({toggleModal}){
                 </td>
                 <td className="hidden-lg">
                   <div className="amount">
-                    <button type="button" className="decrease">-</button>
+                    <button type="button" className="decrease" onClick={()=>{dispatch(decrease(state.cart[i].id))}}>-</button>
                     <div className="tit txt-bold">{state.cart[i].count}</div>
                     <button type="button" className="increase" onClick={()=>{dispatch(increase(state.cart[i].id))}}>+</button>
                   </div>
                 </td>
                 <td className="hidden-lg">
                   <div className="price">
-                    <p className="tit"><span className="txt-bold">000</span> 원</p>
+                    <p className="tit"><span className="txt-bold">{state.cart[i].price}</span> 원</p>
                     <div className="btn-wrap">
                       <button type="button"className="order-option type02">바로구매</button>
                     </div>
