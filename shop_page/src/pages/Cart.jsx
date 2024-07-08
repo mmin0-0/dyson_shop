@@ -32,7 +32,7 @@ function Cart({price}){
           <ResultTable />
           <div className="bottom-btn">
             <button type="button" className="btn-order">주문하기</button>
-            <Link to="/Home">계속 쇼핑하기</Link>
+            <Link to="/detail">계속 쇼핑하기</Link>
           </div>
         </div>
       </div>
