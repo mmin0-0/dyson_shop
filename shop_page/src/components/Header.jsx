@@ -111,7 +111,7 @@ function Header(){
                 <div className="input-wrap">
                   <label for="searchWrap" className="hide">검색</label>
                   <input type="search" id="searchWrap" placeholder="검색어를 입력해 주세요" />
-                  <button type="submit" className="btn-search">검색</button>
+                  <button type="button" className="btn-search">검색</button>
                 </div>
               </form>
             </div>

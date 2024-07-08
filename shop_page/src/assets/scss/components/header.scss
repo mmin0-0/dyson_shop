@@ -41,8 +41,9 @@ header{
   .hd-inner-wrap{
     position: relative;
     min-height: 6rem;
-    // padding: 1rem 0;
+    margin-top: 2rem;
     transition: all .25s;
+    @include notebook{margin-top: 0;}
     .ham-btn, .user, .search-controls{
       width: 6rem;
       height: 6rem;
@@ -145,7 +146,7 @@ header{
               background: inherit;
               position: absolute;
               top: 50%;
-              right: 1rem;
+              right: 0;
               transform: translateY(-50%);
               &::after{
                 content: '';
@@ -174,6 +175,7 @@ header{
       .search-keyword{
         margin-top: 1.8rem;
         gap: 2rem;
+        *{color: $black;}
         @include flexbox(row, flex-start, center);
         @include tablet{
           flex-direction: column;
@@ -205,12 +207,26 @@ header{
         text-align: center;
         @include tablet{display: none;}
         a{
-          border: 1px solid $gray01;
-          font-size: 1.6rem;
-          background: $white;
-          padding: .8rem  3.4rem .8rem 1.2rem;
+          border: 1px solid $black;
+          color: $black;
+          padding: .8rem  1.2rem;
           border-radius: 2rem;
-          @include background(icon, arrow01_icon, svg, no-repeat, 1.6rem, right 1rem, center);
+          transition: all .25s;
+          &::after{
+            content: '';
+            display: inline-block;
+            vertical-align: middle;
+            width: 2rem;
+            height: 2rem;
+            margin-left: .8rem;
+            transition: all .25;
+            @include background(icon, arrow01_icon, svg, no-repeat, 90%, center, center);
+          }
+          &:hover{
+            background: $black;
+            color: $white;
+            &::after{filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);}
+          }
         }
       }
     }
@@ -271,6 +287,7 @@ header{
       }
       .utility-wrap{
         a{
+          color: $black;
           font-size: 1.4rem;
           font-weight: bold;
           &:not(:last-child){margin-right: 1.6rem;}
@@ -317,7 +334,7 @@ header{
             color: $black;
             @include tablet{
               background: inherit;
-              color: $mainColor;
+              color: $subColor;
             }
             &::after{transform: translateY(-50%) rotate(0deg);}
             + .gnb-draw{display: block;}
