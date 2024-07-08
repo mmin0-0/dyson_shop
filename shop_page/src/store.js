@@ -4,8 +4,8 @@ import user from './store/userSlice.js';
 let cart = createSlice({
   name: 'cart',
   initialState: [
-    {id : 10, name : 'White and Black', price: 20000 , count : 2},
-    {id : 11, name : 'Grey Yordan', price: 18000, count : 1}
+    {id : 0, name : '다이슨 에어스트레이트 스트레이트너(블루/코퍼)', price: 599000 , count : 2},
+    {id : 5, name : '다이슨 쿨 공기청정기 (화이트/실버)', price: 599000, count : 1}
   ],
   reducers: {
     increase(state, action){
