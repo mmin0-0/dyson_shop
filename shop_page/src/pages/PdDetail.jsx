@@ -39,6 +39,7 @@ function PdDetail({price}){
       watchArr = JSON.parse(watchArr);
     }
     watchArr.push({
+      category: 현재상품.id,
       id: 현재데이터.id,
       title: 현재데이터.title,
       content: 현재데이터.content,
@@ -134,7 +135,7 @@ function PdDetail({price}){
                 <div className="buy-wrap btn-wrap">
                   <button type="button" className="btn-zzim">찜하기</button>
                   <button type="button" className="btn-cart type01" onClick={()=>{
-                    dispatch(addItem({id: 현재데이터.id, title: 현재데이터.title, price: 현재데이터.price, count: 1, img: 현재데이터.pdImg}))
+                    dispatch(addItem({category: 현재상품.id, id: 현재데이터.id, title: 현재데이터.title, price: 현재데이터.price, count: 1, img: 현재데이터.pdImg}))
                   }}>장바구니</button>
                 </div>
               </div>

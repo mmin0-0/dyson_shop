@@ -4,8 +4,8 @@ import user from './store/userSlice.js';
 let cart = createSlice({
   name: 'cart',
   initialState: [
-    {id : 0, title : '다이슨 에어스트레이트 스트레이트너(블루/코퍼)', price: 599000 , count : 2, img: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/personal-care/553/primary/553-Primary-DKBLBCO_800x1200.png?scl=1&fmt=png-alpha'},
-    {id : 5, title : '다이슨 쿨 공기청정기 (화이트/실버)', price: 599000, count : 1, img: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/ec/438e/primary-images/438E_WHSIL_Primary_%20800x1200_template.png?fmt=png-alpha&scl=1&fmt=png-alpha'}
+    {category: 'hairCare', id : 0, title : '다이슨 에어스트레이트 스트레이트너(블루/코퍼)', price: 599000 , count : 2, img: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/personal-care/553/primary/553-Primary-DKBLBCO_800x1200.png?scl=1&fmt=png-alpha'},
+    {category: 'airPurifier', id : 5, title : '다이슨 쿨 공기청정기 (화이트/실버)', price: 599000, count : 1, img: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/ec/438e/primary-images/438E_WHSIL_Primary_%20800x1200_template.png?fmt=png-alpha&scl=1&fmt=png-alpha'}
   ],
   reducers: {
     increase(state, action){

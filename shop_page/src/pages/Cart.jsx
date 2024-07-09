@@ -105,7 +105,7 @@ function CartTable({cart, dispatch, totalPrice}){
                       <label htmlFor={`check_0${i}`}></label>
                     </div>
                     <div className="pd-info">
-                      <a href="javascript:void(0)">
+                      <a href={`detail/${a.category}/${a.id}`}>
                         <div className="img-wrap">
                           <img src={a.img} alt="product img" />
                         </div>
