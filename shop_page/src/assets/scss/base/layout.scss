@@ -218,6 +218,7 @@ button{
 }
 
 .table-wrap{
+  border-bottom: 1px solid $white;
   .hidden{
     &-lg{
       display: table-cell;
@@ -227,6 +228,10 @@ button{
       display: none;
       @include tablet{display: block !important;}
     }
+  }
+  .empty{
+    min-height: 20rem;
+    @include flexbox(row, center, center);
   }
   table{
     width: 100%;
@@ -254,7 +259,7 @@ button{
       }
     }
     tbody{
-      tr{border-bottom: 1px solid $white;}
+      tr{&:not(:last-child){border-bottom: 1px solid $white;}}
       td{
         padding: 2rem .8rem;
         &:not(:last-child){

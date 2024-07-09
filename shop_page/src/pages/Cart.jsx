@@ -168,9 +168,9 @@ function CartTable({toggleModal}){
               </tr>
             )
           }
-          {!hasRows && <div>항목이 없습니다.</div>}
         </tbody>
       </table>
+      {!hasRows && <div className="empty">항목이 없습니다.</div>}
     </div>
   )
 }
