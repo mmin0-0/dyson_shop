@@ -4,8 +4,8 @@ import user from './store/userSlice.js';
 let cart = createSlice({
   name: 'cart',
   initialState: [
-    {id : 0, name : '다이슨 에어스트레이트 스트레이트너(블루/코퍼)', price: 599000 , count : 2},
-    {id : 5, name : '다이슨 쿨 공기청정기 (화이트/실버)', price: 599000, count : 1}
+    {id : 0, title : '다이슨 에어스트레이트 스트레이트너(블루/코퍼)', price: 599000 , count : 2, img: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/personal-care/553/primary/553-Primary-DKBLBCO_800x1200.png?scl=1&fmt=png-alpha'},
+    {id : 5, title : '다이슨 쿨 공기청정기 (화이트/실버)', price: 599000, count : 1, img: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/ec/438e/primary-images/438E_WHSIL_Primary_%20800x1200_template.png?fmt=png-alpha&scl=1&fmt=png-alpha'}
   ],
   reducers: {
     increase(state, action){
@@ -23,10 +23,11 @@ let cart = createSlice({
     addItem(state, action){
       let num = state.findIndex((state)=>{return state.id === action.payload.id})
       if(num > -1){
-        state[num].count++
-        window.alert('중복된 상품입니다. 수량이 추가됩니다')
+        state[num].count++;
+        window.alert('중복된 상품입니다. 수량이 추가됩니다');
       }else{
-        state.push(action.payload)
+        state.push(action.payload);
+        window.alert('장바구니에 담겼습니다!');
       }
     }
   }

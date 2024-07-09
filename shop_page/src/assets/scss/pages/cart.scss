@@ -58,11 +58,16 @@
                       gap: 1rem;
                       @include flexbox(row, flex-start, flex-start);
                       .img-wrap{
-                        width: 8rem;
-                        min-width: 8rem;
-                        height: 8rem;
+                        width: 10rem;
+                        min-width: 10rem;
+                        height: 10rem;
                         overflow: hidden;
-                        background: #ccc;
+                        background: $white;
+                        img{
+                          width: 100%;
+                          height: 100%;
+                          object-fit: contain;
+                        }
                       }
                       p{
                         @include ellipsis(2);

@@ -16,6 +16,7 @@ import { current } from "@reduxjs/toolkit";
 function PdDetail({price}){
   let state = useSelector((state)=>state);
   let dispatch = useDispatch();
+
   const { id, dataId } = useParams();
   const 현재상품 = pdList.find(function(e){
     return e.id == id
@@ -42,6 +43,7 @@ function PdDetail({price}){
       title: 현재데이터.title,
       content: 현재데이터.content,
       price: 현재데이터.price,
+      img: 현재데이터.pdImg,
       // data: 현재상품.data
     });
 
@@ -132,7 +134,7 @@ function PdDetail({price}){
                 <div className="buy-wrap btn-wrap">
                   <button type="button" className="btn-zzim">찜하기</button>
                   <button type="button" className="btn-cart type01" onClick={()=>{
-                    dispatch(addItem({id: 현재데이터.id, name: 현재데이터.title, price: 현재데이터.price, count: 1}))
+                    dispatch(addItem({id: 현재데이터.id, title: 현재데이터.title, price: 현재데이터.price, count: 1, img: 현재데이터.pdImg}))
                   }}>장바구니</button>
                 </div>
               </div>

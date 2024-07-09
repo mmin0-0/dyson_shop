@@ -46,7 +46,7 @@ const pdList = [
         title: '다이슨 360 vis nav™ 로봇 청소기',
         content: '지능형 청소를 지원하는 360° 비주얼 내비게이션',
         price :  1699000,
-        pdImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/vacuums/robots/primary/277_Primary_SUBLNK.png?scl=1&fmt=png-alpha ',
+        pdImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/dynamic-media/vacuums/robots/primary/277_Primary_SUBLNK.png?scl=1&fmt=png-alpha',
         hoImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/products/floorcare/robot-vacuums/277-robot-vacuum/pdp/sublnk/SUBLINK-specification_1200x800.png?$responsive$&fmt=png-alpha&cropPathE=desktop&fit=stretch,1&wid=960'
       }
     ]

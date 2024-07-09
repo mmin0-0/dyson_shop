@@ -13,8 +13,8 @@ function Cart({price}){
     setIsModalOpen(false);
   };
 
-  let state = useSelector((state) => state );
-  let dispatch = useDispatch();
+  const state = useSelector((state)=>state);
+  const dispatch = useDispatch();
 
   return (
     <div id="wrap" className="cart">   
@@ -23,13 +23,13 @@ function Cart({price}){
           <div className="tit-wrap">
             <div>
               <strong className="main-tit">장바구니</strong>
-              <span className="state">0</span>
+              <span className="state">{state.cart.length}</span>
             </div>
           </div>
         </div>
         <div className="cont-wrap">
           <CartTable />
-          <ResultTable />
+          <ResultTable state={state} />
           <div className="bottom-btn">
             <button type="button" className="btn-order">주문하기</button>
             <Link to="/detail">계속 쇼핑하기</Link>
@@ -67,7 +67,7 @@ function CartTable({toggleModal}){
       row.remove();
       childRows();
     }
-  }
+  };
 
   return (
     <div className="table-wrap">
@@ -107,8 +107,10 @@ function CartTable({toggleModal}){
                     </div>
                     <div className="pd-info">
                       <a href="#none">
-                        <div className="img-wrap">상품</div>
-                        <p>{state.cart[i].name}</p>
+                        <div className="img-wrap">
+                          <img src={state.cart[i].img} alt="product img" />
+                        </div>
+                        <p>{state.cart[i].title}</p>
                       </a>
                     </div>
                   </div>
@@ -176,6 +178,9 @@ function CartTable({toggleModal}){
 }
 
 function ResultTable(){
+  const state = useSelector((state)=>state);
+  const dispatch = useDispatch();
+
   return (
     <div className="table-wrap">
       <table className="shop-result-table">
@@ -185,7 +190,7 @@ function ResultTable(){
         </colgroup>
         <thead>
           <tr>
-            <th className="hidden-lg"><p className="txt">총 주문 상품 <span>1</span>개</p></th>
+            <th className="hidden-lg"><p className="txt">총 주문 상품 <span>{state.cart.length}</span>개</p></th>
           </tr>
         </thead>
         <tbody>
