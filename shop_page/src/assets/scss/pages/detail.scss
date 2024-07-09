@@ -127,7 +127,6 @@
 }
 // 제품 상세페이지
 .detail-wrap{
-  border: 1px solid #fff;
   .pd-wrap{
     &-top{
       display: flex;
@@ -257,6 +256,30 @@
         }
       }
     }
-    &-bottom{}
+    &-bottom{
+      margin-top: 10rem;
+      .direct-wrap{
+        gap: 4rem;
+        @include flexbox(row, space-between, flex-start);
+        border: 1px solid #fff;
+        .tit-wrap{
+          width: 40%;
+        }
+        .cont-wrap{
+          width: 60%;
+          .direct-list{
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            li{
+              .icon{
+                width: 2rem;
+                height: 2rem;
+                img{width: 100%;}
+              }
+            }
+          }
+        }
+      }
+    }
   }
 }

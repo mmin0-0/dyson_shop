@@ -126,7 +126,7 @@ function PdVisual({현재상품, 현재데이터, cart, dispatch, price}){
 function PdInfo(){
   return (
     <div className="pd-wrap-bottom">
-      <div className="direct">
+      <div className="direct-wrap">
         <div className="tit-wrap">
           <strong>다이슨 공식몰 구매 혜택</strong>
           <a href="javascript:void(0)">카드사 특별 혜택 자세히 보기</a>
@@ -139,7 +139,11 @@ function PdInfo(){
                   <li>
                     <a href="javascript:void(0)">
                       <div className="icon">
-                        <img src={`${process.env.PUBLIC_URL}/images/icon/`} alt="sub visual" />
+                        <img src={`${process.env.PUBLIC_URL}/images/icon/benefit0${i + 1}_icon.png`} alt="benefit icon" />
+                      </div>
+                      <strong>{a.title}</strong>
+                      <div className="info">
+                        <p>{a.content}</p>
                       </div>
                     </a>
                   </li>
