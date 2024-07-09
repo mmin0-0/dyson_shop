@@ -5,14 +5,6 @@ import { CartOption, Popup } from '../components/Modal';
 import { increase, decrease, addItem } from '../store.js';
 
 function Cart({price}){
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const openModal = () => {
-    setIsModalOpen(true);
-  };
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
   const state = useSelector((state)=>state);
   const dispatch = useDispatch();
 
@@ -32,29 +24,32 @@ function Cart({price}){
           </div>
         </div>
         <div className="cont-wrap">
-          <CartTable totalPrice={totalPrice} />
-          <ResultTable totalPrice={totalPrice}/>
+          <CartTable 
+            cart={state.cart}
+            dispatch={dispatch}
+            totalPrice={totalPrice} 
+          />
+          <ResultTable 
+            cart={state.cart}
+            dispatch={dispatch}
+            totalPrice={totalPrice} 
+          />
           <div className="bottom-btn">
             <button type="button" className="btn-order">주문하기</button>
             <Link to="/detail">계속 쇼핑하기</Link>
           </div>
         </div>
       </div>
-      {/* <div className="modal">
-        <CartOption />
-      </div> */}
-      <div onClick={openModal}>열기</div>
-      <CartOption isOpen={isModalOpen} onClose={closeModal} />
     </div>
   )
 }
 
-function CartTable({toggleModal}){
-  const state = useSelector((state)=>state);
-  const dispatch = useDispatch();
+function CartTable({cart, dispatch, totalPrice}){
+  // const state = useSelector((state)=>state);
+  // const dispatch = useDispatch();
 
   const tbodyRef = useRef();
-  const [hasRows, setHasRows] = useState(state.cart.length > 0);
+  const [hasRows, setHasRows] = useState(cart.length > 0);
   const childRows = ()=>{
     if(tbodyRef.current){
       setHasRows(tbodyRef.current.querySelectorAll('tr').length > 0);
@@ -101,20 +96,20 @@ function CartTable({toggleModal}){
         </thead>
         <tbody ref={tbodyRef}>
           {
-            state.cart.map((a,i)=>
-              <tr id={state.cart[i].id} key={i}>
+            cart.map((a,i)=>
+              <tr id={a.id} key={i}>
                 <td className="img">
                   <div className="flex-wrap pd-wrap">
                     <div className="input-wrap check">
-                      <input id={`check_0${state.cart[i].id}`} type="checkbox" name="basket" />
-                      <label htmlFor={`check_0${state.cart[i].id}`}></label>
+                      <input id={`check_0${i}`} type="checkbox" name="basket" />
+                      <label htmlFor={`check_0${i}`}></label>
                     </div>
                     <div className="pd-info">
                       <a href="javascript:void(0)">
                         <div className="img-wrap">
-                          <img src={state.cart[i].img} alt="product img" />
+                          <img src={a.img} alt="product img" />
                         </div>
-                        <p>{state.cart[i].title}</p>
+                        <p>{a.title}</p>
                       </a>
                     </div>
                   </div>
@@ -123,9 +118,9 @@ function CartTable({toggleModal}){
                 <td className="hidden-sm">
                   <div className="info-list">
                     <div className="amount">
-                      <button type="button" className="decrease" onClick={()=>{dispatch(decrease(state.cart[i].id))}}>-</button>
-                      <div className="tit txt-bold">{state.cart[i].count}</div>
-                      <button type="button" className="increase" onClick={()=>{dispatch(increase(state.cart[i].id))}}>+</button>
+                      <button type="button" className="decrease" onClick={()=>{dispatch(decrease(a.id))}}>-</button>
+                      <div className="tit txt-bold">{a.count}</div>
+                      <button type="button" className="increase" onClick={()=>{dispatch(increase(a.id))}}>+</button>
                     </div>
                     <div className="flex-wrap price">
                       <div className="tit txt-bold">주문금액</div>
@@ -133,7 +128,7 @@ function CartTable({toggleModal}){
                     </div>
                     <div className="result-list">
                       <div className="flex-wrap">
-                        <div className="tit">상품금액(총 <span>{state.cart[i].count}</span>개)</ div>
+                        <div className="tit">상품금액(총 <span>{a.count}</span>개)</ div>
                         <div className="cont"><span>6,000</span>원</div>
                       </div>
                       <div className="flex-wrap">
@@ -149,9 +144,9 @@ function CartTable({toggleModal}){
                 </td>
                 <td className="hidden-lg">
                   <div className="amount">
-                    <button type="button" className="decrease" onClick={()=>{dispatch(decrease(state.cart[i].id))}}>-</button>
-                    <div className="tit txt-bold">{state.cart[i].count}</div>
-                    <button type="button" className="increase" onClick={()=>{dispatch(increase(state.cart[i].id))}}>+</button>
+                    <button type="button" className="decrease" onClick={()=>{dispatch(decrease(a.id))}}>-</button>
+                    <div className="tit txt-bold">{a.count}</div>
+                    <button type="button" className="increase" onClick={()=>{dispatch(increase(a.id))}}>+</button>
                   </div>
                 </td>
                 <td className="hidden-lg">
@@ -181,9 +176,7 @@ function CartTable({toggleModal}){
   )
 }
 
-function ResultTable({totalPrice}){
-  const state = useSelector((state)=>state);
-  const dispatch = useDispatch();
+function ResultTable({cart, dispatch, totalPrice}){
   const totalExtra = totalPrice() + 3000;
 
   return (
@@ -195,7 +188,7 @@ function ResultTable({totalPrice}){
         </colgroup>
         <thead>
           <tr>
-            <th className="hidden-lg"><p className="txt">총 주문 상품 <span>{state.cart.length}</span>개</p></th>
+            <th className="hidden-lg"><p className="txt">총 주문 상품 <span>{cart.length}</span>개</p></th>
           </tr>
         </thead>
         <tbody>
