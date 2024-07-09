@@ -127,7 +127,7 @@
 }
 // 제품 상세페이지
 .detail-wrap{
-  border: 1px solid #000;
+  border: 1px solid #fff;
   .pd-wrap{
     &-top{
       display: flex;
@@ -136,32 +136,61 @@
         width: 45%;
         height: 50rem;
         background: $white;
-        .swiper{
+        .img-wrap{
           height: 100%;
-          .img-wrap{
-            height: 100%;
+          position: relative;
+          &:hover{
             img{
-              height: 100%;
-              display: block;
-              margin: 0 auto;
-            }
-          }
-          &-pagination{
-            padding: 0 1rem;
-            bottom: 2rem;
-            @include flexbox(row, flex-end, center);
-            &-bullet{
-              width: 1rem;
-              height: 1rem;
-              // background: $white;
-              &-active{
-                width: 1.4rem;
-                height: 1.4rem;
-                background: $black;
+              &.org-img{
+                opacity: 0;
+                visibility: hidden;
+              }
+              &.hover-img{
+                opacity: 1;
+                visibility: visible;
               }
             }
           }
+          img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity .35s;
+            &.hover-img{
+              opacity: 0;
+              visibility: hidden;
+            }
+          }
         }
+        // .swiper{
+        //   height: 100%;
+        //   .img-wrap{
+        //     height: 100%;
+        //     img{
+        //       height: 100%;
+        //       display: block;
+        //       margin: 0 auto;
+        //     }
+        //   }
+        //   &-pagination{
+        //     padding: 0 1rem;
+        //     bottom: 2rem;
+        //     @include flexbox(row, flex-end, center);
+        //     &-bullet{
+        //       width: 1rem;
+        //       height: 1rem;
+        //       // background: $white;
+        //       &-active{
+        //         width: 1.4rem;
+        //         height: 1.4rem;
+        //         background: $black;
+        //       }
+        //     }
+        //   }
+        // }
       }
       .pd-info{
         width: 55%;

@@ -24,9 +24,6 @@ function PdDetail({price}){
   const 현재데이터 = 현재상품.data.find(function(e){
     return e.id.toString() == dataId
   });
-  // 1. 사용자가 접속하는 상품 디테일 페이지정보 가져오기(id, title, price 등)
-  // 2. 로컬스트리지에 저장(중복제거, 3개이하)
-  // 3. 홈에서 watched내용으로 최근본 상품
 
   const [watchItem, setWatch] = useState([]);
   useEffect(()=>{
@@ -45,7 +42,6 @@ function PdDetail({price}){
       content: 현재데이터.content,
       price: 현재데이터.price,
       img: 현재데이터.pdImg,
-      // data: 현재상품.data
     });
 
     watchArr = Array.from(new Set(watchArr.map(item => item.id)))
@@ -58,13 +54,6 @@ function PdDetail({price}){
     setWatch(watchItem);
   }, []);
 
-  const itemsPerPage = 1;
-  const [currentPage, setCurrentPage] = useState(0);
-  const currentData = 현재상품.data.slice(currentPage * itemsPerPage, (currentPage + 1) * itemsPerPage);
-  const handlePageChange = (index) => {
-    setCurrentPage(index);
-  };
-
   return(
     <div id="wrap" className="detail">
       <div className="wrap-inner">
@@ -72,36 +61,10 @@ function PdDetail({price}){
           <div className="pd-wrap">
             <div className="pd-wrap-top">
               <div className="pd-img">
-                <Swiper
-                  className="pd-swiper"
-                  cssMode={true}
-                  slidesPerView={1}
-                  modules={[Pagination]}
-                  pagination={{clickable: true}}
-                >  
-                  {
-                    현재상품.data.map((item, i) => (
-                      <SwiperSlide key={i}>
-                        <div className="img-wrap">
-                          <img src={item.pdImg} alt="product img" />
-                        </div>
-                      </SwiperSlide>
-                    ))
-                  }
-                </Swiper>
-                {/* <div className="pagination">
-                  {현재상품.data.length > itemsPerPage && (
-                    Array.from({ length: Math.ceil(현재상품.data.length / itemsPerPage) }, (_, index) => (
-                      <button
-                        key={index}
-                        onClick={() => handlePageChange(index)}
-                        className={index === currentPage ? 'active': ''}
-                      >
-                        <img src={현재상품.thumbs} alt="pagination" />
-                      </button>
-                    ))
-                  )}
-                </div> */}
+                <div className="img-wrap">
+                  <img src={현재데이터.pdImg} alt="product img" className="org-img"/>
+                  <img src={현재데이터.hoImg} alt="product img" className="hover-img"/>
+                </div>
               </div>
               <div className="pd-info">
                 <div className="tit-wrap">
@@ -115,8 +78,8 @@ function PdDetail({price}){
                 </div>
                 <div className="price-wrap">
                   <p className="pr-final"><span>{price(현재데이터.price)}</span>원</p>
-                  <p className="pr-existing"><span>28,000</span>원</p>
-                  <p className="pr-discount">54%</p>
+                  <p className="pr-existing"><span>1,000,000</span>원</p>
+                  <p className="pr-discount">25%</p>
                 </div>
                 <div className="option-wrap">
                   <div>
