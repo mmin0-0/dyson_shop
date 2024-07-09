@@ -18,7 +18,7 @@ header{
     border-bottom: 1px solid rgba($white, .3);
     + #wrap{
       margin-top: 6rem !important;
-      &.detail{margin-top: 12rem !important;}
+      &.detail, &.cart{margin-top: 12rem !important;}
     }
     .hd-inner-wrap{
       width: calc(100% - 4rem);

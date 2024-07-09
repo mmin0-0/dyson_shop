@@ -12,10 +12,10 @@
       .state{
         width: 2rem;
         height: 2rem;
-        font-weight: 500;
-        background: $darkBlack;
+        font-weight: 600;
+        background: $white;
+        color: $black;
         border-radius: 50%;
-        color: $white;
         @include flexbox(row, center, center);
       }
     }

@@ -16,6 +16,10 @@ function Cart({price}){
   const state = useSelector((state)=>state);
   const dispatch = useDispatch();
 
+  const totalPrice = ()=>{
+    return state.cart.reduce((total, item) => total + item.count * item.price, 0);
+  }
+
   return (
     <div id="wrap" className="cart">   
       <div className="wrap-inner con-box">
@@ -28,8 +32,8 @@ function Cart({price}){
           </div>
         </div>
         <div className="cont-wrap">
-          <CartTable />
-          <ResultTable state={state} />
+          <CartTable totalPrice={totalPrice} />
+          <ResultTable totalPrice={totalPrice}/>
           <div className="bottom-btn">
             <button type="button" className="btn-order">주문하기</button>
             <Link to="/detail">계속 쇼핑하기</Link>
@@ -106,7 +110,7 @@ function CartTable({toggleModal}){
                       <label htmlFor={`check_0${state.cart[i].id}`}></label>
                     </div>
                     <div className="pd-info">
-                      <a href="#none">
+                      <a href="javascript:void(0)">
                         <div className="img-wrap">
                           <img src={state.cart[i].img} alt="product img" />
                         </div>
@@ -152,7 +156,7 @@ function CartTable({toggleModal}){
                 </td>
                 <td className="hidden-lg">
                   <div className="price">
-                    <p className="tit"><span className="txt-bold">{state.cart[i].price}</span> 원</p>
+                    <p className="tit"><span className="txt-bold">{(a.count * a.price).toLocaleString()}</span> 원</p>
                     <div className="btn-wrap">
                       <button type="button"className="order-option type02">바로구매</button>
                     </div>
@@ -177,9 +181,10 @@ function CartTable({toggleModal}){
   )
 }
 
-function ResultTable(){
+function ResultTable({totalPrice}){
   const state = useSelector((state)=>state);
   const dispatch = useDispatch();
+  const totalExtra = totalPrice() + 3000;
 
   return (
     <div className="table-wrap">
@@ -198,7 +203,7 @@ function ResultTable(){
             <td>
               <div className="price-wrap">
                 <div className="price-item">
-                  <p><span>28,000</span>원</p>
+                  <p><span>{totalPrice().toLocaleString()}</span>원</p>
                   <span>상품금액</span>
                 </div>
                 <div className="price-item">
@@ -206,7 +211,7 @@ function ResultTable(){
                   <span>배송비</span>
                 </div>
                 <div className="price-item">
-                  <p><span>31,000</span>원</p>
+                  <p><span>{totalExtra.toLocaleString()}</span>원</p>
                   <span>총 주문금액</span>
                 </div>
               </div>
