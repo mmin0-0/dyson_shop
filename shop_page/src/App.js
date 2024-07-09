@@ -7,11 +7,11 @@ import Home from './pages/Home.jsx';
 import Cart from './pages/Cart.jsx';
 import Detail from './pages/Detail.jsx';
 import PdDetail from './pages/PdDetail.jsx';
-import PdList from './data.js';
+import { pdList, benefit } from './data.js';
 import './assets/scss/main.scss';
 
 function App() {
-  const [product] = useState(PdList);
+  const [product] = useState(pdList);
   const price = (num) => {
     return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   };

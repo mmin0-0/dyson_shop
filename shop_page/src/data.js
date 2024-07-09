@@ -112,4 +112,23 @@ const pdList = [
   }
 ];
 
-export default pdList;
+const benefit = [
+  {
+    num: 0,
+    title: '무료배송',
+    content: '다이슨 제품과 부품을 구매하실 때, 배송비는 무료입니다.'
+  },{
+    num: 1,
+    title: '스타일링 가이드',
+    content: '사전 예약을 통해 헤어케어 제품의 툴 사용법 및 헤어 스타일링 가이드를 받으실 수 있습니다.'
+  },{
+    num: 2,
+    title: '가장 빠른 혜택 알림',
+    content: '신제품과 한정판 제품 출시 소식은 물론, 공식몰에서 매월 진행되는 다양한 이벤트와 혜택을 가장 먼저 만나보실 수 있습니다.'
+  },{
+    num: 3,
+    title: '카드사혜택',
+    content: '즉시 할인, 캐시백, 무이자 할부를 비롯한 다양한 카드사 혜택을 확인해 보세요.'
+  }
+]
+export { pdList, benefit };

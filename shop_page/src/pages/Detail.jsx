@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import pdList from '../data.js';
+import { pdList, benefit } from '../data.js';
 
 function Detail({price}){
   const { id, dataId } = useParams();
