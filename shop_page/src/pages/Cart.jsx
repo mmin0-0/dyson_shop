@@ -102,8 +102,8 @@ function CartTable({toggleModal}){
                 <td className="img">
                   <div className="flex-wrap pd-wrap">
                     <div className="input-wrap check">
-                      <input id="check_01" type="checkbox" name="basket" />
-                      <label htmlFor="check_01"></label>
+                      <input id={`check_0${state.cart[i].id}`} type="checkbox" name="basket" />
+                      <label htmlFor={`check_0${state.cart[i].id}`}></label>
                     </div>
                     <div className="pd-info">
                       <a href="#none">

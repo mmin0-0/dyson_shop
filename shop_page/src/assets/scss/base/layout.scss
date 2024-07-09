@@ -325,7 +325,7 @@ button{
           width: 1.8rem;
           height: 1.8rem;
           opacity: 0;
-          filter: invert(43%) sepia(72%) saturate(4676%) hue-rotate(214deg) brightness(92%) contrast(87%);
+          // filter: invert(43%) sepia(72%) saturate(4676%) hue-rotate(214deg) brightness(92%) contrast(87%);
           @include background(icon, check_icon, svg, no-repeat, contain, center, center);
         }
         &::before{
@@ -350,7 +350,7 @@ button{
       }
       &:checked{
         + label{
-          &::before{border-color: $mainColor;}
+          &::before{background: $subColor;}
           &::after{opacity: 1;}
         }
       }
