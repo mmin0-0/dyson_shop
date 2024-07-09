@@ -1,5 +1,5 @@
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { CartOption, Popup } from '../components/Modal';
 import { increase, decrease, addItem } from '../store.js';
@@ -46,8 +46,28 @@ function Cart({price}){
 }
 
 function CartTable({toggleModal}){
-  let state = useSelector((state)=>state);
-  let dispatch = useDispatch();
+  const state = useSelector((state)=>state);
+  const dispatch = useDispatch();
+
+  const tbodyRef = useRef();
+  const [hasRows, setHasRows] = useState(state.cart.length > 0);
+  const childRows = ()=>{
+    if(tbodyRef.current){
+      setHasRows(tbodyRef.current.querySelectorAll('tr').length > 0);
+    }
+  };
+
+  useEffect(()=>{
+    childRows();
+  }, []);
+
+  const remove = (e)=>{
+    const row = e.target.closest('tr');
+    if(row){
+      row.remove();
+      childRows();
+    }
+  }
 
   return (
     <div className="table-wrap">
@@ -75,7 +95,7 @@ function CartTable({toggleModal}){
             <th><span className="txt d-pc">배송정보</span></th>
           </tr>
         </thead>
-        <tbody>
+        <tbody ref={tbodyRef}>
           {
             state.cart.map((a,i)=>
               <tr id={state.cart[i].id} key={i}>
@@ -92,7 +112,7 @@ function CartTable({toggleModal}){
                       </a>
                     </div>
                   </div>
-                  <a href="#none" className="btn-remove">제거</a>
+                  <a href="javascript:void(0)" className="btn-remove" onClick={remove}>제거</a>
                 </td>
                 <td className="hidden-sm">
                   <div className="info-list">
@@ -148,6 +168,7 @@ function CartTable({toggleModal}){
               </tr>
             )
           }
+          {!hasRows && <div>항목이 없습니다.</div>}
         </tbody>
       </table>
     </div>
