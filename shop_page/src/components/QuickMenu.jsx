@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-function QuickMenu(){
+function QuickMenu({price}){
   const [watchItem, setWatch] = useState([]);
   useEffect(()=>{
     let watchArr = JSON.parse(localStorage.getItem('watched'));
@@ -41,7 +41,7 @@ function QuickMenu(){
                         <img src={a.img} alt="제품이미지" />
                       </div>
                       <strong>{a.title}</strong>
-                      <p>{a.price}원</p>
+                      <p>{price(a.price)}원</p>
                     </a>
                   </div>
                 )
