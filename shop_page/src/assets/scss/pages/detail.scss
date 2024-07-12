@@ -301,8 +301,6 @@
               }
               .icon{
                 width: 6rem;
-                // height: 2rem;
-                border: 1px solid #000;
                 transition: all .25s;
                 img{width: 100%;}
               }
@@ -314,7 +312,6 @@
                 bottom: 1rem;
                 left: 1rem;
                 transition: height .25s;
-                border: 1px solid #000;
                 strong{
                   font-weight: 600;
                   display: block;
