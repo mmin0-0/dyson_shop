@@ -15,21 +15,23 @@ function QuickMenu({price}){
     }
   }, []);
 
+  const [recent, setRecent] = useState(false);
+
   return(
     <div className="quick">
       <div className="menu-wrap">
-        <a href="javascript:void(0)" className="recent">
+        <a href="javascript:void(0)" className="recent" onClick={()=>{setRecent(true);}}>
           <img src={`${process.env.PUBLIC_URL}/images/icon/recent_icon.png`} alt="최근본상품" />
         </a>
         <a href="javascript:void(0)" className="gotop">
           <img src={`${process.env.PUBLIC_URL}/images/icon/top_icon.png`} alt="top" />
         </a>
       </div>
-      <div className="recent-wrap active">
+      <div className={`recent-wrap ${recent ? 'active' : ''}`}>
         <div className="inner">
           <div className="inner-top">
             <strong>최근본상품</strong>
-            <a href="javascript:void(0)" className="btn-closed">닫기</a>
+            <a href="javascript:void(0)" className="btn-closed" onClick={()=>{setRecent(false)}}>닫기</a>
           </div>
           <div className="inner-wrap">
             {

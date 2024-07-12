@@ -7,6 +7,9 @@
     right: 4rem;
     > a{
       width: 100%;
+      border-radius: 50%;
+      border: 1px solid $table-bd;
+      background: $white;
       &:not(:first-child){margin-top: .8rem;}
       img{width: 100%;}
     }
@@ -19,8 +22,14 @@
     height: 100vh;
     background: rgba($black, .45);
     overflow-y: scroll;
-    // right: -100%;
-    &.active{z-index: 100;}
+    opacity: 0;
+    visibility: hidden;
+    transition: all .25s;
+    &.active{
+      opacity: 1;
+      visibility: visible;
+      z-index: 100;
+    }
     .inner{
       width: 40%;
       height: 100%;
@@ -29,6 +38,7 @@
       right: 0;
       background: $white;
       *{color: $black;}
+      @include tablet{width: 100%;}
       &-top{
         padding: 2.4rem 2rem;
         border-bottom: 1px solid $table-bd;
@@ -49,6 +59,7 @@
         gap: 2rem;
         grid-template-columns: repeat(2, 1fr);
         .pd-item{
+          > a{width: 100%;}
           .img-wrap{
             height: 15rem;
             margin-bottom: 1rem;
