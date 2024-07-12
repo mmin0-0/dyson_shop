@@ -1,6 +1,6 @@
 .quick{
   opacity: 0;
-  transition: opacity .25s ease-in;
+  transition: opacity .25s ease-in-out;
   &.on{opacity: 1;}
   .menu-wrap{
     width: 5rem;
@@ -8,6 +8,10 @@
     z-index: 10;
     bottom: 4rem;
     right: 4rem;
+    @include tablet{
+      bottom: 2rem;
+      right: 2rem;
+    }
     > a{
       width: 100%;
       border-radius: 50%;
@@ -24,7 +28,6 @@
     width: 100vw;
     height: 100vh;
     background: rgba($black, .45);
-    overflow-y: scroll;
     opacity: 0;
     visibility: hidden;
     transition: all .25s;
@@ -36,6 +39,7 @@
     .inner{
       width: 40%;
       height: 100%;
+      overflow-y: scroll;
       position: absolute;
       top: 0;
       right: 0;
@@ -44,6 +48,9 @@
       @include tablet{width: 100%;}
       &-top{
         padding: 2.4rem 2rem;
+        background: $white;
+        position: sticky;
+        top: 0;
         border-bottom: 1px solid $table-bd;
         @include flexbox(row, space-between, center);
         strong{font-weight: 600;}

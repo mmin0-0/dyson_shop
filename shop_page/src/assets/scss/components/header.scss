@@ -21,9 +21,8 @@ header{
       &.detail, &.cart{margin-top: 12rem !important;}
     }
     .hd-inner-wrap{
-      width: calc(100% - 4rem);
       height: 6rem;
-      margin: 0 auto;
+      margin-top: 0;
       .logo{
         opacity: 0;
         visibility: hidden;
@@ -39,11 +38,16 @@ header{
   }
   @include notebook{height: 6rem;}
   .hd-inner-wrap{
+    width: calc(100% - 4rem);
+    margin: 0 auto;
     position: relative;
     min-height: 6rem;
     margin-top: 2rem;
     transition: all .25s;
-    @include notebook{margin-top: 0;}
+    @include notebook{
+      margin-top: 0;
+      @include flexbox(row, space-between, center);
+    }
     .ham-btn, .user, .basket, .search-controls{
       width: 4rem;
       height: 4rem;

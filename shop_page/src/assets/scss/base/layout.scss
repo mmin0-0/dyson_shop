@@ -78,6 +78,11 @@ body{
     font-weight: 400;
     color: $white;
   }
+  &.fixed{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
 }
 
 .con-box{

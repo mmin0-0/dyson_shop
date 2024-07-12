@@ -39,10 +39,20 @@ function QuickMenu({price}){
     };
   }, []);
 
+  useEffect(()=>{
+    if(recent){
+      document.body.classList.add('fixed');
+    }else{
+      document.body.classList.remove('fixed');
+    }
+  });
+
   return(
     <div className={`quick ${quick}`}>
       <div className="menu-wrap">
-        <a href="javascript:void(0)" className="recent" onClick={()=>{setRecent(true);}}>
+        <a href="javascript:void(0)" className="recent" onClick={()=>{
+          setRecent(true);
+          }}>
           <img src={`${process.env.PUBLIC_URL}/images/icon/recent_icon.png`} alt="최근본상품" />
         </a>
         <a href="javascript:void(0)" className="gotop" onClick={goTop}>
@@ -60,7 +70,7 @@ function QuickMenu({price}){
               watchItem && watchItem.map((a, i) => {
                 return (
                   <div key={i} className="pd-item">
-                    <a href="javascript:void(0)">
+                    <a href={`detail/${a.category}/${a.id}`}>
                       <div className="img-wrap">
                         <img src={a.img} alt="제품이미지" />
                       </div>
