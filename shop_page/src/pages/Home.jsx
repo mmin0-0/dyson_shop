@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 // utils
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,21 +15,8 @@ import { mainVisual, vacuumInfo, haveCont } from '../mainData.js'
 function Home(){
   const [product] = useState(pdList);
   const [vacuum] = useState(vacuumInfo);
-  const [watchItem, setWatch] = useState([]);
-  useEffect(()=>{
-    let watchArr = JSON.parse(localStorage.getItem('watched'));
-    if(watchArr){setWatch(watchArr);}
-  }, []);
-  useEffect(()=>{
-    if(watchItem.length > 3){
-      let copy = [...watchItem];
-      copy.shift();
-      setWatch(copy);
-      localStorage.setItem('watched', JSON.stringify(copy));
-    }
-  }, []);
-
   const boxRef = useRef(null);
+  
   useEffect(()=>{
     let ctx = gsap.context(()=>{
       // about

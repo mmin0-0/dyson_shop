@@ -46,8 +46,8 @@ function PdDetail({price}){
 
     watchArr = Array.from(new Set(watchArr.map(item => item.id)))
     .map(id => watchArr.find(item => item.id === id));
-    if(watchArr.length > 3){
-      watchArr = watchArr.slice(watchArr.length - 3);
+    if(watchArr.length > 6){
+      watchArr = watchArr.slice(watchArr.length - 6);
     }
 
     localStorage.setItem('watched', JSON.stringify(watchArr));

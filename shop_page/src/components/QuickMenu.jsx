@@ -1,4 +1,20 @@
+import { useEffect, useRef, useState } from "react";
+
 function QuickMenu(){
+  const [watchItem, setWatch] = useState([]);
+  useEffect(()=>{
+    let watchArr = JSON.parse(localStorage.getItem('watched'));
+    if(watchArr){setWatch(watchArr);}
+  }, []);
+  useEffect(()=>{
+    if(watchItem.length > 6){
+      let copy = [...watchItem];
+      copy.shift();
+      setWatch(copy);
+      localStorage.setItem('watched', JSON.stringify(copy));
+    }
+  }, []);
+
   return(
     <div className="quick">
       <div className="menu-wrap">
@@ -11,25 +27,29 @@ function QuickMenu(){
       </div>
       <div className="recent-wrap active">
         <div className="inner">
-          <strong>최근본상품</strong>
+          <div className="inner-top">
+            <strong>최근본상품</strong>
+            <a href="javascript:void(0)" className="btn-closed">닫기</a>
+          </div>
+          <div className="inner-wrap">
+            {
+              watchItem && watchItem.map((a, i) => {
+                return (
+                  <div key={i} className="pd-item">
+                    <a href="javascript:void(0)">
+                      <div className="img-wrap">
+                        <img src={a.img} alt="제품이미지" />
+                      </div>
+                      <strong>{a.title}</strong>
+                      <p>{a.price}원</p>
+                    </a>
+                  </div>
+                )
+              })
+            }
+          </div>
         </div>
       </div>
-      {/* <div className="latest-pd">
-          <strong>최근본상품</strong>
-          <div>
-          {
-            watchItem && watchItem.map((a, i) => {
-              return (
-                <div key={i} className="pd-item">
-                  <p>{a.title}</p>
-                  <p>{a.price}</p>
-                  <p>{a.content}</p>
-                </div>
-              )
-            })
-          }
-          </div>
-        </div> */}
     </div>
   )
 }
