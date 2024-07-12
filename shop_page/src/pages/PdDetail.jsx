@@ -57,7 +57,7 @@ function PdDetail({price}){
   return(
     <div id="wrap" className="detail">
       <div className="wrap-inner">
-        <div className="detail-wrap con-box">
+        <div className="detail-wrap">
           <div className="pd-wrap">
             <PdVisual 
               price={price}
@@ -76,7 +76,7 @@ function PdDetail({price}){
 
 function PdVisual({현재상품, 현재데이터, cart, dispatch, price}){
   return (
-    <div className="pd-wrap-top">
+    <div className="pd-wrap-top con-box">
       <div className="pd-img">
         <div className="img-wrap">
           <img src={현재데이터.pdImg} alt="product img" className="org-img"/>
@@ -127,30 +127,34 @@ function PdInfo(){
   return (
     <div className="pd-wrap-bottom">
       <div className="direct-wrap">
-        <div className="tit-wrap">
-          <strong>다이슨 공식몰 구매 혜택</strong>
-          <a href="javascript:void(0)">카드사 특별 혜택 자세히 보기</a>
-        </div>
-        <div className="cont-wrap">
-          <ul className="direct-list">
-            {
-              benefit.map((a, i)=>{
-                return (
-                  <li>
-                    <a href="javascript:void(0)">
-                      <div className="icon">
-                        <img src={`${process.env.PUBLIC_URL}/images/icon/benefit0${i + 1}_icon.png`} alt="benefit icon" />
-                      </div>
-                      <strong>{a.title}</strong>
-                      <div className="info">
-                        <p>{a.content}</p>
-                      </div>
-                    </a>
-                  </li>
-                )
-              })
-            }
-          </ul>
+        <div className="con-box">
+          <div className="tit-wrap">
+            <strong>다이슨 공식몰 구매 혜택</strong>
+            <a href="javascript:void(0)">카드사 특별 혜택 자세히 보기</a>
+          </div>
+          <div className="cont-wrap">
+            <ul className="direct-list">
+              {
+                benefit.map((a, i)=>{
+                  return (
+                    <li>
+                      <a href="javascript:void(0)">
+                        <div className="icon">
+                          <img src={`${process.env.PUBLIC_URL}/images/icon/benefit0${i + 1}_icon.png`} alt="benefit icon" />
+                        </div>
+                        <div className="txt-info">
+                          <strong>{a.title}</strong>
+                          <div className="info">
+                            <p>{a.content}</p>
+                          </div>
+                        </div>
+                      </a>
+                    </li>
+                  )
+                })
+              }
+            </ul>
+          </div>
         </div>
       </div>
     </div>
