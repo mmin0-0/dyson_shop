@@ -1,0 +1,32 @@
+.quick{
+  .menu-wrap{
+    width: 5rem;
+    position: fixed;
+    z-index: 10;
+    bottom: 4rem;
+    right: 4rem;
+    > a{
+      width: 100%;
+      &:not(:first-child){margin-top: .8rem;}
+      img{width: 100%;}
+    }
+  }
+  .recent-wrap{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba($black, .45);
+    // right: -100%;
+    &.active{z-index: 100;}
+    .inner{
+      width: 40%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: $white;
+    }
+  }
+}

@@ -94,22 +94,6 @@ function Home(){
         <PrTxt />
         <Vacuum vacuum={vacuum} />
         <FixCont />
-        <div className="latest-pd">
-          <strong>최근본상품</strong>
-          <div>
-          {
-            watchItem && watchItem.map((a, i) => {
-              return (
-                <div key={i} className="pd-item">
-                  <p>{a.title}</p>
-                  <p>{a.price}</p>
-                  <p>{a.content}</p>
-                </div>
-              )
-            })
-          }
-          </div>
-        </div>
       </div>
     </div>
   )

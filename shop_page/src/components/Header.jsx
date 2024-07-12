@@ -100,7 +100,8 @@ function Header(){
             </a>
           </div>
           <div className="utility-wrap">
-              <a href="javascript:void(0)" className="user" onClick={goCartPage}>user</a>
+              <a href="javascript:void(0)" className="user" >user</a>
+              <a href="javascript:void(0)" className="basket" onClick={goCartPage}>basket</a>
               <a href="javascript:void(0)" className="search-controls" onClick={toggleSearch}>검색</a>
           </div>
         </div>

@@ -1,12 +1,16 @@
+// common 
 @import "./base/reset.scss";
 @import "./base/font.scss";
 @import "./base/color.scss";
 @import "./base/responsive.scss";
 @import "./base/layout.scss";
 
+// components
 @import "./components/header.scss";
 @import "./components/footer.scss";
+@import "./components/quick_menu.scss";
 
+// pages
 @import "./pages/home.scss";
 @import "./pages/detail.scss";
 @import "./pages/cart.scss";

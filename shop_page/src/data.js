@@ -1,3 +1,4 @@
+// main product
 const pdList = [
   {
     id : 'hairCare',
@@ -112,6 +113,7 @@ const pdList = [
   }
 ];
 
+// sub page
 const benefit = [
   {
     num: 0,

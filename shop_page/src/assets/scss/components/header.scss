@@ -44,9 +44,9 @@ header{
     margin-top: 2rem;
     transition: all .25s;
     @include notebook{margin-top: 0;}
-    .ham-btn, .user, .search-controls{
-      width: 6rem;
-      height: 6rem;
+    .ham-btn, .user, .basket, .search-controls{
+      width: 4rem;
+      height: 4rem;
       text-indent: -9999em;
       overflow: hidden;
       position: relative;
@@ -73,18 +73,21 @@ header{
       right: 2rem;
       z-index: 100;
       transform: translateY(-50%);
+      gap: .6rem;
       @include flexbox(row, flex-start, center);
       @include notebook{right: 0;}
       .user{
-        &::after{@include background(icon, user_icon, svg, no-repeat, 60%, center, center);}
+        &::after{@include background(icon, user_icon, svg, no-repeat, 100%, center, center);}
+        @include notebook{display: none;}
+      }
+      .basket{
+        &::after{@include background(icon, basket_icon, svg, no-repeat, 100%, center, center);}
         @include notebook{display: none;}
       }
       .search-controls{
-        &::after{@include background(icon, search_icon, svg, no-repeat, 80%, center, center);}
-        @include tablet{
-          &.on{
-            &::after{@include background(icon, closed_icon, png, no-repeat, 60%, center, center);}
-          }
+        &::after{@include background(icon, search_icon, svg, no-repeat, 100%, center, center);}
+        &.on{
+          &::after{@include background(icon, closed_icon, svg, no-repeat, 80%, center, center);}
         }
       }
     }

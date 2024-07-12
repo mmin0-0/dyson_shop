@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
+import QuickMenu from './components/QuickMenu.jsx';
 import Home from './pages/Home.jsx';
 import Cart from './pages/Cart.jsx';
 import Detail from './pages/Detail.jsx';
@@ -26,6 +27,7 @@ function App() {
         <Route path="/detail/:id/:dataId" element={<PdDetail product={product} price={price} />} />
       </Routes>
       <Footer />
+      <QuickMenu product={product} price={price} />
     </div>
   );
 }
