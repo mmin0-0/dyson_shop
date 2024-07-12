@@ -16,14 +16,36 @@ function QuickMenu({price}){
   }, []);
 
   const [recent, setRecent] = useState(false);
+  const goTop = ()=>{
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+  };
+  
+  const [quick, setQuick] = useState('');
+  useEffect(()=>{
+    const QuickHandler= ()=>{
+      let scrollTop = window.scrollY;
+      if(scrollTop > 50){
+        setQuick('on');
+      }else{
+        setQuick('');
+      }
+    };
+    window.addEventListener('scroll', QuickHandler);
+    return ()=>{
+      window.removeEventListener('scroll', QuickHandler);
+    };
+  }, []);
 
   return(
-    <div className="quick">
+    <div className={`quick ${quick}`}>
       <div className="menu-wrap">
         <a href="javascript:void(0)" className="recent" onClick={()=>{setRecent(true);}}>
           <img src={`${process.env.PUBLIC_URL}/images/icon/recent_icon.png`} alt="최근본상품" />
         </a>
-        <a href="javascript:void(0)" className="gotop">
+        <a href="javascript:void(0)" className="gotop" onClick={goTop}>
           <img src={`${process.env.PUBLIC_URL}/images/icon/top_icon.png`} alt="top" />
         </a>
       </div>

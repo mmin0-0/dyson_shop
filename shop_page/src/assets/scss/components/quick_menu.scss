@@ -1,4 +1,7 @@
 .quick{
+  opacity: 0;
+  transition: opacity .25s ease-in;
+  &.on{opacity: 1;}
   .menu-wrap{
     width: 5rem;
     position: fixed;
