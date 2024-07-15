@@ -90,9 +90,9 @@ header{
       }
       .search-controls{
         &::after{@include background(icon, search_icon, svg, no-repeat, 100%, center, center);}
-        &.on{
-          &::after{@include background(icon, closed_icon, svg, no-repeat, 80%, center, center);}
-        }
+        // &.on{
+        //   &::after{@include background(icon, closed_icon, svg, no-repeat, 80%, center, center);}
+        // }
       }
     }
     .logo{

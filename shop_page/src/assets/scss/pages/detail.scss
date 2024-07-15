@@ -70,24 +70,35 @@
   }
   .item-container{
     margin-top: 4rem;
-    display: grid;
-    gap: 2rem;
-    grid-template-columns: repeat(auto-fill, calc(100% / 4 - 1.5rem));
-    @include notebook{grid-template-columns: repeat(auto-fill, calc(100% / 2 - 1rem));}
-    @include tablet{grid-template-columns: 1fr;}
+    display: flex;
+    flex-wrap: wrap;
+    // display: grid;
+    // gap: 2rem;
+    // grid-template-columns: repeat(auto-fill, calc(100% / 4 - 1.5rem));
+    // @include notebook{grid-template-columns: repeat(auto-fill, calc(100% / 2 - 1rem));}
+    // @include tablet{grid-template-columns: 1fr;}
     .shop-item{
-      > a{width: 100%;}
-      .img-wrap{
-        height: 30rem;
-        position: relative;
-        background: $white;
-        overflow: hidden;
-        &:hover{
+      border: 1px solid rgba($white, .25);
+      width: calc(100% / 4);
+      transition: all .25s;
+      @include notebook{width: calc(100% / 3);}
+      @include tablet{width: calc(100% / 2);}
+      &:hover{
+        background: $subColor;
+        .img-wrap{
           img{
             &.org-img{opacity: 0;}
             &.hover-img{opacity: 1;}
           }
         }
+      }
+      > a{width: 100%;}
+      .img-wrap{
+        height: 40rem;
+        position: relative;
+        background: $white;
+        overflow: hidden;
+        @include tablet{height: 24rem;}
         img{
           position: absolute;
           top: 0;
@@ -102,11 +113,12 @@
         }
       }
       .item-info{
-        margin-top: 1.4rem;
+        padding: 2.4rem 2rem;
         *{line-height: 1.4;}
         > span{
           color: rgba($white, .65);
           font-size: 1.4rem;
+          @include ellipsis(2);
         }
         > strong{
           margin-bottom: .8rem;
@@ -270,7 +282,7 @@
         .tit-wrap{
           width: 40%;
           strong{
-            font-size: 2.4rem;
+            font-size: 3.4rem;
             font-weight: bold;
             display: block;
             margin-bottom: 2rem;
@@ -304,7 +316,10 @@
               .icon{
                 width: 6rem;
                 transition: all .25s;
-                img{width: 100%;}
+                img{
+                  width: 100%;
+                  filter: brightness(300%);
+                }
               }
               .txt-info{
                 width: calc(100% - 3.2rem);
@@ -316,9 +331,9 @@
                 transform: translateX(-50%);
                 transition: height .25s;
                 strong{
+                  font-size: 2rem;
                   font-weight: 600;
                   display: block;
-                  // margin-bottom: 1rem;
                 }
                 .info{
                   margin-top: 1rem;

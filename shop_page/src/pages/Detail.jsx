@@ -22,8 +22,8 @@ function Detail({price}){
             <p>다이슨 스토어에서 다이슨 제품을 경험해 보세요.</p>
           </div>
         </div>
-        <div className="shop-cont con-box">
-          <ul className="tab-cont">
+        <div className="shop-cont">
+          <ul className="tab-cont con-box">
             <li 
               className={selectCategory === 'all' ? 'on': ''}
               onClick={()=>categoryClick('all')}
