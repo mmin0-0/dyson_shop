@@ -143,10 +143,12 @@
     &-top{
       display: flex;
       gap: 4rem;
+      @include tablet{flex-direction: column;}
       .pd-img{
         width: 45%;
         height: 50rem;
         background: $white;
+        @include tablet{width: 100%;}
         .img-wrap{
           height: 100%;
           position: relative;
@@ -205,6 +207,7 @@
       }
       .pd-info{
         width: 55%;
+        @include tablet{width: 100%;}
         .tit-wrap{
           .main-tit{
             span{
@@ -274,16 +277,21 @@
       border-top: 1px solid rgba($white, .45);
       .direct-wrap{
         padding: 4rem 0;
+        background-attachment: fixed;
         @include background(main, direct_bg, jpg, no-repeat, cover, center, center);
         > .con-box{
           gap: 4rem;
           @include flexbox(row, space-between, flex-start);
+          @include tablet{flex-direction: column;}
         }
         .tit-wrap{
           width: 40%;
+          @include tablet{width: 100%;}
           strong{
             font-size: 3.4rem;
+            line-height: 1.4;
             font-weight: bold;
+            word-break: keep-all;
             display: block;
             margin-bottom: 2rem;
           }
@@ -294,28 +302,33 @@
         }
         .cont-wrap{
           width: 60%;
+          @include tablet{width: 100%;}
           .direct-list{
             display: grid;
             gap: 2rem;
             grid-template-columns: repeat(2, 1fr);
+            @include tablet{grid-template-columns: 1fr;}
             li{
               position: relative;
               min-height: 20rem;
               padding: 1.6rem;
               border-radius: 2rem;
               background: rgba($white, .2);
-              transform: all .25s;
+              transition: all .25s;
+              @include tablet{min-height: auto;}
               &:hover{
                 background: $subColor;
                 .icon{width: 4.2rem;}
                 .txt-info{
                   height: 50%;
+                  @include tablet{height: auto;}
                   .info{height: auto;}
                 }
               }
               .icon{
                 width: 6rem;
                 transition: all .25s;
+                @include tablet{width: 4.2rem;}
                 img{
                   width: 100%;
                   filter: brightness(300%);
@@ -323,15 +336,23 @@
               }
               .txt-info{
                 width: calc(100% - 3.2rem);
-                height: 2rem;
+                height: 2.8rem;
                 overflow: hidden;
                 position: absolute;
                 bottom: 1.6rem;
                 left: 50%;
                 transform: translateX(-50%);
                 transition: height .25s;
+                @include tablet{
+                  width: 100%;
+                  height: auto;
+                  margin-top: 2rem;
+                  position: static;
+                  transform: translateX(0);
+                }
                 strong{
                   font-size: 2rem;
+                  line-height: 1.4;
                   font-weight: 600;
                   display: block;
                 }
@@ -339,7 +360,11 @@
                   margin-top: 1rem;
                   height: 0;
                   transition: height .25s;
-                  p{line-height: 1.4;}
+                  @include tablet{height: auto;}
+                  p{
+                    line-height: 1.4;
+                    word-break: keep-all;
+                  }
                 }
               }
             }
