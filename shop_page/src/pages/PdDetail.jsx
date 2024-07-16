@@ -169,17 +169,19 @@ function PdInfo({현재상품, 현재데이터}){
           <div className="con-wrap">
             <div className="char-list">
               {
-                현재데이터.pdChar.map((item)=>(
-                  <div key={item.id}>
+                현재데이터.pdChar.map((item, i)=>{
+                  return (
+                  <div key={item.id} className="list-item">
                     <div className="img-wrap">
-                      <img src="" alt="제품특징" />
+                      <img src={`${process.env.PUBLIC_URL}/images/sub/pd_char/0${현재데이터.id}/0${i}.jpg`} alt="제품특징" />
                     </div>
                     <div className="txt-info">
                       <strong>{item.tit}</strong>
                       <p>{item.content}</p>
                     </div>
                   </div>
-                ))
+                  )
+                })
               }
             </div>
           </div>

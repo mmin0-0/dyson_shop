@@ -373,7 +373,22 @@
       }
       .pd-char{
         margin-top: 12rem;
-        
+        > .con-box{
+          gap: 4rem;
+          @include flexbox(row, space-between, flex-start);
+        }
+        .tit-wrap{
+          position: sticky;
+          top: 10rem;
+        }
+        .con-wrap{
+          width: 60%;
+          .char-list{
+            .list-item{
+              .img-wrap{}
+            }
+          }
+        }
       }
     }
   }
