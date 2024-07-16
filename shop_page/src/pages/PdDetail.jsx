@@ -163,8 +163,9 @@ function PdInfo({현재상품, 현재데이터}){
       <div className="pd-char">
         <div className="con-box">
           <div className="tit-wrap">
+            <span>PRODUCT INFORMATION</span>
             <strong>제품특징</strong>
-            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat!</span>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat!</p>
           </div>
           <div className="con-wrap">
             <div className="char-list">

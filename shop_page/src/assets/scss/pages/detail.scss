@@ -374,18 +374,51 @@
       .pd-char{
         margin-top: 12rem;
         > .con-box{
-          gap: 4rem;
+          gap: 10%;
           @include flexbox(row, space-between, flex-start);
         }
         .tit-wrap{
           position: sticky;
           top: 10rem;
         }
+        .tit-wrap{
+          span{
+            font-weight: bold;
+            color: $subColor;
+          }
+          strong{
+            font-size: 4.6rem;
+            font-weight: 600;
+            display: block;
+            margin: 1.4rem 0 2rem;
+          }
+          p{line-height: 1.4;}
+        }
         .con-wrap{
-          width: 60%;
+          width: 40%;
           .char-list{
             .list-item{
-              .img-wrap{}
+              border-radius: 2rem;
+              overflow: hidden;
+              background: rgba($white, .1);
+              backdrop-filter: blur(10px);
+              &:not(:first-child){margin-top: 3.4rem;}
+              .img-wrap{
+                // img{transform: scale(1.1);}
+              }
+              .txt-info{
+                padding: 1.4rem 2rem;
+                strong{
+                  font-size: 2rem;
+                  font-weight: 600;
+                  display: block;
+                  margin-bottom: 1.4rem;
+                }
+                p{
+                  line-height: 1.4;
+                  word-break: keep-all;
+                }
+              }
             }
           }
         }
