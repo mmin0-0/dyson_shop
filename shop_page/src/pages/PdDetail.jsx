@@ -66,7 +66,10 @@ function PdDetail({price}){
               현재상품={현재상품}
               현재데이터={현재데이터}
             />
-            <PdInfo />
+            <PdInfo 
+              현재상품={현재상품}
+              현재데이터={현재데이터}
+            />
           </div>
         </div>
       </div>
@@ -123,7 +126,7 @@ function PdVisual({현재상품, 현재데이터, cart, dispatch, price}){
   )
 }
 
-function PdInfo(){
+function PdInfo({현재상품, 현재데이터}){
   return (
     <div className="pd-wrap-bottom">
       <div className="direct-wrap">
@@ -154,6 +157,31 @@ function PdInfo(){
                 })
               }
             </ul>
+          </div>
+        </div>
+      </div>
+      <div className="pd-char">
+        <div className="con-box">
+          <div className="tit-wrap">
+            <strong>제품특징</strong>
+            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis, placeat!</span>
+          </div>
+          <div className="con-wrap">
+            <div className="char-list">
+              {
+                현재데이터.pdChar.map((item)=>(
+                  <div key={item.id}>
+                    <div className="img-wrap">
+                      <img src="" alt="제품특징" />
+                    </div>
+                    <div className="txt-info">
+                      <strong>{item.tit}</strong>
+                      <p>{item.content}</p>
+                    </div>
+                  </div>
+                ))
+              }
+            </div>
           </div>
         </div>
       </div>
