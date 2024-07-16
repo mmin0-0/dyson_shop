@@ -376,6 +376,8 @@
         padding: 6rem 0;
         border: 1px solid #fff;
         position: relative;
+        background-attachment: fixed;
+        @include background(main, sub_bg01, png, no-repeat, cover, bottom, center);
         .bg-txt{
           font-size: 10rem;
           font-weight: bold;
