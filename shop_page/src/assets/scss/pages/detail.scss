@@ -373,6 +373,18 @@
       }
       .pd-char{
         margin-top: 12rem;
+        padding: 6rem 0;
+        border: 1px solid #fff;
+        position: relative;
+        .bg-txt{
+          font-size: 10rem;
+          font-weight: bold;
+          font-family: $mont;
+          text-transform: uppercase;
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
         > .con-box{
           gap: 10%;
           @include flexbox(row, space-between, flex-start);

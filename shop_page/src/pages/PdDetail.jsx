@@ -161,6 +161,7 @@ function PdInfo({현재상품, 현재데이터}){
         </div>
       </div>
       <div className="pd-char">
+        <div className="bg-txt">dyson's technology</div>
         <div className="con-box">
           <div className="tit-wrap">
             <span>PRODUCT INFORMATION</span>
