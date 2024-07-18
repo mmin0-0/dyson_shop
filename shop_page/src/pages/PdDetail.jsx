@@ -70,6 +70,7 @@ function PdDetail({price}){
               현재상품={현재상품}
               현재데이터={현재데이터}
             />
+            <StoreInfo />
           </div>
         </div>
       </div>
@@ -193,4 +194,17 @@ function PdInfo({현재상품, 현재데이터}){
   )
 }
 
+function StoreInfo(){
+  return(
+    <div className="store-wrap">
+      <div className="con-box">
+        <div className="tit-wrap">
+          <span>DEMO STORE</span>
+          <strong>다이슨 데모 스토어</strong>
+          <p>다이슨 기술은 생활의 실제적인 문제를 해결하기 위해 설계되었습니다. 그것을 이해하기 위한 가장 좋은 방법은 제품을 경험하는 것입니다. 다이슨 데모 스토어는 제품을 직접 경험할 수 있는 공간입니다.</p>
+        </div>
+      </div>
+    </div>
+  )
+}
 export default PdDetail;
