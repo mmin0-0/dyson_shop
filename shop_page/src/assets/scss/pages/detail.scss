@@ -287,13 +287,17 @@
         .tit-wrap{
           width: 40%;
           @include tablet{width: 100%;}
+          span{
+            font-weight: bold;
+            color: $subColor;
+          }
           strong{
-            font-size: 3.4rem;
+            font-size: 3.6rem;
             line-height: 1.4;
             font-weight: bold;
             word-break: keep-all;
             display: block;
-            margin-bottom: 2rem;
+            margin: 1.4rem 0 2rem;
           }
           a{
             text-decoration: underline;
@@ -310,19 +314,18 @@
             @include tablet{grid-template-columns: 1fr;}
             li{
               position: relative;
-              min-height: 20rem;
-              padding: 1.6rem;
               border-radius: 2rem;
+              overflow: hidden;
               background: rgba($white, .2);
-              transition: all .25s;
-              @include tablet{min-height: auto;}
-              &:hover{
-                background: $subColor;
-                .icon{width: 4.2rem;}
-                .txt-info{
-                  height: 50%;
-                  @include tablet{height: auto;}
-                  .info{height: auto;}
+              > a{
+                width: 100%;
+                height: 100%;
+                min-height: 20rem;
+                position: relative;
+                padding: 1.6rem;
+                @include flexbox(column, space-between, flex-start);
+                &:hover{
+                  .info{opacity: 1;}
                 }
               }
               .icon{
@@ -335,14 +338,6 @@
                 }
               }
               .txt-info{
-                width: calc(100% - 3.2rem);
-                height: 2.8rem;
-                overflow: hidden;
-                position: absolute;
-                bottom: 1.6rem;
-                left: 50%;
-                transform: translateX(-50%);
-                transition: height .25s;
                 @include tablet{
                   width: 100%;
                   height: auto;
@@ -356,15 +351,23 @@
                   font-weight: 600;
                   display: block;
                 }
-                .info{
-                  margin-top: 1rem;
-                  height: 0;
-                  transition: height .25s;
-                  @include tablet{height: auto;}
-                  p{
-                    line-height: 1.4;
-                    word-break: keep-all;
-                  }
+              }
+              .info{
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                padding: 1.6rem;
+                text-align: center;
+                background: $subColor;
+                opacity: 0;
+                transition: opacity .25s;
+                @include flexbox(row, center, center);
+                p{
+                  font-weight: 500;
+                  line-height: 1.4;
+                  word-break: keep-all;
                 }
               }
             }
@@ -375,33 +378,17 @@
         margin-top: 12rem;
         padding: 6rem 0;
         border: 1px solid #fff;
-        position: relative;
-        background-attachment: fixed;
-        @include background(main, sub_bg01, png, no-repeat, cover, bottom, center);
-        .bg-txt{
-          font-size: 10rem;
-          font-weight: bold;
-          font-family: $mont;
-          text-transform: uppercase;
-          position: absolute;
-          top: 50%;
-          transform: translateY(-50%);
-        }
-        > .con-box{
-          gap: 10%;
-          @include flexbox(row, space-between, flex-start);
-        }
-        .tit-wrap{
-          position: sticky;
-          top: 10rem;
-        }
-        .tit-wrap{
+        // position: relative;
+        // background-attachment: fixed;
+        // @include background(main, sub_bg01, png, no-repeat, cover, bottom, center);
+          .tit-wrap{
+          text-align: center;
           span{
             font-weight: bold;
             color: $subColor;
           }
           strong{
-            font-size: 4.6rem;
+            font-size: 3.6rem;
             font-weight: 600;
             display: block;
             margin: 1.4rem 0 2rem;
@@ -409,22 +396,26 @@
           p{line-height: 1.4;}
         }
         .con-wrap{
-          width: 40%;
+          margin-top: 4rem;
           .char-list{
+            display: grid;
+            gap: 4rem 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            @include tablet{grid-template-columns: 1fr;}
             .list-item{
-              border-radius: 2rem;
-              overflow: hidden;
-              background: rgba($white, .1);
-              backdrop-filter: blur(10px);
-              &:not(:first-child){margin-top: 3.4rem;}
+              // background: rgba($white, .1);
+              // backdrop-filter: blur(10px);
+              // &:not(:first-child){margin-top: 3.4rem;}
               .img-wrap{
-                // img{transform: scale(1.1);}
+                // border: 1px solid $white;
+                img{display: block;}
               }
               .txt-info{
-                padding: 1.4rem 2rem;
+                margin-top: 2rem;
                 strong{
                   font-size: 2rem;
                   font-weight: 600;
+                  line-height: 1.4;
                   display: block;
                   margin-bottom: 1.4rem;
                 }
