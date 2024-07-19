@@ -13,10 +13,15 @@ function Search(){
 
   useEffect(() => {
     if (searchQuery) {
-      fetch(`/api/products?search=${searchQuery}`)
-        .then(response => response.json())
-        .then(data => setProducts(data))
-        .catch(error => console.error('Error fetching products:', error));
+      const results = [];
+      pdList.forEach(category => {
+        category.data.forEach(product => {
+          if(product.title.includes(searchQuery) || product.content.includes(searchQuery)){
+            results.push(product);
+          }
+        });
+      });
+      setProducts(results);
     }
   }, [searchQuery]);
   
@@ -26,7 +31,11 @@ function Search(){
         <h2>검새결과 {searchQuery}</h2>
         <ul>
         {products.map(product => (
-          <li key={product.id}>{product.name}</li>
+          <li key={product.id}>
+            <h3>{product.title}</h3>
+            <p>{product.content}</p>
+            <p>{product.price}</p>
+          </li>
         ))}
       </ul>
       </div>
