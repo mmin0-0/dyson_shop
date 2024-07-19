@@ -65,21 +65,25 @@ function QuickMenu({price}){
             <strong>최근본상품</strong>
             <a href="javascript:void(0)" className="btn-closed" onClick={()=>{setRecent(false)}}>닫기</a>
           </div>
-          <div className="inner-wrap">
+          <div className={`inner-wrap ${watchItem.length === 0 ? 'empty': ''}`}>
             {
-              watchItem && watchItem.map((a, i) => {
-                return (
-                  <div key={i} className="pd-item">
-                    <a href={`detail/${a.category}/${a.id}`}>
-                      <div className="img-wrap">
-                        <img src={a.img} alt="제품이미지" />
-                      </div>
-                      <strong>{a.title}</strong>
-                      <p>{price(a.price)}원</p>
-                    </a>
-                  </div>
-                )
-              })
+              watchItem && watchItem.length > 0 ? (
+                watchItem && watchItem.map((a, i) => {
+                  return (
+                    <div key={i} className="pd-item">
+                      <a href={`detail/${a.category}/${a.id}`}>
+                        <div className="img-wrap">
+                          <img src={a.img} alt="제품이미지" />
+                        </div>
+                        <strong>{a.title}</strong>
+                        <p>{price(a.price)}원</p>
+                      </a>
+                    </div>
+                  )
+                })
+              ) : (
+                <p>최근 본 상품이 없습니다.</p>
+              )
             }
           </div>
         </div>

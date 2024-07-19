@@ -68,6 +68,11 @@
         display: grid;
         gap: 2rem;
         grid-template-columns: repeat(2, 1fr);
+        &.empty{
+          grid-template-columns: 1fr;
+          text-align: center;
+          p{font-weight: 600;}
+        }
         .pd-item{
           > a{width: 100%;}
           .img-wrap{

@@ -115,6 +115,16 @@ body{
   }
 }
 
+.pagination{
+  gap: 1rem;
+  @include flexbox(row, center, center);
+  a{
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid $white;
+  }
+}
+
 .btn-wrap{
   display: flex;
   gap: .8rem;

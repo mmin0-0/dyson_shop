@@ -66,6 +66,20 @@ function Detail({price}){
               ))
             }
           </div>
+          <div class="pagination">
+						<div class="arrow-group prev">
+							<a href="javascript:void(0);" title="맨앞" class="first"></a>
+							<a href="javascript:void(0);" title="이전" class="prev"></a>
+						</div>
+						<div class="num-area">
+							<a href="javascript:void(0);" title="1" class="on">1</a>
+							<a href="javascript:void(0);" title="2">2</a>
+						</div>
+						<div class="arrow-group next">
+							<a href="javascript:void(0);" title="다음" class="next"></a>
+							<a href="javascript:void(0);" title="맨뒤" class="last"></a>
+						</div>
+					</div>
         </div>
       </div>
     </div>
