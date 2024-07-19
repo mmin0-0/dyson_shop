@@ -10,7 +10,7 @@ import Home from './pages/Home.jsx';
 import Cart from './pages/Cart.jsx';
 import Detail from './pages/Detail.jsx';
 import PdDetail from './pages/PdDetail.jsx';
-import { pdList, benefit, tabMenu } from './data.js';
+import { menuItems, keyword, pdList, benefit, tabMenu } from './data.js';
 import './assets/scss/main.scss';
 
 function App() {

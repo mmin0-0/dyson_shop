@@ -1,10 +1,22 @@
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+import { menuItems, keyword, pdList, benefit, tabMenu } from '../data.js';
 
 function Header(){
   const navigate = useNavigate();
   const goHome = () =>{navigate('/')};
   const goCartPage = () =>{navigate('/cart')};
+  const goSearch = ()=>{navigate('/search')};
+
+  const [searchQuery, setSearchQuery] = useState('');
+  const searchChange = (e)=>{
+    setSearchQuery(e.target.value);
+    console.log(setSearchQuery)
+  };
+  const formSubmit = (e)=>{
+    e.preventDefault();
+    navigate(`/search?q=${searchQuery}`);
+  };
 
   const [headerClass, setHeaderClass] = useState('');
   const [hovered, setHovered] = useState(null);
@@ -57,38 +69,7 @@ function Header(){
 
   const [menu, setMenu] = useState(false);
   const toggleMenu = ()=>{setMenu(!menu);};
-  const keyword = ['제로웨이스트', 'ECO', '감탄클래스', '친환경 라이프', '비건 케이터링'];
-  const menuItems = [
-    {
-      title: '청소기',
-      subMenu: ['물청소기', '진공 + 물청소기', '진공청소기', '로봇청소기', '나에게 맞는 제품 선택하기', '무선 청소기 툴', '무선 청소기 배터리'],
-    },
-    {
-      title: '헤어케어',
-      subMenu: ['웻앤드라이 스트레이트너', '스타일러', '스타일러 커스텀', '드라이어', '스트레이트너'],
-    },
-    {
-      title: '공기청정기 및 선풍기',
-      subMenu: ['공기청정기', '가습 공기청정기', '공기청정기 필터', '나에게 맞는 제품 선택하기'],
-    },
-    {
-      title: '헤드폰',
-      subMenu: ['헤드폰 모두보기', '다이슨 존 노이즈 캔슬링 헤드폰'],
-    },
-    {
-      title: '액세서리 및 부품',
-      subMenu: ['무선청소기 툴', '무선청소기 배터리', '헤어케어 케이스, 브러시, 거치대 및 툴', '공기청정기 필터'],
-    },
-    {
-      title: '비즈니스 재품',
-      subMenu: ['헤어케어', '핸드 드라이어', '무선 청소기', '공기청정기', '조명'],
-    },
-    {
-      title: '매장안내',
-      subMenu: ['다이슨 데모 스토어', '다이슨 뷰티 스토어', '다이슨 서비스 센터', '다이슨 백화점 매장'],
-    }
-  ];
-
+  
   return (
     <>
       <header className={headerClass}>
@@ -108,11 +89,14 @@ function Header(){
         <div className={`search-wrap ${search ? 'active' : 'closed'}`}>
           <div className="search-inner">
             <div className="search-inp">
-              <form action="submit">
+              <form onSubmit={formSubmit}>
                 <div className="input-wrap">
                   <label for="searchWrap" className="hide">검색</label>
-                  <input type="search" id="searchWrap" placeholder="검색어를 입력해 주세요" />
-                  <button type="button" className="btn-search">검색</button>
+                  <input 
+                  type="search" id="searchWrap" placeholder="검색어를 입력해 주세요" onChange={searchChange} 
+                  value={searchQuery}
+                  />
+                  <button type="submit" className="btn-search">검색</button>
                 </div>
               </form>
             </div>
@@ -172,22 +156,6 @@ function Header(){
                             }
                           </ul>
                         </div>
-                        {/* <div className="banner">
-                          <ul>
-                            {
-                              item.banner.map((banner, index) => (
-                                banner.length >0 &&  <li key={`${index}`}>
-                                  <a href="#none">
-                                    <div className="img-wrap">
-                                      <img src={banner.img[index]} alt="banner img" />
-                                    </div>
-                                    <p>{banner.tit[index]}</p>
-                                  </a>
-                                </li>
-                              ))
-                            }
-                          </ul>
-                        </div> */}
                       </div>
                     </div>
                   )}
@@ -202,4 +170,4 @@ function Header(){
   );
 }
 
-export default Header
+export default Header;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { pdList, benefit, tabMenu } from '../data.js';
+import { menuItems, keyword, pdList, benefit, tabMenu } from '../data.js';
 
 function Detail({price}){
   const { id, dataId } = useParams();

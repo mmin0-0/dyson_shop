@@ -1,3 +1,36 @@
+// gnb menu
+const menuItems = [
+  {
+    title: '청소기',
+    subMenu: ['물청소기', '진공 + 물청소기', '진공청소기', '로봇청소기', '나에게 맞는 제품 선택하기', '무선 청소기 툴', '무선 청소기 배터리'],
+  },
+  {
+    title: '헤어케어',
+    subMenu: ['웻앤드라이 스트레이트너', '스타일러', '스타일러 커스텀', '드라이어', '스트레이트너'],
+  },
+  {
+    title: '공기청정기 및 선풍기',
+    subMenu: ['공기청정기', '가습 공기청정기', '공기청정기 필터', '나에게 맞는 제품 선택하기'],
+  },
+  {
+    title: '헤드폰',
+    subMenu: ['헤드폰 모두보기', '다이슨 존 노이즈 캔슬링 헤드폰'],
+  },
+  {
+    title: '액세서리 및 부품',
+    subMenu: ['무선청소기 툴', '무선청소기 배터리', '헤어케어 케이스, 브러시, 거치대 및 툴', '공기청정기 필터'],
+  },
+  {
+    title: '비즈니스 재품',
+    subMenu: ['헤어케어', '핸드 드라이어', '무선 청소기', '공기청정기', '조명'],
+  },
+  {
+    title: '매장안내',
+    subMenu: ['다이슨 데모 스토어', '다이슨 뷰티 스토어', '다이슨 서비스 센터', '다이슨 백화점 매장'],
+  }
+];
+const keyword = ['제로웨이스트', 'ECO', '감탄클래스', '친환경 라이프', '비건 케이터링'];
+
 // main product
 const pdList = [
   {
@@ -290,6 +323,7 @@ const benefit = [
   }
 ];
 
+//sub tab(store)
 const tabMenu = [
   {
     tit: '다이슨 데모 스토어 서울 IFC',
@@ -306,4 +340,4 @@ const tabMenu = [
   }
 ];
 
-export { pdList, benefit, tabMenu };
+export { menuItems, keyword, pdList, benefit, tabMenu };
