@@ -73,7 +73,6 @@ function Detail({price}){
 						</div>
 						<div class="num-area">
 							<a href="javascript:void(0);" title="1" class="on">1</a>
-							<a href="javascript:void(0);" title="2">2</a>
 						</div>
 						<div class="arrow-group next">
 							<a href="javascript:void(0);" title="다음" class="next"></a>
