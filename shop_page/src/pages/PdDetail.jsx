@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { increase, addItem } from '../store.js';
-import { pdList, benefit } from '../data.js';
+import { pdList, benefit, tabMenu } from '../data.js';
 // utils
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
@@ -195,6 +195,11 @@ function PdInfo({현재상품, 현재데이터}){
 }
 
 function StoreInfo(){
+  const [currentTab, clickTab] = useState(0);
+  const selectMenuHandler = (index) => {
+    clickTab(index);
+  };
+  
   return(
     <div className="store-wrap">
       <div className="con-box">
@@ -202,6 +207,35 @@ function StoreInfo(){
           <span>DEMO STORE</span>
           <strong>다이슨 데모 스토어</strong>
           <p>다이슨 기술은 생활의 실제적인 문제를 해결하기 위해 설계되었습니다. 그것을 이해하기 위한 가장 좋은 방법은 제품을 경험하는 것입니다. 다이슨 데모 스토어는 제품을 직접 경험할 수 있는 공간입니다.</p>
+        </div>
+        <div className="con-wrap">
+          <div className="tab-wrap">
+            <ul className="tab-tit">
+              {
+                tabMenu.map((item ,index) => (
+                  <li 
+                    key={index}
+                    className={index === currentTab ? 'on' :''}
+                    onClick={() => selectMenuHandler(index)}
+                    ><a href="javascript:void(0)">{index + 1}</a>
+                  </li>
+                ))
+              }
+            </ul>
+            <div className="tab-cont">
+              <div className="img-wrap">
+                <img src={`${process.env.PUBLIC_URL}/images/sub/map_img0${currentTab + 1}.jpg`} alt="demo store map" />
+              </div>
+              <div className="tab-info">
+                <strong>{tabMenu[currentTab].tit}</strong>
+                <div className="txt-wrap">
+                  <p><span>주소: </span>{tabMenu[currentTab].address}</p>
+                  <p><span>영업시간: </span>{tabMenu[currentTab].content}</p>
+                  <a href="javascript:void(0)">시연 서비스 예약하기</a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

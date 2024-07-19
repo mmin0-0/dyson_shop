@@ -298,6 +298,7 @@
             word-break: keep-all;
             display: block;
             margin: 1.4rem 0 2rem;
+            @include tablet{font-size: 2.4rem;}
           }
           a{
             text-decoration: underline;
@@ -398,15 +399,13 @@
             grid-template-columns: repeat(3, 1fr);
             @include tablet{grid-template-columns: 1fr;}
             .list-item{
-              // background: rgba($white, .1);
-              // backdrop-filter: blur(10px);
-              // &:not(:first-child){margin-top: 3.4rem;}
+              border-bottom: 1px solid rgba($white, .25);
               .img-wrap{
                 // border: 1px solid $white;
                 img{display: block;}
               }
               .txt-info{
-                margin-top: 2rem;
+                padding: 2rem 0;
                 strong{
                   font-size: 2rem;
                   font-weight: 600;
@@ -417,6 +416,126 @@
                 p{
                   line-height: 1.4;
                   word-break: keep-all;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .store-wrap{
+      margin-top: 12rem;
+      .tit-wrap{
+        text-align: center;
+        width: 60%;
+        margin: 0 auto;
+        @include notebook{width: 100%;}
+        span{
+          font-weight: bold;
+          color: $subColor;
+        }
+        strong{
+          font-size: 3.6rem;
+          font-weight: 600;
+          display: block;
+          margin: 1.4rem 0 2rem;
+        }
+        p{
+          word-break: keep-all;
+          line-height: 1.4;
+        }
+      }
+      .con-wrap{
+        margin-top: 4rem;
+        .tab-wrap{
+          position: relative;
+          .tab-tit{
+            position: absolute;
+            top: 0;
+            right: 0;
+            gap: .6rem;
+            @include flexbox(row, flex-start, center);
+            @include notebook{position: static;}
+            li{
+              width: 3rem;
+              height: 3rem;
+              border-radius: 50%;
+              background: rgba($white, .25);
+              transition: all .25s;
+              &.on, &:hover{background: $subColor;}
+              a{
+                font-weight: 600;
+                width: 100%;
+                height: 100%;
+                @include flexbox(row, center, center);
+              }
+            }
+          }
+          .tab-cont{
+            gap: 4rem;
+            @include flexbox(row, center, flex-end);
+            @include notebook{
+              gap: 2rem;
+              margin-top: 2rem;
+              flex-direction: column;
+            }
+            > div{
+              width: 50%;
+              @include notebook{width: 100%;}
+            }
+            .img-wrap{
+              border-radius: 2rem;
+              overflow: hidden;
+            }
+            .tab-info{
+              strong{
+                width: 50%;
+                display: block;
+                padding: 1.6rem 2rem;
+                font-size: 1.8rem;
+                font-weight: 600;
+                border-radius: 1rem;
+                background: $subColor;
+                @include notebook{width: 100%;}
+              }
+              .txt-wrap{
+                margin-top: 2rem;
+                *{color: $black;}
+                background: $white;
+                border-radius: 1rem;
+                padding: 1.6rem 2rem;
+                p{
+                  font-size: 1.8rem;
+                  word-break: keep-all;
+                  line-height: 1.4;
+                  @include notebook{font-size: 1.6rem;}
+                  span{font-weight: 600;}
+                  &:not(:first-child){margin-top: 1rem;}
+                }
+                a{
+                  margin-top: 4rem;
+                  font-size: 2.4rem;
+                  font-weight: 500;
+                  gap: 1rem;
+                  @include flexbox(row, flex-start, center);
+                  @include notebook{
+                    font-size: 1.8rem;
+                    margin-top: 2rem;
+                  }
+                  &:hover{color: $subColor;}
+                  &::before{
+                    content: '';
+                    display: block;
+                    width: 4rem;
+                    height: 4rem;
+                    border-radius: 50%;
+                    background: $black;
+                    @include background(icon, arrow03_icon, svg, no-repeat, 80%, center, center);
+                    @include notebook{
+                      width: 3rem;
+                      height: 3rem;
+                    }
+                  }
                 }
               }
             }

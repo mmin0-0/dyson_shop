@@ -288,5 +288,22 @@ const benefit = [
     title: '카드사혜택',
     content: '즉시 할인, 캐시백, 무이자 할부를 비롯한 다양한 카드사 혜택을 확인해 보세요.'
   }
-]
-export { pdList, benefit };
+];
+
+const tabMenu = [
+  {
+    tit: '다이슨 데모 스토어 서울 IFC',
+    address: '서울시 영등포구 국제금융로 10, IFC몰 L2',
+    content: '월요일 – 일요일, 오전 10시 – 오후 10시'
+  },{
+    tit: '다이슨 뷰티랩 사운즈한남',
+    address: '서울시 용산구 대사관로 35, B1',
+    content: '월요일 – 일요일, 오전 11시 – 오후 8시'
+  },{
+    tit: '다이슨 데모 스토어 스타필드 하남',
+    address: '경기도 하남시 미사대로 750, 스타필드 하남 쇼핑몰 L2',
+    content: '월요일 – 일요일, 오전 10시 – 오후 10시'
+  }
+];
+
+export { pdList, benefit, tabMenu };
