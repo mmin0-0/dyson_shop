@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import { menuItems, keyword, pdList, benefit, tabMenu } from '../data.js';
+import { pdList } from '../data.js';
 
 function useQuery(){
   return new URLSearchParams(useLocation().search);

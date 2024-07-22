@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { increase, addItem } from '../store.js';
-import { menuItems, keyword, pdList, benefit, tabMenu } from '../data.js';
+import { pdList, benefit, tabMenu } from '../data.js';
 // utils
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';

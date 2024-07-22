@@ -9,7 +9,7 @@ import 'swiper/css/autoplay';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import gsap from 'gsap';
 // local file
-import { menuItems, keyword, pdList, benefit, tabMenu } from '../data.js';
+import { pdList } from '../data.js';
 import { mainVisual, vacuumInfo, haveCont } from '../mainData.js'
 
 function Home(){

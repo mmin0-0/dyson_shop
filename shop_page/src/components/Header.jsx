@@ -1,6 +1,6 @@
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
-import { menuItems, keyword, pdList, benefit, tabMenu } from '../data.js';
+import { menuItems, keyword } from '../data.js';
 
 function Header(){
   const navigate = useNavigate();
@@ -44,7 +44,6 @@ function Header(){
   useEffect(()=>{
     const handleResize = ()=>{
       setIsTabletOrSmaller(window.innerWidth <= 1200);
-      console.log('resize')
     };
     window.addEventListener('resize', handleResize);
     return () => {
