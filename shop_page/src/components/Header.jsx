@@ -11,7 +11,6 @@ function Header(){
   const [searchQuery, setSearchQuery] = useState('');
   const searchChange = (e)=>{
     setSearchQuery(e.target.value);
-    console.log(setSearchQuery)
   };
   const formSubmit = (e)=>{
     e.preventDefault();

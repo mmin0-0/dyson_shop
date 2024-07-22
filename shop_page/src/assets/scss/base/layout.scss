@@ -240,7 +240,7 @@ button{
     // @include notebook{margin-top: 10rem;}
     margin-top: 16rem;
     @include notebook{margin-top: 6rem;}
-    &.detail, &.cart, &.error{
+    &.detail, &.cart, &.error, &.search{
       margin-top: 22rem;
       @include notebook{margin-top: 12rem;}
     }

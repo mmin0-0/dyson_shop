@@ -24,8 +24,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home product={product} />} />
         <Route path="*" element={<Error />} />
-        <Route path="/search" element={<Search />} />
-        <Route path="/cart" element={<Cart />} price={price} />
+        <Route path="/search" element={<Search price={price} />} />
+        <Route path="/cart" element={<Cart price={price} />} />
         <Route path="/detail" element={<Detail product={product} price={price} />} />
         <Route path="/detail/:id/:dataId" element={<PdDetail product={product} price={price} />} />
       </Routes>
