@@ -104,7 +104,9 @@ function Header(){
               <ul>
                 {
                   keyword.map((item, index)=>{
-                    return (<li><a href="#none">{item}</a></li>)
+                    return (
+                    <li key={index}><a href="#none">{item}</a></li>
+                  )
                   })
                 }
               </ul>

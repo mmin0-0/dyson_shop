@@ -148,7 +148,7 @@ function Visual(){
         {
           visual.map((a,i)=>{
             return (
-              <SwiperSlide>
+              <SwiperSlide key={i}>
                 <div className="img-wrap">
                   <img src={`${process.env.PUBLIC_URL}/images/main/main_visual0${i + 1}.jpg`} alt="main visual" />
                 </div>
@@ -239,7 +239,7 @@ function Product(props){
           {
             props.product.map((a,i)=>{
               return (
-                <SwiperSlide>
+                <SwiperSlide key={i}>
                   <div className="pd-item" id={a.id} key={i}>
                     <Link to="/detail">
                       <div className="img-wrap">
@@ -295,7 +295,7 @@ function Vacuum(props){
         {
           props.vacuum.map((a, i)=>{
             return (
-              <SwiperSlide>
+              <SwiperSlide key={i}>
                 <div className="img-wrap">
                   <img src={`${process.env.PUBLIC_URL}/images/main/pd_item0${i + 1}_img.png`} alt="vacuum product" />
                 </div>
