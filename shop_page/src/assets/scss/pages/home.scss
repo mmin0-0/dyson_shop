@@ -228,6 +228,8 @@
     .pd-wrap{
       display: flex;
       position: relative;
+      opacity: 0;
+      transform: translateY(8rem);
       @include tablet{
         flex-direction: column;
         gap: 2rem;

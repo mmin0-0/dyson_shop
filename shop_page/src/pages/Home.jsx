@@ -31,11 +31,22 @@ function Home(){
       });
       gsap.to('.about .cont-wrap', {
         opacity: 1,
-        delay: 1,
+        delay: .75,
         scrollTrigger: {
           trigger: '.about',
           start: 'top center 40px',
           end: 'bottom',
+        }
+      });
+
+      gsap.to('.pd-wrap', {
+        opacity: 1,
+        y: 0,
+        scrollTrigger: {
+          trigger: '.pd-wrap',
+          start: 'top center',
+          end: 'bottom',
+          markers: true
         }
       });
       // fix-cont
@@ -124,7 +135,7 @@ function Visual(){
         ref={swiperRef}
         loop={true}
         autoplay={{
-          delay: 5500,
+          delay: 4500,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -224,17 +235,19 @@ function Product(props){
             nextEl: '.pd-wrap .btn-next',
             prevEl: '.pd-wrap .btn-prev'
           }}
+          slidesPerView={1.5}
+          spaceBetween={16}
+          loop={true}
+          autoplay={{
+            delay: 1000,
+            disableOnInteraction: false,
+          }}
+          modules={[Autoplay, Navigation]}
           breakpoints={{
             768: {
               slidesPerView: 2.5,
-              // centeredSlides: false
             }
           }}
-          slidesPerView={1.5}
-          // centeredSlides={true}
-          spaceBetween={16}
-          // autoplay={{delay: 4000}}
-          modules={[Navigation]}
         >  
           {
             props.product.map((a,i)=>{
