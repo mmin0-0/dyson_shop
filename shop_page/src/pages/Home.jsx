@@ -14,7 +14,6 @@ import { mainVisual, vacuumInfo, haveCont } from '../mainData.js'
 
 function Home(){
   const [product] = useState(pdList);
-  const [vacuum] = useState(vacuumInfo);
   const boxRef = useRef(null);
   
   useEffect(()=>{
@@ -44,9 +43,9 @@ function Home(){
         y: 0,
         scrollTrigger: {
           trigger: '.pd-wrap',
-          start: 'top center',
+          start: 'top center 40px',
           end: 'bottom',
-          markers: true
+          // markers: true
         }
       });
       // fix-cont
@@ -56,7 +55,8 @@ function Home(){
           start: 'top top',
           end: '+=1000',
           pin: true,
-          pinSpacing: false
+          pinSpacing: false,
+          markers: true
         }
       });
       // pr-txt
@@ -90,7 +90,7 @@ function Home(){
         <About />
         <Product product={product} />
         <PrTxt />
-        <Vacuum vacuum={vacuum} />
+        <Vacuum />
         <FixCont />
       </div>
     </div>
@@ -239,7 +239,7 @@ function Product(props){
           spaceBetween={16}
           loop={true}
           autoplay={{
-            delay: 1000,
+            delay: 4500,
             disableOnInteraction: false,
           }}
           modules={[Autoplay, Navigation]}
@@ -292,7 +292,7 @@ function PrTxt(){
   )
 }
 
-function Vacuum(props){
+function Vacuum(){
   return (
     <div className="pd-vacuum">
       <Swiper 
@@ -301,18 +301,22 @@ function Vacuum(props){
           prevEl: '.pd-vacuum .btn-prev'
         }}
         direction={'vertical'}
-        modules={[Navigation]}
-        // loop={true}
+        modules={[Autoplay, Navigation]}
+        loop={true}
+        autoplay={{
+          delay: 4500,
+          disableOnInteraction: false,
+        }}
         className="vacuum-swiper"
       >
         {
-          props.vacuum.map((a, i)=>{
+          vacuumInfo.map((a, i)=>{
             return (
               <SwiperSlide key={i}>
                 <div className="img-wrap">
                   <img src={`${process.env.PUBLIC_URL}/images/main/pd_item0${i + 1}_img.png`} alt="vacuum product" />
                 </div>
-                <div className="info-wrap">
+                <div className={`info-wrap ${a.class}`}>
                   <div className="num">0{i + 1}</div>
                   <div className="info-txt">
                     <div className="tit-wrap">
