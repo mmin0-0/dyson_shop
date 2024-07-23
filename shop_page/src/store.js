@@ -24,10 +24,10 @@ let cart = createSlice({
       let num = state.findIndex((state)=>{return state.id === action.payload.id})
       if(num > -1){
         state[num].count++;
-        window.alert('중복된 상품입니다. 수량이 추가됩니다');
+        window.alert('중복된 상품입니다. 수량이 추가됩니다.');
       }else{
         state.push(action.payload);
-        window.alert('장바구니에 담겼습니다!');
+        window.alert('장바구니에 담겼습니다.');
       }
     }
   }

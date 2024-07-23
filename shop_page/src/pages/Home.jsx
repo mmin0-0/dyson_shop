@@ -44,8 +44,7 @@ function Home(){
         scrollTrigger: {
           trigger: '.pd-wrap',
           start: 'top center 40px',
-          end: 'bottom',
-          // markers: true
+          end: 'bottom'
         }
       });
       // fix-cont
@@ -55,8 +54,7 @@ function Home(){
           start: 'top top',
           end: '+=1000',
           pin: true,
-          pinSpacing: false,
-          markers: true
+          pinSpacing: false
         }
       });
       // pr-txt

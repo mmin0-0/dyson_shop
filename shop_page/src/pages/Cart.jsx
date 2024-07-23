@@ -60,13 +60,21 @@ function CartTable({cart, dispatch, totalPrice}){
     childRows();
   }, []);
 
-  const remove = (e)=>{
-    const row = e.target.closest('tr');
-    if(row){
-      row.remove();
+  // const remove = (e)=>{
+  //   const row = e.target.closest('tr');
+  //   if(row){
+  //     row.remove();
+  //     childRows();
+  //   }
+  // };
+
+  const remove = (id)=>{
+    dispatch({type: 'REMOVE_ITEM', payload: id});
+    console.log('제거')
+    setTimeout(()=>{
       childRows();
-    }
-  };
+    }, 0);
+  }
 
   return (
     <div className="table-wrap">
@@ -113,7 +121,7 @@ function CartTable({cart, dispatch, totalPrice}){
                       </a>
                     </div>
                   </div>
-                  <a href="javascript:void(0)" className="btn-remove" onClick={remove}>제거</a>
+                  <a href="javascript:void(0)" className="btn-remove" onClick={()=>{remove(a.id)}}>제거</a>
                 </td>
                 <td className="hidden-sm">
                   <div className="info-list">
