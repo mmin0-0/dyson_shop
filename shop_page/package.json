@@ -49,6 +49,6 @@
     ]
   },
   "devDependencies": {
-    "react-gsap": "^3.2.1"
+    "react-gsap": "^4.0.0"
   }
 }
