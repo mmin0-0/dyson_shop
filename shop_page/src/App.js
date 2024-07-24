@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'react-router-dom';
 import { useState } from 'react';
 import axios from 'axios';
 import Header from './components/Header.jsx';
@@ -17,6 +17,7 @@ function App() {
     return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   };
   return (
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
     <div className="App" id="wrapper">
       <Header />
       <Routes>
@@ -30,6 +31,7 @@ function App() {
       <Footer />
       <QuickMenu price={price} />
     </div>
+    </BrowserRouter>
   );
 }
 
