@@ -17,7 +17,6 @@ function App() {
     return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   };
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
     <div className="App" id="wrapper">
       <Header />
       <Routes>
@@ -31,7 +30,6 @@ function App() {
       <Footer />
       <QuickMenu price={price} />
     </div>
-    </BrowserRouter>
   );
 }
 
