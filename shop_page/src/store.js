@@ -29,10 +29,13 @@ let cart = createSlice({
         state.push(action.payload);
         window.alert('장바구니에 담겼습니다.');
       }
+    },
+    removeItem(state, action){
+      return state.filter(item => item.id !== action.payload);
     }
   }
 })
-export let { increase, decrease, addItem } = cart.actions;
+export let { increase, decrease, addItem, removeItem } = cart.actions;
 export default configureStore({
   reducer: {
     user: user.reducer,
