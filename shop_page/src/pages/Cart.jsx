@@ -169,7 +169,7 @@ function CartTable({cart, dispatch, totalPrice}){
             </tbody>
           </table>
         ) : (
-            <div className="empty">항목이 없습니다.</div>
+          <div className="empty">항목이 없습니다.</div>
         )
       }
     </div>

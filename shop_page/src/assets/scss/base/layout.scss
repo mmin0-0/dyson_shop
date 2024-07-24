@@ -292,6 +292,7 @@ button{
     }
   }
   .empty{
+    border-top: 1px solid $white;
     min-height: 20rem;
     @include flexbox(row, center, center);
   }
