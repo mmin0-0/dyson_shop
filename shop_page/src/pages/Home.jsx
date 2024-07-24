@@ -300,11 +300,11 @@ function Vacuum(){
         }}
         direction={'vertical'}
         modules={[Autoplay, Navigation]}
-        loop={true}
-        autoplay={{
-          delay: 4500,
-          disableOnInteraction: false,
-        }}
+        // loop={true}
+        // autoplay={{
+        //   delay: 4500,
+        //   disableOnInteraction: false,
+        // }}
         className="vacuum-swiper"
       >
         {
