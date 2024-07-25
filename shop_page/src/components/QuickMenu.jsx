@@ -71,7 +71,7 @@ function QuickMenu({price}){
                 watchItem && watchItem.map((a, i) => {
                   return (
                     <div key={i} className="pd-item">
-                      <a href={`detail/${a.category}/${a.id}`}>
+                      <a href={`/detail/${a.category}/${a.id}`}>
                         <div className="img-wrap">
                           <img src={a.img} alt="제품이미지" />
                         </div>
