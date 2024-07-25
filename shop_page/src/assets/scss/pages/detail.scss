@@ -221,7 +221,6 @@
               font-size: 3.2rem;
               font-weight: bold;
               display: block;
-              word-break: keep-all;
             }
           }
           .sub-tit{
@@ -229,10 +228,7 @@
             margin: 2rem 0;
             border-top: 1px solid $gray01;
             border-bottom: 1px solid $gray01;
-            p{
-              line-height: 1.4;
-              word-break: keep-all;
-            }
+            p{line-height: 1.4;}
           }
         }
         .price-wrap{
@@ -295,7 +291,6 @@
             font-size: 3.6rem;
             line-height: 1.4;
             font-weight: bold;
-            word-break: keep-all;
             display: block;
             margin: 1.4rem 0 2rem;
             @include tablet{font-size: 2.4rem;}
@@ -368,7 +363,6 @@
                 p{
                   font-weight: 500;
                   line-height: 1.4;
-                  word-break: keep-all;
                 }
               }
             }
@@ -413,10 +407,7 @@
                   display: block;
                   margin-bottom: 1.4rem;
                 }
-                p{
-                  line-height: 1.4;
-                  word-break: keep-all;
-                }
+                p{line-height: 1.4;}
               }
             }
           }
@@ -440,10 +431,7 @@
           display: block;
           margin: 1.4rem 0 2rem;
         }
-        p{
-          word-break: keep-all;
-          line-height: 1.4;
-        }
+        p{line-height: 1.4;}
       }
       .con-wrap{
         margin-top: 4rem;
@@ -506,7 +494,6 @@
                 padding: 1.6rem 2rem;
                 p{
                   font-size: 1.8rem;
-                  word-break: keep-all;
                   line-height: 1.4;
                   @include notebook{font-size: 1.6rem;}
                   span{font-weight: 600;}

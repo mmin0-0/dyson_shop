@@ -27,6 +27,7 @@ function Cart({price}){
         <div className="cont-wrap">
           <CartTable 
             cart={state.cart}
+            price={price}
             dispatch={dispatch}
             totalPrice={totalPrice} 
           />
@@ -45,22 +46,37 @@ function Cart({price}){
   )
 }
 
-function CartTable({cart, dispatch, totalPrice}){
+function CartTable({cart, dispatch, totalPrice, price}){
   const tbodyRef = useRef();
   const [hasRows, setHasRows] = useState(cart.length > 0);
-
   const childRows = ()=>{
     if(tbodyRef.current){
       setHasRows(tbodyRef.current.querySelectorAll('tr').length > 0);
     }
   };
-
   useEffect(()=>{
     childRows();
   }, []);
-
   const remove = (id)=>{
     dispatch(removeItem(id));
+  };
+
+  const [checkedItems, setCheckedItems] = useState(() => cart.map(() => false));
+  const [selectAll, setSelectAll] = useState(false);
+
+  const handleCheckboxChange = (index) => {
+    const newCheckedItems = [...checkedItems];
+    newCheckedItems[index] = !newCheckedItems[index];
+    setCheckedItems(newCheckedItems);
+
+    const allChecked = newCheckedItems.every(item => item);
+    setSelectAll(allChecked);
+  };
+
+  const handleSelectAllChange = () => {
+    const newSelectAll = !selectAll;
+    setSelectAll(newSelectAll);
+    setCheckedItems(cart.map(() => newSelectAll));
   };
 
   return (
@@ -81,7 +97,13 @@ function CartTable({cart, dispatch, totalPrice}){
                 <th>
                   <div className="flex-wrap center">
                     <div className="input-wrap check">
-                      <input id="allCheck" type="checkbox" name="basket" />
+                      <input 
+                        type="checkbox" 
+                        name="basket" 
+                        id="allCheck"
+                        checked={selectAll}
+                        onChange={handleSelectAllChange}
+                        />
                       <label htmlFor="allCheck"></label>
                     </div>
                     <span className="txt">전체선택</span>
@@ -99,7 +121,13 @@ function CartTable({cart, dispatch, totalPrice}){
                     <td className="img">
                       <div className="flex-wrap pd-wrap">
                         <div className="input-wrap check">
-                          <input id={`check_0${i}`} type="checkbox" name="basket" />
+                          <input 
+                            type="checkbox" 
+                            name="basket" 
+                            id={`check_0${i}`}
+                            checked={checkedItems[i]}
+                            onChange={() => handleCheckboxChange(i)}
+                            />
                           <label htmlFor={`check_0${i}`}></label>
                         </div>
                         <div className="pd-info">
@@ -122,13 +150,9 @@ function CartTable({cart, dispatch, totalPrice}){
                           </div>
                           <div className="flex-wrap price">
                             <div className="tit txt-bold">주문금액</div>
-                            <div className="cont txt-bold">6,000원</div>
+                            <div className="cont txt-bold">{(a.count * a.price).toLocaleString()}</div>
                           </div>
                           <div className="result-list">
-                            <div className="flex-wrap">
-                              <div className="tit">상품금액(총 <span>{a.count}</span>개)</ div>
-                              <div className="cont"><span>6,000</span>원</div>
-                            </div>
                             <div className="flex-wrap">
                               <div className="tit">배송비</div>
                               <div className="cont"><span>3,000</span>원</div>
@@ -136,6 +160,10 @@ function CartTable({cart, dispatch, totalPrice}){
                             <div className="flex-wrap">
                               <div className="tit">배송수단</div>
                               <div className="cont">택배</div>
+                            </div>
+                            <div className="flex-wrap">
+                              <div className="tit">주문합계(총 <span>{a.count}</span>개)</ div>
+                              <div className="cont"><span>{(a.count * a.price + 3000).toLocaleString()}</span>원</div>
                             </div>
                           </div>
                         </div>

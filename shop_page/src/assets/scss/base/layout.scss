@@ -70,6 +70,7 @@ html{font-size: 10px;}
 body{
   font-size: 1.6rem;
   line-height: 1;
+  word-break: keep-all;
   letter-spacing: -0.02em;
   color: $white;
   background: $black;
@@ -274,10 +275,7 @@ button{
             display: block;
             margin-bottom: 2rem;
           }
-          p{
-            line-height: 1.4;
-            word-break: keep-all;
-          }
+          p{line-height: 1.4;}
         }
       }
     }

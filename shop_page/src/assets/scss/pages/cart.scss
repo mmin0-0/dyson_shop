@@ -135,7 +135,7 @@
         &.shop-result-table{
           margin-top: 4rem;
           @include tablet{
-            margin-top: 0;
+            margin-top: 2rem;
             &::before{
               content: '';
               width: 100%;
@@ -153,7 +153,7 @@
               @include tablet{border-bottom: 0;}
               td{
                 border-right: 0;
-                @include tablet{padding: 1rem;}
+                @include tablet{padding: 2rem 0;}
                 .price-wrap{
                   @include flexbox(row, center, center);
                   @include tablet{

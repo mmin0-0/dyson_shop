@@ -95,7 +95,6 @@
                 font-size: 3.4rem;
                 font-weight: 600;
                 line-height: 1.4;
-                word-break: keep-all;
                 display: block;
                 transform: translateY(2rem);
                 opacity: 0;
@@ -106,7 +105,6 @@
                 margin-top: 2rem;
                 font-size: 1.8rem;
                 line-height: 1.6;
-                word-break: keep-all;
                 transform: translateY(2rem);
                 opacity: 0;
                 transition: 1s .4s;
@@ -594,7 +592,6 @@
                 p{font-weight: 500;}
                 strong{
                   font-weight: bold;
-                  word-break: keep-all;
                   line-height: 1.4;
                   display: block;
                   margin-top: 1.6rem;
