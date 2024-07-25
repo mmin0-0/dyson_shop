@@ -1,9 +1,15 @@
 #wrap{
   .board-tit{
     .tit-wrap{
+      @include flexbox(row, space-between, flex-end);
       > div{
         gap: .8rem;
         @include flexbox(row, flex-start, center);
+        .btn-wrap{
+          button{
+            min-width: 14rem;
+          }
+        }
       }
       .main-tit{
         font-size: 2.4rem;

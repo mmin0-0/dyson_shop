@@ -67,6 +67,7 @@ function CartTable({cart, dispatch, totalPrice}){
     <div className="table-wrap">
       {
         hasRows ? (
+          <>
           <table className="shop-table">
             <caption>장바구니 테이블</caption>
             <colgroup>
@@ -168,6 +169,10 @@ function CartTable({cart, dispatch, totalPrice}){
               }
             </tbody>
           </table>
+          <div className="table-wrap-bottom">
+            <button type="button" className="type03 list-remove">선택 상품 삭제</button>
+          </div>
+          </>
         ) : (
           <div className="empty">항목이 없습니다.</div>
         )
