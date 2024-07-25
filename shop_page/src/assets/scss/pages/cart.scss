@@ -91,15 +91,14 @@
                   right: .8rem;
                   top: 2rem;
                   background-color: inherit;
-                  // border: 1px solid #000;
                   @include background(icon, cart_remove_icon, svg, no-repeat, 80%, center, center);
                   @include tablet{top: 1rem;right: 1rem;}
                 }
                 .amount{
                   @include flexbox(row, center, center);
                   @include tablet{
-                    border: 1px solid $table-bd;
                     justify-content: space-between;
+                    @include border(1px, $table-bd);
                   }
                   .tit{min-width: 8rem;}
                   button{

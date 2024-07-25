@@ -5,7 +5,6 @@ header{
   top: 0;
   left: 0;
   z-index: 100;
-  // background: linear-gradient(rgba($black, 1) 80%,rgba($black, 0) 100%);
   background: $black;
   transition: height .25s;
   @include notebook{
@@ -14,7 +13,6 @@ header{
   }
   &.header-fixed{
     height: 6rem;
-    // background: $black;
     border-bottom: 1px solid rgba($white, .3);
     + #wrap{
       margin-top: 6rem !important;
@@ -90,9 +88,6 @@ header{
       }
       .search-controls{
         &::after{@include background(icon, search_icon, svg, no-repeat, 100%, center, center);}
-        // &.on{
-        //   &::after{@include background(icon, closed_icon, svg, no-repeat, 80%, center, center);}
-        // }
       }
     }
     .logo{
@@ -216,11 +211,11 @@ header{
         text-align: center;
         @include tablet{display: none;}
         a{
-          border: 1px solid $black;
           color: $black;
           padding: .8rem  1.2rem;
           border-radius: 2rem;
           transition: all .25s;
+          @include border(1px, $black);
           &::after{
             content: '';
             display: inline-block;
@@ -395,20 +390,6 @@ header{
                 }
               }
             }
-            // .banner{
-            //   width: 45%;
-            //   @include notebook{display: none;}
-            //   ul{
-            //     display: flex;
-            //     gap: 2rem;
-            //     li{
-            //       flex: 1;
-            //       .img-wrap{
-            //         img{max-width: 100%;}
-            //       }
-            //     }
-            //   }
-            // }
           }
         }
       }

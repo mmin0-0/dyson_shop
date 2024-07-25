@@ -22,7 +22,7 @@
             @include notebook{grid-template-columns: repeat(2, 1fr);}
             @include tablet{grid-template-columns: 1fr;}
             li{
-              border: 1px solid rgba($white, .25);
+              @include border(1px, rgba($white, .25));
               &:hover{
                 background: $subColor;
                 .img-wrap{

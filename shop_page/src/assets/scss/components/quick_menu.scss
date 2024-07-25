@@ -15,8 +15,8 @@
     > a{
       width: 100%;
       border-radius: 50%;
-      border: 1px solid $table-bd;
       background: $white;
+      @include border(1px, $table-bd);
       &:not(:first-child){margin-top: .8rem;}
       img{width: 100%;}
     }
@@ -78,7 +78,7 @@
           .img-wrap{
             height: 15rem;
             margin-bottom: 1rem;
-            border: 1px solid $table-bd;
+            @include border(1px, $table-bd);
             img{
               height: 100%;
               display: block;
