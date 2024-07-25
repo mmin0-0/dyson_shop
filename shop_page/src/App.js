@@ -3,6 +3,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
+import Modal from './components/Modal.jsx';
 import QuickMenu from './components/QuickMenu.jsx';
 import Error from './pages/404_error.jsx';
 import Search from './pages/Search.jsx';
@@ -18,6 +19,7 @@ function App() {
   };
   return (
     <div className="App" id="wrapper">
+      <Modal />
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />

@@ -1,6 +1,7 @@
 import { Routes, Route, Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { menuItems, keyword } from '../data.js';
+import Modal from '../components/Modal.jsx';
 
 function Header(){
   const navigate = useNavigate();
@@ -23,7 +24,6 @@ function Header(){
     if (!isTabletOrSmaller) {
       window.addEventListener('scroll', handleScroll);
     }
-  
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
