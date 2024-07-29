@@ -70,6 +70,7 @@ function Header({toggleModal}){
           setSearch={setSearch}
         />
         <NavWrap 
+          toggleModal={toggleModal}
           navigate={navigate}
           goHome={goHome}
           goCartPage={goCartPage}
@@ -148,7 +149,7 @@ function SearchWrap({navigate, toggleSearch, search, setSearch}){
   )
 }
 
-function NavWrap({navigate, goHome, goCartPage, menu, setMenu, toggleMenu, isTabletOrSmaller, setIsTabletOrSmaller}){
+function NavWrap({toggleModal, navigate, goHome, goCartPage, menu, setMenu, toggleMenu, isTabletOrSmaller, setIsTabletOrSmaller}){
   const [hovered, setHovered] = useState(null);
   const parentRef = useRef(null);
 
@@ -167,7 +168,7 @@ function NavWrap({navigate, goHome, goCartPage, menu, setMenu, toggleMenu, isTab
       <div className="gnb-wrap-top">
         <a href="javascript:void(0)" className="btn-closed" onClick={toggleMenu}>닫기</a>
         <div className="utility-wrap">
-          <a href="javascirpt:void(0)" className="user">로그인</a>
+          <a href="javascirpt:void(0)" className="user" onClick={toggleModal}>로그인</a>
           <a href="javascirpt:void(0)" className="basket" onClick={goCartPage}>장바구니</a>
         </div>
       </div>
