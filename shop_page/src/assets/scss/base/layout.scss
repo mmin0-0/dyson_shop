@@ -362,8 +362,20 @@ button{
 }
 
 .input-wrap{
+  position: relative;
   gap: 1rem;
   @include flexbox(row, flex-start, center);
+  .pw-icon{
+    width: 2rem;
+    height: 2rem;
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    cursor: pointer;
+    @include background(icon, eye_off_icon, png, no-repeat, contain, center, center);
+    &.on{@include background(icon, eye_on_icon, png, no-repeat, contain, center, center);}
+  }
   input{
     &[type="text"],&[type="password"]{
       width: 100%;

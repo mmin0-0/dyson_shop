@@ -1,6 +1,20 @@
 import { useEffect, useState } from "react";
 
 function Modal(){
+  const [activeIndex, setActiveIndex] = useState(0);
+  const tabs = ['회원 로그인', '비회원 주문확인'];
+
+  const togglePwVisible = (e)=>{
+    const pwInput = e.target.previousElementSibling;
+    if(pwInput.type === 'password'){
+      pwInput.type = 'text';
+      e.target.classList.add('on');
+    }else{
+      pwInput.type = 'password';
+      e.target.classList.remove('on');
+    }
+  };
+
   return (
     <div className="modal active">
       <div className="modal-cont">
@@ -10,11 +24,33 @@ function Modal(){
         <div className="modal-info">
           <div className="inner">
             <div className="member-tab">
-              <a href="javascript:void(0)" className="on">회원 로그인</a>
-              <a href="javascript:void(0)">비회원 주문확인</a>
+              {
+                tabs.map((tab, index)=>(
+                  <a
+                    key={index}
+                    href="javascript:void(0)" 
+                    className={activeIndex === index ? 'on' : ''}
+                    onClick={(e)=>{
+                      e.preventDefault();
+                      setActiveIndex(index);
+                    }}>{tab}</a>
+                ))
+              }
             </div>
             <div className="login-cont">
-              <div>
+              {activeIndex === 0 && <Member togglePwVisible={togglePwVisible} />}
+              {activeIndex === 1 && <NonMember togglePwVisible={togglePwVisible} />}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function Member({togglePwVisible}){
+  return(
+    <div>
                 <div className="login-info">
                   <form>
                     <div className="input-wrap">
@@ -23,6 +59,7 @@ function Modal(){
                     </div>
                     <div className="input-wrap">
                       <input type="password" id="userPw" placeholder="비밀번호를 입력하세요" />
+                      <span className="pw-icon" onClick={togglePwVisible}></span>
                       <label htmlFor="userPw" className="hide">회원 비밀번호</label>
                     </div>
                   </form>
@@ -84,7 +121,12 @@ function Modal(){
                   </ul>
                 </div>
               </div>
-              <div className="on">
+  )
+}
+
+function NonMember({togglePwVisible}){
+  return (
+    <div>
                 <div className="login-info">
                   <form>
                     <div className="input-wrap">
@@ -93,6 +135,7 @@ function Modal(){
                     </div>
                     <div className="input-wrap">
                       <input type="password" id="orderNumPW" placeholder="주문 비밀번호를 입력하세요" />
+                      <span className="pw-icon" onClick={togglePwVisible}></span>
                       <label htmlFor="orderNumPW" className="hide">주문 비밀번호</label>
                     </div>
                   </form>
@@ -102,12 +145,6 @@ function Modal(){
                   <button type="button">확인</button>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
   )
 }
-
 export default Modal;

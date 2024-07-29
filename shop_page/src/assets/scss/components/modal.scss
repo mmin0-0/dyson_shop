@@ -62,10 +62,6 @@
           font-weight: 500;
           color: $gray04;
         }
-        > div{
-          display: none;
-          &.on{display: block;}
-        }
         .input-wrap{
           &.check{
             label{
