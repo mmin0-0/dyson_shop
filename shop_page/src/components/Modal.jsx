@@ -84,15 +84,26 @@ function Modal(){
                   </ul>
                 </div>
               </div>
-              <div>
-
+              <div className="on">
+                <div className="login-info">
+                  <form>
+                    <div className="input-wrap">
+                      <input type="text" id="orderNum" placeholder="주문번호를 입력하세요" />
+                      <label htmlFor="userId" className="hide">주문번호</label>
+                    </div>
+                    <div className="input-wrap">
+                      <input type="password" id="orderNumPW" placeholder="주문 비밀번호를 입력하세요" />
+                      <label htmlFor="orderNumPW" className="hide">주문 비밀번호</label>
+                    </div>
+                  </form>
+                  <span className="notice">조회하실 주문번호와 주문 비밀번호를 입력하세요.</span>
+                </div>
+                <div className="login-btn">
+                  <button type="button">확인</button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="bottom-btn">
-          <button type="button" className="cancel">취소</button>
-          <button type="button" className="order type01">변경</button>
         </div>
       </div>
     </div>

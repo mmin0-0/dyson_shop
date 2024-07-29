@@ -368,6 +368,7 @@ button{
     &[type="text"],&[type="password"]{
       width: 100%;
       padding: 1rem 1.4rem;
+      @include border(1px, $table-bd);
       &:focus{border-color: $subColor;}
     }
   }
@@ -390,6 +391,7 @@ button{
         line-height: 1;
         white-space: nowrap;
         cursor: pointer;
+        @include flexbox(row, flex-start, center);
         &::before, &::after{
           content: '';
           position: absolute;
