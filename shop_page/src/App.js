@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
@@ -17,10 +17,23 @@ function App() {
   const price = (num) => {
     return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   };
+
+  const [isModalOpen, SetIsModalOpen] = useState(false);
+  const toggleModal = ()=>{
+    SetIsModalOpen(!isModalOpen);
+  };
+  useEffect(()=>{
+    if (!isModalOpen) {
+      document.body.classList.add('fixed');
+    } else {
+      document.body.classList.remove('fixed');
+    }
+  }, []);
+
   return (
     <div className="App" id="wrapper">
-      <Modal />
-      <Header />
+      <Header toggleModal={toggleModal} />
+      {isModalOpen && <Modal isModalOpen={isModalOpen} toggleModal={toggleModal} />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="*" element={<Error />} />

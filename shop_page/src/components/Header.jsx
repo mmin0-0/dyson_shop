@@ -3,7 +3,7 @@ import { useEffect, useRef, useState } from 'react';
 import { menuItems, keyword } from '../data.js';
 import Modal from '../components/Modal.jsx';
 
-function Header(){
+function Header({toggleModal}){
   const navigate = useNavigate();
   const goHome = () =>{navigate('/')};
   const goCartPage = () =>{navigate('/cart')};
@@ -61,6 +61,7 @@ function Header(){
           goCartPage={goCartPage}
           toggleMenu={toggleMenu}
           toggleSearch={toggleSearch}
+          toggleModal={toggleModal}
         />
         <SearchWrap 
           navigate={navigate}
@@ -83,7 +84,7 @@ function Header(){
   );
 }
 
-function HdInner({navigate, goHome, goCartPage, toggleMenu, toggleSearch}){
+function HdInner({navigate, goHome, goCartPage, toggleMenu, toggleSearch, toggleModal}){
   return (
     <>
     <div className="hd-inner-wrap">
@@ -94,7 +95,7 @@ function HdInner({navigate, goHome, goCartPage, toggleMenu, toggleSearch}){
         </a>
       </div>
       <div className="utility-wrap">
-        <a href="javascript:void(0)" className="user" >user</a>
+        <a href="javascript:void(0)" className="user" onClick={toggleModal}>user</a>
         <a href="javascript:void(0)" className="basket" onClick={goCartPage}>basket</a>
         <a href="javascript:void(0)" className="search-controls" onClick={toggleSearch}>검색</a>
       </div>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-function Modal(){
+function Modal({isModalOpen, toggleModal}){
   const [activeIndex, setActiveIndex] = useState(0);
   const tabs = ['회원 로그인', '비회원 주문확인'];
 
@@ -16,7 +16,8 @@ function Modal(){
   };
 
   return (
-    <div className="modal active">
+    <div className={`modal ${isModalOpen ? 'active' : ''}`}>
+      <div className="modal-bg" onClick={toggleModal}></div>
       <div className="modal-cont">
         <div className="modal-tit">
           <strong>로그인</strong>

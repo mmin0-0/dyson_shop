@@ -215,7 +215,7 @@ const pdList = [
     id : 'headphones',
     title : '헤드폰',
     content : '몰입감 넘치는 편안한 청취. 액티브 노이즈 캔슬링으로 최대 50시간 오디오 재생',
-    mainImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/home-page/homepage-category-tiles-headphones.jpg',
+    mainImg: 'https://dyson-h.assetsadobe2.com/is/image/content/dam/dyson/leap-petite-global/products/headphones/ontrac/banners/571h_homepage-category-picker.jpg',
     data: [
       {
         id: 7,

@@ -4,12 +4,19 @@
   position: fixed;
   top: 0;
   left: 0;
-  background: rgba($black, .35);
   display: none;
   z-index: -1;
   &.active{
     display: block;
     z-index: 101;
+  }
+  &-bg{
+    width: inherit;
+    height: inherit;
+    background: rgba($black, .35);
+    position: absolute;
+    top: 0;
+    left: 0;
   }
   &-cont{
     width: calc(100% - 4rem);
@@ -22,8 +29,8 @@
     transform: translate(-50%, -50%);
     background: $white;
     *{color: $black;}
-    > div{padding: 1.2rem;}
     .modal-tit{
+      padding: 2rem 1.2rem;
       position: sticky;
       top: 0;
       text-align: center;
@@ -32,6 +39,7 @@
       strong{font-weight: bold;}
     }
     .modal-info{
+      padding: 1.2rem;
       .member-tab{
         display: flex;
         background: $gray02;
