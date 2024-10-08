@@ -29,7 +29,7 @@ const menuItems = [
     subMenu: ['다이슨 데모 스토어', '다이슨 뷰티 스토어', '다이슨 서비스 센터', '다이슨 백화점 매장'],
   }
 ];
-const keyword = ['제로웨이스트', 'ECO', '감탄클래스', '친환경 라이프', '비건 케이터링'];
+const keyword = ['2024 다이슨 블랙프라이데이', '리뷰이벤트', '다이슨 헤어 에센셜 케어', '주문조회'];
 
 // main product
 const pdList = [
