@@ -7,15 +7,17 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import gsap from 'gsap';
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 // local file
 import { pdList } from '../data.js';
 import { mainVisual, vacuumInfo, haveCont } from '../mainData.js'
 
 function Home(){
+  gsap.registerPlugin(ScrollTrigger);
   const [product] = useState(pdList);
   const boxRef = useRef(null);
-  
+
   useEffect(()=>{
     let ctx = gsap.context(()=>{
       // about
@@ -190,7 +192,7 @@ function Visual(){
   )
 }
 
-function About(){
+function About({titWrap}){
   return (
     <div className="about con-box">
       <div className="tit-wrap type01">
