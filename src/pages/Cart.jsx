@@ -1,7 +1,6 @@
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { CartOption, Popup } from '../components/Modal';
 import { increase, decrease, addItem, removeItem } from '../store.js';
 
 function Cart({price}){
@@ -27,9 +26,7 @@ function Cart({price}){
         <div className="cont-wrap">
           <CartTable 
             cart={state.cart}
-            price={price}
             dispatch={dispatch}
-            totalPrice={totalPrice} 
           />
           <ResultTable 
             cart={state.cart}
@@ -46,7 +43,7 @@ function Cart({price}){
   )
 }
 
-function CartTable({cart, dispatch, totalPrice, price}){
+function CartTable({cart, dispatch}){
   const tbodyRef = useRef();
   const [hasRows, setHasRows] = useState(cart.length > 0);
   const childRows = ()=>{
@@ -139,7 +136,7 @@ function CartTable({cart, dispatch, totalPrice, price}){
                               </a>
                             </div>
                           </div>
-                          <a href="javascript:void(0)" className="btn-remove" onClick={()=> remove(a.id)}>제거</a>
+                          <Link to="#" className="btn-remove" onClick={remove(a.id)}>remove</Link>
                       </td>
                       <td className="hidden-sm">
                         <div className="info-list">

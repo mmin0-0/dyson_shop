@@ -1,17 +1,11 @@
-import { Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { menuItems, keyword } from '../data.js';
-import Modal from '../components/Modal.jsx';
 
-function Header({toggleModal}){
-  const navigate = useNavigate();
-  const goHome = () =>{navigate('/')};
-  const goCartPage = () =>{navigate('/cart')};
-  const goSearch = ()=>{navigate('/search')};
-
+export default function Header({ toggleModal }) {
   const [headerClass, setHeaderClass] = useState('');
   const [isTabletOrSmaller, setIsTabletOrSmaller] = useState(window.innerWidth <= 1200);
-  useEffect(()=>{
+  useEffect(() => {
     const handleScroll = () => {
       let scrollTop = window.scrollY;
       if (scrollTop > 0) {
@@ -20,7 +14,7 @@ function Header({toggleModal}){
         setHeaderClass('')
       }
     };
-  
+
     if (!isTabletOrSmaller) {
       window.addEventListener('scroll', handleScroll);
     }
@@ -29,8 +23,8 @@ function Header({toggleModal}){
     };
   }, [isTabletOrSmaller]);
 
-  useEffect(()=>{
-    const handleResize = ()=>{
+  useEffect(() => {
+    const handleResize = () => {
       setIsTabletOrSmaller(window.innerWidth <= 1200);
     };
     window.addEventListener('resize', handleResize);
@@ -40,176 +34,195 @@ function Header({toggleModal}){
   }, []);
 
   const [search, setSearch] = useState(false);
-  const toggleSearch = (e)=>{
+  const toggleSearch = (e) => {
     setSearch(!search);
-    if(!search){
+    if (!search) {
       e.target.classList.add('on');
-    }else{
+    } else {
       e.target.classList.remove('on');
     }
   };
 
   const [menu, setMenu] = useState(false);
-  const toggleMenu = ()=>{setMenu(!menu);};
-  
+  const toggleMenu = () => { setMenu(!menu); };
+  const utilityItems = [
+    { className: 'user', text: '로그인', onClick: toggleModal, link: null },
+    { className: 'basket', text: '장바구니', onClick: null, link: '/cart' },
+    { className: 'search-controls', text: '검색', onClick: toggleSearch, link: null }
+  ]
+
   return (
     <>
       <header className={headerClass}>
-        <HdInner 
-          navigate={navigate}
-          goHome={goHome}
-          goCartPage={goCartPage}
+        <HdInner
           toggleMenu={toggleMenu}
-          toggleSearch={toggleSearch}
-          toggleModal={toggleModal}
+          utilityItems={utilityItems}
         />
-        <SearchWrap 
-          navigate={navigate}
+        <SearchWrap
           toggleSearch={toggleSearch}
           search={search}
-          setSearch={setSearch}
         />
-        <NavWrap 
-          toggleModal={toggleModal}
-          navigate={navigate}
-          goHome={goHome}
-          goCartPage={goCartPage}
+        <NavWrap
           menu={menu}
-          setMenu={setMenu}
           toggleMenu={toggleMenu}
           isTabletOrSmaller={isTabletOrSmaller}
-          setIsTabletOrSmaller={setIsTabletOrSmaller}
+          utilityItems={utilityItems}
         />
       </header>
     </>
   );
 }
 
-function HdInner({navigate, goHome, goCartPage, toggleMenu, toggleSearch, toggleModal}){
+function HdInner({ toggleMenu, utilityItems }) {
+
   return (
     <>
-    <div className="hd-inner-wrap">
-      <a href="javascript:void(0)" className="ham-btn" onClick={toggleMenu}>메뉴열기</a>
-      <div className="logo">
-        <a href="javascript:void(0)" onClick={goHome}>
-          <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" />
-        </a>
+      <div className="hd-inner-wrap">
+        <button className="ham-btn" onClick={toggleMenu}>open menu</button>
+        <div className="logo">
+          <Link to="/">
+            <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" />
+          </Link>
+        </div>
+        <div className="utility-wrap">
+          {
+            utilityItems.map((item) =>
+              <Link
+                to={item.link}
+                key={item.text}
+                className={item.className}
+                onClick={item.onClick}
+              >{item.text}</Link>
+            )
+          }
+        </div>
       </div>
-      <div className="utility-wrap">
-        <a href="javascript:void(0)" className="user" onClick={toggleModal}>user</a>
-        <a href="javascript:void(0)" className="basket" onClick={goCartPage}>basket</a>
-        <a href="javascript:void(0)" className="search-controls" onClick={toggleSearch}>검색</a>
-      </div>
-    </div>
     </>
   )
 }
 
-function SearchWrap({navigate, toggleSearch, search, setSearch}){
+function SearchWrap({ toggleSearch, search }) {
+  const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
-  const searchChange = (e)=>{
+  const searchChange = (e) => {
     setSearchQuery(e.target.value);
   };
-  const formSubmit = (e)=>{
+  const formSubmit = (e) => {
     e.preventDefault();
     navigate(`/search?q=${searchQuery}`);
   };
-  
+
   return (
     <>
-    <div className={`search-wrap ${search ? 'active' : 'closed'}`}>
-      <div className="search-inner">
-        <div className="search-inp">
-          <form onSubmit={formSubmit}>
-            <div className="input-wrap">
-              <label for="searchWrap" className="hide">검색</label>
-              <input type="search" id="searchWrap" placeholder="검색어를 입력해 주세요" onChange={searchChange} value={searchQuery}/>
-              <button type="submit" className="btn-search">검색</button>
-            </div>
-          </form>
-        </div>
-        <div className="search-keyword">
-          <strong>추천검색어</strong>
-          <ul>
-            {
-              keyword.map((item, index)=>{
-                return (
-                  <li key={index}><a href="#none">{item}</a></li>
-                )
-              })
-            }
-          </ul>
-        </div>
-        <div className="btn-closed">
-          <a href="javascript:void(0)" onClick={toggleSearch}>CLOSED</a>
+      <div className={`search-wrap ${search ? 'active' : 'closed'}`}>
+        <div className="search-inner">
+          <div className="search-inp">
+            <form onSubmit={formSubmit}>
+              <div className="input-wrap">
+                <label for="searchWrap" className="hide">검색</label>
+                <input type="search" id="searchWrap" placeholder="검색어를 입력해 주세요" onChange={searchChange} value={searchQuery} />
+                <button type="submit" className="btn-search">검색</button>
+              </div>
+            </form>
+          </div>
+          <div className="search-keyword">
+            <strong>추천검색어</strong>
+            <ul>
+              {
+                keyword.map((item, index) => {
+                  return (
+                    <li key={index}><a href="#none">{item}</a></li>
+                  )
+                })
+              }
+            </ul>
+          </div>
+          <div className="btn-closed">
+            <a href="#" onClick={(e) => {
+              e.preventDefault();
+              toggleSearch();
+            }}>CLOSED</a>
+          </div>
         </div>
       </div>
-    </div>
     </>
   )
 }
 
-function NavWrap({toggleModal, navigate, goHome, goCartPage, menu, setMenu, toggleMenu, isTabletOrSmaller, setIsTabletOrSmaller}){
+function NavWrap({ menu, toggleMenu, isTabletOrSmaller, utilityItems }) {
   const [hovered, setHovered] = useState(null);
   const parentRef = useRef(null);
 
-  const handleMouseEnter = (index) => {setHovered(index)};
-  const handleMouseLeave = () => {setHovered(null)};
-  const handleClick = (index) => {setHovered(index)};
+  const handleMouseEnter = (index) => { setHovered(index) };
+  const handleMouseLeave = () => { setHovered(null) };
+  const handleClick = (index) => { setHovered(index) };
 
   return (
     <>
-    <nav className={`gnb-wrap ${menu ? 'active' : ''}`}>
-      <div className="fix-logo">
-        <a href="javascript:void(0)" onClick={goHome}>
-          <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" />
-        </a>
-      </div>
-      <div className="gnb-wrap-top">
-        <a href="javascript:void(0)" className="btn-closed" onClick={toggleMenu}>닫기</a>
-        <div className="utility-wrap">
-          <a href="javascirpt:void(0)" className="user" onClick={toggleModal}>로그인</a>
-          <a href="javascirpt:void(0)" className="basket" onClick={goCartPage}>장바구니</a>
+      <nav className={`gnb-wrap ${menu ? 'active' : ''}`}>
+        <div className="fix-logo">
+          <Link to="/">
+            <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" />
+          </Link>
         </div>
-      </div>
-      <ul className="gnb-inner">
-        {
-          menuItems.map((item, index)=>{
-            const hasSubMenu = item.subMenu.length > 0;
-            return (
-            <li key={index} ref={parentRef} onMouseLeave={!isTabletOrSmaller ? handleMouseLeave : undefined}>
-            <a
-              href="javascript:void(0)"
-              className={`depth1 ${hasSubMenu ? 'has' : ''} ${hovered === index ? 'on' : ''}`}
-              onMouseEnter={!isTabletOrSmaller ? () => handleMouseEnter(index) : undefined}
-              onClick={isTabletOrSmaller ? () => handleClick(index) : undefined}
-            >
-              {item.title}
-            </a>
-            {hasSubMenu && (
-              <div className="gnb-draw">
-                <div className="draw-inner">
-                  <div className="menu-list">
-                    <ul>
-                      {
-                        item.subMenu.map((subItem, subIndex)=>{
-                          return (
-                            <li key={subIndex}><a href="#none">{subItem}</a></li>
-                            )
-                          })
-                        }
-                      </ul>
+        <div className="gnb-wrap-top">
+          <Link to="#" className="btn-closed" onClick={toggleMenu}>closed</Link>
+          <div className="utility-wrap">
+            {
+              utilityItems
+                .filter(item => item.text === '로그인' || item.text === '장바구니')
+                .map(item => (
+                  <Link 
+                  to={item.link}
+                  key={item.text}
+                  className={item.className}
+                  onClick={item.onClick}
+                  >{item.text}</Link>
+                ))
+            }
+
+          </div>
+        </div>
+        <ul className="gnb-inner">
+          {
+            menuItems.map((item, index) => {
+              const hasSubMenu = item.subMenu.length > 0;
+              return (
+                <li key={index} ref={parentRef} onMouseLeave={!isTabletOrSmaller ? handleMouseLeave : undefined}>
+                  <Link
+                    to="#"
+                    className={`depth1 
+                      ${hasSubMenu ? 'has' : ''} 
+                      ${hovered === index ? 'on' : ''}`
+                    }
+                    onMouseEnter={!isTabletOrSmaller ?
+                      () => handleMouseEnter(index) : undefined}
+                    onClick={isTabletOrSmaller ?
+                      () => handleClick(index) : undefined}
+                  >{item.title}</Link>
+                  {hasSubMenu && (
+                    <div className="gnb-draw">
+                      <div className="draw-inner">
+                        <div className="menu-list">
+                          <ul>
+                            {
+                              item.subMenu.map((subItem, subIndex) => {
+                                return (
+                                  <li key={subIndex}><a href="#none">{subItem}</a></li>
+                                )
+                              })
+                            }
+                          </ul>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              )}
-            </li>
-            )
-          })
-        }
-      </ul>
-    </nav>
+                  )}
+                </li>
+              )
+            })
+          }
+        </ul>
+      </nav>
     </>
   )
 }
-export default Header;

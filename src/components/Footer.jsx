@@ -1,4 +1,8 @@
+import { Link } from 'react-router-dom';
 function Footer(){
+  const menuWrap = ['product', 'business product', 'customer support', 'company information'];
+  const legalWrap = ['웹사이트 이용약관', '웹사이트 판매약관', '개인정보처리방침', '다이슨 글로벌 개인정보처리방침', '쿠키 취급 방침'];
+
   return (
     <>
       <footer>
@@ -16,22 +20,25 @@ function Footer(){
             </div>
           </div>
           <div className="menu-wrap">
-            <a href="javascript:void(0)">product</a>
-            <a href="javascript:void(0)">business product</a>
-            <a href="javascript:void(0)">customer support</a>
-            <a href="javascript:void(0)">company information</a>
+            {
+              menuWrap.map((item) => 
+                <a href="#" onClick={(e)=>e.preventDefault()} key={item}>{item}</a>
+              )
+            }
           </div>
           <div className="ft-info con-box">
             <div className="logo">
-              <a href="javascript:void(0)"><img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" /></a>
+              <Link to="/">
+                <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" />
+              </Link>
             </div>
             <div className="info-wrap">
               <div div className="legal-link">
-                <a href="javascript:void(0)">웹사이트 이용약관</a>
-                <a href="javascript:void(0)">웹사이트 판매약관</a>
-                <a href="javascript:void(0)">개인정보처리방침</a>
-                <a href="javascript:void(0)">다이슨 글로벌 개인정보처리방침</a>
-                <a href="javascript:void(0)">쿠키 취급 방침</a>
+                {
+                  legalWrap.map((item) => 
+                    <a href="#" onClick={(e)=>e.preventDefault()} key={item}>{item}</a>
+                  )
+                }
               </div>
               <p>다이슨코리아 유한회사 대표이사: ROBERT JOHN JULIAN WEBSTER(로버트존줄리안웹스터)</p>
               <p>서울특별시 강남구 테헤란로 142, 아크플레이스 17층 .06236</p>

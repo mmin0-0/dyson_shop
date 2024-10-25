@@ -1,6 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import axios from 'axios';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Modal from './components/Modal.jsx';
@@ -13,7 +12,7 @@ import Detail from './pages/Detail.jsx';
 import PdDetail from './pages/PdDetail.jsx';
 import './assets/scss/main.scss';
 
-function App() {
+export default function App() {
   const price = (num) => {
     return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   };
@@ -22,16 +21,19 @@ function App() {
   const toggleModal = ()=>{
     SetIsModalOpen(!isModalOpen);
   };
-  // useEffect(()=>{
-  //   if (!isModalOpen) {
-  //     document.body.classList.add('fixed');
-  //   } else {
-  //     document.body.classList.remove('fixed');
-  //   }
-  // }, []);
+
+  // const ScrollTop = () => {
+  //   const { pathname } = useLocation();
+  //   useEffect(() => {
+  //     window.scrollTo(0, 0);
+  //   }, [pathname]);
+
+  //   return null;
+  // };
 
   return (
     <div className="App" id="wrapper">
+      {/* <ScrollTop /> */}
       <Header toggleModal={toggleModal} />
       {isModalOpen && <Modal isModalOpen={isModalOpen} toggleModal={toggleModal} />}
       <Routes>
@@ -48,4 +50,3 @@ function App() {
   );
 }
 
-export default App;

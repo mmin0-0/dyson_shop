@@ -1,5 +1,5 @@
-import { BrowserRouter as Router, Routes, Route, Link, BrowserRouter } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { BrowserRouter as Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
 import axios from 'axios';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
@@ -22,13 +22,6 @@ function App() {
   const toggleModal = ()=>{
     SetIsModalOpen(!isModalOpen);
   };
-  // useEffect(()=>{
-  //   if (!isModalOpen) {
-  //     document.body.classList.add('fixed');
-  //   } else {
-  //     document.body.classList.remove('fixed');
-  //   }
-  // }, []);
 
   return (
     <div className="App" id="wrapper">

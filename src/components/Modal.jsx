@@ -1,15 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { Link } from 'react-router-dom';
 
-function Modal({isModalOpen, toggleModal}){
+function Modal({ isModalOpen, toggleModal }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const tabs = ['회원 로그인', '비회원 주문확인'];
 
-  const togglePwVisible = (e)=>{
+  const togglePwVisible = (e) => {
     const pwInput = e.target.previousElementSibling;
-    if(pwInput.type === 'password'){
+    if (pwInput.type === 'password') {
       pwInput.type = 'text';
       e.target.classList.add('on');
-    }else{
+    } else {
       pwInput.type = 'password';
       e.target.classList.remove('on');
     }
@@ -26,15 +27,13 @@ function Modal({isModalOpen, toggleModal}){
           <div className="inner">
             <div className="member-tab">
               {
-                tabs.map((tab, index)=>(
-                  <a
-                    key={index}
-                    href="javascript:void(0)" 
+                tabs.map((tab, index) => (
+                  <Link
+                    to="#"
+                    key={tab}
                     className={activeIndex === index ? 'on' : ''}
-                    onClick={(e)=>{
-                      e.preventDefault();
-                      setActiveIndex(index);
-                    }}>{tab}</a>
+                    onClick={setActiveIndex(index)}
+                  >{tab}</Link>
                 ))
               }
             </div>
@@ -49,55 +48,67 @@ function Modal({isModalOpen, toggleModal}){
   )
 }
 
-function Member({togglePwVisible}){
-  const snsLogin = [
-    {
-      id: 'naver',
-      tit: '네이버'
-    },{
-      id: 'kakao',
-      tit: '카카오'
-    },{
-      id: 'google',
-      tit: '구굴'
-    },{
-      id: 'apple',
-      tit: '구글'
-    }
-  ];
+function Member({ togglePwVisible }) {
+  const loginForm = {
+    input: [
+      { type: 'text', idTag: "userId", placeholder: '아이디를 입력하세요.', onClick: null },
+      { type: 'password', idTag: "userPw", placeholder: '비밀번호를 입력하세요.', onClick: togglePwVisible }
+    ],
+    checkbox: [
+      { idTag: 'keepLogin', text: '로그인 상태 유지' },
+      { idTag: 'keepUserId', text: '아이디 저장' }
+    ],
+    category: ['회원가입', '아이디 찾기', '비밀번호 찾기'],
+    social: [
+      { id: 'naver', tit: '네이버' },
+      { id: 'kakao', tit: '카카오' },
+      { id: 'google', tit: '구글' },
+      { id: 'apple', tit: '구글' }
+    ]
+  }
 
-  return(
+  return (
     <div>
       <div className="login-info">
         <form>
-          <div className="input-wrap">
-            <input type="text" id="userId" placeholder="아이디를 입력하세요" />
-            <label htmlFor="userId" className="hide">회원 아이디</label>
-          </div>
-          <div className="input-wrap">
-            <input type="password" id="userPw" placeholder="비밀번호를 입력하세요" />
-            <span className="pw-icon" onClick={togglePwVisible}></span>
-            <label htmlFor="userPw" className="hide">회원 비밀번호</label>
-          </div>
+          {
+            loginForm.input.map((login) => (
+              <div key={login.idTag} className="input-wrap">
+                <input
+                  type={login.type}
+                  id={login.idTag}
+                  placeholder={login.placeholder}
+                />
+                {login.type === 'password' && (
+                  <span className="pw-icon" onClick={login.onClick}></span>
+                )}
+                <label htmlFor={login.idTag} className="hide">
+                  {login.idTag}
+                </label>
+              </div>
+            ))
+          }
         </form>
       </div>
       <div className="check-form">
-        <div className="input-wrap check">
-          <input type="checkbox" id="keepLogin" />
-          <label htmlFor="keepLogin">로그인 상태 유지</label>
-        </div>
-        <div className="input-wrap check">
-          <input type="checkbox" id="keepUserId" />
-          <label htmlFor="keepUserId">아이디 저장</label>
-        </div>
+        {
+          loginForm.checkbox.map((check) =>
+            <div className="input-wrap check" key={check.idTag}>
+              <input type="checkbox" id={check.idTag} />
+              <label htmlFor={check.idTag}>{check.text}</label>
+            </div>
+          )
+        }
       </div>
       <div className="login-btn">
         <button type="button">로그인</button>
       </div>
       <div className="login-txt">
-        <a href="javascript:void(0)">회원가입</a>
-        <a href="javascript:void(0)">아이디 찾기</a>
-        <a href="javascript:void(0)">비밀번호 찾기</a>
+        {
+          loginForm.category.map((item) =>
+            <Link to="#" key={item}>{item}</Link>
+          )
+        }
       </div>
       <div className="sns-login">
         <div className="sns-login-tit">
@@ -105,14 +116,14 @@ function Member({togglePwVisible}){
         </div>
         <ul className="sns-login-list">
           {
-            snsLogin.map((a,i)=>(
-              <li key={i}>
-                <a href="javascript:void(0)" id={`${a.id}Ligin`}>
+            loginForm.social.map((a, i) => (
+              <li key={a.tit}>
+                <Link to="#" id={`${a.id}Ligin`}>
                   <div className="icon">
                     <img src={`${process.env.PUBLIC_URL}/images/icon/login_${a.id}_icon.png`} alt={`${a.id} login`} />
                   </div>
-                  <span>{a.tit}</span>
-                </a>
+                  {a.tit}
+                </Link>
               </li>
             ))
           }
@@ -122,20 +133,33 @@ function Member({togglePwVisible}){
   )
 }
 
-function NonMember({togglePwVisible}){
+function NonMember({ togglePwVisible }) {
+  const orderForm = [
+    { type: 'text', tit: '주문번호', idTag: 'orderNum', placeholder: '주문번호를 입력하세요.', maxlength: 20, onClick: null },
+    { type: 'password', tit: '주문 비밀번호', idTag: 'orderNumPw', placeholder: '주문 비밀번호를 입력하세요.', maxlength: null, onClick: togglePwVisible }
+  ];
+  
   return (
     <div>
       <div className="login-info">
         <form>
-          <div className="input-wrap">
-            <input type="text" id="orderNum" placeholder="주문번호를 입력하세요" maxlength={20} />
-            <label htmlFor="userId" className="hide">주문번호</label>
-          </div>
-          <div className="input-wrap">
-            <input type="password" id="orderNumPW" placeholder="주문 비밀번호를 입력하세요" />
-            <span className="pw-icon" onClick={togglePwVisible}></span>
-            <label htmlFor="orderNumPW" className="hide">주문 비밀번호</label>
-          </div>
+          {
+            orderForm.map((item) =>
+              <div className="input-wrap" key={item.tit}>
+                <input 
+                  type={item.type} 
+                  id={item.idTag} 
+                  placeholder={item.placeholder} 
+                  maxlength={item.maxlength} />
+                {
+                  item.type === 'password' && (
+                    <span className="pw-icon" onClick={togglePwVisible}></span>
+                  )
+                }
+                <label htmlFor={item.idTag} className="hide">{item.tit}</label>
+              </div>
+            )
+          }
         </form>
         <span className="notice">조회하실 주문번호와 주문 비밀번호를 입력하세요.</span>
       </div>

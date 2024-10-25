@@ -1,9 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 
-function QuickMenu({price}){
+export default function QuickMenu({price}){
   const [watchItem, setWatch] = useState([]);
   useEffect(()=>{
-    let watchArr = JSON.parse(localStorage.getItem('watched'));
+    const watchArr = JSON.parse(localStorage.getItem('watched'));
     if(watchArr){setWatch(watchArr);}
   }, []);
   useEffect(()=>{
@@ -45,25 +46,33 @@ function QuickMenu({price}){
     }else{
       document.body.classList.remove('fixed');
     }
-  });
+  }, []);
+
+  const menuWrap = [
+    {className: 'recent', onClick: setRecent(true)},
+    {className: 'gotop', onClick: goTop},
+  ];
 
   return(
     <div className={`quick ${quick}`}>
       <div className="menu-wrap">
-        <a href="javascript:void(0)" className="recent" onClick={()=>{
-          setRecent(true);
-          }}>
-          <img src={`${process.env.PUBLIC_URL}/images/icon/recent_icon.png`} alt="최근본상품" />
-        </a>
-        <a href="javascript:void(0)" className="gotop" onClick={goTop}>
-          <img src={`${process.env.PUBLIC_URL}/images/icon/top_icon.png`} alt="top" />
-        </a>
+        {
+          menuWrap.map((item) =>
+            <Link
+              to="#"
+              key={item.className}
+              className={item.className}
+            >
+              <img src={`${process.env.PUBLIC_URL}/images/icon/${item.className}_icon.png`} alt="최근본상품" />
+            </Link>
+          )
+        }
       </div>
       <div className={`recent-wrap ${recent ? 'active' : ''}`}>
         <div className="inner">
           <div className="inner-top">
             <strong>최근본상품</strong>
-            <a href="javascript:void(0)" className="btn-closed" onClick={()=>{setRecent(false)}}>닫기</a>
+            <Link to="#" className="btn-closed" onClick={setRecent(false)}>closed</Link>
           </div>
           <div className={`inner-wrap ${watchItem.length === 0 ? 'empty': ''}`}>
             {
@@ -91,5 +100,3 @@ function QuickMenu({price}){
     </div>
   )
 }
-
-export default QuickMenu;
