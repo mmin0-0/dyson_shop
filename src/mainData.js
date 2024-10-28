@@ -1,4 +1,4 @@
-const mainVisual = [
+export const mainVisual = [
   {
     title: '다이슨의 지속 가능성',
     subTit: '엔지니어들에게는 효율성을 높이고 제품을 개선하려는 본능이 있습니다. 다이슨은 엔지니어링, 교육, 농업 및 자선 활동 분야에서 낭비를 최소화하고 최적의 방식으로 생산성을 높이기 위해 항상 노력 해왔습니다.'
@@ -8,7 +8,9 @@ const mainVisual = [
   }
 ];
 
-const vacuumInfo = [
+export const aboutInfo = ['Dyson machines have structural integrity. They are strong and they are logth. A knowledge of geometry and pioneering materials means that Dyson engineers can do more with less. Less materials, less weight, less waste.'];
+
+export const vacuumInfo = [
   {
     class: 'odd',
     title : ['Dyson', 'Hyperdymium', 'motor'],
@@ -32,7 +34,7 @@ const vacuumInfo = [
   }
 ];
 
-const haveCont = [
+export const haveCont = [
   {
     title: 'Headphones',
     content: '액티브 노이즈 캔슬링과 패시브 노이즈 캔슬링의 차이점'
@@ -46,7 +48,4 @@ const haveCont = [
     title: 'Air purifier',
     content: '감지하고, 제거하고, 분사합니다.'
   }
-]
-
-
-export { mainVisual, vacuumInfo, haveCont }
+];
