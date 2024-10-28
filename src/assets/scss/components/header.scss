@@ -11,21 +11,21 @@ header{
     height: 6rem;
     border-bottom: 1px solid rgba($white, .3);
   }
-  &.header-fixed{
+  &.fixed{
     height: 6rem;
     border-bottom: 1px solid rgba($white, .3);
     + #wrap{
       margin-top: 6rem !important;
       &.detail, &.cart{margin-top: 12rem !important;}
     }
-    .hd-inner-wrap{
+    > .inner{
       height: 6rem;
       margin-top: 0;
       .logo{
         opacity: 0;
         visibility: hidden;
       }
-      .utility-wrap{right: 0;}
+      .util-wrap{right: 0;}
     }
     .gnb-wrap{
       .fix-logo{
@@ -35,7 +35,7 @@ header{
     }
   }
   @include notebook{height: 6rem;}
-  .hd-inner-wrap{
+  > .inner{
     width: calc(100% - 4rem);
     margin: 0 auto;
     position: relative;
@@ -69,7 +69,7 @@ header{
       @include notebook{display: block;}
       &::after{@include background(icon, menu_icon, svg, no-repeat, contain, center, center);}
     }
-    .utility-wrap{
+    .util-wrap{
       position: absolute;
       top: 50%;
       right: 2rem;
@@ -182,7 +182,7 @@ header{
           }
         }
       }
-      .search-keyword{
+      .keyword{
         margin-top: 1.8rem;
         gap: 2rem;
         *{color: $black;}
@@ -192,51 +192,46 @@ header{
           align-items: flex-start;
           gap: 1rem;
         }
-        strong{font-weight: 600;}
         ul{
           gap: .8rem;
           flex-wrap: wrap;
           @include flexbox(row, flex-start, center);
           li{
-            a{
-              padding: .6rem;
-              border-radius: .4rem;
-              background: $gray01;
-              white-space: nowrap;
-              &::before{
-                content: '#';
-                display: inline-block;
-                margin-right: .4rem;
-              }
+            padding: .6rem;
+            border-radius: .4rem;
+            background: $gray01;
+            white-space: nowrap;
+            &::before{
+              content: '#';
+              display: inline-block;
+              margin-right: .4rem;
             }
           }
         }
       }
       .btn-closed{
-        margin-top: 3rem;
+        width: 20rem;
+        display: block;
+        margin: 3rem auto 0;
         text-align: center;
+        color: $black;
+        padding: .8rem  1.2rem;
+        @include border(1px, $black);
         @include tablet{display: none;}
-        a{
-          color: $black;
-          padding: .8rem  1.2rem;
-          border-radius: 2rem;
-          transition: all .25s;
-          @include border(1px, $black);
-          &::after{
-            content: '';
-            display: inline-block;
-            vertical-align: middle;
-            width: 2rem;
-            height: 2rem;
-            margin-left: .8rem;
-            transition: all .25;
-            @include background(icon, arrow01_icon, svg, no-repeat, 90%, center, center);
-          }
-          &:hover{
-            background: $black;
-            color: $white;
-            &::after{filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);}
-          }
+        &::after{
+          content: '';
+          display: inline-block;
+          vertical-align: middle;
+          width: 2rem;
+          height: 2rem;
+          margin-left: .8rem;
+          transition: all .25;
+          @include background(icon, arrow01_icon, svg, no-repeat, 90%, center, center);
+        }
+        &:hover{
+          background: $black;
+          color: $white;
+          &::after{filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(93deg) brightness(103%) contrast(103%);}
         }
       }
     }
@@ -282,6 +277,7 @@ header{
         width: 6rem;
         height: 6rem;
         text-indent: -9999em;
+        border-radius: 0;
         overflow: hidden;
         &::after{
           content: '';
@@ -295,7 +291,7 @@ header{
           @include background(icon, closed_icon, png, no-repeat, 60%, center, center);
         }
       }
-      .utility-wrap{
+      .util-wrap{
         a{
           color: $black;
           font-size: 1.4rem;

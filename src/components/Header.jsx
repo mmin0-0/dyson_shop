@@ -1,6 +1,9 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import { menuItems, keyword } from '../data.js';
+import { DefaultBtn } from './Button';
+import { DefaultInput } from './Input';
+import { Strong, Ul } from './Text';
 
 export default function Header({ toggleModal }) {
   const [headerClass, setHeaderClass] = useState('');
@@ -9,7 +12,7 @@ export default function Header({ toggleModal }) {
     const handleScroll = () => {
       let scrollTop = window.scrollY;
       if (scrollTop > 0) {
-        setHeaderClass('header-fixed')
+        setHeaderClass('fixed')
       } else {
         setHeaderClass('')
       }
@@ -54,10 +57,26 @@ export default function Header({ toggleModal }) {
   return (
     <>
       <header className={headerClass}>
-        <HdInner
-          toggleMenu={toggleMenu}
-          utilityItems={utilityItems}
-        />
+        <div className="inner">
+          <DefaultBtn className="ham-btn" onClick={toggleMenu}>menu open</DefaultBtn>
+          <div className="logo">
+            <Link to="/">
+              <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" />
+            </Link>
+          </div>
+          <div className="util-wrap">
+            {
+              utilityItems.map((item) =>
+                <Link
+                  to={item.link}
+                  key={item.text}
+                  className={item.className}
+                  onClick={item.onClick}
+                >{item.text}</Link>
+              )
+            }
+          </div>
+        </div>
         <SearchWrap
           toggleSearch={toggleSearch}
           search={search}
@@ -65,40 +84,11 @@ export default function Header({ toggleModal }) {
         <NavWrap
           menu={menu}
           toggleMenu={toggleMenu}
-          isTabletOrSmaller={isTabletOrSmaller}
           utilityItems={utilityItems}
         />
       </header>
     </>
   );
-}
-
-function HdInner({ toggleMenu, utilityItems }) {
-
-  return (
-    <>
-      <div className="hd-inner-wrap">
-        <button className="ham-btn" onClick={toggleMenu}>open menu</button>
-        <div className="logo">
-          <Link to="/">
-            <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" />
-          </Link>
-        </div>
-        <div className="utility-wrap">
-          {
-            utilityItems.map((item) =>
-              <Link
-                to={item.link}
-                key={item.text}
-                className={item.className}
-                onClick={item.onClick}
-              >{item.text}</Link>
-            )
-          }
-        </div>
-      </div>
-    </>
-  )
 }
 
 function SearchWrap({ toggleSearch, search }) {
@@ -118,44 +108,29 @@ function SearchWrap({ toggleSearch, search }) {
         <div className="search-inner">
           <div className="search-inp">
             <form onSubmit={formSubmit}>
-              <div className="input-wrap">
-                <label htmlFor="searchWrap" className="hide">검색</label>
-                <input type="search" id="searchWrap" placeholder="검색어를 입력해 주세요" onChange={searchChange} value={searchQuery} />
-                <button type="submit" className="btn-search">검색</button>
-              </div>
+              <DefaultInput
+                inputType="search"
+                txt="검색"
+                id="searchWrap"
+                placeholder="검색어를 입력해 주세요."
+                onChange={searchChange}
+                value={searchQuery}
+              />
             </form>
           </div>
-          <div className="search-keyword">
-            <strong>추천검색어</strong>
-            <ul>
-              {
-                keyword.map((item, index) => {
-                  return (
-                    <li key={index}><a href="#none">{item}</a></li>
-                  )
-                })
-              }
-            </ul>
+          <div className="keyword">
+            <Strong fontWeight="600">추천검색어</Strong>
+            <Ul items={keyword} />
           </div>
-          <div className="btn-closed">
-            <a href="#" onClick={(e) => {
-              e.preventDefault();
-              toggleSearch();
-            }}>CLOSED</a>
-          </div>
+          <DefaultBtn className="btn-closed" onClick={toggleSearch}>CLOSED</DefaultBtn>
         </div>
       </div>
     </>
   )
 }
 
-function NavWrap({ menu, toggleMenu, isTabletOrSmaller, utilityItems }) {
-  const [hovered, setHovered] = useState(null);
-  const parentRef = useRef(null);
+function NavWrap({ menu, toggleMenu, utilityItems }) {
 
-  const handleMouseEnter = (index) => { setHovered(index) };
-  const handleMouseLeave = () => { setHovered(null) };
-  const handleClick = (index) => { setHovered(index) };
 
   return (
     <>
@@ -166,63 +141,75 @@ function NavWrap({ menu, toggleMenu, isTabletOrSmaller, utilityItems }) {
           </Link>
         </div>
         <div className="gnb-wrap-top">
-          <Link to="#" className="btn-closed" onClick={toggleMenu}>closed</Link>
-          <div className="utility-wrap">
+          <DefaultBtn className="btn-closed" onClick={toggleMenu}>CLOSED</DefaultBtn>
+          <div className="util-wrap">
             {
               utilityItems
                 .filter(item => item.text === '로그인' || item.text === '장바구니')
                 .map(item => (
-                  <Link 
-                  to={item.link}
-                  key={item.text}
-                  className={item.className}
-                  onClick={item.onClick}
+                  <Link
+                    to={item.link}
+                    key={item.text}
+                    className={item.className}
+                    onClick={item.onClick}
                   >{item.text}</Link>
                 ))
             }
 
           </div>
         </div>
-        <ul className="gnb-inner">
-          {
-            menuItems.map((item, index) => {
-              const hasSubMenu = item.subMenu.length > 0;
-              return (
-                <li key={index} ref={parentRef} onMouseLeave={!isTabletOrSmaller ? handleMouseLeave : undefined}>
-                  <Link
-                    to="#"
-                    className={`depth1 
-                      ${hasSubMenu ? 'has' : ''} 
-                      ${hovered === index ? 'on' : ''}`
-                    }
-                    onMouseEnter={!isTabletOrSmaller ?
-                      () => handleMouseEnter(index) : undefined}
-                    onClick={isTabletOrSmaller ?
-                      () => handleClick(index) : undefined}
-                  >{item.title}</Link>
-                  {hasSubMenu && (
-                    <div className="gnb-draw">
-                      <div className="draw-inner">
-                        <div className="menu-list">
-                          <ul>
-                            {
-                              item.subMenu.map((subItem, subIndex) => {
-                                return (
-                                  <li key={subIndex}><a href="#none">{subItem}</a></li>
-                                )
-                              })
-                            }
-                          </ul>
-                        </div>
+        <GnbMenu />
+      </nav>
+    </>
+  )
+}
+
+function GnbMenu({ isTabletOrSmaller:isTablet }) {
+  const [hovered, setHovered] = useState(null);
+  const parentRef = useRef(null);
+
+  const handleMouseEnter = (index) => { setHovered(index) };
+  const handleMouseLeave = () => { setHovered(null) };
+  const handleClick = (index) => { setHovered(index) };
+
+  return (
+    <>
+      <ul className="gnb-inner">
+        {
+          menuItems.map((item, index) => {
+            const hasSubMenu = item.subMenu.length > 0;
+            return (
+              <li key={index} ref={parentRef} onMouseLeave={!isTablet ? handleMouseLeave : undefined}>
+                <Link
+                  to="#"
+                  className={`depth1 ${hasSubMenu ? 'has' : ''} ${hovered === index ? 'on' : ''}`}
+                  onMouseEnter={!isTablet ?
+                    () => handleMouseEnter(index) : undefined}
+                  onClick={isTablet ?
+                    () => handleClick(index) : undefined}
+                >{item.title}</Link>
+                {hasSubMenu && (
+                  <div className="gnb-draw">
+                    <div className="draw-inner">
+                      <div className="menu-list">
+                        <ul>
+                          {
+                            item.subMenu.map((subItem, subIndex) => {
+                              return (
+                                <li key={subIndex}><a href="#none">{subItem}</a></li>
+                              )
+                            })
+                          }
+                        </ul>
                       </div>
                     </div>
-                  )}
-                </li>
-              )
-            })
-          }
-        </ul>
-      </nav>
+                  </div>
+                )}
+              </li>
+            )
+          })
+        }
+      </ul>
     </>
   )
 }

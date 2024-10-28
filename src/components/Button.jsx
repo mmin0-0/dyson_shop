@@ -1,5 +1,9 @@
-export const DefaultBtn = ({children, type="button", color = "default", ...props}) => {
-  return <button type={type} className={color} {...props}>{children}</button>
+export const DefaultBtn = ({children, type="button", className, color = "default", onClick, ...props}) => {
+  return <button 
+    type={type} 
+    className={`${className} ${color}`} onClick={onClick} 
+    {...props}>
+  {children}</button>
 };
 
 export const MoreBtn = ({text}) => {

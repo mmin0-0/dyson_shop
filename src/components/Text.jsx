@@ -38,3 +38,17 @@ export const Strong = ({children, fontWeight, fontSize}) => {
   };
   return <strong style={style}>{children}</strong>
 };
+
+export const Ul = ({items, className}) => {
+  if(!items || items.length === 0){
+    return null;
+  }
+
+  return (
+    <ul className={className}>
+      {items.map((item, idx) => 
+        <li key={idx}>{item}</li>
+      )}
+    </ul>
+  )
+};
