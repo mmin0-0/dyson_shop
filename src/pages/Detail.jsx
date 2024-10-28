@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { pdList } from '../data.js';
 import Pagination from "../components/Pagination";
 

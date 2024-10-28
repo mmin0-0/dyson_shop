@@ -3,11 +3,16 @@ import { Link } from 'react-router-dom';
 
 export default function QuickMenu({price}){
   const [watchItem, setWatch] = useState([]);
+  const [recent, setRecent] = useState(false);
+  const [quick, setQuick] = useState('');
+
   useEffect(()=>{
     const watchArr = JSON.parse(localStorage.getItem('watched'));
     if(watchArr){setWatch(watchArr);}
   }, []);
+
   useEffect(()=>{
+    // 최근 본 상품 최대 6개 노출
     if(watchItem.length > 6){
       let copy = [...watchItem];
       copy.shift();
@@ -16,7 +21,6 @@ export default function QuickMenu({price}){
     }
   }, []);
 
-  const [recent, setRecent] = useState(false);
   const goTop = ()=>{
     window.scrollTo({
       top: 0,
@@ -24,7 +28,6 @@ export default function QuickMenu({price}){
     })
   };
   
-  const [quick, setQuick] = useState('');
   useEffect(()=>{
     const QuickHandler= ()=>{
       let scrollTop = window.scrollY;
@@ -41,20 +44,16 @@ export default function QuickMenu({price}){
   }, []);
 
   useEffect(()=>{
-    if(recent){
-      document.body.classList.add('fixed');
-    }else{
-      document.body.classList.remove('fixed');
-    }
-  }, []);
+    document.body.classList.toggle('fixed', recent);
+  }, [recent]);
 
   const menuWrap = [
-    {className: 'recent', onClick: setRecent(true)},
+    {className: 'recent', onClick: () => setRecent(true)},
     {className: 'gotop', onClick: goTop},
   ];
 
   return(
-    <div className={`quick ${quick}`}>
+    <div className={`quick ${quick || ''}`}>
       <div className="menu-wrap">
         {
           menuWrap.map((item) =>
@@ -62,8 +61,9 @@ export default function QuickMenu({price}){
               to="#"
               key={item.className}
               className={item.className}
+              onClick={item.onClick}
             >
-              <img src={`${process.env.PUBLIC_URL}/images/icon/${item.className}_icon.png`} alt="최근본상품" />
+              <img src={`${process.env.PUBLIC_URL}/images/icon/${item.className}_icon.png`} alt={item.className} />
             </Link>
           )
         }
@@ -72,7 +72,7 @@ export default function QuickMenu({price}){
         <div className="inner">
           <div className="inner-top">
             <strong>최근본상품</strong>
-            <Link to="#" className="btn-closed" onClick={setRecent(false)}>closed</Link>
+            <Link to="#" className="btn-closed" onClick={() => setRecent(false)}>closed</Link>
           </div>
           <div className={`inner-wrap ${watchItem.length === 0 ? 'empty': ''}`}>
             {
