@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { increase, addItem } from '../store.js';
 import { pdList, benefit, tabMenu } from '../data.js';
-// utils
+import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
@@ -78,7 +78,7 @@ function PdDetail({price}){
   )
 }
 
-function PdVisual({현재상품, 현재데이터, cart, dispatch, price}){
+function PdVisual({현재상품, 현재데이터,  dispatch, price}){
   return (
     <div className="pd-wrap-top con-box">
       <div className="pd-img">
@@ -135,15 +135,15 @@ function PdInfo({현재상품, 현재데이터}){
           <div className="tit-wrap">
             <span>BUY FROM</span>
             <strong>다이슨 공식몰 구매 혜택</strong>
-            <a href="javascript:void(0)">카드사 특별 혜택 자세히 보기</a>
+            <Link to="#">카드사 특별 혜택 자세히 보기</Link>
           </div>
           <div className="cont-wrap">
             <ul className="direct-list">
               {
                 benefit.map((a, i)=>{
                   return (
-                    <li>
-                      <a href="javascript:void(0)">
+                    <li key={a.title}>
+                      <Link to="#">
                         <div className="icon">
                           <img src={`${process.env.PUBLIC_URL}/images/icon/benefit0${i + 1}_icon.png`} alt="benefit icon" />
                         </div>
@@ -153,7 +153,7 @@ function PdInfo({현재상품, 현재데이터}){
                         <div className="info">
                           <p>{a.content}</p>
                         </div>
-                      </a>
+                      </Link>
                     </li>
                   )
                 })
@@ -217,7 +217,8 @@ function StoreInfo(){
                     key={index}
                     className={index === currentTab ? 'on' :''}
                     onClick={() => selectMenuHandler(index)}
-                    ><a href="javascript:void(0)">{index + 1}</a>
+                    >
+                      <Link to="#">{index + 1}</Link>
                   </li>
                 ))
               }
@@ -231,7 +232,7 @@ function StoreInfo(){
                 <div className="txt-wrap">
                   <p><span>주소: </span>{tabMenu[currentTab].address}</p>
                   <p><span>영업시간: </span>{tabMenu[currentTab].content}</p>
-                  <a href="javascript:void(0)">시연 서비스 예약하기</a>
+                  <Link to="#">시연 서비스 예약하기</Link>
                 </div>
               </div>
             </div>

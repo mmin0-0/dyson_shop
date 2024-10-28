@@ -363,7 +363,7 @@ function FixCont(){
                 return (
                   <li key={i}>
                     <div className="prd-item">
-                      <a href="javascript:void(0)">
+                      <Link to="#">
                         <div className="img-wrap">
                           <img src={`${process.env.PUBLIC_URL}/images/main/must0${i+1}_img.jpg`} alt="product img" className="default" />
                           <img src={`${process.env.PUBLIC_URL}/images/main/must0${i+1}_on_img.jpg`} alt="product img" className="hover" />
@@ -372,7 +372,7 @@ function FixCont(){
                           <p>{a.title}</p>
                           <strong>{a.content}</strong>
                         </div>
-                      </a>
+                      </Link>
                     </div>
                   </li>
                 )

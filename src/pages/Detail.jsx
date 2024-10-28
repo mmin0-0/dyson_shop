@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { pdList } from '../data.js';
+import Pagination from "../components/Pagination";
 
 function Detail({ price }) {
   const [selectCategory, setSelectCategory] = useState('all');
@@ -31,7 +32,7 @@ function Detail({ price }) {
                 className={selectCategory === category.id ? 'on' : ''}
                 onClick={() => categoryClick(category.id)}
               >
-                <a href="javascript:void(0)">{category.title}</a>
+                <Link to="#">{category.title}</Link>
               </li>
             ))}
           </ul>
@@ -58,19 +59,7 @@ function Detail({ price }) {
               ))
             }
           </div>
-          <div class="pagination">
-            <div class="arrow-group prev">
-              <a href="javascript:void(0);" title="맨앞" class="first"></a>
-              <a href="javascript:void(0);" title="이전" class="prev"></a>
-            </div>
-            <div class="num-area">
-              <a href="javascript:void(0);" title="1" class="on">1</a>
-            </div>
-            <div class="arrow-group next">
-              <a href="javascript:void(0);" title="다음" class="next"></a>
-              <a href="javascript:void(0);" title="맨뒤" class="last"></a>
-            </div>
-          </div>
+          <Pagination />
         </div>
       </div>
     </div>
