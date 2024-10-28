@@ -119,7 +119,7 @@ function SearchWrap({ toggleSearch, search }) {
           <div className="search-inp">
             <form onSubmit={formSubmit}>
               <div className="input-wrap">
-                <label for="searchWrap" className="hide">검색</label>
+                <label htmlFor="searchWrap" className="hide">검색</label>
                 <input type="search" id="searchWrap" placeholder="검색어를 입력해 주세요" onChange={searchChange} value={searchQuery} />
                 <button type="submit" className="btn-search">검색</button>
               </div>
