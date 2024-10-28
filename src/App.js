@@ -21,9 +21,19 @@ export default function App() {
   const toggleModal = ()=>{
     SetIsModalOpen(!isModalOpen);
   };
+  
+  const ScrollTop = () => {
+    const { pathname } = useLocation();
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+  };
 
   return (
     <div className="App" id="wrapper">
+      <ScrollTop />
       <Header toggleModal={toggleModal} />
       {isModalOpen && <Modal isModalOpen={isModalOpen} toggleModal={toggleModal} />}
       <div id="wrap">

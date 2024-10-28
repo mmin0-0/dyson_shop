@@ -8,95 +8,68 @@ import { Strong, Ul } from './Text';
 export default function Header({ toggleModal }) {
   const [headerClass, setHeaderClass] = useState('');
   const [isTabletOrSmaller, setIsTabletOrSmaller] = useState(window.innerWidth <= 1200);
+  const [search, setSearch] = useState(false);
+  const [menu, setMenu] = useState(false);
+
   useEffect(() => {
-    const handleScroll = () => {
-      let scrollTop = window.scrollY;
-      if (scrollTop > 0) {
-        setHeaderClass('fixed')
-      } else {
-        setHeaderClass('')
-      }
-    };
+    const handleScroll = () => setHeaderClass(window.scrollY > 0 ? 'fixed' : '');
+    const handleResize = () => setIsTabletOrSmaller(window.innerWidth <= 1200);
 
     if (!isTabletOrSmaller) {
       window.addEventListener('scroll', handleScroll);
     }
+    window.addEventListener('resize', handleResize);
+
     return () => {
       window.removeEventListener('scroll', handleScroll);
-    };
+      window.removeEventListener('resize', handleResize);
+    }
   }, [isTabletOrSmaller]);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsTabletOrSmaller(window.innerWidth <= 1200);
-    };
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
-
-  const [search, setSearch] = useState(false);
   const toggleSearch = (e) => {
     setSearch(!search);
-    if (!search) {
-      e.target.classList.add('on');
-    } else {
-      e.target.classList.remove('on');
-    }
+    e.target.classList.toggle('on', !search);
   };
 
-  const [menu, setMenu] = useState(false);
-  const toggleMenu = () => { setMenu(!menu); };
+  const toggleMenu = () => setMenu(prev => !prev);
+
   const utilityItems = [
     { className: 'user', text: '로그인', onClick: toggleModal, link: null },
     { className: 'basket', text: '장바구니', onClick: null, link: '/cart' },
     { className: 'search-controls', text: '검색', onClick: toggleSearch, link: null }
-  ]
+  ];
 
   return (
-    <>
-      <header className={headerClass}>
-        <div className="inner">
-          <DefaultBtn className="ham-btn" onClick={toggleMenu}>menu open</DefaultBtn>
-          <div className="logo">
-            <Link to="/">
-              <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" />
-            </Link>
-          </div>
-          <div className="util-wrap">
-            {
-              utilityItems.map((item) =>
-                <Link
-                  to={item.link}
-                  key={item.text}
-                  className={item.className}
-                  onClick={item.onClick}
-                >{item.text}</Link>
-              )
-            }
-          </div>
+    <header className={headerClass}>
+      <div className="inner">
+        <DefaultBtn className="ham-btn" onClick={toggleMenu}>menu open</DefaultBtn>
+        <div className="logo">
+          <Link to="/">
+            <img src={`${process.env.PUBLIC_URL}/images/common/logo.svg`} alt="dyson" />
+          </Link>
         </div>
-        <SearchWrap
-          toggleSearch={toggleSearch}
-          search={search}
-        />
-        <NavWrap
-          menu={menu}
-          toggleMenu={toggleMenu}
-          utilityItems={utilityItems}
-        />
-      </header>
-    </>
+        <div className="util-wrap">
+          {
+            utilityItems.map((item) =>
+              <Link
+                to={item.link}
+                key={item.text}
+                className={item.className}
+                onClick={item.onClick}
+              >{item.text}</Link>
+            )
+          }
+        </div>
+      </div>
+      <SearchWrap toggleSearch={toggleSearch} search={search} />
+      <NavWrap menu={menu} toggleMenu={toggleMenu} utilityItems={utilityItems}/>
+    </header>
   );
 }
 
 function SearchWrap({ toggleSearch, search }) {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState('');
-  const searchChange = (e) => {
-    setSearchQuery(e.target.value);
-  };
   const formSubmit = (e) => {
     e.preventDefault();
     navigate(`/search?q=${searchQuery}`);
@@ -113,7 +86,7 @@ function SearchWrap({ toggleSearch, search }) {
                 txt="검색"
                 id="searchWrap"
                 placeholder="검색어를 입력해 주세요."
-                onChange={searchChange}
+                onChange={(e) => setSearchQuery(e.target.value)}
                 value={searchQuery}
               />
             </form>
@@ -130,8 +103,6 @@ function SearchWrap({ toggleSearch, search }) {
 }
 
 function NavWrap({ menu, toggleMenu, utilityItems }) {
-
-
   return (
     <>
       <nav className={`gnb-wrap ${menu ? 'active' : ''}`}>
@@ -155,7 +126,6 @@ function NavWrap({ menu, toggleMenu, utilityItems }) {
                   >{item.text}</Link>
                 ))
             }
-
           </div>
         </div>
         <GnbMenu />
@@ -164,7 +134,7 @@ function NavWrap({ menu, toggleMenu, utilityItems }) {
   )
 }
 
-function GnbMenu({ isTabletOrSmaller:isTablet }) {
+function GnbMenu({ isTabletOrSmaller: isTablet }) {
   const [hovered, setHovered] = useState(null);
   const parentRef = useRef(null);
 

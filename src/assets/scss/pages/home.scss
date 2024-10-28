@@ -4,7 +4,6 @@
       .txt{line-height: 1.4;}
       > section{
         width: 100%;
-        position: relative;
         &:not(#visual){margin-top: 12rem;}
         &#visual{
           height: calc(100vh - 16rem);

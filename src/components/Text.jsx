@@ -24,9 +24,18 @@ export const InfoTxt = ({children, className}) => {
   )
 };
 
-export const P = ({children, fontWeight}) => {
+export const Span = ({children, color, fontSize}) => {
+  const style = {
+    color: color || 'rgba(255,255,255, .65)',
+    fontSize: fontSize || '1.4rem'
+  };
+  return <span style={style}>{children}</span>
+};
+
+export const P = ({children, fontWeight, lineHeight}) => {
   const style = {
     fontWeight: fontWeight || 400,
+    lineHeight: lineHeight || '1.4'
   };
   return <p className="txt" style={style}>{children}</p>
 };
