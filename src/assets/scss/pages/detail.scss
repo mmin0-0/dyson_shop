@@ -3,10 +3,8 @@
     &.detail {
       > section {
         &#visual {
-          width: 100%;
           height: 36rem;
           overflow: hidden;
-
           &::before {
             content: '';
             width: inherit;
@@ -17,16 +15,9 @@
             left: 0;
             z-index: 1;
           }
-
-          &:hover {
-            img {
-              transform: scale(1.1);
-            }
-          }
-
+          &:hover {img {transform: scale(1.1);}}
           .img-wrap {
             height: inherit;
-
             img {
               width: 100%;
               height: 100%;
@@ -34,7 +25,6 @@
               transition: transform .45s;
             }
           }
-
           .tit-wrap {
             width: calc(100% - 4rem);
             position: absolute;
@@ -43,13 +33,6 @@
             z-index: 10;
             transform: translate(-50%, -50%);
             text-align: center;
-
-            strong {
-              font-size: 3.2rem;
-              font-weight: bold;
-              display: block;
-              margin-bottom: 2rem;
-            }
           }
         }
         &#productList {
@@ -96,7 +79,6 @@
                 > span {@include ellipsis(2);}
                 > strong {
                   margin-bottom: .8rem;
-                  display: block;
                   @include ellipsis(2);
                 }
                 > p {
@@ -110,489 +92,214 @@
             }
           }
         }
-        &#pdDetail {
-          
-        }
-      }
-    }
-  }
-}
-
-
-// 제품 상세페이지
-.detail-wrap {
-  .pd-wrap {
-    &-top {
-      display: flex;
-      gap: 4rem;
-
-      @include tablet {
-        flex-direction: column;
-      }
-
-      .pd-img {
-        width: 45%;
-        height: 50rem;
-        background: $white;
-
-        @include tablet {
-          width: 100%;
-        }
-
-        .img-wrap {height: 100%;}
-      }
-
-      .pd-info {
-        width: 55%;
-
-        @include tablet {
-          width: 100%;
-        }
-
-        .tit-wrap {
-          .main-tit {
-            span {
-              font-size: 1.4rem;
-              font-weight: 600;
-              color: rgba($white, .65);
-
-              +strong {
-                margin-top: 1rem;
+        &#pdInfo {
+          .product-info{
+            display: flex;
+            gap: 4rem;
+            @include tablet {flex-direction: column;}
+            > .img-wrap{
+              width: 45%;
+              height: 50rem;
+              background: $white;
+              @include tablet {width: 100%;}
+              .img-wrap {height: 100%;}
+            }
+            .info-txt{
+              width: 55%;
+              @include tablet{width: 100%;}
+              .txt-wrap{
+                padding-bottom: 2rem;
+                border-bottom: 1px solid $gray01;
+                span{font-weight: 600;}
+                strong{
+                  margin: 1rem 0 2rem;
+                  padding-bottom: 2rem;
+                  border-bottom: 1px solid $gray01;
+                }
+              }
+              .price{
+                margin-top: 2rem;
+                gap: .8rem;
+                @include flexbox(row, flex-start, center);
+                .pr {
+                  font-size: 1.8rem;
+                  &-existing {
+                    color: rgba($white, .65);
+                    text-decoration: line-through;
+                    span {color: rgba($white, .65);}
+                  }
+                  &-discount {color: $red;}
+                }
+              }
+              .option{
+                margin-top: 2rem;
+                > div {
+                  gap: 1rem;
+                  @include flexbox(row, flex-start, center);
+                  &:not(:first-child) {margin-top: 1rem;}
+                  .tit {font-weight: bold;}
+                }
+              }
+              .btn-wrap{
+                margin-top: 4rem;
+                gap: 1.6rem;
+                button {
+                  border-radius: 0;
+                  padding: 1.8rem 1.2rem;
+                }
               }
             }
-
-            strong {
-              line-height: 1.4;
-              font-size: 3.2rem;
-              font-weight: bold;
-              display: block;
-            }
-          }
-
-          .sub-tit {
-            padding: 2rem 0;
-            margin: 2rem 0;
-            border-top: 1px solid $gray01;
-            border-bottom: 1px solid $gray01;
-
-            p {
-              line-height: 1.4;
-            }
           }
         }
-
-        .price-wrap {
-          margin-top: 2rem;
-          gap: .8rem;
-          @include flexbox(row, flex-start, center);
-
-          * {
-            font-weight: bold;
-            font-size: 1.8rem;
-          }
-
-          .pr {
-            &-existing {
-              color: rgba($white, .65);
-              text-decoration: line-through;
-
-              span {
-                color: rgba($white, .65);
+        &#pdDetail{
+          > .cont-wrap{
+            padding: 4rem 0;
+            background-attachment: fixed;
+            @include background(main, direct_bg, jpg, no-repeat, cover, center, center);
+            > .con-box{
+              gap: 4rem;
+              @include flexbox(row, space-between, flex-start);
+              @include tablet {flex-direction: column;}
+              .tit-wrap{
+                width: 40%;
+                @include tablet {width: 100%;}
+                strong{margin: 1.4rem 0 2rem;}
+                a {
+                  text-decoration: underline;
+                  &:hover {color: $subColor;}
+                }
               }
-            }
-
-            &-discount {
-              color: $red;
-            }
-          }
-        }
-
-        .option-wrap {
-          margin-top: 2rem;
-
-          >div {
-            gap: 1rem;
-            @include flexbox(row, flex-start, center);
-
-            &:not(:first-child) {
-              margin-top: 1rem;
-            }
-
-            .tit {
-              font-weight: bold;
-            }
-          }
-        }
-
-        .buy-wrap {
-          margin-top: 4rem;
-          gap: 1.6rem;
-
-          button {
-            border-radius: 0;
-            padding: 1.8rem 1.2rem;
-          }
-        }
-      }
-    }
-
-    &-bottom {
-      margin-top: 5rem;
-      padding-top: 5rem;
-      border-top: 1px solid rgba($white, .45);
-
-      .direct-wrap {
-        padding: 4rem 0;
-        background-attachment: fixed;
-        @include background(main, direct_bg, jpg, no-repeat, cover, center, center);
-
-        >.con-box {
-          gap: 4rem;
-          @include flexbox(row, space-between, flex-start);
-
-          @include tablet {
-            flex-direction: column;
-          }
-        }
-
-        .tit-wrap {
-          width: 40%;
-
-          @include tablet {
-            width: 100%;
-          }
-
-          span {
-            font-weight: bold;
-            color: $subColor;
-          }
-
-          strong {
-            font-size: 3.6rem;
-            line-height: 1.4;
-            font-weight: bold;
-            display: block;
-            margin: 1.4rem 0 2rem;
-
-            @include tablet {
-              font-size: 2.4rem;
-            }
-          }
-
-          a {
-            text-decoration: underline;
-
-            &:hover {
-              color: $subColor;
-            }
-          }
-        }
-
-        .cont-wrap {
-          width: 60%;
-
-          @include tablet {
-            width: 100%;
-          }
-
-          .direct-list {
-            display: grid;
-            gap: 2rem;
-            grid-template-columns: repeat(2, 1fr);
-
-            @include tablet {
-              grid-template-columns: 1fr;
-            }
-
-            li {
-              position: relative;
-              border-radius: 2rem;
-              overflow: hidden;
-              background: rgba($white, .2);
-
-              >a {
-                width: 100%;
-                height: 100%;
-                min-height: 20rem;
-                position: relative;
-                padding: 1.6rem;
-                @include flexbox(column, space-between, flex-start);
-
-                &:hover {
+              .list{
+                width: 60%;
+                display: grid;
+                gap: 2rem;
+                grid-template-columns: repeat(2, 1fr);
+                @include tablet {
+                  width: 100%;
+                  grid-template-columns: 1fr;
+                }
+                > div {
+                  position: relative;
+                  border-radius: 2rem;
+                  overflow: hidden;
+                  background: rgba($white, .2);
+                  > a {
+                    position: relative;
+                    min-height: 20rem;
+                    padding: 1.6rem;
+                    @include flexbox(column, space-between, flex-start);
+                    &:hover {.info {opacity: 1;}}
+                  }
+                  .icon {
+                    width: 6rem;
+                    transition: all .25s;
+                    @include tablet {width: 4.2rem;}
+                    img {
+                      width: 100%;
+                      filter: brightness(300%);
+                    }
+                  }
                   .info {
-                    opacity: 1;
+                    width: 100%;
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    padding: 1.6rem;
+                    text-align: center;
+                    background: $subColor;
+                    opacity: 0;
+                    transition: opacity .25s;
+                    @include flexbox(row, center, center);
                   }
                 }
               }
-
-              .icon {
-                width: 6rem;
-                transition: all .25s;
-
-                @include tablet {
-                  width: 4.2rem;
-                }
-
-                img {
-                  width: 100%;
-                  filter: brightness(300%);
-                }
-              }
-
-              .txt-info {
-                @include tablet {
-                  width: 100%;
-                  height: auto;
-                  margin-top: 2rem;
-                  position: static;
-                  transform: translateX(0);
-                }
-
-                strong {
-                  font-size: 2rem;
-                  line-height: 1.4;
-                  font-weight: 600;
-                  display: block;
-                }
-              }
-
-              .info {
-                width: 100%;
-                height: 100%;
-                position: absolute;
-                top: 0;
-                left: 0;
-                padding: 1.6rem;
-                text-align: center;
-                background: $subColor;
-                opacity: 0;
-                transition: opacity .25s;
-                @include flexbox(row, center, center);
-
-                p {
-                  font-weight: 500;
-                  line-height: 1.4;
+            }
+          }
+        }
+        &#pdChar{
+          .cont-wrap{
+            margin-top: 4rem;
+            .list {
+              display: grid;
+              gap: 4rem 2rem;
+              grid-template-columns: repeat(3, 1fr);
+              @include tablet {grid-template-columns: 1fr;}
+              > div {
+                border-bottom: 1px solid rgba($white, .25);
+                .info {
+                  padding: 2rem 0;
+                  p {margin-top: 1.4rem;}
                 }
               }
             }
           }
         }
-      }
-
-      .pd-char {
-        margin-top: 12rem;
-
-        .tit-wrap {
-          text-align: center;
-
-          span {
-            font-weight: bold;
-            color: $subColor;
+        &#store{
+          .cont-wrap{
+            margin-top: 4rem;
+            position: relative;
           }
-
-          strong {
-            font-size: 3.6rem;
-            font-weight: 600;
-            display: block;
-            margin: 1.4rem 0 2rem;
-          }
-
-          p {
-            line-height: 1.4;
-          }
-        }
-
-        .con-wrap {
-          margin-top: 4rem;
-
-          .char-list {
-            display: grid;
-            gap: 4rem 2rem;
-            grid-template-columns: repeat(3, 1fr);
-
-            @include tablet {
-              grid-template-columns: 1fr;
-            }
-
-            .list-item {
-              border-bottom: 1px solid rgba($white, .25);
-
-              .img-wrap {
-                img {
-                  display: block;
-                }
-              }
-
-              .txt-info {
-                padding: 2rem 0;
-
-                strong {
-                  font-size: 2rem;
-                  font-weight: 600;
-                  line-height: 1.4;
-                  display: block;
-                  margin-bottom: 1.4rem;
-                }
-
-                p {
-                  line-height: 1.4;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-
-    .store-wrap {
-      margin-top: 12rem;
-
-      .tit-wrap {
-        text-align: center;
-        width: 60%;
-        margin: 0 auto;
-
-        @include notebook {
-          width: 100%;
-        }
-
-        span {
-          font-weight: bold;
-          color: $subColor;
-        }
-
-        strong {
-          font-size: 3.6rem;
-          font-weight: 600;
-          display: block;
-          margin: 1.4rem 0 2rem;
-        }
-
-        p {
-          line-height: 1.4;
-        }
-      }
-
-      .con-wrap {
-        margin-top: 4rem;
-
-        .tab-wrap {
-          position: relative;
-
-          .tab-tit {
+          .tab-menu{
             position: absolute;
             top: 0;
             right: 0;
-            gap: .6rem;
-            @include flexbox(row, flex-start, center);
-
-            @include notebook {
-              position: static;
-            }
-
-            li {
+            gap: 1rem;
+            @include flexbox(row, flex-start, flex-start);
+            > a{
               width: 3rem;
               height: 3rem;
+              font-weight: 600;
               border-radius: 50%;
               background: rgba($white, .25);
               transition: all .25s;
-
-              &.on,
-              &:hover {
-                background: $subColor;
-              }
-
-              a {
-                font-weight: 600;
-                width: 100%;
-                height: 100%;
-                @include flexbox(row, center, center);
-              }
+              @include flexbox(row, center, center);
+              &.on,&:hover {background: $subColor;}
             }
           }
-
-          .tab-cont {
+          .tab-cont{
             gap: 4rem;
             @include flexbox(row, center, flex-end);
-
             @include notebook {
               gap: 2rem;
               margin-top: 2rem;
               flex-direction: column;
             }
-
-            >div {
-              width: 50%;
-
-              @include notebook {
-                width: 100%;
-              }
-            }
-
             .img-wrap {
+              flex: 1;
               border-radius: 2rem;
               overflow: hidden;
             }
-
-            .tab-info {
-              strong {
+            .info {
+              flex: 1;
+              strong{
                 width: 50%;
-                display: block;
                 padding: 1.6rem 2rem;
-                font-size: 1.8rem;
-                font-weight: 600;
                 border-radius: 1rem;
                 background: $subColor;
-
-                @include notebook {
-                  width: 100%;
-                }
+                @include tablet{width: 100%;}
               }
-
-              .txt-wrap {
+              .txt-wrap{
                 margin-top: 2rem;
-
-                * {
-                  color: $black;
-                }
-
+                * {color: $black;}
                 background: $white;
                 border-radius: 1rem;
                 padding: 1.6rem 2rem;
-
-                p {
-                  font-size: 1.8rem;
-                  line-height: 1.4;
-
-                  @include notebook {
-                    font-size: 1.6rem;
-                  }
-
-                  span {
-                    font-weight: 600;
-                  }
-
-                  &:not(:first-child) {
-                    margin-top: 1rem;
-                  }
+                p{
+                  &:not(:first-child) {margin-top: 1rem;}
+                  span {font-weight: 600;}
                 }
-
                 a {
                   margin-top: 4rem;
                   font-size: 2.4rem;
                   font-weight: 500;
                   gap: 1rem;
                   @include flexbox(row, flex-start, center);
-
                   @include notebook {
                     font-size: 1.8rem;
                     margin-top: 2rem;
                   }
-
-                  &:hover {
-                    color: $subColor;
-                  }
-
+                  &:hover {color: $subColor;}
                   &::before {
                     content: '';
                     display: block;
@@ -601,7 +308,6 @@
                     border-radius: 50%;
                     background: $black;
                     @include background(icon, arrow03_icon, svg, no-repeat, 80%, center, center);
-
                     @include notebook {
                       width: 3rem;
                       height: 3rem;

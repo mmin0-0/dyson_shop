@@ -3,8 +3,6 @@
     &.home{
       .txt{line-height: 1.4;}
       > section{
-        width: 100%;
-        &:not(#visual){margin-top: 12rem;}
         &#visual{
           height: calc(100vh - 16rem);
           @include flexbox(row, center, center);

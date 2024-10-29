@@ -305,9 +305,13 @@ button{
       }
     }
     .inner{
-      > section{position: relative;}
+      > section{
+        position: relative;
+        &:not(:first-child){margin-top: 12rem;}
+      }
     }
     .tit-wrap{
+      > p{margin-top: 2rem;}
       &.type01{
         .tit-info{
           strong{

@@ -4,31 +4,24 @@ import { useParams } from "react-router-dom";
 import { addItem } from '../store.js';
 import { pdList, benefit, tabMenu } from '../data.js';
 import { Link } from 'react-router-dom';
-import { DefaultBtn } from "../components/Button.jsx";
-import { HoverImgWrap } from "../components/Image.jsx";
+import { DefaultBtn } from "../components/Button";
+import { HoverImgWrap, ImgWrap } from "../components/Image";
+import { Strong, Span, P, TitInfo, TitWrap } from "../components/Text";
 
-function PdDetail({ price }) {
-  let state = useSelector((state) => state);
-  let dispatch = useDispatch();
-
+export default function PdDetail({ price }) {
+  const state = useSelector((state) => state);
+  const dispatch = useDispatch();
   const { id, dataId } = useParams();
-  const 현재상품 = pdList.find(function (e) {
-    return e.id == id
-  });
-  const 현재데이터 = 현재상품.data.find(function (e) {
-    return e.id.toString() == dataId
-  });
 
+  const 현재상품 = pdList.find(e => e.id === id);
+  const 현재데이터 = 현재상품?.data.find(e => e.id.toString() === dataId)
   const [watchItem, setWatch] = useState([]);
+
   useEffect(() => {
     if (!현재데이터) return;
 
-    let watchArr = localStorage.getItem('watched');
-    if (watchArr == null) {
-      watchArr = [];
-    } else {
-      watchArr = JSON.parse(watchArr);
-    }
+    const watchArr = JSON.parse(localStorage.getItem('watched')) || [];
+
     watchArr.push({
       category: 현재상품.id,
       id: 현재데이터.id,
@@ -38,156 +31,117 @@ function PdDetail({ price }) {
       img: 현재데이터.pdImg,
     });
 
-    watchArr = Array.from(new Set(watchArr.map(item => item.id)))
-      .map(id => watchArr.find(item => item.id === id));
-    if (watchArr.length > 6) {
-      watchArr = watchArr.slice(watchArr.length - 6);
-    }
+    const uniqueWatchArr = Array.from(new Set(watchArr.map(item => item.id)))
+      .map(id => watchArr.find(item => item.id === id))
+      .slice(-6);
 
-    localStorage.setItem('watched', JSON.stringify(watchArr));
-    setWatch(watchItem);
-  }, []);
+    localStorage.setItem('watched', JSON.stringify(uniqueWatchArr));
+    setWatch(uniqueWatchArr);
+  }, [현재데이터, 현재상품]);
 
-  return (
-    <div className="inner detail">
-      <section id="pdDetail">
-        <div className="cont-wrap">
-          <div className="product-info">
-
-          </div>
-        </div>
-      </section>
-      <div className="detail-wrap">
-        <div className="pd-wrap">
-          <PdVisual
-            price={price}
-            cart={state.cart}
-            dispatch={dispatch}
-            현재상품={현재상품}
-            현재데이터={현재데이터}
-          />
-          <PdInfo
-            현재상품={현재상품}
-            현재데이터={현재데이터}
-          />
-          <StoreInfo />
-        </div>
-      </div>
-    </div>
-  )
-}
-
-function PdVisual({ 현재상품, 현재데이터, dispatch, price }) {
   const option = [
     { tit: '원산지', info: '중국' },
     { tit: '구매혜택', info: '20 포인트 적립예정' },
     { tit: '배송비', info: '3,000원 (50,000원 이상 무료배송)' },
   ];
 
-  return (
-    <div className="pd-wrap-top con-box">
-      <div className="pd-img">
-        <HoverImgWrap 
-          src={현재데이터.pdImg}
-          alt={현재데이터.title}
-          srcHover={현재데이터.hoImg}
-          altHover={현재데이터.title}
-        />
-      </div>
-      <div className="pd-info">
-        <div className="tit-wrap">
-          <div className="main-tit">
-            <span>{현재상품.title}</span>
-            <strong>{현재데이터.title}</strong>
-          </div>
-          <div className="sub-tit">
-            <p>{현재데이터.content}</p>
-          </div>
-        </div>
-        <div className="price-wrap">
-          <p className="pr-final"><span>{price(현재데이터.price)}</span>원</p>
-          <p className="pr-existing"><span>1,000,000</span>원</p>
-          <p className="pr-discount">25%</p>
-        </div>
-        <div className="option-wrap">
-          {
-            option.map((item) =>
-              <div>
-                <div className="tit">{item.tit}</div>
-                <div className="data">{item.info}</div>
-              </div>
-            )
-          }
-        </div>
-        <div className="btn-wrap">
-          <DefaultBtn className="zzim">찜하기</DefaultBtn>
-          <DefaultBtn
-            color="type01"
-            className="cart"
-            onClick={() => {
-              dispatch(addItem({ category: 현재상품.id, id: 현재데이터.id, title: 현재데이터.title, price: 현재데이터.price, count: 1, img: 현재데이터.pdImg }))
-            }}
-          >장바구니</DefaultBtn>
-        </div>
-      </div>
-    </div>
-  )
-}
+  const [currentTab, setCurrentTab] = useState(0);
+  const selectMenuHandler = (index) => setCurrentTab(index);
 
-function PdInfo({ 현재상품, 현재데이터 }) {
+
   return (
-    <div className="pd-wrap-bottom">
-      <div className="direct-wrap">
-        <div className="con-box">
-          <div className="tit-wrap">
-            <span>BUY FROM</span>
-            <strong>다이슨 공식몰 구매 혜택</strong>
-            <Link to="#">카드사 특별 혜택 자세히 보기</Link>
+    <div className="inner detail">
+      <section id="pdInfo">
+        <div className="cont-wrap">
+          <div className="product-info con-box">
+            <HoverImgWrap
+              src={현재데이터.pdImg}
+              alt={현재데이터.title}
+              srcHover={현재데이터.hoImg}
+              altHover={현재데이터.title}
+            />
+            <div className="info-txt">
+              <div className="txt-wrap">
+                <Span>{현재상품.title}</Span>
+                <Strong fontSize="3.2rem" fontWeight="bold">{현재데이터.title}</Strong>
+                <P>{현재데이터.content}</P>
+              </div>
+              <div className="price">
+                <P className="pr-final" fontWeight="bold"><span>{price(현재데이터.price)}</span>원</P>
+                <P className="pr-existing" fontWeight="bold"><span>1,000,000</span>원</P>
+                <P className="pr-discount" fontWeight="bold">25%</P>
+              </div>
+              <div className="option">
+                {
+                  option.map((item, idx) =>
+                    <div key={idx}>
+                      <div className="tit">{item.tit}</div>
+                      <div className="data">{item.info}</div>
+                    </div>
+                  )
+                }
+              </div>
+              <div className="btn-wrap">
+                <DefaultBtn className="zzim">찜하기</DefaultBtn>
+                <DefaultBtn
+                  color="type01"
+                  className="cart"
+                  onClick={() => {
+                    dispatch(addItem({ category: 현재상품.id, id: 현재데이터.id, title: 현재데이터.title, price: 현재데이터.price, count: 1, img: 현재데이터.pdImg }))
+                  }}
+                >장바구니</DefaultBtn>
+              </div>
+            </div>
           </div>
-          <div className="cont-wrap">
-            <ul className="direct-list">
+        </div>
+      </section>
+      <section id="pdDetail">
+        <div className="cont-wrap">
+          <div className="con-box">
+            <TitWrap>
+              <TitInfo tag="BUY FROM" tit="다이슨 공식몰 구매 혜택" />
+              <Link to="#">카드사 특별 혜택 자세히 보기</Link>
+            </TitWrap>
+            <div className="list">
               {
                 benefit.map((a, i) => {
                   return (
-                    <li key={a.title}>
+                    <div key={a.title}>
                       <Link to="#">
                         <div className="icon">
                           <img src={`${process.env.PUBLIC_URL}/images/icon/benefit0${i + 1}_icon.png`} alt="benefit icon" />
                         </div>
                         <div className="txt-info">
-                          <strong>{a.title}</strong>
+                          <Strong fontSize="2rem" fontWeight="600">{a.title}</Strong>
                         </div>
                         <div className="info">
-                          <p>{a.content}</p>
+                          <P>{a.content}</P>
                         </div>
                       </Link>
-                    </li>
+                    </div>
                   )
                 })
               }
-            </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="pd-char">
+      </section>
+      <section id="pdChar">
         <div className="con-box">
-          <div className="tit-wrap">
-            <span>PRODUCT INFORMATION</span>
-            <strong>제품특징</strong>
-            <p>엔지니어들은 창작에 대한 욕구와 더 나은 세상을 만들고자 하는 열망, 문제 해결의 필요성을 마음속에 항상 간직하고 있습니다.</p>
-          </div>
-          <div className="con-wrap">
-            <div className="char-list">
+          <TitWrap textAlign="center">
+            <TitInfo tag="PRODUCT INFORMATION" tit="제품특징" />
+            <P>엔지니어들은 창작에 대한 욕구와 더 나은 세상을 만들고자 하는 열망, 문제 해결의 필요성을 마음속에 항상 간직하고 있습니다.</P>
+          </TitWrap>
+          <div className="cont-wrap">
+            <div className="list">
               {
-                현재데이터.pdChar.map((item, i) => {
+                현재데이터.pdChar.map((item, idx) => {
                   return (
-                    <div key={item.id} className="list-item">
-                      <div className="img-wrap">
-                        <img src={`${process.env.PUBLIC_URL}/images/sub/pd_char/0${현재데이터.id}/0${i}.jpg`} alt="제품특징" />
-                      </div>
-                      <div className="txt-info">
-                        <strong>{item.tit}</strong>
-                        <p>{item.content}</p>
+                    <div key={idx}>
+                      <ImgWrap src={`${process.env.PUBLIC_URL}/images/sub/pd_char/0${현재데이터.id}/0${idx}.jpg`} alt="제품특징" />
+                      <div className="info">
+                        <Strong fontSize="2rem" fontWeight="600">{item.tit}</Strong>
+                        <P>{item.content}</P>
                       </div>
                     </div>
                   )
@@ -196,57 +150,40 @@ function PdInfo({ 현재상품, 현재데이터 }) {
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  )
-}
-
-function StoreInfo() {
-  const [currentTab, clickTab] = useState(0);
-  const selectMenuHandler = (index) => {
-    clickTab(index);
-  };
-
-  return (
-    <div className="store-wrap">
-      <div className="con-box">
-        <div className="tit-wrap">
-          <span>DEMO STORE</span>
-          <strong>다이슨 데모 스토어</strong>
-          <p>다이슨 기술은 생활의 실제적인 문제를 해결하기 위해 설계되었습니다. 그것을 이해하기 위한 가장 좋은 방법은 제품을 경험하는 것입니다. 다이슨 데모 스토어는 제품을 직접 경험할 수 있는 공간입니다.</p>
-        </div>
-        <div className="con-wrap">
-          <div className="tab-wrap">
-            <ul className="tab-tit">
+      </section>
+      <section id="store">
+        <div className="con-box">
+          <TitWrap textAlign="center">
+            <TitInfo tag="DEMO STORE" tit="다이슨 데모 스토어" />
+            <P>다이슨 기술은 생활의 실제적인 문제를 해결하기 위해 설계되었습니다. 그것을 이해하기 위한 가장 좋은 방법은 제품을 경험하는 것입니다. 다이슨 데모 스토어는 제품을 직접 경험할 수 있는 공간입니다.</P>
+          </TitWrap>
+          <div className="cont-wrap">
+            <div className="tab-menu">
               {
-                tabMenu.map((item, index) => (
-                  <li
-                    key={index}
-                    className={index === currentTab ? 'on' : ''}
-                    onClick={() => selectMenuHandler(index)}
-                  >
-                    <Link to="#">{index + 1}</Link>
-                  </li>
+                tabMenu.map((item, idx) => (
+                    <Link 
+                      to="#"
+                      key={idx}
+                      className={idx === currentTab ? 'on':''}
+                      onClick={() => selectMenuHandler(idx)}
+                    >{idx + 1}</Link>
                 ))
               }
-            </ul>
+            </div>
             <div className="tab-cont">
-              <div className="img-wrap">
-                <img src={`${process.env.PUBLIC_URL}/images/sub/map_img0${currentTab + 1}.jpg`} alt="demo store map" />
-              </div>
-              <div className="tab-info">
-                <strong>{tabMenu[currentTab].tit}</strong>
+              <ImgWrap src={`${process.env.PUBLIC_URL}/images/sub/map_img0${currentTab + 1}.jpg`} alt="demo store map" />
+              <div className="info">
+                <Strong fontSize="1.8rem" fontWeight="600">{tabMenu[currentTab].tit}</Strong>
                 <div className="txt-wrap">
-                  <p><span>주소: </span>{tabMenu[currentTab].address}</p>
-                  <p><span>영업시간: </span>{tabMenu[currentTab].content}</p>
+                  <P fontSize="1.8rem"><span>주소: </span>{tabMenu[currentTab].address}</P>
+                  <P fontSize="1.8rem"><span>영업시간: </span>{tabMenu[currentTab].content}</P>
                   <Link to="#">시연 서비스 예약하기</Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   )
 }
-export default PdDetail;
