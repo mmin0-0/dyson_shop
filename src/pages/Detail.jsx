@@ -1,15 +1,27 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { pdList } from '../data.js';
-import Pagination from "../components/Pagination";
+import { Pagination } from "../components/Button";
 import { ImgWrap, HoverImgWrap } from "../components/Image";
 import { Strong, P, Span } from '../components/Text';
 
-function Detail({ price }) {
+export default function Detail({ price }) {
   const [selectCategory, setSelectCategory] = useState('all');
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 8;
+
   const categoryClick = (categoryId) => {
     setSelectCategory(categoryId);
+    setCurrentPage(1);
   };
+
+  const filteredData = selectCategory === 'all'
+    ? pdList.flatMap(category => category.data)
+    : pdList.find(category => category.id === selectCategory)?.data || [];
+
+  const totalPages = Math.ceil(filteredData.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentData = filteredData.slice(startIndex, startIndex + itemsPerPage);
 
   return (
     <div className="inner detail">
@@ -35,35 +47,33 @@ function Detail({ price }) {
             ))}
           </ul>
           <div className="product-list">
-          {
-            pdList.map((category) => (
-              category.id === selectCategory || selectCategory === 'all' ?
-                category.data.map((item) => (
-                  <div className="item" key={`${item.id}`}>
-                    <Link to={`/detail/${category.id}/${item.id}`}>
-                      <HoverImgWrap
-                        src={item.pdImg}
-                        alt="product"
-                        srcHover={item.hoImg}
-                        altHover="product"
-                      />
-                      <div className="info">
-                        <Strong>{item.title}</Strong>
-                        <Span>{item.content}</Span>
-                        <P><span>{price(item.price)}</span>원</P>
-                      </div>
-                    </Link>
+          {currentData.map((item) => (
+              <div className="item" key={`${item.id}`}>
+                <Link to={`/detail/${selectCategory}/${item.id}`}>
+                  <HoverImgWrap
+                    src={item.pdImg}
+                    alt="product"
+                    srcHover={item.hoImg}
+                    altHover="product"
+                  />
+                  <div className="info">
+                    <Strong>{item.title}</Strong>
+                    <Span>{item.content}</Span>
+                    <P><span>{price(item.price)}</span>원</P>
                   </div>
-                ))
-                : null
-            ))
-          }
+                </Link>
+              </div>
+            ))}
         </div>
-        {/* <Pagination /> */}
+        {
+          totalPages > 1 && <Pagination 
+            totalPages={totalPages} 
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+          />
+        }
         </div>
       </section>
     </div>
   )
 }
-
-export default Detail;

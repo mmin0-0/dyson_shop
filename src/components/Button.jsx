@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export const DefaultBtn = ({ children, type = "button", className, color = "default", onClick, ...props }) => {
   return <button
     type={type}
@@ -23,62 +25,36 @@ export const MoreBtn = ({ text }) => {
   )
 };
 
-export const Pagination({number}) {
-  const paginationBtn = [
-    {
-      type: 'prev',
-      content: [
-        { title: '맨앞', className: 'first' },
-        { title: '이전', className: 'prev' }
-      ]
-    }, {
-      type: 'next',
-      content: [
-        { title: '다음', className: 'next' },
-        { title: '맨뒤', className: 'last' }
-      ]
-    }
-  ];
+export const Pagination = ({ totalPages, currentPage, setCurrentPage }) => {
+  const handlePageChange = (event, page) => {
+    event.preventDefault();
+    setCurrentPage(page);
+  };
 
   return (
     <div className="pagination">
-      {paginationBtn.map((btn) => (
-        btn.type === 'prev' && (
-          <div key={btn.type} className={`arrow-group ${btn.type}`}>
-            {btn.content.map((item) => (
-              <Link
-                to="#"
-                key={`${btn.type}-${item.className}`}
-                className={item.className}
-              >
-                {item.title}
-              </Link>
-            ))}
-          </div>
-        )
+      {currentPage > 1 && (
+        <a
+          href="#"
+          onClick={(e) => handlePageChange(e, currentPage - 1)}
+          className="prev"
+        >이전</a>
+      )}
+      {Array.from({length: totalPages}, (_,i) => (
+          <a 
+            key={i}
+            href="#"
+            onClick={(e) => handlePageChange(e, i + 1)}
+            className={currentPage === i + 1 ? 'on':''}
+          >{i + 1}</a>
       ))}
-      <div className="num-area">
-        {
-          [1].map((num) =>
-            <Link to="#" key={num} className="on">{num}</Link>
-          )
-        }
-      </div>
-      {paginationBtn.map((btn) => (
-        btn.type === 'next' && (
-          <div key={btn.type} className={`arrow-group ${btn.type}`}>
-            {btn.content.map((item) => (
-              <Link
-                to="#"
-                key={`${btn.type}-${item.className}`}
-                className={item.className}
-              >
-                {item.title}
-              </Link>
-            ))}
-          </div>
-        )
-      ))}
+      {totalPages > 1 && currentPage < totalPages && (
+        <a
+          href="#"
+          onClick={(e) => handlePageChange(e, currentPage + 1)}
+          className="next"
+        >다음</a>
+      )}
     </div>
   )
-}
+};

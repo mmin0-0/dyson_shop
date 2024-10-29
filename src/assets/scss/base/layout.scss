@@ -118,43 +118,69 @@ body{
 
 .pagination{
   margin-top: 4rem;
-  gap: 1.4rem;
+  gap: .8rem;
   @include flexbox(row, center, center);
-  > div{
-    gap: .6rem;
-    @include flexbox(row, center, center);
-  }
   a{
-    width: 3rem;
-    height: 3rem;
-    border-radius: .4rem;
-    transition: all .25s;
-    @include border(1px, $subColor);
-    &.on, &:hover{background: $subColor}
-  }
-  .num-area{
-    a{
-      @include flexbox(row, center, center);
-      @include tablet{&:nth-child(n + 6){display: none;}}
+    @include flexbox(row, center, center);
+    &:not(.prev, .next){
+      width: 3rem;
+      height: 3rem;
+      border-radius: .4rem;
+      transition: all .25s;
+      @include border(1px, $subColor);
+      &.on, &:hover{background: $subColor}
     }
-  }
-  .arrow-group{
-    a{
-      text-indent: -9999em;
-      overflow: hidden;
-      &::before{
+    &.prev, &.next{gap: .4rem}
+    &.prev{
+      &::before, &::after{
         content: '';
-        display: block;
-        width: 100%;
-        height: 100%;
-        filter: brightness(100);
+        display: inline-block;
       }
-      &.first{&::before{@include background(icon, page_first_icon, png, no-repeat, 50%, center, center)}}
-      &.last{&::before{@include background(icon, page_last_icon, png, no-repeat, 50%, center, center)}}
-      &.prev{&::before{@include background(icon, page_prev_icon, png, no-repeat, 50%, center, center)}}
-      &.next{&::before{@include background(icon, page_next_icon, png, no-repeat, 50%, center, center)}}
+      &::before{
+        width: 1.4rem;
+        height: 1.4rem;
+        @include background(icon, page_prev_icon, png, no-repeat, contain, center, center);
+      }
+      &::after{
+        width: 1px;
+        height: 1.6rem;
+        background: $white;
+      }
+    }
+    &.next{
+      &::before, &::after{
+        content: '';
+        display: inline-block;
+      }
+      &::before{
+        width: 1px;
+        height: 1.6rem;
+        background: $white;
+      }
+      &::after{
+        width: 1.4rem;
+        height: 1.4rem;
+        @include background(icon, page_next_icon, png, no-repeat, contain, center, center);
+      }
     }
   }
+  // .arrow-group{
+  //   a{
+  //     text-indent: -9999em;
+  //     overflow: hidden;
+  //     &::before{
+  //       content: '';
+  //       display: block;
+  //       width: 100%;
+  //       height: 100%;
+  //       filter: brightness(100);
+  //     }
+  //     &.first{&::before{@include background(icon, page_first_icon, png, no-repeat, 50%, center, center)}}
+  //     &.last{&::before{@include background(icon, page_last_icon, png, no-repeat, 50%, center, center)}}
+  //     &.prev{&::before{@include background(icon, page_prev_icon, png, no-repeat, 50%, center, center)}}
+  //     &.next{&::before{@include background(icon, page_next_icon, png, no-repeat, 50%, center, center)}}
+  //   }
+  // }
 }
 
 .btn-wrap{
