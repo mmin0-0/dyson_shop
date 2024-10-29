@@ -2,245 +2,369 @@ import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { increase, decrease, addItem, removeItem } from '../store.js';
+import { Strong, Span, P, TitWrap } from '../components/Text.jsx';
+import { DefaultInput } from '../components/Input.jsx';
+import { ImgWrap } from '../components/Image.jsx';
+import { DefaultBtn } from '../components/Button.jsx';
 
 function Cart({ price }) {
-  const state = useSelector((state) => state);
+  const cartItems = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  const totalPrice = () => {
-    const total = state.cart.reduce((total, item) => total + item.count * item.price, 0);
-    return state.cart.length > 0 ? total + 3000 : 0;
-  };
+  if (!cartItems || cartItems.length === 0) {
+    return <div>장바구니에 항목이 없습니다.</div>;
+  }
+
+  // const totalPrice = () => {
+  //   const total = state.cart.reduce((total, item) => total + item.count * item.price, 0);
+  //   return state.cart.length > 0 ? total + 3000 : 0;
+  // };
 
   return (
     <div className="inner cart con-box">
-      <div className="board-tit">
-        <div className="tit-wrap">
-          <div>
-            <strong className="main-tit">장바구니</strong>
-            <span className="state">{state.cart.length}</span>
+      <section id="board">
+        {/* <div>
+          {cartItems.map((item) => (
+            <div key={item.id}>
+              <h3>{item.title}</h3>
+              <p>가격: {item.price}</p>
+              <p>수량: {item.count}</p>
+            </div>
+          ))}
+        </div> */}
+        <TitWrap>
+          <Strong fontSize="2,4rem" fontWeight="bold">장바구니</Strong>
+          <Span color="#000000">{cartItems.length}</Span>
+        </TitWrap>
+        <div className="cont-wrap">
+          <div className="table-wrap">
+            <Table cart={cartItems} />
+          </div>
+          {/* <CartTable cart={cartItems} /> */}
+          {/* <ResultTable
+            cart={cartItems}
+            dispatch={dispatch}
+            totalPrice={totalPrice}
+          /> */}
+          <div className="bottom-btn">
+            <button type="button" className="btn-order">주문하기</button>
+            <Link to="/detail">계속 쇼핑하기</Link>
           </div>
         </div>
-      </div>
-      <div className="cont-wrap">
-        <CartTable
-          cart={state.cart}
-          dispatch={dispatch}
-        />
-        <ResultTable
-          cart={state.cart}
-          dispatch={dispatch}
-          totalPrice={totalPrice}
-        />
-        <div className="bottom-btn">
-          <button type="button" className="btn-order">주문하기</button>
-          <Link to="/detail">계속 쇼핑하기</Link>
-        </div>
-      </div>
+      </section>
     </div>
   )
 }
 
-function CartTable({ cart, dispatch }) {
+function Table({ cart }) {
   const tbodyRef = useRef();
+  const dispatch = useDispatch();
+
+  const thead = ['전체선택', '수량', '주문금액', '배송정보'];
   const [hasRows, setHasRows] = useState(cart.length > 0);
-  const childRows = () => {
-    if (tbodyRef.current) {
-      setHasRows(tbodyRef.current.querySelectorAll('tr').length > 0);
-    }
-  };
-  useEffect(() => {
-    childRows();
-  }, []);
-  const remove = (id) => {
-    dispatch(removeItem(id));
-  };
-
-  const [checkedItems, setCheckedItems] = useState(() => cart.map(() => false));
-  const [selectAll, setSelectAll] = useState(false);
-
-  const handleCheckboxChange = (index) => {
-    const newCheckedItems = [...checkedItems];
-    newCheckedItems[index] = !newCheckedItems[index];
-    setCheckedItems(newCheckedItems);
-
-    const allChecked = newCheckedItems.every(item => item);
-    setSelectAll(allChecked);
-  };
-
-  const handleSelectAllChange = () => {
-    const newSelectAll = !selectAll;
-    setSelectAll(newSelectAll);
-    setCheckedItems(cart.map(() => newSelectAll));
-  };
-
   return (
-    <div className="table-wrap">
+    <>
       {
         hasRows ? (
-          <>
-            <table className="shop-table">
-              <caption>장바구니 테이블</caption>
-              <colgroup>
-                <col width="*"></col>
-                <col width="180px"></col>
-                <col width="180px"></col>
-                <col width="180px"></col>
-              </colgroup>
-              <thead>
-                <tr>
-                  <th>
-                    <div className="flex-wrap center">
-                      <div className="input-wrap check">
-                        <input
-                          type="checkbox"
+          <table>
+            <caption>cart</caption>
+            <colgroup>
+              {thead.map((col, idx) =>
+                <col key={idx} width={col === '전체선택' ? '*' : '180px'} />
+              )}
+            </colgroup>
+            <thead>
+              <tr>
+                {thead.map((tit, idx) =>
+                  <th key={idx}>
+                    {
+                      tit === '전체선택' ? (
+                        <DefaultInput
+                          type="check"
                           name="basket"
+                          inputType="checkbox"
                           id="allCheck"
-                          checked={selectAll}
-                          onChange={handleSelectAllChange}
+                          txt={tit}
                         />
-                        <label htmlFor="allCheck"></label>
-                      </div>
-                      <span className="txt">전체선택</span>
-                    </div>
+                      ) : (<div>{tit}</div>)
+                    }
                   </th>
-                  <th><span className="txt d-pc">수량</span></th>
-                  <th><span className="txt d-pc">주문금액</span></th>
-                  <th><span className="txt d-pc">배송정보</span></th>
-                </tr>
-              </thead>
-              <tbody ref={tbodyRef}>
-                {
-                  cart.map((a, i) =>
-                    <tr id={a.id} key={i}>
-                      <td className="img">
-                        <div className="flex-wrap pd-wrap">
-                          <div className="input-wrap check">
-                            <input
-                              type="checkbox"
-                              name="basket"
-                              id={`check_0${i}`}
-                              checked={checkedItems[i]}
-                              onChange={() => handleCheckboxChange(i)}
-                            />
-                            <label htmlFor={`check_0${i}`}></label>
-                          </div>
-                          <div className="pd-info">
-                            <a href={`detail/${a.category}/${a.id}`}>
-                              <div className="img-wrap">
-                                <img src={a.img} alt="product img" />
-                              </div>
-                              <p>{a.title}</p>
-                            </a>
-                          </div>
+                )}
+              </tr>
+            </thead>
+            <tbody ref={tbodyRef}>
+              {
+                cart.map((item, idx) => {
+                  const shippingInfo = [
+                    { title: "배송비", content: "3,000원" },
+                    { title: "배송수단", content: "택배" },
+                    { title: "주문합계(총", count: item.count, total: (item.count * item.price + 3000).toLocaleString() + "원" }
+                  ];
+
+                  return (
+                    <tr key={idx}>
+                      <td className="img-cont">
+                        <div>
+                          <DefaultInput
+                            type="check"
+                            name="basket"
+                            inputType="checkbox"
+                            id={`check_0${idx}`}
+                          />
+                          <Link to={`detail/${item.category}/${item.id}`}>
+                            <ImgWrap src={item.img} alt={item.title} />
+                            <P>{item.title}</P>
+                          </Link>
+                          <Link to="#" className="btn-remove" onClick={() => dispatch(removeItem(item.id))}>remove</Link>
                         </div>
-                        <Link to="#" className="btn-remove" onClick={remove(a.id)}>remove</Link>
                       </td>
                       <td className="hidden-sm">
-                        <div className="info-list">
+                        <div>
                           <div className="amount">
-                            <button type="button" className="decrease" onClick={() => { dispatch(decrease(a.id)) }}>-</button>
-                            <div className="tit txt-bold">{a.count}</div>
-                            <button type="button" className="increase" onClick={() => { dispatch(increase(a.id)) }}>+</button>
+                            <DefaultBtn>-</DefaultBtn>
+                            <Strong>{item.count}</Strong>
+                            <DefaultBtn>+</DefaultBtn>
                           </div>
-                          <div className="flex-wrap price">
-                            <div className="tit txt-bold">주문금액</div>
-                            <div className="cont txt-bold">{(a.count * a.price).toLocaleString()}</div>
+                          <div className="price">
+                            <Strong>주문금액</Strong>
+                            <Strong>{(item.count * item.price).toLocaleString()}</Strong>
                           </div>
-                          <div className="result-list">
-                            <div className="flex-wrap">
-                              <div className="tit">배송비</div>
-                              <div className="cont"><span>3,000</span>원</div>
-                            </div>
-                            <div className="flex-wrap">
-                              <div className="tit">배송수단</div>
-                              <div className="cont">택배</div>
-                            </div>
-                            <div className="flex-wrap">
-                              <div className="tit">주문합계(총 <span>{a.count}</span>개)</ div>
-                              <div className="cont"><span>{(a.count * a.price + 3000).toLocaleString()}</span>원</div>
-                            </div>
+                          <div className="result">
+                            {
+                            shippingInfo.map((info, idx) => 
+                              <div className="flex-wrap" key={idx}>
+                                <div>{info.title} {info.count !== undefined && `(${info.count} 개)`}</div>
+                                <div>{info.total || info.content}</div>
+                              </div>
+                            )
+                          }
                           </div>
                         </div>
                       </td>
                       <td className="hidden-lg">
-                        <div className="amount">
-                          <button type="button" className="decrease" onClick={() => { dispatch(decrease(a.id)) }}>-</button>
-                          <div className="tit txt-bold">{a.count}</div>
-                          <button type="button" className="increase" onClick={() => { dispatch(increase(a.id)) }}>+</button>
-                        </div>
+                        <div>
+                          <div className="amount">
+                              <DefaultBtn>-</DefaultBtn>
+                              <Strong>{item.count}</Strong>
+                              <DefaultBtn>+</DefaultBtn>
+                            </div>
+                          </div>
                       </td>
                       <td className="hidden-lg">
-                        <div className="price">
-                          <p className="tit"><span className="txt-bold">{(a.count * a.price).toLocaleString()}</span> 원</p>
-                          <div className="btn-wrap">
-                            <button type="button" className="order-option type02">바로구매</button>
+                        <div>
+                          <div className="price">
+                            <P><span>{(item.count * item.price).toLocaleString()}</span> 원</P>
+                            <DefaultBtn className="type02">바로구매</DefaultBtn>
                           </div>
                         </div>
                       </td>
-                      <td className="hidden-sm">
-                        <div className="btn-wrap">
-                          <button type="button" className="order-option">바로구매</button>
-                        </div>
-                      </td>
-                      <td className="hidden-lg">
-                        <p className="txt-bold">3,000 원</p>
-                        <span>택배</span>
-                      </td>
+                      <td></td>
                     </tr>
                   )
                 }
-              </tbody>
-            </table>
-            <div className="table-wrap-bottom">
-              <button type="button" className="type03 list-remove">선택 상품 삭제</button>
-            </div>
-          </>
-        ) : (
-          <div className="empty">항목이 없습니다.</div>
-        )
+                )
+              }
+            </tbody>
+          </table>
+        ) : (<div className="empty">항목이 없습니다.</div>)
       }
-    </div>
+    </>
   )
 }
 
-function ResultTable({ cart, dispatch, totalPrice }) {
-  const total = totalPrice();
+// function CartTable({ cart }) {
+//   const tbodyRef = useRef();
+//   const dispatch = useDispatch();
 
-  return (
-    <div className="table-wrap">
-      <table className="shop-result-table">
-        <caption>장바구니 합계 테이블</caption>
-        <colgroup>
-          <col width="*"></col>
-        </colgroup>
-        <thead>
-          <tr>
-            <th className="hidden-lg"><p className="txt">총 주문 상품 <span>{cart.length}</span>개</p></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <div className="price-wrap">
-                <div className="price-item">
-                  <p><span>{(total - (cart.length > 0 ? 3000 : 0)).toLocaleString()}</span>원</p>
-                  <span>상품금액</span>
-                </div>
-                <div className="price-item">
-                  <p>3,000원</p>
-                  <span>배송비</span>
-                </div>
-                <div className="price-item">
-                  <p><span>{total.toLocaleString()}</span>원</p>
-                  <span>총 주문금액</span>
-                </div>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  )
-}
+//   const [hasRows, setHasRows] = useState(cart.length > 0);
+//   const [checkedItems, setCheckedItems] = useState(Array(cart.length).fill(false));
+//   const [selectAll, setSelectAll] = useState(false);
+
+//   useEffect(() => {
+//     setHasRows(tbodyRef.current?.querySelectorAll('tr').length > 0);
+//   }, [cart]);
+
+//   const handleCheckboxChange = (idx) => {
+//     const newCheckedItems = [...checkedItems];
+
+//     if (idx !== undefined) {
+//       newCheckedItems[idx] = !newCheckedItems[idx];
+//     } else {
+//       const newSelectAll = !selectAll;
+//       setSelectAll(newSelectAll);
+//       newCheckedItems.fill(newSelectAll);
+//     }
+
+//     setCheckedItems(newCheckedItems);
+//     setSelectAll(newCheckedItems.every(item => item));
+//   };
+
+//   const thead = ['전체선택', '수량', '주문금액', '배송정보'];
+
+//   return (
+//     <>
+//       {
+//         hasRows ? (
+//           <>
+//             <table className="shop-table">
+//               <caption>장바구니 테이블</caption>
+//               <colgroup>
+//                 {thead.map((col, idx) =>
+//                   <col key={idx} width={col === '전체선택' ? '*' : '180px'} />
+//                 )}
+//               </colgroup>
+//               <thead>
+//                 <tr>
+//                   {thead.map((item, idx) =>
+//                     <th key={idx}>
+//                       {item === '전체선택' ? (
+//                         <div className="flex-wrap center">
+//                           <DefaultInput
+//                             txt="전체선택"
+//                             inputType="checkbox"
+//                             type="check"
+//                             id="allCheck"
+//                             name="basket"
+//                             checked={selectAll}
+//                             onChange={() => handleCheckboxChange(idx)}
+//                           />
+//                           <Span>전체선택</Span>
+//                         </div>
+//                       ) : (
+//                         <Span className="d-pc">{item}</Span>
+//                       )
+//                       }
+//                     </th>
+//                   )}
+//                 </tr>
+//               </thead>
+//               <tbody ref={tbodyRef}>
+//                 {
+//                   cart.map((item, idx) => {
+//                     const shippingInfo = [
+//                       { title: "배송비", content: "3,000원" },
+//                       { title: "배송수단", content: "택배" },
+//                       { title: "주문합계(총", count: item.count, total: (item.count * item.price + 3000).toLocaleString() + "원" }
+//                     ];
+
+//                     <tr id={item.id} key={idx}>
+//                       <td className="img">
+//                         <div className="flex-wrap pd-wrap">
+//                           <DefaultInput
+//                             type="check"
+//                             name="basket"
+//                             inputType="checkbox"
+//                             id={`check_0${idx}`}
+//                             checked={checkedItems[idx]}
+//                             onChange={() => handleCheckboxChange}
+//                           />
+//                           <Link to={`detail/${item.category}/${item.id}`}>
+//                             <ImgWrap src={item.img} alt={item.title} />
+//                             <P>{item.title}</P>
+//                           </Link>
+//                         </div>
+//                         <Link to="#" className="btn-remove" onClick={() => dispatch(removeItem(item.id))}>remove</Link>
+//                       </td>
+//                       <td className="hidden-sm">
+//                         <div className="info-list">
+//                           <div className="amount">
+//                             <DefaultBtn onClick={() => { dispatch(decrease(item.id)) }}>-</DefaultBtn>
+//                             <Strong>{item.count}</Strong>
+//                             <DefaultBtn onClick={() => { dispatch(increase(item.id)) }}>+</DefaultBtn>
+//                           </div>
+//                           <div className="flex-wrap price">
+//                             <div className="tit txt-bold">주문금액</div>
+//                             <div className="cont txt-bold">{(item.count * item.price).toLocaleString()}</div>
+//                           </div>
+//                           <div className="result-list">
+//                             {shippingInfo.map((info, idx) => (
+//                               <div className="flex-wrap" key={idx}>
+//                                 <div className="tit">{info.title}{info.count !== undefined && `(${info.count}개)`}</div>
+//                                 <div className="cont">{info.total || info.content}</div>
+//                               </div>
+//                             ))}
+//                           </div>
+//                         </div>
+//                       </td>
+//                       <td className="hidden-lg">
+//                         <div className="amount">
+//                           <DefaultBtn onClick={() => { dispatch(decrease(item.id)) }}>-</DefaultBtn>
+//                           <Strong>{item.count}</Strong>
+//                           <DefaultBtn onClick={() => { dispatch(increase(item.id)) }}>+</DefaultBtn>
+//                         </div>
+//                       </td>
+//                       <td className="hidden-lg">
+//                         <div className="price">
+//                           <p className="tit"><span className="txt-bold">{(item.count * item.price).toLocaleString()}</span> 원</p>
+//                           <div className="btn-wrap">
+//                             <DefaultBtn className="type02">바로구매</DefaultBtn>
+//                           </div>
+//                         </div>
+//                       </td>
+//                       <td className="hidden-sm">
+//                         <div className="btn-wrap">
+//                           <DefaultBtn className="type02">바로구매</DefaultBtn>
+//                         </div>
+//                       </td>
+//                       <td className="hidden-lg">
+//                         <P>3,000 원</P>
+//                         <Span>택배</Span>
+//                       </td>
+//                     </tr>
+//                   }
+//                   )
+//                 }
+//               </tbody>
+//             </table>
+//             <div className="table-wrap-bottom">
+//               <button type="button" className="type03 list-remove">선택 상품 삭제</button>
+//             </div>
+//           </>
+//         ) : (
+//           <div className="empty">항목이 없습니다.</div>
+//         )
+//       }
+//     </>
+//   )
+// }
+
+// function ResultTable({ cart, dispatch, totalPrice }) {
+//   const total = totalPrice();
+
+//   return (
+//     <div className="table-wrap">
+//       <table className="shop-result-table">
+//         <caption>장바구니 합계 테이블</caption>
+//         <colgroup>
+//           <col width="*"></col>
+//         </colgroup>
+//         <thead>
+//           <tr>
+//             <th className="hidden-lg"><p className="txt">총 주문 상품 <span>{cart.length}</span>개</p></th>
+//           </tr>
+//         </thead>
+//         <tbody>
+//           <tr>
+//             <td>
+//               <div className="price-wrap">
+//                 <div className="price-item">
+//                   <p><span>{(total - (cart.length > 0 ? 3000 : 0)).toLocaleString()}</span>원</p>
+//                   <span>상품금액</span>
+//                 </div>
+//                 <div className="price-item">
+//                   <p>3,000원</p>
+//                   <span>배송비</span>
+//                 </div>
+//                 <div className="price-item">
+//                   <p><span>{total.toLocaleString()}</span>원</p>
+//                   <span>총 주문금액</span>
+//                 </div>
+//               </div>
+//             </td>
+//           </tr>
+//         </tbody>
+//       </table>
+//     </div>
+//   )
+// }
 export default Cart;
