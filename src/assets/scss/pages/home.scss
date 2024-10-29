@@ -501,28 +501,14 @@
                   height: 100%;
                   margin: 0 auto;
                   @include border(1px, $table-bd);
-                  &:hover{
-                    .img-wrap{
-                      img{
-                        &.default{opacity: 0;}
-                        &.hover{opacity: 1;}
-                      }
-                    }
-                  }
                   .img-wrap{
                     height: 42rem;
-                    position: relative;
                     @include tablet{height: 30rem;}
                     img{
                       width: 100%;
                       height: 100%;
                       object-position: center;
                       object-fit: cover;
-                      transition: opacity .25s;
-                      position: absolute;
-                      top: 0;
-                      left: 0;
-                      &.hover{opacity: 0;}
                     }
                   }
                   .txt-wrap{

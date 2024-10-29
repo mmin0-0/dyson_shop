@@ -8,7 +8,7 @@ export const ImgWrap = ({src, alt}) => {
 
 export const HoverImgWrap = ({src, alt, srcHover, altHover}) => {
   return (
-    <div className="img-wrap">
+    <div className="img-wrap hover-img">
       <img src={src} alt={alt} className="default" />
       <img src={srcHover} alt={altHover} className="hover" />
     </div>

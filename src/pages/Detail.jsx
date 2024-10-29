@@ -47,31 +47,35 @@ export default function Detail({ price }) {
             ))}
           </ul>
           <div className="product-list">
-          {currentData.map((item) => (
-              <div className="item" key={`${item.id}`}>
-                <Link to={`/detail/${selectCategory}/${item.id}`}>
-                  <HoverImgWrap
-                    src={item.pdImg}
-                    alt="product"
-                    srcHover={item.hoImg}
-                    altHover="product"
-                  />
-                  <div className="info">
-                    <Strong>{item.title}</Strong>
-                    <Span>{item.content}</Span>
-                    <P><span>{price(item.price)}</span>원</P>
-                  </div>
-                </Link>
-              </div>
-            ))}
-        </div>
-        {
-          totalPages > 1 && <Pagination 
-            totalPages={totalPages} 
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-          />
-        }
+            {currentData.map((item) => {
+              const parentId = pdList.find(category => category.data.some(product => product.id === item.id))?.id;
+
+              return (
+                <div className="item" key={`${item.id}`}>
+                  <Link to={`/detail/${selectCategory === 'all' ? parentId : selectCategory}/${item.id}`}>
+                    <HoverImgWrap
+                      src={item.pdImg}
+                      alt="product"
+                      srcHover={item.hoImg}
+                      altHover="product"
+                    />
+                    <div className="info">
+                      <Strong>{item.title}</Strong>
+                      <Span>{item.content}</Span>
+                      <P><span>{price(item.price)}</span>원</P>
+                    </div>
+                  </Link>
+                </div>
+              );
+            })}
+          </div>
+          {
+            totalPages > 1 && <Pagination
+              totalPages={totalPages}
+              currentPage={currentPage}
+              setCurrentPage={setCurrentPage}
+            />
+          }
         </div>
       </section>
     </div>

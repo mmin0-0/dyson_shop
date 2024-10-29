@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 export const DefaultBtn = ({ children, type = "button", className, color = "default", onClick, ...props }) => {
   return <button
     type={type}

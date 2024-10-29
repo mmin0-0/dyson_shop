@@ -1,38 +1,32 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { increase, addItem } from '../store.js';
+import { addItem } from '../store.js';
 import { pdList, benefit, tabMenu } from '../data.js';
 import { Link } from 'react-router-dom';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
-import 'swiper/css/autoplay';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import { current } from "@reduxjs/toolkit";
+import { DefaultBtn } from "../components/Button.jsx";
+import { HoverImgWrap } from "../components/Image.jsx";
 
-
-function PdDetail({price}){
-  let state = useSelector((state)=>state);
+function PdDetail({ price }) {
+  let state = useSelector((state) => state);
   let dispatch = useDispatch();
 
   const { id, dataId } = useParams();
-  const 현재상품 = pdList.find(function(e){
+  const 현재상품 = pdList.find(function (e) {
     return e.id == id
   });
-  const 현재데이터 = 현재상품.data.find(function(e){
+  const 현재데이터 = 현재상품.data.find(function (e) {
     return e.id.toString() == dataId
   });
 
   const [watchItem, setWatch] = useState([]);
-  useEffect(()=>{
-    if(!현재데이터) return;
+  useEffect(() => {
+    if (!현재데이터) return;
 
     let watchArr = localStorage.getItem('watched');
-    if(watchArr == null){
+    if (watchArr == null) {
       watchArr = [];
-    }else{
+    } else {
       watchArr = JSON.parse(watchArr);
     }
     watchArr.push({
@@ -45,8 +39,8 @@ function PdDetail({price}){
     });
 
     watchArr = Array.from(new Set(watchArr.map(item => item.id)))
-    .map(id => watchArr.find(item => item.id === id));
-    if(watchArr.length > 6){
+      .map(id => watchArr.find(item => item.id === id));
+    if (watchArr.length > 6) {
       watchArr = watchArr.slice(watchArr.length - 6);
     }
 
@@ -54,38 +48,51 @@ function PdDetail({price}){
     setWatch(watchItem);
   }, []);
 
-  return(
-    <div id="wrap" className="detail">
-      <div className="wrap-inner">
-        <div className="detail-wrap">
-          <div className="pd-wrap">
-            <PdVisual 
-              price={price}
-              cart={state.cart}
-              dispatch={dispatch}
-              현재상품={현재상품}
-              현재데이터={현재데이터}
-            />
-            <PdInfo 
-              현재상품={현재상품}
-              현재데이터={현재데이터}
-            />
-            <StoreInfo />
+  return (
+    <div className="inner detail">
+      <section id="pdDetail">
+        <div className="cont-wrap">
+          <div className="product-info">
+
           </div>
+        </div>
+      </section>
+      <div className="detail-wrap">
+        <div className="pd-wrap">
+          <PdVisual
+            price={price}
+            cart={state.cart}
+            dispatch={dispatch}
+            현재상품={현재상품}
+            현재데이터={현재데이터}
+          />
+          <PdInfo
+            현재상품={현재상품}
+            현재데이터={현재데이터}
+          />
+          <StoreInfo />
         </div>
       </div>
     </div>
   )
 }
 
-function PdVisual({현재상품, 현재데이터,  dispatch, price}){
+function PdVisual({ 현재상품, 현재데이터, dispatch, price }) {
+  const option = [
+    { tit: '원산지', info: '중국' },
+    { tit: '구매혜택', info: '20 포인트 적립예정' },
+    { tit: '배송비', info: '3,000원 (50,000원 이상 무료배송)' },
+  ];
+
   return (
     <div className="pd-wrap-top con-box">
       <div className="pd-img">
-        <div className="img-wrap">
-          <img src={현재데이터.pdImg} alt="product img" className="org-img"/>
-          <img src={현재데이터.hoImg} alt="product img" className="hover-img"/>
-        </div>
+        <HoverImgWrap 
+          src={현재데이터.pdImg}
+          alt={현재데이터.title}
+          srcHover={현재데이터.hoImg}
+          altHover={현재데이터.title}
+        />
       </div>
       <div className="pd-info">
         <div className="tit-wrap">
@@ -103,31 +110,31 @@ function PdVisual({현재상품, 현재데이터,  dispatch, price}){
           <p className="pr-discount">25%</p>
         </div>
         <div className="option-wrap">
-          <div>
-            <div className="tit">원산지</div>
-            <div className="data">중국</div>
-          </div>
-          <div>
-            <div className="tit">구매혜택</div>
-            <div className="data">20 포인트 적립예정</div>
-          </div>
-          <div>
-            <div className="tit">배송비</div>
-            <div className="data">3,000원 (50,000원 이상 무료배송)</div>
-          </div>
+          {
+            option.map((item) =>
+              <div>
+                <div className="tit">{item.tit}</div>
+                <div className="data">{item.info}</div>
+              </div>
+            )
+          }
         </div>
-        <div className="buy-wrap btn-wrap">
-          <button type="button" className="btn-zzim">찜하기</button>
-          <button type="button" className="btn-cart type01" onClick={()=>{
-            dispatch(addItem({category: 현재상품.id, id: 현재데이터.id, title: 현재데이터.title, price: 현재데이터.price, count: 1, img: 현재데이터.pdImg}))
-          }}>장바구니</button>
+        <div className="btn-wrap">
+          <DefaultBtn className="zzim">찜하기</DefaultBtn>
+          <DefaultBtn
+            color="type01"
+            className="cart"
+            onClick={() => {
+              dispatch(addItem({ category: 현재상품.id, id: 현재데이터.id, title: 현재데이터.title, price: 현재데이터.price, count: 1, img: 현재데이터.pdImg }))
+            }}
+          >장바구니</DefaultBtn>
         </div>
       </div>
     </div>
   )
 }
 
-function PdInfo({현재상품, 현재데이터}){
+function PdInfo({ 현재상품, 현재데이터 }) {
   return (
     <div className="pd-wrap-bottom">
       <div className="direct-wrap">
@@ -140,7 +147,7 @@ function PdInfo({현재상품, 현재데이터}){
           <div className="cont-wrap">
             <ul className="direct-list">
               {
-                benefit.map((a, i)=>{
+                benefit.map((a, i) => {
                   return (
                     <li key={a.title}>
                       <Link to="#">
@@ -172,17 +179,17 @@ function PdInfo({현재상품, 현재데이터}){
           <div className="con-wrap">
             <div className="char-list">
               {
-                현재데이터.pdChar.map((item, i)=>{
+                현재데이터.pdChar.map((item, i) => {
                   return (
-                  <div key={item.id} className="list-item">
-                    <div className="img-wrap">
-                      <img src={`${process.env.PUBLIC_URL}/images/sub/pd_char/0${현재데이터.id}/0${i}.jpg`} alt="제품특징" />
+                    <div key={item.id} className="list-item">
+                      <div className="img-wrap">
+                        <img src={`${process.env.PUBLIC_URL}/images/sub/pd_char/0${현재데이터.id}/0${i}.jpg`} alt="제품특징" />
+                      </div>
+                      <div className="txt-info">
+                        <strong>{item.tit}</strong>
+                        <p>{item.content}</p>
+                      </div>
                     </div>
-                    <div className="txt-info">
-                      <strong>{item.tit}</strong>
-                      <p>{item.content}</p>
-                    </div>
-                  </div>
                   )
                 })
               }
@@ -194,13 +201,13 @@ function PdInfo({현재상품, 현재데이터}){
   )
 }
 
-function StoreInfo(){
+function StoreInfo() {
   const [currentTab, clickTab] = useState(0);
   const selectMenuHandler = (index) => {
     clickTab(index);
   };
-  
-  return(
+
+  return (
     <div className="store-wrap">
       <div className="con-box">
         <div className="tit-wrap">
@@ -212,13 +219,13 @@ function StoreInfo(){
           <div className="tab-wrap">
             <ul className="tab-tit">
               {
-                tabMenu.map((item ,index) => (
-                  <li 
+                tabMenu.map((item, index) => (
+                  <li
                     key={index}
-                    className={index === currentTab ? 'on' :''}
+                    className={index === currentTab ? 'on' : ''}
                     onClick={() => selectMenuHandler(index)}
-                    >
-                      <Link to="#">{index + 1}</Link>
+                  >
+                    <Link to="#">{index + 1}</Link>
                   </li>
                 ))
               }

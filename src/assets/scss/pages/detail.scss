@@ -1,7 +1,7 @@
 #wrap {
   .inner {
     &.detail {
-      >section {
+      > section {
         &#visual {
           width: 100%;
           height: 36rem;
@@ -52,34 +52,20 @@
             }
           }
         }
-
         &#productList {
           margin-top: 8rem;
-
           .tab-cont {
             width: 100%;
             @include flexbox(row, center, center);
-
             @include tablet {
               padding: 1rem 0;
               justify-content: flex-start;
               overflow-y: auto;
             }
-
             li {
               padding: 0 2rem;
-
-              &:not(:first-child) {
-                border-left: 1px solid rgba($white, .45);
-              }
-
-              &:hover,
-              &.on {
-                a {
-                  color: $subColor;
-                }
-              }
-
+              &:not(:first-child) {border-left: 1px solid rgba($white, .45);}
+              &:hover,&.on {a {color: $subColor;}}
               a {
                 font-weight: bold;
                 white-space: nowrap;
@@ -87,82 +73,26 @@
               }
             }
           }
-
           .product-list {
             margin-top: 4rem;
             display: flex;
             flex-wrap: wrap;
-
             .item {
               width: calc(100% / 4);
               transition: all .25s;
               @include border(1px, rgba($white, .25));
-
-              @include notebook {
-                width: calc(100% / 3);
-              }
-
-              @include tablet {
-                width: calc(100% / 2);
-              }
-
-              &:hover {
-                background: $subColor;
-
-                .img-wrap {
-                  img {
-                    &.default {
-                      opacity: 0;
-                    }
-
-                    &.hover {
-                      opacity: 1;
-                    }
-                  }
-                }
-              }
-
-              >a {
-                width: 100%;
-              }
-
+              @include notebook {width: calc(100% / 3);}
+              @include tablet {width: calc(100% / 2);}
+              &:hover {background: $subColor;}
+              > a {width: 100%;}
               .img-wrap {
                 height: 40rem;
-                position: relative;
                 background: $white;
-                overflow: hidden;
-
-                @include tablet {
-                  height: 24rem;
-                }
-
-                img {
-                  position: absolute;
-                  top: 0;
-                  left: 50%;
-                  transform: translateX(-50%);
-                  width: 100%;
-                  height: 100%;
-                  object-fit: contain;
-                  transition: opacity .25s;
-
-                  &.default {
-                    opacity: 1;
-                  }
-
-                  &.hover {
-                    opacity: 0;
-                  }
-                }
+                @include tablet {height: 24rem;}
               }
-
               .info {
                 padding: 2.4rem 2rem;
-
-                * {
-                  line-height: 1.4;
-                }
-
+                * {line-height: 1.4;}
                 > span {@include ellipsis(2);}
                 > strong {
                   margin-bottom: .8rem;
@@ -179,6 +109,9 @@
               }
             }
           }
+        }
+        &#pdDetail {
+          
         }
       }
     }
@@ -206,39 +139,7 @@
           width: 100%;
         }
 
-        .img-wrap {
-          height: 100%;
-          position: relative;
-
-          &:hover {
-            img {
-              &.org-img {
-                opacity: 0;
-                visibility: hidden;
-              }
-
-              &.hover-img {
-                opacity: 1;
-                visibility: visible;
-              }
-            }
-          }
-
-          img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            position: absolute;
-            top: 0;
-            left: 0;
-            transition: opacity .35s;
-
-            &.hover-img {
-              opacity: 0;
-              visibility: hidden;
-            }
-          }
-        }
+        .img-wrap {height: 100%;}
       }
 
       .pd-info {
