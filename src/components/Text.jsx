@@ -40,7 +40,7 @@ export const P = ({children, className, fontWeight, lineHeight}) => {
     fontWeight: fontWeight || 400,
     lineHeight: lineHeight || '1.4'
   };
-  return <p className={`txt ${className}`} style={style}>{children}</p>
+  return <p className={className} style={style}>{children}</p>
 };
 
 export const Strong = ({children, fontWeight, fontSize, lineHeight, display}) => {

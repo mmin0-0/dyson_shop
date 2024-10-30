@@ -1,5 +1,6 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import { MediaProvider } from './MediaContext';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
 import Modal from './components/Modal.jsx';
@@ -33,21 +34,23 @@ export default function App() {
 
   return (
     <div className="App" id="wrapper">
-      <ScrollTop />
-      <Header toggleModal={toggleModal} />
-      {isModalOpen && <Modal isModalOpen={isModalOpen} toggleModal={toggleModal} />}
-      <div id="wrap">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="*" element={<Error />} />
-          <Route path="/search" element={<Search price={price} />} />
-          <Route path="/cart" element={<Cart price={price} />} />
-          <Route path="/detail" element={<Detail price={price} />} />
-          <Route path="/detail/:id/:dataId" element={<PdDetail price={price} />} />
-        </Routes>
-      </div>
-      <Footer />
-      <QuickMenu price={price} />
+      <MediaProvider>
+        <ScrollTop />
+        <Header toggleModal={toggleModal} />
+        {isModalOpen && <Modal isModalOpen={isModalOpen} toggleModal={toggleModal} />}
+        <div id="wrap">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="*" element={<Error />} />
+            <Route path="/search" element={<Search price={price} />} />
+            <Route path="/cart" element={<Cart price={price} />} />
+            <Route path="/detail" element={<Detail price={price} />} />
+            <Route path="/detail/:id/:dataId" element={<PdDetail price={price} />} />
+          </Routes>
+        </div>
+        <Footer />
+        <QuickMenu price={price} />
+      </MediaProvider>
     </div>
   );
 }

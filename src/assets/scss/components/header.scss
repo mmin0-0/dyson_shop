@@ -12,10 +12,10 @@ header{
     border-bottom: 1px solid rgba($white, .3);
   }
   &.fixed{
-    height: 6rem;
+    height: 8rem;
     border-bottom: 1px solid rgba($white, .3);
     + #wrap{
-      margin-top: 6rem !important;
+      margin-top: 8rem !important;
       &.detail, &.cart{margin-top: 12rem !important;}
     }
     > .inner{
@@ -28,22 +28,28 @@ header{
       .util-wrap{right: 0;}
     }
     .gnb-wrap{
+      top: 0;
+      bottom: auto;
       .fix-logo{
         opacity: 1;
         visibility: visible;
       }
+      .depth1{
+        height: 8rem;
+        line-height: 4rem;
+      }
     }
   }
-  @include notebook{height: 6rem;}
   > .inner{
     width: calc(100% - 4rem);
     margin: 0 auto;
     position: relative;
-    min-height: 6rem;
+    min-height: 8rem;
     margin-top: 2rem;
     transition: all .25s;
     @include notebook{
       margin-top: 0;
+      min-height: 6rem;
       @include flexbox(row, space-between, center);
     }
     .ham-btn, .user, .basket, .search-controls{

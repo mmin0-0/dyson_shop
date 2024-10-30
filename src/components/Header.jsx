@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+import { useMediaContext } from '../MediaContext';
 import { menuItems, keyword } from '../data.js';
 import { DefaultBtn } from './Button';
 import { DefaultInput } from './Input';
@@ -7,31 +8,28 @@ import { Strong, Ul } from './Text';
 
 export default function Header({ toggleModal }) {
   const [headerClass, setHeaderClass] = useState('');
-  const [isTabletOrSmaller, setIsTabletOrSmaller] = useState(window.innerWidth <= 1200);
   const [search, setSearch] = useState(false);
   const [menu, setMenu] = useState(false);
+  const { isTablet } = useMediaContext();
 
   useEffect(() => {
     const handleScroll = () => setHeaderClass(window.scrollY > 0 ? 'fixed' : '');
-    const handleResize = () => setIsTabletOrSmaller(window.innerWidth <= 1200);
 
-    if (!isTabletOrSmaller) {
+    if (isTablet) {
       window.addEventListener('scroll', handleScroll);
     }
-    window.addEventListener('resize', handleResize);
 
     return () => {
       window.removeEventListener('scroll', handleScroll);
-      window.removeEventListener('resize', handleResize);
-    }
-  }, [isTabletOrSmaller]);
+    };
+  }, [isTablet]);
 
   const toggleSearch = (e) => {
     setSearch(!search);
     e.target.classList.toggle('on', !search);
   };
 
-  const toggleMenu = () => setMenu(prev => !prev);
+  const toggleMenu = () => setMenu((prev) => !prev);
 
   const utilityItems = [
     { className: 'user', text: '로그인', onClick: toggleModal, link: null },
