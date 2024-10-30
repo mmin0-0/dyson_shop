@@ -1,6 +1,6 @@
 #wrap {
   .inner {
-    &.detail {
+    &#detail {
       > section {
         &#visual {
           height: 36rem;
@@ -92,6 +92,11 @@
             }
           }
         }
+
+      }
+    }
+    &#pdDetail{
+      > section{
         &#pdInfo {
           .product-info{
             display: flex;

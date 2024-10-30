@@ -24,7 +24,7 @@ export default function Detail({ price }) {
   const currentData = filteredData.slice(startIndex, startIndex + itemsPerPage);
 
   return (
-    <div className="inner detail">
+    <div className="inner" id="detail">
       <section id="visual">
         <ImgWrap src={`${process.env.PUBLIC_URL}/images/main/sub_visual01.png`} alt="visual" />
         <div className="tit-wrap">

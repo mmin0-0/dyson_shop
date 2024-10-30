@@ -50,7 +50,7 @@ export default function PdDetail({ price }) {
 
 
   return (
-    <div className="inner detail">
+    <div className="inner" id="pdDetail">
       <section id="pdInfo">
         <div className="cont-wrap">
           <div className="product-info con-box">

@@ -12,7 +12,7 @@ export default function Home() {
   useGsapAnimations(boxRef);
 
   return (
-    <div className="inner home" ref={boxRef}>
+    <div className="inner" id="home" ref={boxRef}>
       <section id="visual"><MainVisual /></section>
       <section id="about">
         <div className="con-box">
