@@ -9,6 +9,7 @@ import { Strong, Ul } from './Text';
 export default function Header({ toggleModal }) {
   const [headerClass, setHeaderClass] = useState('');
   const [search, setSearch] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
   const [menu, setMenu] = useState(false);
   const { isTablet } = useMediaContext();
 
@@ -25,7 +26,7 @@ export default function Header({ toggleModal }) {
   }, [isTablet]);
 
   const toggleSearch = (e) => {
-    setSearch(!search);
+    setSearch((prev) => !prev);
     e.target.classList.toggle('on', !search);
   };
 
@@ -34,7 +35,7 @@ export default function Header({ toggleModal }) {
   const utilityItems = [
     { className: 'user', text: '로그인', onClick: toggleModal, link: null },
     { className: 'basket', text: '장바구니', onClick: null, link: '/cart' },
-    { className: 'search-controls', text: '검색', onClick: toggleSearch, link: null }
+    { className: 'search-controls', text: '검색', onClick: toggleSearch, link: null } 
   ];
 
   return (
@@ -59,18 +60,23 @@ export default function Header({ toggleModal }) {
           }
         </div>
       </div>
-      <SearchWrap toggleSearch={toggleSearch} search={search} />
+      <SearchWrap 
+        toggleSearch={toggleSearch} 
+        search={search} 
+        setSearch={setSearch} 
+        searchQuery={searchQuery}
+        setSearchQuery={setSearchQuery} />
       <NavWrap menu={menu} toggleMenu={toggleMenu} utilityItems={utilityItems}/>
     </header>
   );
 }
 
-function SearchWrap({ toggleSearch, search }) {
+function SearchWrap({ toggleSearch, search, setSearch, searchQuery, setSearchQuery }) {
   const navigate = useNavigate();
-  const [searchQuery, setSearchQuery] = useState('');
   const formSubmit = (e) => {
     e.preventDefault();
     navigate(`/search?q=${searchQuery}`);
+    setSearch(false);
   };
 
   return (

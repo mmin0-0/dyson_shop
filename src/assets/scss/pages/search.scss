@@ -22,6 +22,7 @@
                 > div{
                   @include border(1px, rgba($white, .25));
                   &:hover{background: $subColor;}
+                  a{width: 100%;}
                   .img-wrap{
                     height: 40rem;
                     background: $white;

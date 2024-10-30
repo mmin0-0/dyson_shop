@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from 'react-router-dom';
+import { Strong } from './Text';
 
 function Modal({ isModalOpen, toggleModal }) {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -21,7 +22,7 @@ function Modal({ isModalOpen, toggleModal }) {
       <div className="modal-bg" onClick={toggleModal}></div>
       <div className="modal-cont">
         <div className="modal-tit">
-          <strong>로그인</strong>
+          <Strong fontWeight="600">로그인</Strong>
         </div>
         <div className="modal-info">
           <div className="inner">
@@ -32,7 +33,7 @@ function Modal({ isModalOpen, toggleModal }) {
                     to="#"
                     key={tab}
                     className={activeIndex === index ? 'on' : ''}
-                    onClick={setActiveIndex(index)}
+                    onClick={() => setActiveIndex(index)}
                   >{tab}</Link>
                 ))
               }

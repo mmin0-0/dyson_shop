@@ -18,9 +18,9 @@ export default function App() {
     return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   };
 
-  const [isModalOpen, SetIsModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const toggleModal = ()=>{
-    SetIsModalOpen(!isModalOpen);
+    setIsModalOpen(prev => !prev);
   };
   
   const ScrollTop = () => {

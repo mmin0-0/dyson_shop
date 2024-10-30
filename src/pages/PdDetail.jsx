@@ -82,9 +82,8 @@ export default function PdDetail({ price }) {
                 }
               </div>
               <div className="btn-wrap">
-                <DefaultBtn className="zzim">찜하기</DefaultBtn>
+                <DefaultBtn className="zzim type01">찜하기</DefaultBtn>
                 <DefaultBtn
-                  color="type01"
                   className="cart"
                   onClick={() => {
                     dispatch(addItem({ category: 현재상품.id, id: 현재데이터.id, title: 현재데이터.title, price: 현재데이터.price, count: 1, img: 현재데이터.pdImg }))
