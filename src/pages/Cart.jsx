@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { increase, decrease, addItem, removeItem } from '../store.js';
+import { increase, decrease, removeItem } from '../store.js';
 import { Strong, Span, P, TitWrap } from '../components/Text.jsx';
 import { DefaultInput } from '../components/Input.jsx';
 import { ImgWrap } from '../components/Image.jsx';
@@ -12,10 +12,6 @@ export default function Cart() {
   const cartItems = useSelector((state) => state.cart);
   const { isMobile } = useMediaContext();
   const dispatch = useDispatch();
-
-  // if (!cartItems || cartItems.length === 0) {
-  //   return <div>장바구니에 항목이 없습니다.</div>;
-  // }
 
   const totalPrice = () => {
     const total = cartItems.reduce((total, item) => total + item.count * item.price, 0);
@@ -76,6 +72,13 @@ function DesktopTable({ cart }) {
     setCheckedItems(Array(cart.length).fill(newSelectAll));
   };
 
+  const handleIncrease = (itemId) => {
+    dispatch(increase(itemId));
+  };
+  const handleDecrease = (itemId) => {
+    dispatch(decrease(itemId));
+  };
+
   return (
     <>
       {
@@ -128,7 +131,7 @@ function DesktopTable({ cart }) {
                             checked={checkedItems[idx]}
                             onChange={() => handleCheckboxChange(idx)}
                           />
-                          <Link to={`detail/${item.category}/${item.id}`} className="link-wrap">
+                          <Link to={`/detail/${item.category}/${item.id}`} className="link-wrap">
                             <ImgWrap src={item.img} alt={item.title} />
                             <P>{item.title}</P>
                           </Link>
@@ -138,9 +141,9 @@ function DesktopTable({ cart }) {
                       <td>
                         <div>
                           <div className="amount">
-                            <DefaultBtn>-</DefaultBtn>
+                            <DefaultBtn onClick={() => handleDecrease(item.id)}>-</DefaultBtn>
                             <Strong>{item.count}</Strong>
-                            <DefaultBtn>+</DefaultBtn>
+                            <DefaultBtn onClick={() => handleIncrease(item.id)}>+</DefaultBtn>
                           </div>
                         </div>
                       </td>
