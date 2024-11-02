@@ -338,6 +338,7 @@
               .img-wrap{
                 height: inherit;
                 img{
+                  width: 100%;
                   height: inherit;
                   object-fit: cover;
                 }
@@ -483,6 +484,7 @@
                 width: 100%;
                 max-width: 48rem;
                 height: fit-content;
+                margin: 0 auto;
                 @include tablet{max-width: 100%;}
                 &:first-child{margin-top: 16rem;}
                 &:nth-child(4n - 3){
@@ -497,6 +499,7 @@
                 > a{
                   width: 90%;
                   height: 100%;
+                  display: block;
                   margin: 0 auto;
                   @include border(1px, $table-bd);
                   .img-wrap{

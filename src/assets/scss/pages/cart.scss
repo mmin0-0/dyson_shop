@@ -5,7 +5,7 @@
         &#board{
           .tit-wrap{
             gap: 1rem;
-            @include flexbox(row, flex-start, flex-start);
+            @include flexbox(row, flex-start, center);
             span{
               width: 2rem;
               height: 2rem;
