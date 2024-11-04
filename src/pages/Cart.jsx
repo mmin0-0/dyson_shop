@@ -127,7 +127,6 @@ function DesktopTable({ cart, hasRows, dispatch, thead, checkedItems, handleChec
             <tbody>
               {cart.map((item, idx) => (
                 <CartTableRow
-                  key={idx}
                   item={item}
                   idx={idx}
                   isMobile={false}
@@ -174,7 +173,6 @@ function MobileTable({ cart, hasRows, dispatch, checkedItems, handleCheckboxChan
             <tbody>
               {cart.map((item, idx) => (
                 <CartTableRow
-                  key={idx}
                   item={item}
                   idx={idx}
                   isMobile={true}
@@ -191,7 +189,7 @@ function MobileTable({ cart, hasRows, dispatch, checkedItems, handleCheckboxChan
   )
 }
 
-function CartTableRow({ key, item, idx, isMobile, dispatch, checked, handleCheckboxChange }) {
+function CartTableRow({ item, idx, isMobile, dispatch, checked, handleCheckboxChange }) {
   const shippingInfo = isMobile
     ? [
       { title: "배송비", content: "3,000원" },
@@ -204,7 +202,7 @@ function CartTableRow({ key, item, idx, isMobile, dispatch, checked, handleCheck
     ];
 
   return (
-    <tr key={idx}>
+    <tr>
       <td>
         <div className="img">
           <DefaultInput

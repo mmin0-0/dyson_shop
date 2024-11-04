@@ -40,6 +40,10 @@ export default function Home() {
           <TitWrap>
             <TitInfo tag="best product" tit="베스트 제품" />
             <Link to="/detail" className="more">More</ Link>
+            <div className="controls">
+        <button className="swiper-button-prev">이전</button>
+        <button className="swiper-button-next">다음</button>
+      </div>
           </TitWrap>
           <div className="cont-wrap">
             <ProductList />
@@ -51,7 +55,7 @@ export default function Home() {
           <div className="brand-pr">
             {
               [1, 2].map((num) =>
-                <div className={`txt0${num}`}>
+                <div className={`txt0${num}`} key={num}>
                   <img src={`${process.env.PUBLIC_URL}/images/main/tit0${num}_img.png`} alt="pr text" />
                 </div>
               )

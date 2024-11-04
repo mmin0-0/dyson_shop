@@ -182,14 +182,12 @@
               width: 100%;
               @include flexbox(row, space-between, flex-end);
             }
-          }
-          .cont-wrap{
-            width: 70%;
-            position: relative;
             .controls{
               position: absolute;
               left: 0;
               bottom: 0;
+              height: 4rem;
+              display: flex;
               @include tablet{display: none;}
               button{
                 width: 4rem;
@@ -200,6 +198,8 @@
                 text-indent: -9999em;
                 overflow: hidden;
                 position: relative;
+                left: 0;
+                right: 0;
                 background: transparent;
                 &:hover{
                   background: transparent;
@@ -212,16 +212,20 @@
                   position: absolute;
                   left: 50%;
                   top: 50%;
+                  transform: translate(-50%,-50%);
                   opacity: .45;
                   transition: opacity .25s;
                   @include background(icon, arrow03_icon, svg, no-repeat, contain, center, bottom);
                 }
-                &.btn{
-                  &-prev{&::after{transform: translate(-50%,-50%)}}
+                &.swiper-button{
                   &-next{&::after{transform: translate(-50%,-50%) rotate(180deg);}}
                 }
               }
             }
+          }
+          .cont-wrap{
+            width: 70%;
+            @include tablet{width: 100%;}
             .swiper-slide{
               .preview{
                 &:hover{

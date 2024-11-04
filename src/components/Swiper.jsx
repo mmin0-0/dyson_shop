@@ -45,13 +45,15 @@ export function MainVisual() {
     <Swiper
       cssMode={true}
       ref={swiperRef}
+      slidesPerView={1}
+      slidesPerGroup={1}
       loop={true}
       autoplay={{
         delay: 4500,
         disableOnInteraction: false,
       }}
       pagination={{
-        el: ".visual-swiper .swiper-pagination",
+        el: "#visual .swiper-pagination",
         clickable: false,
         type: "custom",
         renderCustom: (swiper, current, total) => {
@@ -62,8 +64,8 @@ export function MainVisual() {
         }
       }}
       navigation={{
-        nextEl: ".visual-swiper .swiper-button-next",
-        prevEl: ".visual-swiper .swiper-button-prev",
+        nextEl: "#visual .swiper-button-next",
+        prevEl: "#visual .swiper-button-prev",
       }}
       modules={[Autoplay, Pagination, Navigation]}
       className="visual-swiper"
@@ -109,10 +111,11 @@ export function ProductList() {
       <Swiper
         cssMode={true}
         navigation={{
-          nextEl: '#product .btn-next',
-          prevEl: '#product .btn-prev'
+          nextEl: '#product .swiper-button-next',
+          prevEl: '#product .swiper-button-prev'
         }}
         slidesPerView={1.5}
+        slidesPerGroup={1.5}
         spaceBetween={16}
         loop={true}
         autoplay={{
@@ -123,6 +126,7 @@ export function ProductList() {
         breakpoints={{
           768: {
             slidesPerView: 2.5,
+            slidesPerGroup: 1
           }
         }}
       >
@@ -145,10 +149,10 @@ export function ProductList() {
           })
         }
       </Swiper>
-      <div className="controls">
+      {/* <div className="controls">
         <button className="swiper-button-prev">이전</button>
         <button className="swiper-button-next">다음</button>
-      </div>
+      </div> */}
     </>
   )
 }
@@ -162,6 +166,8 @@ export function VacuumList() {
       }}
       direction={'vertical'}
       modules={[Autoplay, Navigation]}
+      slidesPerView={1}
+      slidesPerGroup={1}
       loop={true}
       autoplay={{
         delay: 4500,
