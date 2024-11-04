@@ -251,6 +251,7 @@
             right: 0;
             gap: 1rem;
             @include flexbox(row, flex-start, flex-start);
+            @include tablet{position: static;}
             > a{
               width: 3rem;
               height: 3rem;
@@ -265,7 +266,7 @@
           .tab-cont{
             gap: 4rem;
             @include flexbox(row, center, flex-end);
-            @include notebook {
+            @include tablet {
               gap: 2rem;
               margin-top: 2rem;
               flex-direction: column;
@@ -277,6 +278,7 @@
             }
             .info {
               flex: 1;
+              @include tablet{width: 100%;}
               strong{
                 width: 50%;
                 padding: 1.6rem 2rem;

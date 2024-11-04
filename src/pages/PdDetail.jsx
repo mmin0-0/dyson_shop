@@ -154,7 +154,7 @@ export default function PdDetail({ price }) {
         <div className="con-box">
           <TitWrap textAlign="center">
             <TitInfo tag="DEMO STORE" tit="다이슨 데모 스토어" />
-            <P>다이슨 기술은 생활의 실제적인 문제를 해결하기 위해 설계되었습니다. 그것을 이해하기 위한 가장 좋은 방법은 제품을 경험하는 것입니다. 다이슨 데모 스토어는 제품을 직접 경험할 수 있는 공간입니다.</P>
+            <P>다이슨 기술은 생활의 실제적인 문제를 해결하기 위해 설계되었습니다. <br className="d-pc" />그것을 이해하기 위한 가장 좋은 방법은 제품을 경험하는 것입니다. <br className="d-pc" />다이슨 데모 스토어는 제품을 직접 경험할 수 있는 공간입니다.</P>
           </TitWrap>
           <div className="cont-wrap">
             <div className="tab-menu">

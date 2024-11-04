@@ -127,6 +127,7 @@ function DesktopTable({ cart, hasRows, dispatch, thead, checkedItems, handleChec
             <tbody>
               {cart.map((item, idx) => (
                 <CartTableRow
+                  key={idx}
                   item={item}
                   idx={idx}
                   isMobile={false}
@@ -173,6 +174,7 @@ function MobileTable({ cart, hasRows, dispatch, checkedItems, handleCheckboxChan
             <tbody>
               {cart.map((item, idx) => (
                 <CartTableRow
+                  key={idx}
                   item={item}
                   idx={idx}
                   isMobile={true}

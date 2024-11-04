@@ -390,6 +390,7 @@ header{
                     width: 100%;
                     font-family: $aritaM;
                     color: $black;
+                    &:hover{color: $subColor;}
                     @include notebook{
                       font-size: 1.4rem;
                       font-weight: 600;

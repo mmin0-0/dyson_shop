@@ -225,6 +225,8 @@
           }
           .cont-wrap{
             width: 70%;
+            opacity: 0;
+            transform: translateY(40px);
             @include tablet{width: 100%;}
             .swiper-slide{
               .preview{
@@ -312,7 +314,14 @@
             }
           }
         }
-        &#brandPr{overflow-x: hidden;}
+        &#brandPr{
+          overflow-x: hidden;
+          .txt01{transform: translateX(80%);}
+          .txt02{
+            margin-top: 4rem;
+            transform: translateX(-60%);
+          }
+        }
         &#vacuum{
           height: 80vh;
           overflow: hidden;

@@ -33,7 +33,7 @@ export default function useGsapAnimations(boxRef){
         scrollTrigger: {
           trigger: '#product',
           start: 'top center 40px',
-          end: 'bottom'
+          end: 'bottom',
         }
       });
       // fixContent section animation
@@ -51,7 +51,7 @@ export default function useGsapAnimations(boxRef){
         x: '-15%',
         scrollTrigger: {
           trigger: '#brandPr',
-          start: 'top 100%',
+          start: 'top 80%',
           end: 'bottom top',
           scrub: 1
         }
@@ -60,7 +60,7 @@ export default function useGsapAnimations(boxRef){
         x: '100%',
         scrollTrigger: {
           trigger: '#brandPr',
-          start: 'top 100%%',
+          start: 'top 80%',
           end: 'bottom top',
           scrub: 1
         }
