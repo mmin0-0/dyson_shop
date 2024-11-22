@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, lazy, Suspense } from 'react';
 import { MediaProvider } from './MediaContext';
 import Header from './components/Header.jsx';
 import Footer from './components/Footer.jsx';
@@ -12,6 +12,12 @@ import Cart from './pages/Cart.jsx';
 import Detail from './pages/Detail.jsx';
 import PdDetail from './pages/PdDetail.jsx';
 import './assets/scss/main.scss';
+
+const error = lazy(()=>import('./pages/404_error.jsx'));
+const search = lazy(()=>import('./pages/Search.jsx'));
+const cart = lazy(()=>import('./pages/Cart.jsx'));
+const detail = lazy(()=>import('./pages/Detail.jsx'));
+const pdDetail = lazy(()=>import('./pages/PdDetail.jsx'));
 
 export default function App() {
   const price = (num) => {
@@ -39,6 +45,7 @@ export default function App() {
         <Header toggleModal={toggleModal} />
         {isModalOpen && <Modal isModalOpen={isModalOpen} toggleModal={toggleModal} />}
         <div id="wrap">
+        <Suspense fallback={<div>Loading...</div>}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="*" element={<Error />} />
@@ -47,6 +54,7 @@ export default function App() {
             <Route path="/detail" element={<Detail price={price} />} />
             <Route path="/detail/:id/:dataId" element={<PdDetail price={price} />} />
           </Routes>
+        </Suspense>
         </div>
         <Footer />
         <QuickMenu price={price} />
